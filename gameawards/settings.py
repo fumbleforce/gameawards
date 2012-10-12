@@ -4,7 +4,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    # ('Jorgen', 'jfemail3@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -31,6 +31,12 @@ TIME_ZONE = 'America/Chicago'
 LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
+
+AUTH_PROFILE_MODULE = 'runs.Member'
+
+# The page users are directed to if they are not logged in when 
+# accessing a page that requires login.
+LOGIN_URL = ''
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.

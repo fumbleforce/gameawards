@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Run(models.Model):
     year = models.IntegerField(max_length = 4)
@@ -7,14 +8,15 @@ class Run(models.Model):
     def __unicode__(self):
         return 'Run ' + str(self.year)
     
+    
 class Game(models.Model):
     name = models.CharField(max_length = 200)
     added_date = models.DateTimeField('date added')
     description = models.TextField()
-    icon_url = models.UrlField()
+    icon = models.ImageField()
     team = models.ForeignKey(Team)
     leader = models.ForeignKey(Member)
-    
+    run = models.ForeignKey(Run)
     
     def __unicode(self):
         return self.title
@@ -23,16 +25,27 @@ class Game(models.Model):
 class Team(models.Model):
     name = models.CharField(max_length = 200)
     created_date = models.DateTimeField('date created')
+    members = models.ManyToManyField(Developer)
     
-    
-class Member(models.Model):
-    name = models.CharField(max_length = 200)
-    joined_date = models.DateTimeField('date joined')
+    def __unicode(self):
+        return self.name
+        
+        
+class UserProfile(models.Model):
+    user = models.OneToOne(User)
     about = models.TextField()
-    portrait = models.UrlField()
+    portrait = models.ImageField()
     
-
+    def __unicode(self):
+        return self.name
+        
+        
 class Developer(models.Model):
     member = models.ForeignKey(Member)
     game = models.ForeignKey(Game)
     role = models.CharField(max_Length = 300)
+    
+    def __unicode(self):
+        return self.member.name
+        
+    
