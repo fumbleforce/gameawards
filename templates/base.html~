@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+            
+        {% block extrahead %}{% endblock %}
+    </head>
+
+    <body id="{% block body_id %}generic{% endblock %}" class="{% block body_class %}default{% endblock %}">
+        <div id="body">
+            {% block body %}
+                <div id="header">
+                  <ul id="nav_global">
+                    <li id="nav_homepage"><a href="/">Home</a></li>
+                    <li id="nav_login"><a href="/login">Log In</a></li>
+                    <li id="nav_admin"><a href="/admin">Admin</a></li>
+                    <li id="nav_profile"><a href="/profile">Profile</a></li>
+                    <li id="nav_logout"><a href="/logout">Log Out</a></li>
+                  </ul>
+                </div>
+                <div class="content">
+                    {% block content %}{% endblock %}
+                </div>
+                
+                <div class="footer">
+                    {% block footer %}{% endblock %}
+                </div>
+          
+            {% endblock %}
+        </div>
+    </body>
+</html>
+
