@@ -1,9 +1,5 @@
-{% if newspost_list %}
-    <ul>
-    {% for post in newspost_list %}
-        <li><a href="/news/{{ post.id }}/">{{ post.content }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No news is available.</p>
-{% endif %}
+{% extends "base.html" %}
+
+{% block content %}
+<h1>This is the index page! Welcome!</h1>
+{% endblock %}

@@ -1,51 +1,70 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 
 class Run(models.Model):
     year = models.IntegerField(max_length = 4)
     start_date = models.DateTimeField()
     
     def __unicode__(self):
-        return 'Run ' + str(self.year)
+        return self.year
     
     
+        
+
+class Developer(models.Model):
+    user = models.ForeignKey(User)
+    role = models.CharField(max_length = 300)
+    
+    def __unicode__(self):
+        return user.username
+        
+        
+        
+        
+class Team(models.Model):
+    name = models.CharField(max_length = 200)
+    created_date = models.DateTimeField('date created')
+    devs = models.ManyToManyField(Developer)
+    icon = models.ImageField(upload_to='pics/teams', null=True, blank=True)
+    
+    def __unicode__(self):
+        return self.name
+
+
+ 
 class Game(models.Model):
     name = models.CharField(max_length = 200)
     added_date = models.DateTimeField('date added')
     description = models.TextField()
-    icon = models.ImageField()
+    icon = models.ImageField(upload_to='pics/games', null=True, blank=True)
     team = models.ForeignKey(Team)
-    leader = models.ForeignKey(Member)
+    leader = models.ForeignKey(Developer)
     run = models.ForeignKey(Run)
     
-    def __unicode(self):
+    def __unicode__(self):
         return self.title
-   
-    
-class Team(models.Model):
-    name = models.CharField(max_length = 200)
-    created_date = models.DateTimeField('date created')
-    members = models.ManyToManyField(Developer)
-    
-    def __unicode(self):
-        return self.name
-        
-        
-class Member(models.Model):
-    user = models.OneToOne(User)
+
+
+class UserProfile(models.Model):
+
+    user = models.OneToOneField(User)
     about = models.TextField()
-    portrait = models.ImageField()
+    portrait = models.ImageField(upload_to='pics/members', null=True, blank=True)
     
-    def __unicode(self):
-        return self.name
+    def __unicode__(self):
+        return self.user.username
         
         
-class Developer(models.Model):
-    member = models.ForeignKey(Member)
-    game = models.ForeignKey(Game)
-    role = models.CharField(max_Length = 300)
-    
-    def __unicode(self):
-        return self.member.name
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance)
+post_save.connect(create_user_profile, sender=User)
+        
+
+        
+
+        
+
         
     
