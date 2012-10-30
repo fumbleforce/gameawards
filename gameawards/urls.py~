@@ -4,7 +4,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'', 'news.views.index'),
+    url(r'^$', 'news.views.index'),
     url(r'^news/', include('news.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^runs/', include('runs.urls')),
@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^login/$', 'runs.views.login_request'),
     url(r'^logout/$', 'runs.views.logout_request'),
     url(r'^profile/$', 'runs.views.profile_request'),
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT}),
     
 )
 

@@ -68,7 +68,7 @@ def profile_request(request):
     if request.user.is_authenticated():
         user = request.user
         context = {'user':user}
-        return render_to_response('runs/profile.html', context)
+        return render_to_response('runs/profile.html', context, context_instance=RequestContext(request))
     else:
         return HttpResponseRedirect('/login/')
     

@@ -1,9 +1,0 @@
-{% if newspost_list %}
-    <ul>
-    {% for post in newspost_list %}
-        <li><a href="/news/{{ post.id }}/">{{ post.content }}</a></li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No news is available.</p>
-{% endif %}

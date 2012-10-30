@@ -13,12 +13,15 @@
         <div id="body">
             {% block body %}
                 <div id="header">
+                  {% if user.is_authenticated %}<p> Logged in as {{user.username}} </p> 
+                  {% else %} <h1> Not logged in </h1> {% endif %}
                   <ul id="nav_global">
                     <li id="nav_homepage"><a href="/">Home</a></li>
                     <li id="nav_login"><a href="/login">Log In</a></li>
                     <li id="nav_admin"><a href="/admin">Admin</a></li>
                     <li id="nav_profile"><a href="/profile">Profile</a></li>
                     <li id="nav_logout"><a href="/logout">Log Out</a></li>
+                    <li id="nav_register"><a href="/register">Register</a></li>
                   </ul>
                 </div>
                 <div class="content">

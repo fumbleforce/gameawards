@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-
+from gameawards import settings
 from django.contrib import admin
 admin.autodiscover()
 
@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     url(r'^login/$', 'runs.views.login_request'),
     url(r'^logout/$', 'runs.views.logout_request'),
     url(r'^profile/$', 'runs.views.profile_request'),
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     
 )
 

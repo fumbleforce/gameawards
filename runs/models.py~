@@ -37,7 +37,7 @@ class Game(models.Model):
     name = models.CharField(max_length = 200)
     added_date = models.DateTimeField('date added')
     description = models.TextField()
-    icon = models.ImageField(upload_to='pics/games', null=True, blank=True)
+    icon = models.ImageField(upload_to='images/games', null=True, blank=True)
     team = models.ForeignKey(Team)
     leader = models.ForeignKey(Developer)
     run = models.ForeignKey(Run)
@@ -46,11 +46,11 @@ class Game(models.Model):
         return self.title
 
 
-class UserModel(models.Model):
+class UserProfile(models.Model):
 
     user = models.OneToOneField(User)
     about = models.TextField()
-    portrait = models.ImageField(upload_to='pics/members', null=True, blank=True)
+    portrait = models.ImageField(upload_to='images/members', null=True, blank=True)
     
     def __unicode__(self):
         return self.user.username
@@ -58,7 +58,7 @@ class UserModel(models.Model):
         
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        UserModel.objects.create(user=instance)
+        UserProfile.objects.create(user=instance)
 post_save.connect(create_user_profile, sender=User)
         
 
