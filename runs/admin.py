@@ -1,4 +1,5 @@
-from runs.models import Run, Developer, Team, UserProfile
+from runs.models import Run, Developer
+from members.models import Team, UserProfile
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User

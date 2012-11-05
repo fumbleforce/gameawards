@@ -2,76 +2,74 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.contrib.auth.models import User
 from django.template import RequestContext
-from runs.forms import RegistrationForm, LoginForm
-from runs.models import UserProfile
-from django.contrib.auth import authenticate, login, logout
+from django.utils import timezone
+from runs.forms import GameRegistrationForm
+from runs.models import Game
 
 
-def member_registration(request):
-    if request.user.is_authenticated():
-        return HttpResponseRedirect('/profile/')
+
+
+def game_registration_request(request):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/members/login/')
     if request.method == 'POST':
-        form = RegistrationForm(request.POST, request.FILES)
+        form = GameRegistrationForm(request.POST, request.FILES)
         if form.is_valid():
-            user = User.objects.create_user(
-                username=form.cleaned_data['username'], 
-                email = form.cleaned_data['email'], 
-                password = form.cleaned_data['password'],
-            )
-            user.first_name = form.cleaned_data['first_name']
-            user.last_name = form.cleaned_data['last_name']
-            user.save()
-            
-            profile = user.get_profile()
-            profile.about = form.cleaned_data['about']
-            profile.portrait = form.cleaned_data['portrait']
-            profile.save()
+            game = Game()
+            game.name=form.cleaned_data['name']
+            game.description = form.cleaned_data['description']
+            game.added_date = timezone.now()
+            game.icon = form.cleaned_data['icon']
+            game.team = form.cleaned_data['team']
+            dev = Developer(user=request.user, role='Project leader', game=game)
+            dev.save()
+            game.leader = dev
+            run = Run.Objects.get(current_run = True)
+            game.save()
+            return HttpResponseRedirect('/members/profile/')
+        else:
+            context = {'form':form}
+    else:
+        form = GameRegistrationForm()
+        context = {'form':form}
+    return render_to_response(
+        'runs/register_game.html', 
+        context, 
+        context_instance=RequestContext(request))
 
-            return HttpResponseRedirect('/profile/')
-        else:
-            return render_to_response('runs/register.html', {'form':form}, context_instance=RequestContext(request))
-    else:
-        form = RegistrationForm()
-        context = {'form':form}
-        return render_to_response('runs/register.html', context, context_instance=RequestContext(request))
-        
-        
-def login_request(request):
-    if request.user.is_authenticated():
-        return HttpResponseRedirect('/profile/')
-    if request.method == 'POST':
-        form = LoginForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            member = authenticate(username=username, password=password)
-            if member is not None:
-                login(request, member)
-                return HttpResponseRedirect('/profile/')
-            else:
-                return render_to_response('runs/login.html', {'form':form}, context_instance=RequestContext(request))
-        else:
-            return render_to_response('runs/login.html', {'form':form}, context_instance=RequestContext(request))
-    else:
-        form = LoginForm()
-        context = {'form':form}
-        return render_to_response('runs/login.html', context, context_instance=RequestContext(request))
-        
-        
-def logout_request(request):
-    logout(request)
-    return HttpResponseRedirect('/')
-    
-    
-    
-def profile_request(request):
-    if request.user.is_authenticated():
-        user = request.user
-        context = {'user':user}
-        return render_to_response('runs/profile.html', context, context_instance=RequestContext(request))
-    else:
-        return HttpResponseRedirect('/login/')
-    
-    
-    
-    
+
+
+
+def game_list_request(request):
+    curr_run = Run.Objects.get(current_run = True)
+    game_list = Game.Objects.filter(run=curr_run)
+    contex = {'game_list':game_list}
+    return render_to_response(
+        'runs/game_list.html', 
+        context, 
+        context_instance=RequestContext(request))
+
+
+def game_request(request, game_id):
+    game = Game.Objects.get(pk=game_id)
+    context = {'game':game}
+    return render_to_response(
+        'runs/game.html', 
+        context, 
+        context_instance=RequestContext(request))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

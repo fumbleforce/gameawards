@@ -4,7 +4,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Jorgen', 'jfemail3@gmail.com'),
+    # ('admin', 'web@gameawards.com'),
 )
 
 MANAGERS = ADMINS
@@ -131,6 +131,8 @@ INSTALLED_APPS = (
     'news',
     'runs',
     'events',
+    'members',
+    
     
 )
 

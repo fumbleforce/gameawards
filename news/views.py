@@ -13,4 +13,7 @@ def index(request):
 
 def detail(request, newspost_id):
     p = get_object_or_404(Newspost, pk=newspost_id)
-    return render_to_response('news/detail.html', {'post': p}, context_instance=RequestContext(request))
+    return render_to_response(
+        'news/detail.html', 
+        {'post': p}, 
+        context_instance=RequestContext(request))
