@@ -4,7 +4,7 @@ from members.models import Team
 
 
 class Run(models.Model):
-    year = models.IntegerField(max_length = 4)
+    year = models.CharField(max_length = 4)
     start_date = models.DateTimeField()
     current_run = models.BooleanField()
     
@@ -23,7 +23,7 @@ class Game(models.Model):
     run = models.ForeignKey(Run)
     
     def __unicode__(self):
-        return self.title
+        return self.name
 
         
 class Developer(models.Model):
@@ -32,6 +32,6 @@ class Developer(models.Model):
     game = models.ForeignKey(Game)
     
     def __unicode__(self):
-        return user.username
+        return self.user.username
         
     

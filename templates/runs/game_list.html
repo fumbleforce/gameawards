@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>List of Games</h1>
+{% if games %}
+    {% for game in games %}
+        <h2>
+            <a href="/runs/{{game.id}}">{{ game.name }}</a>
+        </h2>
+        <p>
+            {{ game.description }}
+        </p>
+    {% endfor %}
+{% else %}
+    <p>
+        There are no games here :(
+    </p>
+{% endif %}
+        
+{% endblock %}

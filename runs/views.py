@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.template import RequestContext
 from django.utils import timezone
 from runs.forms import GameRegistrationForm
-from runs.models import Game
+from runs.models import Game, Run
 
 
 
@@ -41,9 +41,9 @@ def game_registration_request(request):
 
 
 def game_list_request(request):
-    curr_run = Run.Objects.get(current_run = True)
-    game_list = Game.Objects.filter(run=curr_run)
-    contex = {'game_list':game_list}
+    curr_run = Run.objects.get(current_run = True)
+    game_list = Game.objects.filter(run=curr_run)
+    context = {'games':game_list}
     return render_to_response(
         'runs/game_list.html', 
         context, 
@@ -51,7 +51,7 @@ def game_list_request(request):
 
 
 def game_request(request, game_id):
-    game = Game.Objects.get(pk=game_id)
+    game = Game.objects.get(pk=game_id)
     context = {'game':game}
     return render_to_response(
         'runs/game.html', 
