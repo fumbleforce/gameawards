@@ -2,7 +2,15 @@
 {% block content %}
 <form action="" method="post">
 {% csrf_token %}
-{% if form.errors %}<p>Please correct the following fields:</p>{% endif %}
+{% if form.errors %}
+    <p>
+    Please correct the following fields:</br>
+    {% for e in form.errors %}
+        {{ e }}
+    </p>
+    {% endfor %}
+{% endif %}
+</br></br>
 <div class="register_div">
         {% if form.name.errors %}<p class="error">{{ form.name.errors }}</p>{% endif %}
         <p><label for="name"{% if form.name.errors %} class="error"{% endif %}>Name:</label></p>
@@ -16,13 +24,9 @@
 <div class="register_div">
         {% if form.description.errors %}<p class="error">{{ form.description.errors }}</p>{% endif %}
         <p><label for="description"{% if form.description.errors %} class="error"{% endif %}>Description:</label></p>
-        <p>{{ form.password }}</p>
+        <p>{{ form.description }}</p>
 </div>
-<div class="register_div">
-        {% if form.icon.errors %}<p class="error">{{ form.icon.errors }}</p>{% endif %}
-        <p><label for="icon"{% if form.icon.errors %} class="error"{% endif %}>Icon:</label></p>
-        <p>{{ form.icon }}</p>
-</div>
+
 <p><input type="submit" alt="register" /></p>
 </form>
 {% endblock %}

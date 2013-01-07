@@ -6,7 +6,7 @@
 {% if events %}
     {% for event in events %}
         <h2>
-            <a href="/event/{{event.id}}">{{event.name}}</a>
+            <a href="/events/{{event.id}}">{{event.name}}</a>
         </h2>
         <p>
             {{post.location|safe}}

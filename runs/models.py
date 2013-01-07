@@ -7,9 +7,14 @@ class Run(models.Model):
     year = models.CharField(max_length = 4)
     start_date = models.DateTimeField()
     current_run = models.BooleanField()
+    submission_open = models.BooleanField()
     
     def __unicode__(self):
         return self.year
+        
+        
+    def open_submission(self):
+        self.submission_open = false
 
 
 

@@ -28,7 +28,6 @@ def member_registration(request):
             
             profile = user.get_profile()
             profile.about = form.cleaned_data['about']
-            profile.portrait = form.cleaned_data['portrait']
             profile.save()
 
             return HttpResponseRedirect('/members/profile/')

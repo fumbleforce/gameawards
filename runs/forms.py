@@ -12,3 +12,4 @@ class GameRegistrationForm(ModelForm):
     
     class Meta:
         model = Game
+        exclude = ('added_date', 'run', 'leader', 'icon')

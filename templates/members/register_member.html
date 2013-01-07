@@ -38,11 +38,7 @@
         <p><label for="about"{% if form.about.errors %} class="error"{% endif %}>About Yourself:</label></p>
         <p>{{ form.about }}</p>
 </div>
-<div class="register_div">
-        {% if form.portrait.errors %}<p class="error">{{ form.portrait.errors }}</p>{% endif %}
-        <p><label for="portrait"{% if form.portrait.errors %} class="error"{% endif %}>Portrait:</label></p>
-        <p>{{ form.portrait }}</p>
-</div>
+
 <p><input type="submit" alt="register" /></p>
 </form>
 {% endblock %}

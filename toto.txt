@@ -1,0 +1,4 @@
+Top prio:
+
+
+1. Fix register members, cannot find user profile when retistering

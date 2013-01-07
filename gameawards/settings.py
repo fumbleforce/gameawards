@@ -32,7 +32,7 @@ LANGUAGE_CODE = 'en-us'
 
 SITE_ID = 1
 
-AUTH_PROFILE_MODULE = 'runs.Member'
+AUTH_PROFILE_MODULE = 'members.UserProfile'
 
 # The page users are directed to if they are not logged in when 
 # accessing a page that requires login.
@@ -116,7 +116,7 @@ TEMPLATE_DIRS = (
 )
 
 
-AUTH_PROFILE_MODULE = 'runs.UserProfile'
+
 
 INSTALLED_APPS = (
     'django.contrib.auth',

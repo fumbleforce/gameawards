@@ -13,7 +13,7 @@ class UserRegistrationForm(ModelForm):
     
     class Meta:
         model = UserProfile
-        exclude = ('user',)
+        exclude = ('user', 'portrait')
         
         
     def clean_username(self):
