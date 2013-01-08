@@ -3,7 +3,22 @@
 {% block content %}
 		<div id="content">
 			<div id="home">
-				<div class="home-container"></div>
+				<div class="home-container">
+				    {% if games %}
+                        {% for game in games %}
+                            <h2>
+                                <a href="/runs/{{game.id}}">{{ game.name }}</a>
+                            </h2>
+                            <p>
+                                {{ game.description }}
+                            </p>
+                        {% endfor %}
+                    {% else %}
+                        <p>
+                            There are no games here :(
+                        </p>
+                    {% endif %}
+				</div>
 			</div>
 			<div id="events">
 				<div class="events-container">
@@ -27,19 +42,6 @@
 			</div>
 		</div>
 <h1>List of Games</h1>
-{% if games %}
-    {% for game in games %}
-        <h2>
-            <a href="/runs/{{game.id}}">{{ game.name }}</a>
-        </h2>
-        <p>
-            {{ game.description }}
-        </p>
-    {% endfor %}
-{% else %}
-    <p>
-        There are no games here :(
-    </p>
-{% endif %}
+
         
 {% endblock %}
