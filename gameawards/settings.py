@@ -134,7 +134,7 @@ INSTALLED_APPS = (
     'runs',
     'events',
     'members',
-    
+    'content', 
     
 )
 
