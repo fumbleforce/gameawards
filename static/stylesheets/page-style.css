@@ -9,22 +9,21 @@ body {
 .behind-trail
 {
 	left: 0px;
-	top: 0px;
+	top: -2px;
 	position: absolute;
 	width: 396px; 
 	height: 602px; 
 	background-image: url(../images/behind-trail.png); 
 	background-repeat: no-repeat; 
 }
-
 .nga-logo
 {
 	z-index: 1338;
-	left: -30px;
-	top: -10px;
+	left: -15px;
+	top: 20px;
 	position: absolute;
-	width: 350px; 
-	height: 361px; 
+	width: 330px; 
+	height: 340px; 
 	background-image: url(../images/nga-logo.png); 
 	background-repeat: no-repeat; 
 }
@@ -32,11 +31,12 @@ body {
 
 .home-container
 {
-height: 600px;
+	height: 600px;
 	background-image:url('../images/bg-rep-light.png');
 	background-color:#333;
 	padding-top: 40px;
-	padding-bottom: 80px;
+	padding-bottom: 20px;
+	overflow: hidden; 
 }
 .events-container
 {
