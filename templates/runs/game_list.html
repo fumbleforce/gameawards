@@ -1,7 +1,31 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+		<div id="content">
+			<div id="home">
+				<div class="home-container"></div>
+			</div>
+			<div id="events">
+				<div class="events-container">
+					<div class="picture-center" id="events-text"></div>
+				</div>
+			</div>
+			<div id="getStarted">
+				<div class="get-started-container">
+					<div class="picture-center" id="get-started-text"></div>
+				</div>
+			</div>
+			<div id="participants">
+				<div class="participants-container">
+					<div class="picture-center" id="participants-text"></div>
+				</div>
+			</div>
+			<div id="contactUs">
+				<div class="contact-us-container">
+					<div class="picture-center" id="contact-us-text"></div>
+				</div>
+			</div>
+		</div>
 <h1>List of Games</h1>
 {% if games %}
     {% for game in games %}
