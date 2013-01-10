@@ -9,71 +9,496 @@
 <link rel="shortcut icon" href="images/favicon.ico" />
 
 <!--CSS-->
-<link href='http://fonts.googleapis.com/css?family=Titillium+Web:700' rel='stylesheet' type='text/css' />
-<link rel="stylesheet" type="text/css" href="stylesheets/nav-bar.css" />
-<link rel="stylesheet" type="text/css" href="stylesheets/page-style.css" />
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:700' rel='stylesheet' type='text/css' /><!--OUR FONT-->
+<link rel="stylesheet" type="text/css" href="stylesheets/nav-bar.css" /> <!--THE NAV BAR LOOK-->
+<link rel="stylesheet" type="text/css" href="stylesheets/page-style.css" /> 
+<link rel="stylesheet" type="text/css" href="stylesheets/royalslider.css" />
+
+<link rel="stylesheet" href="royalslider/royalslider/default/rs-default.css" />
+<!--<link href="royalslider/royalslider/default-inverted/rs-default-inverted.css" rel="stylesheet" />--> 
+<link rel="stylesheet" type="text/css" href="stylesheets/slide-style.css" />
+
 
 <!--JAVASCRIPT-->
-<script type='text/javascript' src='js/jquery.js'></script>
+<script  type='text/javascript' src='js/jquery-1.8.0.min.js'></script>
 <script type='text/javascript' src='js/jquery.viewport.js'></script>
-<script type='text/javascript' src='js/nav-control.js'></script>
-<script type='text/javascript' src='js/smooth-scroll.js'></script>
+<script type='text/javascript' src='js/nav.control.js'></script>
+<script type='text/javascript' src='js/smooth.scroll.js'></script>
+<script type='text/javascript' src='js/slider.control.js'></script>
+<script type='text/javascript' src='js/jquery.easing-1.3.js'></script>
 
+
+<!-- Main slider JS script file --> 
+<script type="text/javascript" src="js/jquery.royalslider.custom.min.js"></script>
+<script type="text/javascript" src="js/toggle.div.js"></script>
 
 </head>
 
 <body>
 
-	<!--NAV MENU-->
-	<div class="nav-wrap">
-		<ul class="group" id="nav-elements">
-		    <li class="current_page_item">  <a id="btnHome" href="#home">HOME</a></li>
-									    <li id="btnEvents"><a href="#events">EVENTS</a></li>
-									    <li><a id="btnGetStarted" href="#getStarted">GET STARTED</a></li>
-									    <li><a id="btnParticipants" href="#participants">PARTICIPANTS</a></li>
-									    <li><a id="btnContactUs" href="#contactUs">CONTACT US</a></li>
-	
-		</ul>
+<!--NAV MENU-->
+<table class="nav-container">
+	<tr>
+		<td style="width: 50%">&nbsp;</td>
+		<td>
+			<div class="nav-wrap">
+				<ul class="group" id="nav-elements">
+				    <li class="current_page_item">  <a id="btnHome" href="#home-container">HOME</a></li>
+											    <li id="btnEvents"><a href="#events-container">EVENTS</a></li>
+											    <li><a id="btnGetStarted" href="#get-started-container">GET STARTED</a></li>
+											    <li><a id="btnParticipants" href="#participants-container">PARTICIPANTS</a></li>
+											    <li><a id="btnContactUs" href="#contact-us-container">CONTACT US</a></li>
+				</ul>
+			</div>			
+		</td>
+		<td style="width: 50%">&nbsp;</td>
+	</tr>
+</table>
+<!--END NAV MENU-->
+
+
+
+
+
+<div class="nga-logo"></div>
+<!--START PAGE CONTENT-->
+<table style="width: 100%;">
+<!--HOME CONTAINER-->
+	<tr id="home-container">
+		<td class="nga-logo-container"></td>
+		<td style="width: 800px">
+		<!--HOME SLIDER-->
+		
+		
+			<div id="home-slider" class="royalSlider rsMinW ">
+				<!--ADD SLIDES HERE-->
+				<!--SLIDE 1-->
+  <div class="rsContent">
+    <div class="rsABlock" data-fade-effect="true" data-move-effect="right" data-opposite="true" data-move-offset="200" data-delay="100" data-speed="500" data-easing="easeOutBack" >
+		<img style="position:absolute; top: 76px; left: 18px;"src="images/slider/nga-text-1.png"/></div>
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="right" data-opposite="true" data-move-offset="200" data-delay="300" data-speed="500" data-easing="easeOutBack" >
+		<img style="position:absolute; top: 125px; left: 18px;"src="images/slider/nga-text-2.png"/></div>
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="right" data-opposite="true" data-move-offset="200" data-delay="500" data-speed="500" data-easing="easeOutBack" >
+		<img style="position:absolute; top: 220px; left: 18px;"src="images/slider/nga-text-3.png"/></div>
+  </div>
+  
+<!-- END SLIDE 1-->
+			</div>
+		<!--END HOME SLIDER-->
+<a class="arrow-button prev-green" style="left: 10px; bottom: 10px" onclick="homeSliderPrev()"></a>
+<a class="arrow-button next-green" style="left: 10px; bottom: 10px" onclick="homeSliderNext()"></a>
+
+		</td>
+		<td style="width: 50%">&nbsp;</td>
+	</tr>
+<!--EVENT CONTAINER-->
+	<tr id="events-container">
+		<td style="width: 50%">&nbsp;</td>
+		<td style="width: 800px">
+		<div class="picture-center" id="events-text"></div>
+		
+		<!--EVENT SLIDER-->
+			<div id="events-slider" class="royalSlider rsMinW"> 
+				<!--ADD SLIDES HERE-->
+				<!--SLIDE 1-->
+<div class="rsContent">
+  
+  
+	<!--1. EVENT-->
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="100" data-speed="500" data-easing="easeOutBack"  >
+		<div class="event-global-gamejam event-icon three-left" ></div>
 	</div>
 	
-		<div class="nga-logo"></div>
-		<div class="behind-trail"></div>
-		
-		<div id="content">
-			<div id="home">
-				<div class="home-container">
-					
-				</div>
-			</div>
-			
-			<div id="events">
-				<div class="events-container">
-					<div class="picture-center" id="events-text"></div>
-				</div>
-			</div>
-			
-			<div id="getStarted">
-				<div class="get-started-container">
-					<div class="picture-center" id="get-started-text"></div>
-				</div>
-			</div>
-			
-			<div id="participants">
-				<div class="participants-container">
-					<div class="picture-center" id="participants-text"></div>
-				</div>
-			</div>
-			
-			<div id="contactUs">
-				<div class="contact-us-container">
-					<div class="picture-center" id="contact-us-text"></div>
-				</div>
-			</div>
-		</div>
-		
-		
-		
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="300" data-speed="500" data-easing="easeOutBack"  >
+		<div class="event-name three-left">GLOBAL GAMEJAM</div>
+	</div>
 	
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="500" data-speed="500" data-easing="easeOutBack"  >
+		<div class="event-date three-left">JANUARY 25th</div>
+	</div>
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="700" data-speed="500" data-easing="easeOutBack"  >
+		<div class="event-description three-left">Participants from the entire world create games over a weekend.</div>
+	</div>
+
+
+
+	<!--2. EVENT-->
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="400" data-speed="500" data-easing="easeOutBack" >
+		<div class="event-kick-off event-icon one-center" ></div>
+	</div>
+	
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="600" data-speed="500" data-easing="easeOutBack" >
+		<div class="event-name one-center" style="font-size: 50px; top: 225px;">KICK OFF</div>
+	</div>
+
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="800" data-speed="500" data-easing="easeOutBack"  >
+		<div class="event-date one-center" style="top: 305px; left: 300px;">FEBRUARY 8th</div>
+	</div>
+	
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="1000" data-speed="500" data-easing="easeOutBack"  >
+		<div class="event-description one-center" style="top: 340px; left: 300px;">We announce this years categories. A festive event where we feature relevant and inspiring speakers.</div>
+	</div>
+	
+	
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="100" data-delay="1500" data-speed="500" data-easing="easeOutBack"  >
+		<a class="sign-up-button one-center-button" href="https://podio.com/webforms/2778650/206242" target="_blank" ></a> 
+	</div>
+
+
+	
+	<!--3. EVENT-->
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="700" data-speed="500" data-easing="easeOutBack" >
+		<a class="event-gamejam event-icon three-right" href="http://www.facebook.com/norwegiangameawards" target="_blank" ></a> 
+	</div>
+	
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="900" data-speed="500" data-easing="easeOutBack"  >
+		<div class="event-name three-right" style="font-size: 40px; top: 228px; left: 580px;">GAMEJAMS</div>
+	</div>
+	
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="1100" data-speed="500" data-easing="easeOutBack"  >
+		<div class="event-date three-right" style="top: 293px; left: 580px; width: 43px;">TBA</div>
+	</div>
+	
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="1300" data-speed="500" data-easing="easeOutBack"  >
+		<div class="event-description three-right" style="top: 328px; left: 580px;">Join a team and make a game. We host several of these troughout the year. Stay tuned @ Facebook!</div>
+	</div>
+
+</div>
+<!--END SLIDE 1-->
+
+
+<!--SLIDE 2-->
+<div class="rsContent">	 
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="100" data-speed="500" data-easing="easeOutBack" >
+	<a class="event-the-gathering event-icon one-center" href="http://www.gathering.org/tg13/en/" target="_blank"></a>	
+	</div>
+	
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="300" data-speed="500" data-easing="easeOutBack"  >
+		<div class="event-name one-center" style="font-size: 28px; top: 226px;">THE GATHERING</div>
+	</div>
+	
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="500" data-speed="500" data-easing="easeOutBack"  >
+		<div class="event-date one-center" style="top: 273px">MARCH 27th</div>
+	</div>
+	
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="700" data-speed="500" data-easing="easeOutBack"  >
+		<div class="event-description one-center" style="top: 308px">We host game development competitions and events during The Gathering in Hamar.</div>
+	</div>
+
+</div>
+<!--END SLIDE 2-->
+<!--SLIDE 3-->
+<div class="rsContent">
+  
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="100" data-speed="500" data-easing="easeOutBack" >
+		<div class="event-nga-tour event-icon two-left"></div>
+	</div>
+	
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="300" data-speed="500" data-easing="easeOutBack"  >
+		<div class="event-name two-left" style="font-size: 43px; top: 225px; ">NGA TOUR</div>
+	</div>
+	
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="500" data-speed="500" data-easing="easeOutBack"  >
+		<div class="event-date two-left" style="top: 295px">TBA</div>
+	</div>
+	
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="700" data-speed="500" data-easing="easeOutBack"  >
+		<div class="event-description two-left" style="top: 331px">We travel to various institutuions in Norway to spread the word. Our goal is that everyone in Norway knows who we are.</div>
+	</div>
+
+	 
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="400" data-speed="500" data-easing="easeOutBack" >
+		<div class="event-finale event-icon two-right"></div>	
+	</div>
+	
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="600" data-speed="500" data-easing="easeOutBack"  >
+		<div class="event-name two-right" style="font-size: 37px; top: 233px; left: 450px;">NGA FINALE</div>
+	</div>
+	
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="800" data-speed="500" data-easing="easeOutBack"  >
+		<div class="event-date two-right" style="top: 293px; left: 450px;">TBA</div>
+	</div>
+	
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="50" data-delay="1000" data-speed="500" data-easing="easeOutBack"  >
+		<div class="event-description two-right" style="top: 328px">Highlight of the year! The winners are announced!</div>
+	</div>
+
+</div>
+<!--END SLIDE 3-->
+
+				
+				
+			</div>
+		<!--END EVENT SLIDER-->
+		
+<a class="arrow-button prev-black" style="left: 10px; bottom: 10px" onclick="eventSliderPrev()"></a>
+<a class="arrow-button next-black" style="left: 10px; bottom: 10px" onclick="eventSliderNext()"></a>
+		
+		
+		</td>
+		<td style="width: 50%">&nbsp;</td>
+	</tr>
+	
+<!--GET STARTED CONTAINER-->
+	<tr id="get-started-container">
+		<td style="width: 50%">&nbsp;</td>
+		<td style="width: 800px">
+		<div id="get-started-text" class="picture-center"></div>
+		<!--GET STARTED SLIDER-->
+		
+		
+			<div id="get-started-slider" class="royalSlider rsMinW ">
+				<!--ADD SLIDES HERE-->
+				<!--SLIDE 1-->
+  <div class="rsContent">
+    <div class="rsABlock" data-fade-effect="true" data-move-effect="right" data-opposite="true" data-move-offset="200" data-delay="100" data-speed="500" data-easing="easeOutBack" >
+		<img style="position:relative; top: 0px; left: 0px;"src="images/slider/locked-image.png"/></div>
+	</div>
+  
+<!-- END SLIDE 1-->
+			</div>
+		<!--END GET STARTED SLIDER-->
+
+		
+		</td>
+		<td style="width: 50%">&nbsp;</td>
+	</tr>
+
+<!--PARTICIPANTS CONTAINER-->
+	<tr id="participants-container">
+		<td style="width: 50%">&nbsp;</td>
+		<td style="width: 800px">
+		
+		<div id="participants-text" class="picture-center"></div>
+		<!--PARTICIPANTS SLIDER-->
+		
+		
+			<div id="participants-slider" class="royalSlider rsMinW ">
+				<!--ADD SLIDES HERE-->
+				<!--SLIDE 1-->
+  <div class="rsContent">
+    <div class="rsABlock" data-fade-effect="true" data-move-effect="bottom" data-opposite="true" data-move-offset="200" data-delay="100" data-speed="500" data-easing="easeOutBack" >
+		<a href="https://podio.com/webforms/2778650/206242" target="_blank"><img style="position:relative; top: 0px; left: 0px;"src="images/slider/locked-image.png"/></a></div>
+	</div>
+  
+<!-- END SLIDE 1-->
+			</div>
+		<!--END PARTICIPANTS SLIDER-->
+		
+		</td>
+		<td style="width: 50%">&nbsp;</td>
+	</tr>
+
+<!--CONTACT US CONTAINER-->
+	<tr id="contact-us-container">
+		<td style="width: 50%">&nbsp;</td>
+		<td style="width: 800px">
+		<div id="contact-us-text" class="picture-center"></div>
+		
+		<!--CONTACT US SLIDER-->
+			<div id="contact-us-slider" class="royalSlider rsMinW ">
+				<!--ADD SLIDES HERE-->
+				<!--SLIDE 1-->
+  <div class="rsContent">
+    <div class="rsABlock" data-fade-effect="true" data-move-effect="top" data-opposite="true" data-move-offset="100" data-delay="100" data-speed="500" data-easing="easeOutBack" >
+		<a class="contact-button contact-left facebook-button" href="http://www.facebook.com/norwegiangameawards" target="_blank"></a>
+	</div>
+	
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="top" data-opposite="true" data-move-offset="100" data-delay="300" data-speed="500" data-easing="easeOutBack" >
+		<a class="contact-button contact-center twitter-button" href="https://twitter.com/Gameawards" target="_blank"></a>
+	</div>
+	
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="top" data-opposite="true" data-move-offset="100" data-delay="500" data-speed="500" data-easing="easeOutBack" >
+		<a class="contact-button contact-right mail-button" href="mailto:sando@gameawards.no" target="_blank"></a>
+	</div>
+
+  
+<!-- END SLIDE 1-->
+</div>
+<!--SLIDE 3-->
+  <div class="rsContent">
+  	<div class="rsABlock" data-fade-effect="true" data-move-effect="right" data-opposite="true" data-move-offset="2000" data-delay="200" data-speed="700" data-easing="easeOutBack" >
+		<img style="position:absolute; top: 115px; left: 14px;"src="images/slider/crew0003.png" class="style1"/></div>
+    <div class="rsABlock" data-fade-effect="true" data-move-effect="right" data-opposite="true" data-move-offset="2000" data-delay="100" data-speed="700" data-easing="easeOutBack" >
+		<img style="position:absolute; top: 115px; left: 497px;"src="images/slider/crew0001.png"/></div>
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="right" data-opposite="true" data-move-offset="2000" data-delay="150" data-speed="700" data-easing="easeOutBack" >
+		<img style="position:absolute; top: 115px; left: 334px;"src="images/slider/crew0002.png"/></div>
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="right" data-opposite="true" data-move-offset="2000" data-delay="250" data-speed="700" data-easing="easeOutBack" >
+		<img style="position:absolute; top: 115px; left: 253px;"src="images/slider/crew0004.png"/></div>
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="right" data-opposite="true" data-move-offset="2000" data-delay="300" data-speed="700" data-easing="easeOutBack" >
+		<img style="position:absolute; top: 115px; left: 411px;"src="images/slider/crew0005.png" class="style1"/></div>
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="right" data-opposite="true" data-move-offset="2000" data-delay="350" data-speed="700" data-easing="easeOutBack" >
+		<img style="position:absolute; top: 115px; left: 100px;"src="images/slider/crew0006.png" class="style1"/></div>
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="right" data-opposite="true" data-move-offset="2000" data-delay="400" data-speed="700" data-easing="easeOutBack" >
+		<img style="position:absolute; top: 115px; left: 582px;"src="images/slider/crew0007.png"/></div>
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="right" data-opposite="true" data-move-offset="2000" data-delay="450" data-speed="700" data-easing="easeOutBack" >
+		<img style="position:absolute; top: 115px; left: 670px;"src="images/slider/crew0008.png"/></div>
+	<div class="rsABlock" data-fade-effect="true" data-move-effect="right" data-opposite="true" data-move-offset="2000" data-delay="500" data-speed="700" data-easing="easeOutBack" >
+		<img style="position:absolute; top: 115px; left: 192px;"src="images/slider/crew0009.png"/></div>
+  </div>
+<!--END SLIDE 3-->
+
+			</div>
+		<!--END CONTACT US SLIDER-->
+
+		
+		
+		</td>
+		<td style="width: 50%">&nbsp;</td>
+	</tr>
+
+</table>
+<!--END PAGE CONTENT-->
+
+
+
+
+
+
+<script type="text/javascript">
+
+//FOR THE HOME SLIDER
+jQuery(document).ready(function($) {
+  $('#home-slider').royalSlider({
+    arrowsNav: true,
+    loop: true,
+    keyboardNavEnabled: true,
+    controlsInside: true,
+    imageScaleMode: 'fill',
+    arrowsNav: true,
+    arrowsNavAutoHide: false,
+    autoScaleSlider: true, 
+    autoScaleSliderWidth: 800,     
+    autoScaleSliderHeight: 660, 
+
+    numImagesToPreload: 0,
+    controlNavigation: 'bullets',
+    thumbsFitInViewport: false,
+    navigateByClick: true,
+    startSlideId: 0,
+    autoPlay: {
+    		// autoplay options go gere
+    		enabled: true,
+    		pauseOnHover: true,
+    		delay: 4000
+    	},
+    transitionType:'move',
+    globalCaption: true
+  });
+
+//FOR THE EVENTSLIDER  
+$('#events-slider').royalSlider({
+    arrowsNav: true,
+    loop: true,
+    keyboardNavEnabled: true,
+    controlsInside: true,
+    imageScaleMode: 'fill',
+    arrowsNav: true,
+    arrowsNavAutoHide: false,
+    autoScaleSlider: true,
+    autoScaleSliderWidth: 800,     
+    autoScaleSliderHeight: 550, 
+    numImagesToPreload: 3,
+    controlNavigation: 'bullets',
+    thumbsFitInViewport: false,
+    navigateByClick: false,
+    startSlideId: 0,
+    autoPlay: false,
+    transitionType:'move',
+    globalCaption: true
+  });
+  
+//FOR THE GET STARTED SLIDER
+$('#get-started-slider').royalSlider({
+    arrowsNav: true,
+    loop: true,
+    keyboardNavEnabled: false,
+    controlsInside: true,
+    imageScaleMode: 'fill',
+    arrowsNav: true,
+    arrowsNavAutoHide: false,
+    autoScaleSlider: true,
+    autoScaleSliderWidth: 800,     
+    autoScaleSliderHeight: 600, 
+    numImagesToPreload: 0,
+    controlNavigation: 'bullets',
+    thumbsFitInViewport: false,
+    navigateByClick: false,
+    startSlideId: 0,
+    autoPlay: false,
+    transitionType:'move',
+    globalCaption: true
+  });
+
+//FOR THE PARTICIPANTS SLIDER
+$('#participants-slider').royalSlider({
+    arrowsNav: true,
+    loop: true,
+    keyboardNavEnabled: false,
+    controlsInside: true,
+    imageScaleMode: 'fill',
+    arrowsNav: true,
+    arrowsNavAutoHide: false,
+    autoScaleSlider: true,
+    autoScaleSliderWidth: 800,     
+    autoScaleSliderHeight: 400, 
+    numImagesToPreload: 0,
+    controlNavigation: 'bullets',
+    thumbsFitInViewport: false,
+    navigateByClick: false,
+    startSlideId: 0,
+    autoPlay: false,
+    transitionType:'move',
+    globalCaption: true
+  });
+  
+
+
+//FOR THE CONTACT US SLIDER
+$('#contact-us-slider').royalSlider({
+    arrowsNav: true,
+    loop: true,
+    keyboardNavEnabled: false,
+    controlsInside: true,
+    imageScaleMode: 'fill',
+    arrowsNav: true,
+    arrowsNavAutoHide: false,
+    autoScaleSlider: true,
+    autoScaleSliderWidth: 800,     
+    autoScaleSliderHeight: 400, 
+    numImagesToPreload: 0,
+    controlNavigation: 'bullets',
+    thumbsFitInViewport: false,
+    navigateByClick: false,
+    startSlideId: 0,
+    autoPlay: false,
+    transitionType:'move',
+    globalCaption: true
+  });
+
+
+//FOR THE HIDDEN UPLOAD DIV
+
+$('.show-hide-button').showHide({
+        speed: 400,  // speed you want the toggle to happen
+        easing: '',  // the animation effect you want. Remove this line if you dont want an effect and if you haven't included jQuery UI
+        changeText: 0, // if you dont want the button text to change, set this to 0 
+    });
+
+//FOR THE AWESOME LOGO    
+function moveLogo(){
+	var contentwidth = $('.nga-logo-container').width();
+ 	var imagewidth = $('.nga-logo').width(); 
+	var d = contentwidth - imagewidth;
+	$('.nga-logo').css('left', d+'px');
+}
+moveLogo();
+$(window).bind("resize", function(){//Adjusts image when browser resized  
+ 	moveLogo();
+ }); 
+      
+});</script>	
+
 </body>
 
 </html>

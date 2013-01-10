@@ -59,7 +59,7 @@ $(function() {
     
 	function moveSlider(){
 	    	windowPos = $(window).scrollTop();
-			var pages = ['#home','#events','#getStarted','#participants','#contactUs'];
+			var pages = ['#home-container','#events-container','#get-started-container','#participants-container','#contact-us-container'];
 			var distances = [];
 			for(var i = 0; i < 5; i++)
 			{

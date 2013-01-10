@@ -1,26 +1,32 @@
 ﻿* {
 	margin: 0;
 	padding: 0;
+	border-spacing: 0px;
 }
 body {
 	background: black;	
 }
 
-.behind-trail
+a{
+	cursor: pointer;
+}
+
+.logo-back
 {
-	left: 0px;
-	top: -2px;
+	left: 10%;
+	top: 40px;
+	z-index: 100;
 	position: absolute;
-	width: 396px; 
-	height: 602px; 
-	background-image: url(../images/behind-trail.png); 
+	width: 550px; 
+	height: 600px; 
+	background-image: url(../images/logo-back.png); 
 	background-repeat: no-repeat; 
 }
 .nga-logo
 {
 	z-index: 1338;
-	left: -15px;
-	top: 20px;
+	left: 0px;
+	top: 30px;
 	position: absolute;
 	width: 330px; 
 	height: 340px; 
@@ -28,50 +34,74 @@ body {
 	background-repeat: no-repeat; 
 }
 
-
-.home-container
+.nga-logo-container
 {
-	height: 600px;
+	vertical-align: top;
+	background: #222;
+	width: 50%;
+}
+
+
+#home-container
+{
+	height: auto;
 	background-image:url('../images/bg-rep-light.png');
 	background-color:#333;
 	padding-top: 40px;
 	padding-bottom: 20px;
 	overflow: hidden; 
 }
-.events-container
+#events-container
 {
-height: 600px;
+	height: auto;
+	vertical-align: top;
 	background-image:url('../images/bg-rep-dark.png');
 	background-color: #89C559;
 	padding-top: 80px;
-	padding-bottom: 80px;
+	overflow: hidden; 
 }
-.get-started-container
+#get-started-container
 {	
-height: 600px;
+height: auto;
+vertical-align: top;
 	background-image:url('../images/bg-rep-light.png');
 	background-color: #333;
 	padding-top: 80px;
 	padding-bottom: 80px;
+	overflow: hidden; 
 }
-.participants-container
+#participants-container
 {
-height: 600px;
+height: auto;
+vertical-align: top;
 	background-image:url('../images/bg-rep-dark.png');
 	background-color: #89C559;
-	padding-top: 80px;
-	padding-bottom: 80px;
+	overflow: hidden; 
+
 }
-.contact-us-container
+#contact-us-container
 {
-height: 600px;
+	height: 1200px;
+vertical-align: top;
 	background-image:url('../images/bg-rep-light.png');
 	background-color:#333;
 	padding-top: 80px;
+	padding-bottom: 0px;
+	overflow: hidden; 
+
+}
+.hidden-submit-container
+{
+	height: 300px;
+	background-image:url('../images/bg-rep-dark.png');
+	background-color: #89C559;
+	overflow: hidden; 
+	display: none;
+
 }
 
 
-/*PICTURES*/
+/*TOP TEXT*/
 .picture-center
 {
 	margin-left:auto;
@@ -82,25 +112,39 @@ height: 600px;
 }
 #events-text
 {
+	margin-top: 80px;
 	width: 361px; 
 	height: 80px; 
 	background-image: url(../images/events-text.png); 
 }
 #get-started-text
 {
+	margin-top: 80px;
+	margin-bottom: 40px;
 	width: 644px; 
 	height: 80px; 
 	background-image: url(../images/get-started-text.png); 
 }
 #participants-text
 {
+	margin-top: 80px;
+	margin-bottom: 40px;
 	width: 680px; 
 	height: 80px; 
 	background-image: url(../images/participants-text.png);  
 }
 #contact-us-text
 {
+	margin-top: 80px;
+	margin-bottom: 40px;
 	width: 592px; 
-	height: 80px; 
+	height: 80px;
 	background-image: url(../images/contact-us-text.png);  
+}
+#submit-game-text
+{
+	margin-top: 20px;
+	width: 367px; 
+	height: 45px; 
+	background-image: url(../images/submit-game-text.png);  
 }

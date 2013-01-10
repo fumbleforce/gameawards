@@ -4,11 +4,20 @@ from django.template import RequestContext
 from content.models import Slide
 
 def index(request):
-    newspost_list = Newspost.objects.all().order_by('-pub_date')[:5]
-    slide_list = Slide.objects.all()
+    home_slide_list = Slide.objects.filter(belongs_to = 1)
+    event_slide_list = Slide.objects.filter(belongs_to = 2)
+    getstarted_slide_list = Slide.objects.filter(belongs_to = 3)
+    games_slide_list = Slide.objects.filter(belongs_to = 4)
+    contact_slide_list = Slide.objects.filter(belongs_to = 5)
     return render_to_response(
         'news/index.html', 
-        {'newspost_list': newspost_list, 'slide_list': slide_list},
+        {
+        'home_slide_list': home_slide_list,
+        'event_slide_list': event_slide_list,
+        'getstarted_slide_list': getstarted_slide_list,
+        'games_slide_list': games_slide_list,
+        'contact_slide_list': contact_slide_list,
+        },
         context_instance=RequestContext(request))
 
 

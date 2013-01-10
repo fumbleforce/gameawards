@@ -1,7 +1,24 @@
 ﻿#home-slider {
-  width: 100%;
-  height: 800px;
+  width: 800px;
+  height: 700px;
 }
+#events-slider {
+  width: 800px;
+  height: 700px;
+}
+#get-started-slider {
+  width: 800px;
+  height: 600px;
+}
+#participants-slider {
+  width: 800px;
+  height: 350px;
+}
+#contact-us-slider {
+  width: 800px;
+  height: 400px;
+}
+
 
 .fullWidth {
   max-width: 1400px;
@@ -16,6 +33,132 @@
 	width: 100%;
 }
 
+
+/*EVENTS ICONS*/
+.event-icon
+{
+	width: 200px;
+	height: 160px;
+	top: 80px;
+	position: absolute;
+	display: block;
+	background: url(../images/slider/events-icons-sprite.png) no-repeat;
+	overflow: hidden;
+}
+
+.event-gamejam{background-position: 0px 0px}
+.event-global-gamejam{background-position: -200px 0px}
+.event-finale{background-position: -400px 0px}
+.event-kick-off{background-position: -600px 0px}
+.event-the-gathering{background-position: -800px 0px}
+.event-nga-tour{background-position: -1000px 0px}
+
+
+/*POSITIONING*/
+.one-center{left: 300px;}
+
+.three-left{left: 20px;}
+.three-right{left: 580px;;}
+
+.two-left{left: 150px;}
+.two-right{left: 450px;}
+
+
+/*EVENT TEXT*/
+.event-name
+{
+	position: absolute;
+	font-family: 'Titillium Web', 'Trebuchet MS', sans-serif;
+	font-weight: 700;
+	font-size: 25px;
+	white-space: nowrap;
+	color: #9ECE69;
+	top: 230px;
+	padding-left: 3px;
+	padding-right: 3px;
+	background: black; /*fallback*/
+	background: rgba(0,0,0,0.6);
+	text-align: center;
+	width: 200px;
+}
+
+.event-date
+{
+	position: absolute;
+	font-family: 'Titillium Web', 'Trebuchet MS', sans-serif;
+	font-weight: 700;
+	font-size: 20px;
+	white-space: nowrap;
+	color: #9ECE69;
+	top: 272px;
+	padding-left: 3px;
+	padding-right: 3px;
+	background: black; /*fallback*/
+	background: rgba(0,0,0,0.6);
+}
+
+.event-description
+{
+	position: absolute;
+	font-family: 'Titillium Web', 'Trebuchet MS', sans-serif;
+	font-weight: 700;
+	font-size: 17px;
+	width: 200px;
+	color: #9ECE69;
+	top: 307px;
+	padding-left: 3px;
+	padding-right: 3px;
+	background: black; /*fallback*/
+	background: rgba(0,0,0,0.6);
+}
+
+
+/*SIGN UP BUTTEN*/
+.sign-up-button{
+ 	z-index: 1337;
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	top: 100px;
+	background: url(../images/slider/sign-up-button.png) no-repeat;
+	cursor: pointer
+}
+
+.one-center-button{left: 430px;}
+
+.three-left-button{left: 230px;}
+.three-right-button{left: 910px;;}
+
+.two-left-button{left: 390px;}
+.two-right-button{left: 750px;}
+
+
+/*CONTACT BUTTONS HERE*/
+.contact-button
+{
+	width: 120px;
+	height: 120px;
+	top: 130px;
+	position: absolute;
+	display: block;
+	background: url(../images/slider/contact-button-sprite.png) no-repeat;
+	overflow: hidden;
+}
+
+.facebook-button{background-position: 0px 0px}
+.facebook-button:hover{background-position: 0px -120px}
+
+.twitter-button{background-position: -120px 0px}
+.twitter-button:hover{background-position: -120px -120px}
+
+.mail-button{background-position: -240px 0px}
+.mail-button:hover{background-position: -240px -120px}
+
+.contact-left{left: 60px}
+.contact-center{left: 340px}
+.contact-right{left: 620px}
+
+/*ARROWS FOR IMAGE SLIDERS COMES HERE*/
 a.arrow-button
 {
 	width: 60px;
@@ -23,9 +166,11 @@ a.arrow-button
 	display: block;
 	background: url(../images/slider/arrow-sprite.png) no-repeat;
 	overflow: hidden;
-	position: absolute; 
+	position: relative; 
+	float: left;
 }
 
+/*GREEN*/
 a.prev-green{background-position: 0px 0px}
 a.prev-green:hover{background-position: 0px -60px}
 a.prev-green:active{background-position: 0px -120px}
@@ -33,6 +178,27 @@ a.prev-green:active{background-position: 0px -120px}
 a.next-green{background-position: -60px 0px}
 a.next-green:hover{background-position: -60px -60px}
 a.next-green:active{background-position: -60px -120px}
+
+/*BLACK*/
+a.prev-black{background-position: -120px 0px}
+a.prev-black:hover{background-position: -120px -60px}
+a.prev-black:active{background-position: -120px -120px}
+
+a.next-black{background-position: -180px 0px}
+a.next-black:hover{background-position: -180px -60px}
+a.next-black:active{background-position: -180px -120px}
+
+/*WHITE*/
+a.prev-white{background-position: -240px 0px}
+a.prev-white:hover{background-position: -240px -60px}
+a.prev-white:active{background-position: -240px -120px}
+
+a.next-white{background-position: -300px 0px}
+a.next-white:hover{background-position: -300px -60px}
+a.next-white:active{background-position: -300px -120px}
+
+
+
 
 /*
 @media screen and (min-width:0px) and (max-width:1340px) {

@@ -10,6 +10,8 @@ class General(models.Model):
 class Slide(models.Model):
     title = models.CharField(max_length = 200)
     text = models.TextField()
+    belongs_to = models.IntegerField()
     
     def __unicode__(self):
         return self.title
+        
