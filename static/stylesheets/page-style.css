@@ -1,6 +1,7 @@
 ﻿* {
 	margin: 0;
 	padding: 0;
+	border: 0px;
 	border-spacing: 0px;
 }
 body {
@@ -41,6 +42,40 @@ a{
 	width: 50%;
 }
 
+.bg-behind-logo
+{
+	z-index: 100;
+	left: 0px;
+	top: 0px;
+	position: absolute;
+	width: 90px; 
+	height: 720px; 
+	background-image: url(../images/bg-behind-logo.png); 
+	background-repeat: no-repeat; 
+
+}
+
+.partners
+{
+	z-index: 2000;
+	width: 120px;
+	height: 60px;
+	position: absolute;
+	display: block;
+	background: url(../images/partners-logo.png) no-repeat;
+	overflow: hidden;
+}
+
+.nt-logo{background-position:0px 0px; top: 400px}
+.nt-logo:hover{background-position:0px -60px}
+
+.arm-logo{background-position:-120px 0px; top: 480px}
+.arm-logo:hover{background-position:-120px -60px}
+
+.start-logo{background-position:-240px 0px; top: 560px}
+.start-logo:hover{background-position:-240px -60px}
+
+
 
 #home-container
 {
@@ -62,8 +97,8 @@ a{
 }
 #get-started-container
 {	
-height: auto;
-vertical-align: top;
+	height: auto;
+	vertical-align: top;
 	background-image:url('../images/bg-rep-light.png');
 	background-color: #333;
 	padding-top: 80px;
@@ -72,8 +107,8 @@ vertical-align: top;
 }
 #participants-container
 {
-height: auto;
-vertical-align: top;
+	height: auto;
+	vertical-align: top;
 	background-image:url('../images/bg-rep-dark.png');
 	background-color: #89C559;
 	overflow: hidden; 
@@ -81,8 +116,8 @@ vertical-align: top;
 }
 #contact-us-container
 {
-	height: 1200px;
-vertical-align: top;
+	height: 600px;
+	vertical-align: top;
 	background-image:url('../images/bg-rep-light.png');
 	background-color:#333;
 	padding-top: 80px;
@@ -129,7 +164,7 @@ vertical-align: top;
 {
 	margin-top: 80px;
 	margin-bottom: 40px;
-	width: 680px; 
+	width: 318px; 
 	height: 80px; 
 	background-image: url(../images/participants-text.png);  
 }

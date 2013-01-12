@@ -45,6 +45,14 @@ function getStartedSliderNext()
 
 }
 
+function getStartedSliderTo(id)
+{
+	var getStartedSlider = $("#get-started-slider").data('royalSlider');
+	getStartedSlider.goTo(id);
+
+}
+
+
 
 //PARTICIPANTS CONTROL
 function participantsSliderPrev()

@@ -14,7 +14,7 @@ class Run(models.Model):
         
         
     def open_submission(self):
-        self.submission_open = false
+        self.submission_open = True
 
 
 
@@ -26,6 +26,7 @@ class Game(models.Model):
     team = models.ForeignKey(Team)
     leader = models.ForeignKey(User)
     run = models.ForeignKey(Run)
+    likes = models.IntegerField(default=0)
     
     def __unicode__(self):
         return self.name
