@@ -4,11 +4,11 @@ from django.template import RequestContext
 from content.models import Slide
 
 def index(request):
-    home_slide_list = Slide.objects.filter(belongs_to = 1)
-    event_slide_list = Slide.objects.filter(belongs_to = 2)
-    getstarted_slide_list = Slide.objects.filter(belongs_to = 3)
-    games_slide_list = Slide.objects.filter(belongs_to = 4)
-    contact_slide_list = Slide.objects.filter(belongs_to = 5)
+    home_slide_list = Slide.objects.filter(belongs_to = 1).order_by('title')
+    event_slide_list = Slide.objects.filter(belongs_to = 2).order_by('title')
+    getstarted_slide_list = Slide.objects.filter(belongs_to = 3).order_by('title')
+    games_slide_list = Slide.objects.filter(belongs_to = 4).order_by('title')
+    contact_slide_list = Slide.objects.filter(belongs_to = 5).order_by('title')
     return render_to_response(
         'news/index.html', 
         {
