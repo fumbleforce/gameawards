@@ -181,7 +181,7 @@ if socket.gethostname() == "TheMatrix":
 
 else:
     
-    DEBUG = True
+    DEBUG = False
     TEMPLATE_DEBUG = DEBUG
 
     ADMINS = (
