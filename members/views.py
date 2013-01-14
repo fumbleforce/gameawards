@@ -57,7 +57,7 @@ def profile_request(request):
 
 def login_request(request):
     if request.user.is_authenticated():
-        return HttpResponseRedirect('members/profile/')
+        return HttpResponseRedirect('/members/profile/')
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
@@ -84,6 +84,13 @@ def login_request(request):
 def logout_request(request):
     logout(request)
     return HttpResponseRedirect('/')
+    
+    
+def reset_password_request(request):
+    return render_to_response(
+        'members/resetpassword.html', 
+        {}, 
+        context_instance=RequestContext(request))
     
     
 

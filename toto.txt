@@ -1,4 +1,8 @@
 Top prio:
 
 
-1. Fix register members, cannot find user profile when retistering
+1. Member registration
+2. Custom 404 and other errors
+3. Info page
+4. Media page
+5. Game registration

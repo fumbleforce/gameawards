@@ -1,0 +1,59 @@
+{% extends "template.html" %}
+
+{% block extrahead %}
+
+{% endblock %}
+
+{% block nav %}
+
+<table class="nav-container">
+	<tr>
+		<td style="width: 50%">&nbsp;</td>
+		<td>
+			<div class="nav-wrap">
+				<ul class="group" id="nav-elements">
+				    <li class="current_page_item">  <a id="btnHome" href="#home-container">HOME</a></li>
+											    <li id="btnEvents"><a href="#events-container">GENERAL INFO</a></li>
+											    <li><a id="btnGetStarted" href="#get-started-container">RULES</a></li>
+											    <li><a id="btnParticipants" href="#participants-container">CATEGORIES</a></li>
+											    <li><a id="btnContactUs" href="#contact-us-container">FAQ</a></li>
+				</ul>
+			</div>			
+		</td>
+		<td style="width: 50%">&nbsp;</td>
+	</tr>
+</table>
+	<!--NAV MENU END-->
+{% endblock %}	
+
+
+
+{% block home %}
+
+{% endblock %}
+
+
+
+{% block event %}
+{{ general.text|safe }}
+{% endblock %}	
+
+
+
+{% block start %}
+{{ rules.text|safe }}
+{% endblock %}
+
+
+
+{% block participants %}
+{{ categories.text|safe }}
+{% endblock %}
+
+
+{% block contact %}
+
+{% endblock %}
+
+
+

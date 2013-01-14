@@ -9,6 +9,9 @@
         <meta charset=utf-8">
         <link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.ico" />
         
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Titillium+Web:700' />
+        <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/page-style.css" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/nav-bar.css" />
         
         <!-- In case of Internet Explorer -->
         <!--[if IE]>
@@ -20,33 +23,15 @@
     </head>
 
     <body>
-
-            {% block body %}
-                <div id="header">
-                  {% if user.is_authenticated %}<p> Logged in as {{user.username}} </p> 
-                  {% else %} <p> Not logged in </p> {% endif %}
-                  <ul id="nav_global">
-                    <li id="nav_homepage"><a href="/">Home</a></li>
-                    <li id="nav_login"><a href="/members/login">Log In</a></li>
-                    <li id="nav_admin"><a href="/admin">Admin</a></li>
-                    <li id="nav_profile"><a href="/members/profile">Profile</a></li>
-                    <li id="nav_logout"><a href="/members/logout">Log Out</a></li>
-                    <li id="nav_register_member"><a href="/members/register">Register User</a></li>
-                    <li id="nav_register_game"><a href="/runs/register">Register Game</a></li>
-                    <li id="nav_game_list"><a href="/runs">Games</a></li>
-                    <li id="nav_event_list"><a href="/events">Events</a></li>
-                  </ul>
-                </div>
-                <div class="content">
-                    {% block content %}{% endblock %}
-                </div>
-                
-                <div class="footer">
-                    {% block footer %}{% endblock %}
-                </div>
-          
-            {% endblock %}
-
+        {% block body %}
+            <div id="header">
+                {% if user.is_authenticated %}<p> Logged in as {{user.username}} </p> 
+                {% else %} <p> Not logged in </p> {% endif %}
+            </div>
+            <div class="temp">
+                {% block content %}{% endblock %}
+            </div>
+        {% endblock %}
     </body>
 </html>
 
