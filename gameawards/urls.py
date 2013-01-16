@@ -7,8 +7,8 @@ urlpatterns = patterns('',
     url(r'^$', 'news.views.index'),
     url(r'^news/', include('news.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^runs/', include('runs.urls')),
-    url(r'^members/', include('members.urls')),
-    url(r'^events/', include('events.urls')),
+    #url(r'^runs/', include('runs.urls')),
+    #url(r'^members/', include('members.urls')),
+    #url(r'^events/', include('events.urls')),
 )
 
