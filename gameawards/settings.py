@@ -349,9 +349,4 @@ else:
 
 
 
-    EMAIL_HOST = 'smtp.webfaction.com'
-    EMAIL_HOST_USER = 'gameawards'
-    EMAIL_HOST_PASSWORD = 'greenballs'
-    DEFAULT_FROM_EMAIL = 'web@gameawards.no'
-    SERVER_EMAIL = 'web@gameawards.no'
 
