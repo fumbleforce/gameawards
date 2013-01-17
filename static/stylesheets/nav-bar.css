@@ -9,7 +9,7 @@
 }
 
 .nav-wrap {
-	width: 800px;
+	width:800px;
 }
 
 /* Clearfix */
@@ -29,6 +29,7 @@
 	margin: 0 auto;
 	list-style: none;
 	position: relative;
+	text-align:center;
 }
 #nav-elements li {
 	display: inline-block;

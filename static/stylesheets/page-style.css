@@ -81,6 +81,40 @@ a{
     background:gray
 }
 
+.black-container
+{
+	height: auto;
+	background-image:url('../images/bg-rep-light.png');
+	background-color:#333;
+	padding-top: 40px;
+	padding-bottom: 20px;
+	overflow: hidden; 
+}
+
+.green-container
+{
+	height: auto;
+	vertical-align: top;
+	margin-left:auto;
+    margin-right:auto;
+	background-image:url('../images/bg-rep-dark.png');
+	background-color: #89C559;
+	padding-top: 80px;
+	overflow: hidden; 
+}
+
+.table-center
+{
+    vertical-align:middle;
+    width:01%;
+	height: auto;
+    margin-left:auto;
+    margin-right:auto;
+	background-color:black;
+	overflow: hidden; 
+	padding-top: 140px;
+}
+
 
 
 #home-container

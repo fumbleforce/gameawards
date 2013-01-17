@@ -1,7 +1,11 @@
 # Django settings for gameawards project.
 
-import os
-import socket
+import os, socket, ayah
+
+#Initialization of ayah
+ayah.configure("15aaa63b65ead6b11342d1c7f349c68e875a3f16","5d736518475d70a969d57bf2caadb32ce7160500")
+
+
 
 if socket.gethostname() == "TheMatrix":
     DEBUG = True
@@ -120,14 +124,14 @@ if socket.gethostname() == "TheMatrix":
         '/home/jorgen/progging/gameawards/templates'
     )
 
-
+    ACCOUNT_ACTIVATION_DAYS = 7
 
 
     INSTALLED_APPS = (
         'django.contrib.auth',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
-        # 'django.contrib.sites',
+        #'django.contrib.sites',
         'django.contrib.messages',
         'django.contrib.staticfiles',
         'django.contrib.admin',
@@ -138,6 +142,7 @@ if socket.gethostname() == "TheMatrix":
         'members',
         'content',
         'south',
+
         
     )
 
@@ -281,8 +286,8 @@ else:
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
-        # Uncomment the next line for simple clickjacking protection:
-        # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+         #Uncomment the next line for simple clickjacking protection:
+         #'django.middleware.clickjacking.XFrameOptionsMiddleware',
     )
 
     ROOT_URLCONF = 'gameawards.urls'
@@ -297,14 +302,14 @@ else:
         '/home/gameawards/webapps/django/gameawards/templates'
     )
 
-
+    ACCOUNT_ACTIVATION_DAYS = 7
 
 
     INSTALLED_APPS = (
         'django.contrib.auth',
         'django.contrib.contenttypes',
         'django.contrib.sessions',
-        # 'django.contrib.sites',
+        #'django.contrib.sites',
         'django.contrib.messages',
         'django.contrib.staticfiles',
         'django.contrib.admin',
@@ -315,6 +320,7 @@ else:
         'members',
         'content', 
         'south',
+
         
     )
 

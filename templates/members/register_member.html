@@ -1,5 +1,5 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "single_page.html" %}
+{% block page %}
 <form action="" method="post">
 {% csrf_token %}
 {% if form.errors %}<p>Please correct the following fields:</p>{% endif %}
@@ -38,6 +38,9 @@
         <p><label for="about"{% if form.about.errors %} class="error"{% endif %}>About Yourself:</label></p>
         <p>{{ form.about }}</p>
 </div>
+
+{{ ayah_html|safe }}
+
 
 <p><input type="submit" alt="register" /></p>
 </form>

@@ -1,0 +1,41 @@
+{% extends "template.html" %}
+
+{% block nav %}
+<table class="nav-container">
+	<tr>
+		<td style="width: 50%">&nbsp;</td>
+		<td>
+			<div class="nav-wrap">
+				<ul class="group" id="nav-elements">
+				    <li class="current_page_item">  <a href="/">HOME</a></li>
+					<li>                            <a href="/profile">PROFILE</a></li>
+					<li>                            <a href="/admin">ADMIN</a></li>
+					<li>                            <a href="/games">GAMES</a></li>
+
+				</ul>
+			</div>			
+		</td>
+		<td style="width: 50%">&nbsp;</td>
+	</tr>
+</table>
+{% endblock %}
+
+
+{% block content %}
+
+<!--START PAGE CONTENT-->
+<table class="table-center">
+<!--HOME CONTAINER-->
+	<tr class="green-container">
+		<td style="width: 50%">&nbsp;</td>
+		<td>
+		    <div>
+		    <!--INSERT TEXT TOP-->
+		        {% block page %}{% endblock %}
+		    <!--STOP IONSERT TEXT TOP-->
+		    </div>
+		</td>
+		<td style="width: 50%">&nbsp;</td>
+	</tr>
+</table>
+{% endblock %}
