@@ -1,7 +1,7 @@
 {% extends "template.html" %}
 
-{% block extrahead %}
-
+{% block extraextrahead %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/info.css" />
 {% endblock %}
 
 {% block nav %}
@@ -13,10 +13,11 @@
 			<div class="nav-wrap">
 				<ul class="group" id="nav-elements">
 				    <li class="current_page_item">  <a id="btnHome" href="#home-container">HOME</a></li>
-											    <li id="btnEvents"><a href="#events-container">GENERAL INFO</a></li>
+											    <li id="btnEvents"><a href="#events-container">FAQ</a></li>
 											    <li><a id="btnGetStarted" href="#get-started-container">RULES</a></li>
 											    <li><a id="btnParticipants" href="#participants-container">CATEGORIES</a></li>
-											    <li><a id="btnContactUs" href="#contact-us-container">FAQ</a></li>
+											    <li><a id="btnContactUs" href="#contact-us-container">ORGANIZERS</a></li>
+											    <li><a id="btnGuides" href="#guides-container">GUIDES</a></li>
 				</ul>
 			</div>			
 		</td>
@@ -27,33 +28,52 @@
 {% endblock %}	
 
 
+{% block nga_logo_section %}{% endblock %}
+{% block home_container %}{% endblock %}
 
-{% block home %}
 
-{% endblock %}
 
 
 
 {% block event %}
-{{ general.text|safe }}
+<div class="picture-center" id="faq-text"></div>
+{{ faq.text|safe }}
 {% endblock %}	
 
 
 
 {% block start %}
+<div class="picture-center" id="rules-text"></div>
 {{ rules.text|safe }}
 {% endblock %}
 
 
 
 {% block participants %}
+<div class="picture-center" id="categories-text"></div>
 {{ categories.text|safe }}
 {% endblock %}
 
 
 {% block contact %}
-
+<div class="picture-center" id="organizers-text"></div>
+{{ organizers.text|safe }}
 {% endblock %}
 
 
+
+{% block more_content %}
+
+	<tr id="guides-container">
+		<td style="width: 50%">&nbsp;</td>
+		<td style="width: 800px; height: auto">
+		    <!--INSERT TEXT-->
+		    <div class="picture-center" id="guides-text"></div>
+		    {{ guides.text|safe }}
+		    <!--END INSERT TEXT-->
+		</td>
+		<td style="width: 50%">&nbsp;</td>
+	</tr>
+
+{% endblock %}
 

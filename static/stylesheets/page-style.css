@@ -3,6 +3,8 @@
 	padding: 0;
 	border: 0px;
 	border-spacing: 0px;
+	font-family: 'Titillium Web', 'Trebuchet MS', sans-serif; 
+    font-weight: 700; 
 }
 body {
 	background: black;	
@@ -10,8 +12,40 @@ body {
 
 a{
 	cursor: pointer;
+	color:teal;
+	text-decoration:none;
 }
 
+p{
+    font-family: 'Titillium Web', 'Trebuchet MS', sans-serif; 
+    font-weight: 700; 
+}
+
+button{
+    cursor: pointer;
+    padding: 3px 6px 3px 6px;
+}
+
+input{
+    cursor: pointer;
+    padding: 3px 6px 3px 6px;
+}
+
+h2{
+    font-family: 'Titillium Web', 'Trebuchet MS', sans-serif; 
+    font-weight: 700; 
+}
+
+footer{
+    background: #222;
+	width: 100%; 
+	height: 100px;
+	color:white;
+	text-align:center;
+	font-family: 'Titillium Web', 'Trebuchet MS', sans-serif; 
+	font-weight: 700; 
+	bottom:0px;
+}
 .logo-back
 {
 	left: 10%;
@@ -86,26 +120,38 @@ a{
 	height: auto;
 	background-image:url('../images/bg-rep-light.png');
 	background-color:#333;
-	padding-top: 40px;
+	padding-top: 20px;
 	padding-bottom: 20px;
 	overflow: hidden; 
+	color:white;
+	margin-left:auto;
+	margin-right:auto;
+	vertical-align:middle;
+	width:800px;
 }
 
 .green-container
 {
+    width:100%;
 	height: auto;
 	vertical-align: top;
-	margin-left:auto;
-    margin-right:auto;
 	background-image:url('../images/bg-rep-dark.png');
 	background-color: #89C559;
-	padding-top: 80px;
+	margin-left:auto;
+	margin-right:auto;
 	overflow: hidden; 
+	padding-bottom:30px;
+}
+
+.green-div
+{
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
 
 .table-center
 {
-    vertical-align:middle;
+    vertical-align:top;
     width:01%;
 	height: auto;
     margin-left:auto;
@@ -115,7 +161,30 @@ a{
 	padding-top: 140px;
 }
 
+.footer-div
+{
+    width:800px;
+}
 
+
+.single-page-container
+{
+    padding-left:30px;
+    padding-right:30px;
+}
+
+
+
+
+#footer-text
+{
+    font-size: 12px; 
+    height:30px;
+}
+#footer-nav
+{
+
+}
 
 #home-container
 {
@@ -128,7 +197,7 @@ a{
 }
 #events-container
 {
-	height: auto;
+	height: auto;top
 	vertical-align: top;
 	background-image:url('../images/bg-rep-dark.png');
 	background-color: #89C559;
@@ -162,6 +231,15 @@ a{
 	background-color:#333;
 	padding-top: 80px;
 	padding-bottom: 0px;
+	overflow: hidden; 
+
+}
+#guides-container
+{
+	height: auto;
+	vertical-align: top;
+	background-image:url('../images/bg-rep-dark.png');
+	background-color: #89C559;
 	overflow: hidden; 
 
 }
@@ -222,4 +300,39 @@ a{
 	width: 367px; 
 	height: 45px; 
 	background-image: url(../images/submit-game-text.png);  
+}
+#rules-text
+{
+	margin-top: 80px;
+	width: 367px; 
+	height: 80px; 
+	background-image: url(../images/rules-text.png);  
+}
+#categories-text
+{
+	margin-top: 80px;
+	width: 600px; 
+	height: 80px; 
+	background-image: url(../images/categories-text.png);  
+}
+#faq-text
+{
+	margin-top: 80px;
+	width: 200px; 
+	height: 80px; 
+	background-image: url(../images/faq-text.png);  
+}
+#organizers-text
+{
+	margin-top: 80px;
+	width: 400px; 
+	height: 80px; 
+	background-image: url(../images/organizers-text.png);  
+}
+#guides-text
+{
+	margin-top: 80px;
+	width: 300px; 
+	height: 80px; 
+	background-image: url(../images/guides-text.png);  
 }

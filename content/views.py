@@ -6,13 +6,17 @@ from content.models import General
 def info_request(request):
     rules = General.objects.get(title='rules')
     categories = General.objects.get(title='categories')
-    general = General.objects.get(title='general')
+    organizers = General.objects.get(title='organizers')
+    faq = General.objects.get(title='faq')
+    guides = General.objects.get(title='guides')
     
     return render_to_response(
         'content/info.html', 
         {
         'rules': rules,
         'categories': categories,
-        'general': general,
+        'organizers': organizers,
+        'faq':faq,
+        'guides':guides,
         },
         context_instance=RequestContext(request))

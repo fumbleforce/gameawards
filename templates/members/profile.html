@@ -1,10 +1,43 @@
 {% extends "single_page.html" %} 
+
+
+
 {% block page %}
 
 
-<p>{{user.first_name}}</p>
-<p>{{user.last_name}}</p>
-<p>{{user.username}}</p>
-<p>{{user.email}}</p>
+<div id="profile-container" class="single-page-container">
+
+    <h2>Profile information</h2></br>
+    <div id="profile-info-container" style="height:130px">
+        <div id="profile-tags" class="profile-column">
+            <p> First Name: </p>
+            <p> Last Name: </p>
+            <p> Username: </p>
+            <p> Email: </p></br>
+        </div>
+        <div id="profile-info" class="profile-column">
+            <p>&nbsp;{{ user.first_name }}</p>
+            <p>&nbsp;{{ user.last_name }}</p>
+            <p>&nbsp;{{ user.username }}</p>
+            <p>&nbsp;{{ user.email }}</p>
+        </div>
+        <div id="profile-picture" class="profile-column">
+        &nbsp;
+        </div>
+    </div>
+    <div>
+        <a href="/members/edit_member/"><button>Edit profile</button></a>
+    </div>
+    </br></br>
+    <div id="your-games-container">
+        <h2>Your games</h2></br>
+
+        {% for g in games %}
+            <a href="/runs/{{ g.id }}">  {{ g.name }} </a></br>
+        {% endfor %}
+        
+        </br><a href="/runs/register/"><button>Register Game</button></a></br>
+    </div>
+</div>
 
 {% endblock %}

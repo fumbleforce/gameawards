@@ -59,7 +59,7 @@ if socket.gethostname() == "TheMatrix":
 
     # Absolute filesystem path to the directory that will hold user-uploaded files.
     # Example: "/home/media/media.lawrence.com/media/"
-    MEDIA_ROOT = '/home/jorgen/gameawards/media'
+    MEDIA_ROOT = '/home/jorgen/gameawards/media/'
 
     # URL that handles the media served from MEDIA_ROOT. Make sure to use a
     # trailing slash.
@@ -138,10 +138,10 @@ if socket.gethostname() == "TheMatrix":
         'django.contrib.admindocs',
         'news',
         'runs',
-        'events',
         'members',
         'content',
         'south',
+        'gallery',
 
         
     )
@@ -316,10 +316,10 @@ else:
         'django.contrib.admindocs',
         'news',
         'runs',
-        'events',
         'members',
         'content', 
         'south',
+        'gallery',
 
         
     )

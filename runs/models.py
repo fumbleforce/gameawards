@@ -19,11 +19,10 @@ class Run(models.Model):
 
 
 class Game(models.Model):
-    name = models.CharField(max_length = 200)
+    name = models.CharField(max_length = 200, unique=True)
     added_date = models.DateTimeField('date added')
-    description = models.TextField()
-    icon = models.ImageField(upload_to='images/games', null=True, blank=True)
-    team = models.ForeignKey(Team)
+    description = models.TextField(null=True, blank=True)
+    team = models.CharField(max_length = 200, null=True, blank=True)
     leader = models.ForeignKey(User)
     run = models.ForeignKey(Run)
     likes = models.IntegerField(default=0)

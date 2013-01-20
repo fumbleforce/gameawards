@@ -8,15 +8,48 @@ from django.db import models
 class Migration(SchemaMigration):
 
     def forwards(self, orm):
-        # Adding field 'Game.likes'
-        db.add_column('runs_game', 'likes',
-                      self.gf('django.db.models.fields.IntegerField')(default=0),
-                      keep_default=False)
+        # Adding model 'Img'
+        db.create_table('gallery_img', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('title', self.gf('django.db.models.fields.CharField')(max_length=100)),
+            ('image', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
+            ('added_date', self.gf('django.db.models.fields.DateField')()),
+            ('owner', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
+        ))
+        db.send_create_signal('gallery', ['Img'])
+
+        # Adding model 'ProfilePic'
+        db.create_table('gallery_profilepic', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('title', self.gf('django.db.models.fields.CharField')(max_length=100)),
+            ('image', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
+            ('added_date', self.gf('django.db.models.fields.DateField')()),
+            ('owner', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
+        ))
+        db.send_create_signal('gallery', ['ProfilePic'])
+
+        # Adding model 'GamePic'
+        db.create_table('gallery_gamepic', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('title', self.gf('django.db.models.fields.CharField')(max_length=100)),
+            ('image', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
+            ('added_date', self.gf('django.db.models.fields.DateField')()),
+            ('owner', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
+            ('game', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['runs.Game'])),
+            ('game_icon', self.gf('django.db.models.fields.BooleanField')(default=False)),
+        ))
+        db.send_create_signal('gallery', ['GamePic'])
 
 
     def backwards(self, orm):
-        # Deleting field 'Game.likes'
-        db.delete_column('runs_game', 'likes')
+        # Deleting model 'Img'
+        db.delete_table('gallery_img')
+
+        # Deleting model 'ProfilePic'
+        db.delete_table('gallery_profilepic')
+
+        # Deleting model 'GamePic'
+        db.delete_table('gallery_gamepic')
 
 
     models = {
@@ -56,32 +89,42 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        'members.team': {
-            'Meta': {'object_name': 'Team'},
-            'created_date': ('django.db.models.fields.DateTimeField', [], {}),
-            'devs': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.User']", 'symmetrical': 'False'}),
-            'icon': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '200'})
-        },
-        'runs.developer': {
-            'Meta': {'object_name': 'Developer'},
+        'gallery.gamepic': {
+            'Meta': {'object_name': 'GamePic'},
+            'added_date': ('django.db.models.fields.DateField', [], {}),
             'game': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['runs.Game']"}),
+            'game_icon': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'role': ('django.db.models.fields.CharField', [], {'max_length': '300'}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})
+            'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
+            'owner': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '100'})
+        },
+        'gallery.img': {
+            'Meta': {'object_name': 'Img'},
+            'added_date': ('django.db.models.fields.DateField', [], {}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
+            'owner': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '100'})
+        },
+        'gallery.profilepic': {
+            'Meta': {'object_name': 'ProfilePic'},
+            'added_date': ('django.db.models.fields.DateField', [], {}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
+            'owner': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
+            'title': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
         'runs.game': {
             'Meta': {'object_name': 'Game'},
             'added_date': ('django.db.models.fields.DateTimeField', [], {}),
-            'description': ('django.db.models.fields.TextField', [], {}),
-            'icon': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
+            'description': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'leader': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
             'likes': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
+            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '200'}),
             'run': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['runs.Run']"}),
-            'team': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['members.Team']"})
+            'team': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'})
         },
         'runs.run': {
             'Meta': {'object_name': 'Run'},
@@ -93,4 +136,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['runs']
+    complete_apps = ['gallery']

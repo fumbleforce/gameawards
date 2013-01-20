@@ -1,5 +1,17 @@
 {% extends "template.html" %}
 
+{% block extrahead %}
+    <!--CSS-->
+    <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/royalslider.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}royalslider/royalslider/default/rs-default.css" />
+    <!--<link href="{{ STATIC_URL }}royalslider/royalslider/default-inverted/rs-default-inverted.css" rel="stylesheet" />--> 
+    <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/slide-style.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/members.css" />
+
+    {% block extraextrahead %}{% endblock %}
+{% endblock %}
+
+
 {% block nav %}
 <table class="nav-container">
 	<tr>
@@ -7,10 +19,10 @@
 		<td>
 			<div class="nav-wrap">
 				<ul class="group" id="nav-elements">
-				    <li class="current_page_item">  <a href="/">HOME</a></li>
-					<li>                            <a href="/profile">PROFILE</a></li>
-					<li>                            <a href="/admin">ADMIN</a></li>
-					<li>                            <a href="/games">GAMES</a></li>
+				    <li class="current_page_item">  <a href="/"></a></li>
+					<li>                            <a href="/profile"></a></li>
+					<li>                            <a href="/admin"></a></li>
+					<li>                            <a href="/games"></a></li>
 
 				</ul>
 			</div>			
@@ -24,18 +36,20 @@
 {% block content %}
 
 <!--START PAGE CONTENT-->
-<table class="table-center">
-<!--HOME CONTAINER-->
-	<tr class="green-container">
-		<td style="width: 50%">&nbsp;</td>
-		<td>
-		    <div>
+<div style="width:100%;padding-top:40px">
+	
+	<div class="green-container">
+	{% block text_head %}<div style="margin-top: 80px;width: 367px; height: 80px; "></div>{% endblock %}
+		
+
+		    <div class="black-container">
 		    <!--INSERT TEXT TOP-->
 		        {% block page %}{% endblock %}
 		    <!--STOP IONSERT TEXT TOP-->
 		    </div>
-		</td>
-		<td style="width: 50%">&nbsp;</td>
-	</tr>
-</table>
+
+		
+
+    </div>
+</div>
 {% endblock %}

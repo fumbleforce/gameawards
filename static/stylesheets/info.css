@@ -1,0 +1,120 @@
+.org-pic
+{
+    float:left;
+    width:150px;
+    height:250px;
+}
+.org-info
+{
+    height:215px;
+    float:left;
+    margin-top: 50px;
+	margin-bottom: auto;
+    padding-left:50px;
+
+}
+.org-tags
+{
+    height:215px;
+    float:left;
+    margin-top: 50px;
+	margin-bottom: auto;
+    padding-left:50px;
+}
+.org-cell
+{
+    height:250px;
+	margin-bottom: 30px;
+	background-image:url('../images/bg-rep-dark.png');
+	background-color: #89C559;
+
+}
+
+#sando-pic
+{
+	background-image: url(../images/slider/crew0004.png);
+	width:125px;
+	height:215px;
+	vertical-align:middle;
+	margin-left:auto;
+	margin-right:auto;
+}
+#eri-pic
+{
+	background-image: url(../images/slider/crew0003.png);  
+	width:125px;
+	height:215px;
+	vertical-align:middle;
+	margin-left:auto;
+	margin-right:auto;
+}
+#ken-pic
+{
+	background-image: url(../images/slider/crew0006.png);  
+	width:125px;
+	height:215px;
+	vertical-align:middle;
+	margin-left:auto;
+	margin-right:auto;
+}
+#stephan-pic
+{
+	background-image: url(../images/slider/crew0002.png);  
+	width:125px;
+	height:215px;
+	vertical-align:middle;
+	margin-left:auto;
+	margin-right:auto;
+}
+#anders-pic
+{
+	background-image: url(../images/slider/crew0005.png);  
+	width:125px;
+	height:215px;
+	vertical-align:middle;
+	margin-left:auto;
+	margin-right:auto;
+}
+#notland-pic
+{
+	background-image: url(../images/slider/crew0009.png);  
+    width:125px;
+	height:215px;
+	vertical-align:middle;
+	margin-left:auto;
+	margin-right:auto;
+}
+#martin-pic
+{
+	background-image: url(../images/slider/crew0007.png);  
+	width:125px;
+	height:215px;
+	vertical-align:middle;
+	margin-left:auto;
+	margin-right:auto;
+}
+#tobias-pic
+{
+	background-image: url(../images/slider/crew0008.png);  
+	width:125px;
+	height:215px;
+	vertical-align:middle;
+	margin-left:auto;
+
+}
+#havard-pic
+{
+	background-image: url(../images/slider/crew0001.png);  
+	width:125px;
+	height:215px;
+	vertical-align:middle;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+
+#organizer-content
+{
+    width:800px;
+    height:800px;
+}

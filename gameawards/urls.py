@@ -11,7 +11,6 @@ if socket.gethostname() == "TheMatrix":
         url(r'^admin/', include(admin.site.urls)),
         url(r'^runs/', include('runs.urls')),
         url(r'^members/', include('members.urls')),
-        url(r'^events/', include('events.urls')),
         url(r'^content/', include('content.urls')),
         url(r'^info/', 'content.views.info_request'),
         url(r'^login/', 'members.views.login_request'),

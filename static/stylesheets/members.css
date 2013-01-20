@@ -1,0 +1,19 @@
+.profile-column
+{
+    float:left;
+    height:100px;
+    padding-right:30px;
+}
+
+#profile-text
+{
+	margin-top: 80px;
+	width: 400px; 
+	height: 80px; 
+	background-image: url(../images/profile-text.png); 
+}
+#profile-picture
+{
+    background:black;
+    width:50px;
+}

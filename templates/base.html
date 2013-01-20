@@ -24,14 +24,30 @@
 
     <body>
         {% block body %}
-            <div id="header">
-                {% if user.is_authenticated %}<p> Logged in as {{user.username}} </p> 
-                {% else %} <p> Not logged in </p> {% endif %}
-            </div>
-            <div class="temp">
-                {% block content %}{% endblock %}
-            </div>
+
         {% endblock %}
+        <footer>
+            <table>
+	            <tr>
+		        <td style="width: 50%">&nbsp;</td>
+		        <td>
+                    <div id="footer-nav" class="footer-div">
+                        <ul class="group" id="nav-elements">
+				            <li id="btnHome">       <a href="/">HOME</a></li>
+					        <li id="btnInfo">       <a href="/info">INFO</a></li>
+					        <li id="btnGames">      <a href="/games">GAMES</a></li>
+					        <li id="btnProfile">    <a href="/profile">PROFILE</a></li>
+		                </ul>
+                    </div>
+                    <div id="footer-text" class="footer-div">
+                        <p>The entire content of gameawards.no is the sole property of Norwegian Game Awards and is not to be published in any way without explicit permission.</p>
+                        <p>Developed and maintained by Jørgen Foss Eri and Tobias Linkjendal. Contact us at: <a href="mailto:web@gameawards.no">web@gameawards.no</a></p>
+                    </div>
+            </td>
+		    <td style="width: 50%">&nbsp;</td>
+	    </tr>
+    </table>
+        </footer>
     </body>
 </html>
 

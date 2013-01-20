@@ -1,7 +1,7 @@
 Top prio:
 
 
-1. Member registration
+1. Member registration(mostly done)
 2. Custom 404 and other errors
 3. Info page
 4. Media page

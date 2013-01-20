@@ -1,26 +1,23 @@
 {% extends "single_page.html" %} 
 {% block page %}
 
-
-<form action="" method="post">
-{% csrf_token %}
-<!-- START PAGE CONTENT -->
-    <table style="width: 100%;">
-    
-	    <tr id="reg-container">
-            <div class="register_div">
-                    {% if form.username.errors %}<p class="error">{{ form.username.errors }}</p>{% endif %}
-                    <p><label for="username"{% if form.username.errors %} class="error"{% endif %}>Username:</label></p>
-                    <p>{{ form.username }}</p>
-            </div>
-            <div class="register_div">
-                    {% if form.password.errors %}<p class="error">{{ form.password.errors }}</p>{% endif %}
-                    <p><label for="password"{% if form.password.errors %} class="error"{% endif %}>Password:</label></p>
-                    <p>{{ form.password }}</p>
-            </div>
-            <p><input type="submit" alt="register" /></p>
-            </form>
-            <p>Forgot your password? <a href="/resetpassword/">Reset it!</a></p>
-        </tr>
-    </table>
+<div id="login-container" class="single-page-container">
+    <form action="" method="post">
+    {% csrf_token %}
+        <h2>Log in</h2></br>
+        <div class="register_div">
+                {% if form.username.errors %}<p class="error">{{ form.username.errors }}</p>{% endif %}
+                <p><label for="username"{% if form.username.errors %} class="error"{% endif %}>Username:</label></p>
+                <p>{{ form.username }}</p>
+        </div></br>
+        <div class="register_div">
+                {% if form.password.errors %}<p class="error">{{ form.password.errors }}</p>{% endif %}
+                <p><label for="password"{% if form.password.errors %} class="error"{% endif %}>Password:</label></p>
+                <p>{{ form.password }}</p>
+        </div></br>
+        <p><input type="submit" alt="register" /></p>
+    </form></br>
+    <p>Forgot your password?&nbsp;&nbsp; <a href="/resetpassword/"><button>Reset it!</button></a></p></br>
+    <p>Not a member?&nbsp;&nbsp; <a href="/members/register/"><button>Register here!</button></a></p>
+</div>
 {% endblock %}

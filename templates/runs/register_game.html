@@ -1,7 +1,9 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "single_page.html" %}
+{% block page %}
 <form action="" method="post">
 {% csrf_token %}
+
+<h1> Register Game </h1>
 {% if form.errors %}
     <p>
     Please correct the following fields:</br>
@@ -16,16 +18,19 @@
         <p><label for="name"{% if form.name.errors %} class="error"{% endif %}>Name:</label></p>
         <p>{{ form.name }}</p>
 </div>
+</br>
 <div class="register_div">
         {% if form.team.errors %}<p class="error">{{ form.team.errors }}</p>{% endif %}
         <p><label for="team"{% if form.team.errors %} class="error"{% endif %}>Team:</label></p>
         <p>{{ form.team }}</p>
 </div>
+</br>
 <div class="register_div">
         {% if form.description.errors %}<p class="error">{{ form.description.errors }}</p>{% endif %}
         <p><label for="description"{% if form.description.errors %} class="error"{% endif %}>Description:</label></p>
         <p>{{ form.description }}</p>
 </div>
+</br>
 
 <p><input type="submit" alt="register" /></p>
 </form>

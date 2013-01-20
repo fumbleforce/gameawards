@@ -21,13 +21,13 @@ class Migration(SchemaMigration):
         # Adding model 'Game'
         db.create_table('runs_game', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('name', self.gf('django.db.models.fields.CharField')(max_length=200)),
+            ('name', self.gf('django.db.models.fields.CharField')(unique=True, max_length=200)),
             ('added_date', self.gf('django.db.models.fields.DateTimeField')()),
-            ('description', self.gf('django.db.models.fields.TextField')()),
-            ('icon', self.gf('django.db.models.fields.files.ImageField')(max_length=100, null=True, blank=True)),
-            ('team', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['members.Team'])),
+            ('description', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
+            ('team', self.gf('django.db.models.fields.CharField')(max_length=200, null=True, blank=True)),
             ('leader', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.User'])),
             ('run', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['runs.Run'])),
+            ('likes', self.gf('django.db.models.fields.IntegerField')(default=0)),
         ))
         db.send_create_signal('runs', ['Game'])
 
@@ -89,14 +89,6 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        'members.team': {
-            'Meta': {'object_name': 'Team'},
-            'created_date': ('django.db.models.fields.DateTimeField', [], {}),
-            'devs': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.User']", 'symmetrical': 'False'}),
-            'icon': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '200'})
-        },
         'runs.developer': {
             'Meta': {'object_name': 'Developer'},
             'game': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['runs.Game']"}),
@@ -107,13 +99,13 @@ class Migration(SchemaMigration):
         'runs.game': {
             'Meta': {'object_name': 'Game'},
             'added_date': ('django.db.models.fields.DateTimeField', [], {}),
-            'description': ('django.db.models.fields.TextField', [], {}),
-            'icon': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
+            'description': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'leader': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '200'}),
+            'likes': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
+            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '200'}),
             'run': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['runs.Run']"}),
-            'team': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['members.Team']"})
+            'team': ('django.db.models.fields.CharField', [], {'max_length': '200', 'null': 'True', 'blank': 'True'})
         },
         'runs.run': {
             'Meta': {'object_name': 'Run'},

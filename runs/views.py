@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.models import User
 from django.template import RequestContext
 from django.utils import timezone
@@ -11,7 +11,7 @@ from runs.models import Game, Run, Developer
 
 def game_registration_request(request):
     if not request.user.is_authenticated():
-        return HttpResponseRedirect('/members/login/')
+        return HttpResponseRedirect('/login/')
     if request.method == 'POST':
         form = GameRegistrationForm(request.POST, request.FILES)
         if form.is_valid():
@@ -21,7 +21,7 @@ def game_registration_request(request):
             #g.icon = form.cleaned_data['icon']
             #g.team = form.cleaned_data['team']
             g.added_date = timezone.now()
-            g.run = Run.objects.get(current_run = True)
+            g.run = get_object_or_404(Run, current_run = True)
             g.leader = request.user
             g.save()
             return HttpResponseRedirect('/members/profile/')

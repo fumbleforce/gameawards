@@ -6,7 +6,7 @@ from django.template import RequestContext
 from members.models import UserProfile
 from members.forms import LoginForm, UserRegistrationForm
 import ayah
-
+from runs.models import Game
 
 
 def member_registration(request):
@@ -56,7 +56,8 @@ def member_registration(request):
 def profile_request(request):
     if request.user.is_authenticated():
         user = request.user
-        context = {'user':user}
+        games = Game.objects.filter(leader=user)
+        context = {'user':user, 'games':games}
         return render_to_response(
             'members/profile.html', 
             context, 
