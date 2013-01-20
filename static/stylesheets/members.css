@@ -1,19 +1,83 @@
 .profile-column
 {
     float:left;
-    height:100px;
+    height:150px;
     padding-right:30px;
+
 }
 
 #profile-text
 {
 	margin-top: 80px;
-	width: 400px; 
-	height: 80px; 
+	margin-bottom: 80px;
+	width: 800px; 
+	height: 80px;
+	margin-right:auto;
+	margin-left:auto;
 	background-image: url(../images/profile-text.png); 
+}
+#login-text
+{
+	margin-top: 80px;
+	margin-bottom: 80px;
+	width: 800px; 
+	height: 80px;
+	margin-right:auto;
+	margin-left:auto;
+	background-image: url(../images/log-in-text.png); 
+}
+#register-member-text
+{
+	margin-top: 80px;
+	margin-bottom: 80px;
+	width: 800px; 
+	height: 80px;
+	margin-right:auto;
+	margin-left:auto;
+	background-image: url(../images/register-member-text.png); 
+}
+#register-game-text
+{
+	margin-top: 80px;
+	margin-bottom: 80px;
+	width: 800px; 
+	height: 80px;
+	margin-right:auto;
+	margin-left:auto;
+	background-image: url(../images/register-game-text.png); 
 }
 #profile-picture
 {
     background:black;
-    width:50px;
+    width:100px;
 }
+#profile-top-bar
+{
+    height:40px;
+    padding-bottom:40px;
+}
+#profile-logout
+{
+    float:right;
+}
+#profile-top-text
+{
+    float:left;
+}
+#profile-info
+{
+    width:250px;
+    padding-right:50px;
+    overflow:auto;
+    height:250px;
+}
+#profile-info-container
+{
+    height:250px;
+    padding-bottom:10px;
+}
+#your-games-container
+{
+    padding-top:30px;
+}
+

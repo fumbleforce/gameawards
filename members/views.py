@@ -56,8 +56,9 @@ def member_registration(request):
 def profile_request(request):
     if request.user.is_authenticated():
         user = request.user
+        profile = user.get_profile()
         games = Game.objects.filter(leader=user)
-        context = {'user':user, 'games':games}
+        context = {'user':user, 'games':games,'profile':profile}
         return render_to_response(
             'members/profile.html', 
             context, 

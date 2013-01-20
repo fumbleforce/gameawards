@@ -1,0 +1,59 @@
+.game-column
+{
+    float:left;
+    height:150px;
+    padding-right:30px;
+
+}
+.game-row
+{
+    padding-bottom:20px;
+    
+}
+#game-text
+{
+	margin-top: 80px;
+	width: 400px; 
+	height: 80px; 
+	background-image: url(../images/game-text.png); 
+}
+#game-icon
+{
+    background:black;
+    width:100px;
+}
+#game-top-bar
+{
+    height:40px;
+    padding-bottom:40px;
+}
+#game-title
+{
+    float:left;
+}
+#game-info
+{
+    width:250px;
+    padding-right:50px;
+    height:250px;
+}
+#game-info-container
+{
+    height:250px;
+    padding-bottom:10px;
+}
+#game-desc
+{
+    overflow-y:scroll;
+    height:150px;
+}
+#game-tags
+{
+   
+}
+#single-game-container
+{
+    height:500px;
+
+}
+

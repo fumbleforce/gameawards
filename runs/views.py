@@ -5,31 +5,39 @@ from django.template import RequestContext
 from django.utils import timezone
 from runs.forms import GameRegistrationForm
 from runs.models import Game, Run, Developer
-
+import ayah
 
 
 
 def game_registration_request(request):
+
+    ayah_html = ayah.get_publisher_html()
+    
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/login/')
     if request.method == 'POST':
         form = GameRegistrationForm(request.POST, request.FILES)
         if form.is_valid():
-            g = form.save(commit=False)
-            #g.name=form.cleaned_data['name']
-            #g.description = form.cleaned_data['description']
-            #g.icon = form.cleaned_data['icon']
-            #g.team = form.cleaned_data['team']
-            g.added_date = timezone.now()
-            g.run = get_object_or_404(Run, current_run = True)
-            g.leader = request.user
-            g.save()
-            return HttpResponseRedirect('/members/profile/')
+            secret = request.POST['session_secret']
+            passed = ayah.score_result(secret)
+            if passed:
+                g = form.save(commit=False)
+                #g.name=form.cleaned_data['name']
+                #g.description = form.cleaned_data['description']
+                #g.icon = form.cleaned_data['icon']
+                #g.team = form.cleaned_data['team']
+                g.added_date = timezone.now()
+                g.run = get_object_or_404(Run, current_run = True)
+                g.leader = request.user
+                g.save()
+                return HttpResponseRedirect('/members/profile/')
+            else:
+                context = {'form':form, 'ayah_html':ayah_html}
         else:
-            context = {'form':form}
+            context = {'form':form,'ayah_html':ayah_html}
     else:
         form = GameRegistrationForm()
-        context = {'form':form}
+        context = {'form':form,'ayah_html':ayah_html}
     return render_to_response(
         'runs/register_game.html', 
         context, 

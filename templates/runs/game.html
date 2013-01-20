@@ -1,10 +1,49 @@
 {% extends "single_page.html" %}
 
+
+
 {% block page %}
 
-<h2> {{ game.name }} </h2>
-<p> {{ game.description}} </p>
-{{ game.icon }}
 
+<div id="single-game-container" class="single-page-container">
+
+    <div id="game-top-bar">
+        <div id="game-title">
+            <h2> {{ game.name }} </h2>
+        </div>
+    </div>
+    <div id="game-info-container">
+        <div id="game-tags" class="game-column">
+           <div class="game-row">
+                <p>Leader:</p>
+            </div>
+            <div class="game-row">
+                <p>Team:</p>
+            </div>
+            <div class="game-row">
+                <p>Description</p>
+            </div>
+        </div>
+        <div id="game-info" class="game-column">
+            <div class="game-row">
+                <p>&nbsp;{{ game.leader.first_name }}&nbsp;{{ game.leader.last_name }}</p>
+            </div>
+            <div class="game-row">
+                <p>&nbsp;{{ game.team }}</p>
+            </div>
+            <div id="game-desc" class="game-row">
+                <p>&nbsp;{{ game.description }}</p>
+            </div>
+        </div>
+        <div id="game-icon" class="game-column" style="padding-right:0px;">
+            &nbsp;
+        </div>
+    
+    </div>
+
+
+
+
+</div>
 
 {% endblock %}

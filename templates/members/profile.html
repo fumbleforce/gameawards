@@ -1,34 +1,47 @@
 {% extends "single_page.html" %} 
 
 
+{% block text_head %}<div id="profile-text"></div>{% endblock %}
 
 {% block page %}
 
 
 <div id="profile-container" class="single-page-container">
 
-    <h2>Profile information</h2></br>
-    <div id="profile-info-container" style="height:130px">
+    <div id="profile-top-bar">
+        <div id="profile-top-text">
+            <h2>Profile information</h2> 
+        </div>      
+        <div id="profile-logout">
+            <a href="/members/logout"><button>Log out</button></a>  
+        </div>
+    </div>
+    
+    <div id="profile-info-container">
         <div id="profile-tags" class="profile-column">
             <p> First Name: </p>
             <p> Last Name: </p>
             <p> Username: </p>
-            <p> Email: </p></br>
+            <p> Email: </p>
+            <p> About: </p></br>
         </div>
         <div id="profile-info" class="profile-column">
             <p>&nbsp;{{ user.first_name }}</p>
             <p>&nbsp;{{ user.last_name }}</p>
             <p>&nbsp;{{ user.username }}</p>
             <p>&nbsp;{{ user.email }}</p>
+            <p>&nbsp;{{ profile.about }}</p>
         </div>
         <div id="profile-picture" class="profile-column">
-        &nbsp;
+            &nbsp;
         </div>
+
     </div>
+    
     <div>
         <a href="/members/edit_member/"><button>Edit profile</button></a>
     </div>
-    </br></br>
+
     <div id="your-games-container">
         <h2>Your games</h2></br>
 

@@ -129,6 +129,13 @@ footer{
 	vertical-align:middle;
 	width:800px;
 }
+	
+.black-border
+{	
+-moz-box-shadow:0px 0px 0px 15px #222;
+-webkit-box-shadow:0px 0px 0px 15px #222;
+box-shadow:0px 0px 0px 15px #222;
+}
 
 .green-container
 {
@@ -141,6 +148,7 @@ footer{
 	margin-right:auto;
 	overflow: hidden; 
 	padding-bottom:30px;
+	
 }
 
 .green-div
@@ -171,6 +179,7 @@ footer{
 {
     padding-left:30px;
     padding-right:30px;
+
 }
 
 
@@ -325,14 +334,20 @@ footer{
 #organizers-text
 {
 	margin-top: 80px;
-	width: 400px; 
-	height: 80px; 
-	background-image: url(../images/organizers-text.png);  
+	margin-bottom: 80px;
+	width: 800px; 
+	height: 80px;
+	margin-right:auto;
+	margin-left:auto;
+	background-image: url(../images/organizers-text.png); 
 }
 #guides-text
 {
 	margin-top: 80px;
-	width: 300px; 
-	height: 80px; 
-	background-image: url(../images/guides-text.png);  
+	margin-bottom: 80px;
+	width: 800px; 
+	height: 80px;
+	margin-right:auto;
+	margin-left:auto;
+	background-image: url(../images/guides-text.png); 
 }
