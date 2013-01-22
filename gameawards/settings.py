@@ -186,7 +186,7 @@ if socket.gethostname() == "TheMatrix":
 
 else:
     
-    DEBUG = False
+    DEBUG = True
     TEMPLATE_DEBUG = DEBUG
 
     ADMINS = (
@@ -256,7 +256,7 @@ else:
 
     # Additional locations of static files
     STATICFILES_DIRS = (
-        "/home/gameawards/webapps/django2/gameawards2/static",
+        "/home/gameawards/webapps/django2/gameawards/static",
         # Put strings here, like "/home/html/static" or "C:/www/django/static".
         # Always use forward slashes, even on Windows.
         # Don't forget to use absolute paths, not relative paths.
@@ -299,7 +299,7 @@ else:
         # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
         # Always use forward slashes, even on Windows.
         # Don't forget to use absolute paths, not relative paths.
-        '/home/gameawards/webapps/django2/gameawards2/templates'
+        '/home/gameawards/webapps/django2/gameawards/templates'
     )
 
     ACCOUNT_ACTIVATION_DAYS = 7
