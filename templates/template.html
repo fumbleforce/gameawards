@@ -19,6 +19,8 @@
     <script src="{{ STATIC_URL }}js/jquery.royalslider.custom.min.js"></script>
     <script src="{{ STATIC_URL }}js/toggle.div.js"></script>
     
+    <script src="/static/js/page-nav.js" ></script>
+    
     {% block extraextrahead %}{% endblock %}
 {% endblock %}
 
@@ -26,23 +28,49 @@
 
 {% block nav %}
 <!--NAV MENU-->
+{% block page_nav%}
 <table class="nav-container">
 	<tr>
 		<td style="width: 50%">&nbsp;</td>
 		<td>
 			<div class="nav-wrap">
 				<ul class="group" id="nav-elements">
-				    <li class="current_page_item">  <a id="btnHome" href="#home-container">HOME</a></li>
-											    <li id="btnEvents"><a href="#events-container">EVENTS</a></li>
-											    <li><a id="btnGetStarted" href="#get-started-container">GET STARTED</a></li>
-											    <li><a id="btnParticipants" href="#participants-container">GAMES</a></li>
-											    <li><a id="btnContactUs" href="#contact-us-container">CONTACT US</a></li>
+				    {% if request.path != "/" %}<li id="btnHome"><a href="/">HOME</a></li>{% endif %}
+					{% if request.path != "/info/" %}<li id="btnInfo"><a href="/info">INFO</a></li>{% endif %}
+					{% if request.path != "/games/" %}<li><a id="btnGames" href="/games">GAMES</a></li>{% endif %}
+					{% if request.path != "/members/profile/" and request.path != "/profile/" %}<li><a id="btnParticipants" href="/profile">PROFILE</a></li>{% endif %}
+
 				</ul>
 			</div>			
 		</td>
 		<td style="width: 50%">&nbsp;</td>
 	</tr>
 </table>
+{% endblock %}
+
+    <table id="nav-page-container">
+	    <tr>
+		    <td style="width: 50%">&nbsp;</td>
+		    <td>
+			    <div class="nav-wrap">
+				    <ul class="group" id="nav-elements">
+				        {% if request.path != "/" %}     <li><a href="/">HOME</a></li>{% endif %}
+					    {% if request.path != "/info/" %}<li><a href="/info">INFO</a></li>{% endif %}
+					    <!--{% if request.path != "/games/" %}<li><a href="/games">GAMES</a></li>{% endif %}
+					    {% if request.path != "/members/profile/" and request.path != "/profile/" %}
+					        {% if user.is_authenticated %}
+					            <li><a href="/profile">PROFILE</a></li>
+					        {% else %}
+					            <li><a href="/profile">LOG IN</a></li>
+					        {% endif %}
+					    {% endif %}-->
+				    </ul>
+			    </div>			
+		    </td>
+		    <td style="width: 50%">&nbsp;</td>
+	    </tr>
+    </table>
+
 <!--END NAV MENU-->
 {% endblock %}
 
@@ -129,11 +157,11 @@
 
 
 
-
-
 <script type="text/javascript">
 jQuery(document).ready(function($) {
 //FOR THE AWESOME LOGO 
+
+
    
 function moveLogo(){
 	var contentwidth = $('#left-top').width();	
@@ -150,6 +178,21 @@ moveLogo();
 $(window).bind("resize", function(){//Adjusts image when browser resized  
  	moveLogo();
  });   
+ 
+ 
+$('#move').click(function() {
+
+    var top1 = $('#nav-page-container').position().top;
+    var top2 = $('.nav-container').position().top;
+    if (top1==top2)
+    {
+	    $('#nav-page-container').animate({top: '62px'});
+	}
+	else
+	{
+	    $('#nav-page-container').animate({top: '0px'});
+	}
+});
 });</script>	
 
 

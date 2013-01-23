@@ -18,25 +18,35 @@
     </div>
     
     <div id="profile-info-container">
-        <div id="profile-tags" class="profile-column">
-            <p> First Name: </p>
-            <p> Last Name: </p>
-            <p> Username: </p>
-            <p> Email: </p>
-            <p> About: </p></br>
-        </div>
-        <div id="profile-info" class="profile-column">
-            <p>&nbsp;{{ user.first_name }}</p>
-            <p>&nbsp;{{ user.last_name }}</p>
-            <p>&nbsp;{{ user.username }}</p>
-            <p>&nbsp;{{ user.email }}</p>
-            <p>&nbsp;{{ profile.about }}</p>
-        </div>
-        <div id="profile-picture" class="profile-column">
-            &nbsp;
-        </div>
-
+        <table cellspacing="700">
+            <tr>
+                <td>First Name:</td>
+                <td>&nbsp;{{ user.first_name }}</td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td>&nbsp;{{ user.last_name }}</td>
+            </tr>
+            <tr>
+                <td>Username:</td>
+                <td>&nbsp;{{ user.username }}</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>&nbsp;{{ user.email }}</td>
+            </tr>
+            <tr>
+                <td>About:</td>
+                <td>&nbsp;{{ profile.about }}</td>
+            </tr>
+        </table>
     </div>
+    
+    <div id="profile-picture" class="profile-column">
+            &nbsp;
+    </div>
+    
+
     
     <div>
         <a href="/members/edit_member/"><button>Edit profile</button></a>

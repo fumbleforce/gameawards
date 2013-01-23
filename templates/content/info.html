@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/info.css" />
 {% endblock %}
 
-{% block nav %}
+{% block page_nav %}
 
 <table class="nav-container">
 	<tr>
@@ -12,8 +12,7 @@
 		<td>
 			<div class="nav-wrap">
 				<ul class="group" id="nav-elements">
-				    <li class="current_page_item">  <a id="btnHome" href="#home-container">HOME</a></li>
-											    <li id="btnEvents"><a href="#events-container">FAQ</a></li>
+				    <li class="current_page_item"><a href="#events-container">FAQ</a></li>
 											    <li><a id="btnGetStarted" href="#get-started-container">RULES</a></li>
 											    <li><a id="btnParticipants" href="#participants-container">CATEGORIES</a></li>
 											    <li><a id="btnContactUs" href="#contact-us-container">ORGANIZERS</a></li>
@@ -21,7 +20,7 @@
 				</ul>
 			</div>			
 		</td>
-		<td style="width: 50%">&nbsp;</td>
+		<td style="width: 50%"><button id="move">Page Navigation</button></td>
 	</tr>
 </table>
 	<!--NAV MENU END-->
@@ -37,14 +36,18 @@
 
 {% block event %}
 <div class="picture-center" id="faq-text"></div>
+<div style="color: black;">
 {{ faq.text|safe }}
+</div>
 {% endblock %}	
 
 
 
 {% block start %}
 <div class="picture-center" id="rules-text"></div>
+<div style="color: white;">
 {{ rules.text|safe }}
+</div>
 {% endblock %}
 
 
@@ -57,7 +60,9 @@
 
 {% block contact %}
 <div class="picture-center" id="organizers-text"></div>
+<div id="organizer-content" style="color:black; height:auto; padding-bottom:30px;">
 {{ organizers.text|safe }}
+</div>
 {% endblock %}
 
 
@@ -69,7 +74,7 @@
 		<td style="width: 800px; height: 300px">
 		    <!--INSERT TEXT-->
 		    <div class="picture-center" id="guides-text"></div>
-		        <div>
+		        <div style="text-align:center">
 		        {{ guides.text|safe }}
 		        </div>
 		    <!--END INSERT TEXT-->

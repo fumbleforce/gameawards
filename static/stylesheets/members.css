@@ -1,3 +1,21 @@
+/* PROFILE */
+
+
+#profile-text
+{
+	margin-top: 80px;
+	margin-bottom: 80px;
+	width: 800px; 
+	height:80px;
+	margin-right:auto;
+	margin-left:auto;
+	background-image: url(../images/profile-text.png); 
+}
+#profile-top-bar
+{
+    height:100%;
+    padding-bottom:40px;
+}
 .profile-column
 {
     float:left;
@@ -6,16 +24,48 @@
 
 }
 
-#profile-text
+#profile-picture
 {
-	margin-top: 80px;
-	margin-bottom: 80px;
-	width: 800px; 
-	height: 80px;
-	margin-right:auto;
-	margin-left:auto;
-	background-image: url(../images/profile-text.png); 
+    background:black;
+    width:200px;
+    height:200px;
 }
+#profile-top-bar
+{
+    height:40px;
+    padding-bottom:40px;
+}
+#profile-logout
+{
+    float:right;
+}
+#profile-top-text
+{
+    float:left;
+}
+#profile-info
+{
+    width:250px;
+    padding-right:50px;
+    overflow:auto;
+    height:250px;
+}
+
+#profile-info-container
+{
+    position:relative;
+    height:100%;
+    float:left;
+    width:500px;
+    padding-bottom:40px;
+}
+#your-games-container
+{
+    padding-top:30px;
+}
+
+
+
 #login-text
 {
 	margin-top: 80px;
@@ -46,38 +96,5 @@
 	margin-left:auto;
 	background-image: url(../images/register-game-text.png); 
 }
-#profile-picture
-{
-    background:black;
-    width:100px;
-}
-#profile-top-bar
-{
-    height:40px;
-    padding-bottom:40px;
-}
-#profile-logout
-{
-    float:right;
-}
-#profile-top-text
-{
-    float:left;
-}
-#profile-info
-{
-    width:250px;
-    padding-right:50px;
-    overflow:auto;
-    height:250px;
-}
-#profile-info-container
-{
-    height:250px;
-    padding-bottom:10px;
-}
-#your-games-container
-{
-    padding-top:30px;
-}
+
 

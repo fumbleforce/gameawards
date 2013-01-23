@@ -40,6 +40,28 @@
 				    </ul>
 			    </div>			
 		    </td>
+		    <td style="width: 50%"><button id="move">Page Navigation</button></td>
+	    </tr>
+    </table>
+    <table id="nav-page-container">
+	    <tr>
+		    <td style="width: 50%">&nbsp;</td>
+		    <td>
+			    <div class="nav-wrap">
+				    <ul class="group" id="nav-elements">
+				        {% if request.path != "/" %}     <li><a href="/">HOME</a></li>{% endif %}
+					    {% if request.path != "/info/" %}<li><a href="/info">INFO</a></li>{% endif %}
+					    <!--{% if request.path != "/games/" %}<li><a href="/games">GAMES</a></li>{% endif %}
+					    {% if request.path != "/members/profile/" and request.path != "/profile/" %}
+					        {% if user.is_authenticated %}
+					            <li><a href="/profile">PROFILE</a></li>
+					        {% else %}
+					            <li><a href="/profile">LOG IN</a></li>
+					        {% endif %}
+					    {% endif %}-->
+				    </ul>
+			    </div>			
+		    </td>
 		    <td style="width: 50%">&nbsp;</td>
 	    </tr>
     </table>
@@ -357,6 +379,20 @@ moveLogo();
 $(window).bind("resize", function(){//Adjusts image when browser resized  
  	moveLogo();
  }); 
+ 
+$('#move').click(function() {
+
+    var top1 = $('#nav-page-container').position().top;
+    var top2 = $('.nav-container').position().top;
+    if (top1!=top2)
+    {
+	    $('#nav-page-container').animate({top: '0px'});
+	}
+	else
+	{
+	    $('#nav-page-container').animate({top: '62px'});
+	}
+});
       
 });</script>
 {% endblock %}

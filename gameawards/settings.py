@@ -145,6 +145,18 @@ if socket.gethostname() == "TheMatrix":
 
         
     )
+    
+    
+    TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "django.core.context_processors.request",
+    )
 
     # A sample logging configuration. The only tangible logging
     # performed by this configuration is to send an email to
@@ -186,7 +198,7 @@ if socket.gethostname() == "TheMatrix":
 
 else:
     
-    DEBUG = True
+    DEBUG = False
     TEMPLATE_DEBUG = DEBUG
 
     ADMINS = (
@@ -322,6 +334,17 @@ else:
         'gallery',
 
         
+    )
+    
+    TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    "django.core.context_processors.request",
     )
 
     # A sample logging configuration. The only tangible logging
