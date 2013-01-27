@@ -90,7 +90,33 @@
 
 
 
+#page-nav-button
+{
+    display: block;
+	background: url(../images/pageNavigationArrowDown.png) no-repeat;
+	overflow: hidden;
+	width:60px;
+	height:60px;
 
+	float:left;
+}
+#page-button-container
+{
+       float:left;
+       width:100%;
+       cursor: pointer;
+}
+#page-nav-text
+{
+	font-family: 'Titillium Web', 'Trebuchet MS', sans-serif;
+	font-weight: 700;
+	font-size: 28px;
+	color: #9ECE69;
+	float: left;
+	padding: 6px 10px 4px 10px;
+	text-decoration: none;
+	float:left;
+}
 
 
 

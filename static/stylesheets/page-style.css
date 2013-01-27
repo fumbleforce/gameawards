@@ -39,10 +39,11 @@ h2{
 footer{
     background: #222;
 	width: 100%; 
-	height: 140px;
+	height: 100%;
 	color:white;
 	text-align:center;
-	padding-top:10px;
+	padding-top:5px;
+	padding-bottom:5px;
     font-size:12px;
 	bottom:0px;
 }
@@ -59,7 +60,7 @@ footer{
 }
 .nga-logo
 {
-	z-index: 1330;
+	z-index: 1340;
 	left: 0px;
 	top: 30px;
 	position: absolute;
@@ -191,7 +192,7 @@ box-shadow:0px 0px 0px 15px #222;
 #footer-div
 {
     width:800px;
-    height:120px;
+    height:100%;
 }
 .single-footer-button
 {
@@ -214,20 +215,22 @@ box-shadow:0px 0px 0px 15px #222;
 .footer-text
 {
     font-size: 10px; 
-    width:250px;
+    width:800px;
+    text-align:center;
+    font-size:12px;
 }
 
 #footer-text-container
 {
     font-size: 12px; 
-    height:120px;
-    width: 250px;
-    float:left;
+    height:100%;
+    width: 800px;
+
 
 }
 #footer-buttons
 {
-    height:120px;
+    height:100%;
     width:480px;
     padding-left:70px;
 
@@ -392,11 +395,12 @@ box-shadow:0px 0px 0px 15px #222;
 }
 
 
-.contact-button-footer
+
+
+#contact-us-buttons-container
 {
-	width: 120px;
+	width: 800px;
 	height: 120px;
 	display: block;
-	background: url(../images/slider/contact-button-sprite.png) no-repeat;
 	overflow: hidden;
 }

@@ -40,7 +40,14 @@
 				    </ul>
 			    </div>			
 		    </td>
-		    <td style="width: 50%"><button id="move">Page Navigation</button></td>
+		    <td style="width: 50%">  
+		        <div id="page-button-container">
+		            <div id="page-nav-button"></div>
+		            <div id="page-nav-text">
+		                Page navigation
+		            </div>
+		        </div>
+		    </td>
 	    </tr>
     </table>
     <table id="nav-page-container">
@@ -358,7 +365,7 @@ function moveLogo(){
 	$('.arm-logo').css('left', (d+188)+'px');
 	$('.start-logo').css('left', (d+176)+'px');
 	var d2 = contentwidth;
-	$('.bg-behind-logo').css('left', d2+'px');
+	$('.bg-behind-logo').css('left', d2-1+'px');
 	var d3 = contentwidth+780;
 	var d4 = contentwidth;
 	$('.side-home-right').css('left', d3+'px');
@@ -371,26 +378,26 @@ function moveLogo(){
 	$('.side-contact-us-right').css('left', d3+'px');
 	$('.side-contact-us-left').css('left', d4+'px');
 
-
-	
-
 }
 moveLogo();
 $(window).bind("resize", function(){//Adjusts image when browser resized  
  	moveLogo();
  }); 
  
-$('#move').click(function() {
+$('#page-button-container').click(function() {
 
     var top1 = $('#nav-page-container').position().top;
     var top2 = $('.nav-container').position().top;
     if (top1!=top2)
     {
 	    $('#nav-page-container').animate({top: '0px'});
+	    $('#page-nav-button').css("background", "url(/static/images/pageNavigationArrowDown.png) no-repeat");
+	    
 	}
 	else
 	{
 	    $('#nav-page-container').animate({top: '62px'});
+	    $('#page-nav-button').css("background", "url(/static/images/pageNavigationArrowUp.png) no-repeat");
 	}
 });
       
