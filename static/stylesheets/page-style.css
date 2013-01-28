@@ -123,6 +123,8 @@ footer{
 	background-color:#333;
 	padding-top: 20px;
 	padding-bottom: 20px;
+	padding-left: 20px;
+	padding-right:20px;
 	overflow: hidden; 
 	color:white;
 	margin-left:auto;
@@ -237,7 +239,7 @@ box-shadow:0px 0px 0px 15px #222;
     float:left;
 }
 
-#home-container
+#first-container
 {
 	height: auto;
 	background-image:url('../images/bg-rep-light.png');
@@ -246,7 +248,7 @@ box-shadow:0px 0px 0px 15px #222;
 	padding-bottom: 20px;
 	overflow: hidden; 
 }
-#events-container
+#second-container
 {
 	height: auto;top
 	vertical-align: top;
@@ -255,7 +257,7 @@ box-shadow:0px 0px 0px 15px #222;
 	padding-top: 80px;
 	overflow: hidden; 
 }
-#get-started-container
+#third-container
 {	
 	height: auto;
 	vertical-align: top;
@@ -265,7 +267,7 @@ box-shadow:0px 0px 0px 15px #222;
 	padding-bottom: 80px;
 	overflow: hidden; 
 }
-#participants-container
+#fourth-container
 {
 	height: auto;
 	vertical-align: top;
@@ -274,7 +276,7 @@ box-shadow:0px 0px 0px 15px #222;
 	overflow: hidden; 
 
 }
-#contact-us-container
+#fifth-container
 {
 	height: 600px;
 	vertical-align: top;
@@ -392,6 +394,16 @@ box-shadow:0px 0px 0px 15px #222;
 	margin-right:auto;
 	margin-left:auto;
 	background-image: url(../images/guides-text.png); 
+}
+#games-text
+{
+	margin-top: 80px;
+	margin-bottom: 40px;
+	width: 318px; 
+	height: 80px;
+		margin-right:auto;
+	margin-left:auto; 
+	background-image: url(../images/participants-text.png) ; 
 }
 
 

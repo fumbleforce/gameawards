@@ -1,102 +1,44 @@
-{% extends "base.html" %}
+{% extends "template.html" %}
 
-{% block extrahead %}
-    <!--CSS-->
-    <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/royalslider.css" />
-    <link rel="stylesheet" href="{{ STATIC_URL }}royalslider/royalslider/default/rs-default.css" />
-    <!--<link href="{{ STATIC_URL }}royalslider/royalslider/default-inverted/rs-default-inverted.css" rel="stylesheet" />--> 
-    <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/slide-style.css" />
+{% block template_head %}
 
-    <!--JAVASCRIPT-->
-    <script src="{{ STATIC_URL }}js/jquery-1.8.0.min.js"></script>
-    <script src="{{ STATIC_URL }}js/jquery.viewport.js"></script>
-    <script src="{{ STATIC_URL }}js/nav.control.js"></script>
-    <script src="{{ STATIC_URL }}js/smooth.scroll.js"></script>
-    <script src="{{ STATIC_URL }}js/slider.control.js"></script>
-    <script src="{{ STATIC_URL }}js/jquery.easing-1.3.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhjFDtSrKYC74aDhRS9YgHPibTkpShps8&sensor=true"></script>
-    <script src="{{ STATIC_URL }}js/map.style.js"></script>
-        
-    <!-- Main slider JS script file --> 
-    <script src="{{ STATIC_URL }}js/jquery.royalslider.custom.min.js"></script>
-    <script src="{{ STATIC_URL }}js/toggle.div.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhjFDtSrKYC74aDhRS9YgHPibTkpShps8&sensor=true"></script>
+<script src="{{ STATIC_URL }}js/map.style.js"></script>
+<script src="{{ STATIC_URL }}js/index.settings.js"></script>
+<script src="{{ STATIC_URL }}js/nav.control.js"></script>
+
 {% endblock %}
 
-{% block body %}
 
-    <!--NAV MENU-->
-    <table class="nav-container">
-	    <tr>
-		    <td style="width: 50%">&nbsp;</td>
-		    <td>
-			    <div class="nav-wrap">
-				    <ul class="group" id="nav-elements">
-				        <li class="current_page_item">  <a id="btnHome" href="#home-container">HOME</a></li>
-											        <li id="btnEvents"><a href="#events-container">EVENTS</a></li>
-											        <li><a id="btnGetStarted" href="#get-started-container">GET STARTED</a></li>
-											        <li><a id="btnParticipants" href="#participants-container">GAMES</a></li>
-											        <li><a id="btnContactUs" href="#contact-us-container">CONTACT US</a></li>
+{% block template_nav %}
+<li class="current_page_item">  <a id="btnHome" href="#first-container">HOME</a></li>
+<li id="btnEvents"><a href="#second-container">EVENTS</a></li>
+<li><a id="btnGetStarted" href="#third-container">GET STARTED</a></li>
+<li><a id="btnParticipants" href="#fourth-container">GAMES</a></li>
+<li><a id="btnContactUs" href="#fifth-container">CONTACT US</a></li>
+{% endblock %}
+	
+	
+{% block static_elements %}
+<div class="nga-logo"></div>
+<div class="bg-behind-logo"></div>
+<a href="https://www.norsk-tipping.no/" target="_blank" class="partners nt-logo"></a>
+<a href="http://www.arm.com/" target="_blank" class="partners arm-logo"></a>
+<a href="http://startntnu.no/" target="_blank" class="partners start-logo"></a>
 
-				    </ul>
-			    </div>			
-		    </td>
-		    <td style="width: 50%">  
-		        <div id="page-button-container">
-		            <div id="page-nav-button"></div>
-		            <div id="page-nav-text">
-		                Page navigation
-		            </div>
-		        </div>
-		    </td>
-	    </tr>
-    </table>
-    <table id="nav-page-container">
-	    <tr>
-		    <td style="width: 50%">&nbsp;</td>
-		    <td>
-			    <div class="nav-wrap">
-				    <ul class="group" id="nav-elements">
-				        {% if request.path != "/" %}     <li><a href="/">HOME</a></li>{% endif %}
-					    {% if request.path != "/info/" %}<li><a href="/info">INFO</a></li>{% endif %}
-					    <!--{% if request.path != "/games/" %}<li><a href="/games">GAMES</a></li>{% endif %}
-					    {% if request.path != "/members/profile/" and request.path != "/profile/" %}
-					        {% if user.is_authenticated %}
-					            <li><a href="/profile">PROFILE</a></li>
-					        {% else %}
-					            <li><a href="/profile">LOG IN</a></li>
-					        {% endif %}
-					    {% endif %}-->
-				    </ul>
-			    </div>			
-		    </td>
-		    <td style="width: 50%">&nbsp;</td>
-	    </tr>
-    </table>
-	<!--NAV MENU END-->
+<div class="side-home-right slide-side"></div>
+<div class="side-events-left slide-side"></div>
+<div class="side-events-right slide-side"></div>
+<div class="side-get-started-left slide-side"></div>
+<div class="side-get-started-right slide-side"></div>
+<div class="side-participants-left slide-side"></div>
+<div class="side-participants-right slide-side"></div>
+<div class="side-contact-us-left slide-side"></div>
+<div class="side-contact-us-right slide-side"></div>
+{% endblock %}
 	
-	
-	
-	<div class="nga-logo"></div>
-	<div class="bg-behind-logo"></div>
-	<a href="https://www.norsk-tipping.no/" target="_blank" class="partners nt-logo"></a>
-    <a href="http://www.arm.com/" target="_blank" class="partners arm-logo"></a>
-    <a href="http://startntnu.no/" target="_blank" class="partners start-logo"></a>
-    
-    <div class="side-home-right slide-side"></div>
-    <div class="side-events-left slide-side"></div>
-    <div class="side-events-right slide-side"></div>
-    <div class="side-get-started-left slide-side"></div>
-    <div class="side-get-started-right slide-side"></div>
-    <div class="side-participants-left slide-side"></div>
-    <div class="side-participants-right slide-side"></div>
-    <div class="side-contact-us-left slide-side"></div>
-    <div class="side-contact-us-right slide-side"></div>
-	
-	<!-- START PAGE CONTENT -->
-    <table style="width: 100%;">
-    
-        <!--HOME CONTAINER-->
-	    <tr id="home-container">
+{% block first_container %}
+	    <tr id="first-container">
 		    <td class="nga-logo-container"></td>
 		    <td style="width: 800px">
 		    
@@ -113,15 +55,12 @@
 		    </td>
 		    <td style="width: 50%">&nbsp;</td>
 	    </tr>
-	    <!-- END HOME CONTAINER -->
+{% endblock %}
 	
 	
 	
 	
-        <!--EVENT CONTAINER-->
-	    <tr id="events-container">
-		    <td style="width: 50%">&nbsp;</td>
-		    <td style="width: 800px">
+       {% block second %}
 		        <div class="picture-center" id="events-text"></div>
 		
 		        <!--EVENT SLIDER-->
@@ -135,19 +74,14 @@
                 <a class="arrow-button prev-black" style="left: 10px; bottom: 10px" onclick="eventSliderPrev()"></a>
                 <a class="arrow-button next-black" style="left: 10px; bottom: 10px" onclick="eventSliderNext()"></a>
 		
-		    </td>
-		    <td style="width: 50%">&nbsp;</td>
-	    </tr>
-	    <!-- END EVENT CONTAINER -->
+		   {% endblock %}
 	
 	
 	
 	
 	
-        <!--GET STARTED CONTAINER-->
-	    <tr id="get-started-container">
-		    <td style="width: 50%">&nbsp;</td>
-		    <td style="width: 800px">
+  {% block third %}
+
 		        <div id="get-started-text" class="picture-center"></div>
 		        
 		        <!--GET STARTED SLIDER-->
@@ -157,19 +91,12 @@
                     {% endfor %}
 			    </div>
 		        <!--END GET STARTED SLIDER-->
-
-		    </td>
-		    <td style="width: 50%">&nbsp;</td>
-	    </tr>
-        <!-- END GET STARTED CONTAINER -->
+{% endblock %}
 
 
 
 
-        <!--GAMES CONTAINER-->
-	    <tr id="participants-container">
-		    <td style="width: 50%">&nbsp;</td>
-		    <td style="width: 800px">
+ {% block fourth %}
 		        <div id="participants-text" class="picture-center"></div>
 		        
 		        <!--GAMES SLIDER-->
@@ -180,18 +107,12 @@
 			    </div>
 		        <!--END GAMES SLIDER-->
 		
-		    </td>
-		    <td style="width: 50%">&nbsp;</td>
-	    </tr>
-        <!-- END GAMES CONTAINER -->
+{% endblock %}
 
 
 
 
-        <!--CONTACT US CONTAINER-->
-	    <tr id="contact-us-container">
-		    <td style="width: 50%">&nbsp;</td>
-		    <td style="width: 800px">
+{% block fifth %}
 		        <div id="contact-us-text" class="picture-center"></div>
 		
 		        <!--CONTACT US SLIDER-->
@@ -202,205 +123,12 @@
 			    </div>
 		        <!--END CONTACT US SLIDER-->
 
-		    </td>
-		    <td style="width: 50%">&nbsp;</td>
-	    </tr>
-	    <!-- END CONTACT US CONTAINER -->
-
-
-
-    </table>
-    
-    
-    <!-- MAP -->
-    <div id="map_canvas" style="height: 400px; width: 100%"></div>
-    
-    
-    
-    <!--END PAGE CONTENT-->
-
-
-
-
-
-
-<script type="text/javascript">
-
-//FOR THE HOME SLIDER
-jQuery(document).ready(function($) {
-  $('#home-slider').royalSlider({
-    arrowsNav: true,
-    loop: true,
-    keyboardNavEnabled: true,
-    controlsInside: true,
-    imageScaleMode: 'fill',
-    arrowsNav: true,
-    arrowsNavAutoHide: false,
-    autoScaleSlider: true, 
-    autoScaleSliderWidth: 800,     
-    autoScaleSliderHeight: 660, 
-
-    numImagesToPreload: 0,
-    controlNavigation: 'bullets',
-    thumbsFitInViewport: false,
-    navigateByClick: true,
-    startSlideId: 0,
-    autoPlay: {
-    		// autoplay options go gere
-    		enabled: true,
-    		pauseOnHover: true,
-    		delay: 8000
-    	},
-    transitionType:'move',
-    globalCaption: true
-  });
-
-//FOR THE EVENTSLIDER  
-$('#events-slider').royalSlider({
-    arrowsNav: true,
-    loop: true,
-    keyboardNavEnabled: true,
-    controlsInside: true,
-    imageScaleMode: 'fill',
-    arrowsNav: true,
-    arrowsNavAutoHide: false,
-    autoScaleSlider: true,
-    autoScaleSliderWidth: 800,     
-    autoScaleSliderHeight: 550, 
-    numImagesToPreload: 3,
-    controlNavigation: 'bullets',
-    thumbsFitInViewport: false,
-    navigateByClick: false,
-    startSlideId: 0,
-    autoPlay: false,
-    transitionType:'move',
-    globalCaption: true
-  });
-  
-//FOR THE GET STARTED SLIDER
-$('#get-started-slider').royalSlider({
-    arrowsNav: true,
-    loop: false,
-    keyboardNavEnabled: false,
-    controlsInside: true,
-    imageScaleMode: 'fill',
-    arrowsNav: true,
-    arrowsNavAutoHide: false,
-    autoScaleSlider: true,
-    autoScaleSliderWidth: 800,     
-    autoScaleSliderHeight: 600, 
-    numImagesToPreload: 4,
-    controlNavigation: 'bullets',
-    thumbsFitInViewport: false,
-    navigateByClick: false,
-    startSlideId: 3,
-    minSlideOffset: 0,
-    autoPlay: false,
-    transitionType:'move',
-    globalCaption: true
-  });
-
-//FOR THE PARTICIPANTS SLIDER
-$('#participants-slider').royalSlider({
-    arrowsNav: true,
-    loop: true,
-    keyboardNavEnabled: false,
-    controlsInside: true,
-    imageScaleMode: 'fill',
-    arrowsNav: true,
-    arrowsNavAutoHide: false,
-    autoScaleSlider: true,
-    autoScaleSliderWidth: 800,     
-    autoScaleSliderHeight: 400, 
-    numImagesToPreload: 0,
-    controlNavigation: 'bullets',
-    thumbsFitInViewport: false,
-    navigateByClick: false,
-    startSlideId: 0,
-    autoPlay: false,
-    transitionType:'move',
-    globalCaption: true
-  });
-  
-
-
-//FOR THE CONTACT US SLIDER
-$('#contact-us-slider').royalSlider({
-    arrowsNav: true,
-    loop: true,
-    keyboardNavEnabled: false,
-    controlsInside: true,
-    imageScaleMode: 'fill',
-    arrowsNav: true,
-    arrowsNavAutoHide: false,
-    autoScaleSlider: true,
-    autoScaleSliderWidth: 800,     
-    autoScaleSliderHeight: 400, 
-    numImagesToPreload: 0,
-    controlNavigation: 'bullets',
-    thumbsFitInViewport: false,
-    navigateByClick: false,
-    startSlideId: 0,
-    autoPlay: false,
-    transitionType:'move',
-    globalCaption: true
-  });
-
-
-//FOR THE HIDDEN UPLOAD DIV
-
-$('.show-hide-button').showHide({
-        speed: 400,  // speed you want the toggle to happen
-        easing: '',  // the animation effect you want. Remove this line if you dont want an effect and if you haven't included jQuery UI
-        changeText: 0, // if you dont want the button text to change, set this to 0 
-    });
-
-//FOR THE AWESOME LOGO    
-function moveLogo(){
-	var contentwidth = $('.nga-logo-container').width();
- 	
-	var d = contentwidth - 330 + 15;
-	$('.nga-logo').css('left', d+'px');
-	$('.nt-logo').css('left', (d+200)+'px');
-	$('.arm-logo').css('left', (d+188)+'px');
-	$('.start-logo').css('left', (d+176)+'px');
-	var d2 = contentwidth;
-	$('.bg-behind-logo').css('left', d2-1+'px');
-	var d3 = contentwidth+780;
-	var d4 = contentwidth;
-	$('.side-home-right').css('left', d3+'px');
-	$('.side-events-right').css('left', d3+'px');
-	$('.side-events-left').css('left', d4+'px');
-	$('.side-get-started-right').css('left', d3+'px');
-	$('.side-get-started-left').css('left', d4+'px');
-	$('.side-participants-right').css('left', d3+'px');
-	$('.side-participants-left').css('left', d4+'px');
-	$('.side-contact-us-right').css('left', d3+'px');
-	$('.side-contact-us-left').css('left', d4+'px');
-
-}
-moveLogo();
-$(window).bind("resize", function(){//Adjusts image when browser resized  
- 	moveLogo();
- }); 
- 
-$('#page-button-container').click(function() {
-
-    var top1 = $('#nav-page-container').position().top;
-    var top2 = $('.nav-container').position().top;
-    if (top1!=top2)
-    {
-	    $('#nav-page-container').animate({top: '0px'});
-	    $('#page-nav-button').css('background-image', 'url(/static/images/pageNavigationArrowDown.png)');
-	    
-	}
-	else
-	{
-	    $('#nav-page-container').animate({top: '62px'});
-	    $('#page-nav-button').css('background-image', 'url(/static/images/pageNavigationArrowUp.png)');
-	}
-});
-      
-});</script>
 {% endblock %}
+
+    
+{% block after_content_table %}
+<div id="map_canvas" style="height: 400px; width: 100%"></div>
+{% endblock %}
+    
+
 

@@ -1,24 +1,28 @@
-{% extends "base.html" %}
+{% extends "single_page.html" %}
 
-{% block content %}
-		<div id="content">
-			<div id="home">
-				<div class="home-container">
-				    {% if games %}
-                        {% for game in games %}
-                            <h2>
-                                <a href="/runs/{{game.id}}">{{ game.name }}</a>
-                            </h2>
-                            <p>
-                                {{ game.description }}
-                            </p>
-                        {% endfor %}
-                    {% else %}
-                        <p>
-                            There are no games here :(
-                        </p>
-                    {% endif %}
-				</div>
-			</div>
-     
+{% block content_table %}
+
+<div style="width:100%;padding-top:40px">
+	<div class="green-container">
+	    <div id="games-text"></div>
+	    <div id="game_list_container">
+            {% if games %}
+                {% for game in games %}
+                <div class="black-container round-and-shadow game-in-list-container">
+                    <h2>
+                        <a href="/runs/{{game.id}}">{{ game.name }}</a>
+                    </h2>
+                    <p>
+                        {{ game.description }}
+                    </p>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>
+                    There are no games here :(
+                </p>
+            {% endif %}
+        </div>
+    </div>
+</div>   
 {% endblock %}

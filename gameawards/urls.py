@@ -17,6 +17,7 @@ if socket.gethostname() == "TheMatrix":
         url(r'^logout/', 'members.views.logout_request'),
         url(r'^resetpassword/', 'members.views.reset_password_request'),
         url(r'^profile/', 'members.views.profile_request'),
+        url(r'^games/', 'runs.views.game_list_request'),
     )
     
     

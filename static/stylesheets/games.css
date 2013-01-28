@@ -56,4 +56,15 @@
     height:500px;
 
 }
+#game_list_container
+{
+    width:800px;
+    margin-right:auto;
+	margin-left:auto;
+}
+.game-in-list-container
+{
+    margin-bottom:30px;
+    width:760px;
+}
 

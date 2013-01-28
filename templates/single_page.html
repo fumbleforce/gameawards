@@ -1,36 +1,35 @@
 {% extends "template.html" %}
 
-{% block extrahead %}
-    <!--CSS-->
-    <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/royalslider.css" />
-    <link rel="stylesheet" href="{{ STATIC_URL }}royalslider/royalslider/default/rs-default.css" />
-    <!--<link href="{{ STATIC_URL }}royalslider/royalslider/default-inverted/rs-default-inverted.css" rel="stylesheet" />--> 
-    <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/slide-style.css" />
+{% block template_head %}
     <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/members.css" />
     <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/games.css" />
-    {% block extraextrahead %}{% endblock %}
+    
+
+    
+    {% block single_page_head %}{% endblock %}
 {% endblock %}
 
+{% block local_nav %}{% endblock %}
 
 
+{% block content_table %}
 
-{% block content %}
 
-<!--START PAGE CONTENT-->
 <div style="width:100%;padding-top:40px">
 	
 	<div class="green-container">
 	{% block text_head %}<div style="margin-top: 80px;width: 367px; height: 80px; "></div>{% endblock %}
 		
-
 		    <div class="black-container round-and-shadow">
-		    <!--INSERT TEXT TOP-->
 		        {% block page %}{% endblock %}
-		    <!--STOP IONSERT TEXT TOP-->
 		    </div>
-
-		
 
     </div>
 </div>
 {% endblock %}
+
+<script>
+$(document).ready(function() {
+    $("#magic-line").remove();
+});
+</script>

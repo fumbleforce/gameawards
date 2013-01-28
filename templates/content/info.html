@@ -1,88 +1,67 @@
 {% extends "template.html" %}
 
-{% block extraextrahead %}
+{% block template_head %}
     <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/info.css" />
+    <script src="{{ STATIC_URL }}js/nav.control.js"></script>
 {% endblock %}
 
-{% block page_nav %}
+{% block template_nav %}
 
-<table class="nav-container">
-	<tr>
-		<td style="width: 50%">&nbsp;</td>
-		<td>
-			<div class="nav-wrap">
-				<ul class="group" id="nav-elements">
-				    <li class="current_page_item"><a href="#events-container">FAQ</a></li>
-											    <li><a id="btnGetStarted" href="#get-started-container">RULES</a></li>
-											    <li><a id="btnParticipants" href="#participants-container">CATEGORIES</a></li>
-											    <li><a id="btnContactUs" href="#contact-us-container">ORGANIZERS</a></li>
-											    <li><a id="btnGuides" href="#guides-container">GUIDES</a></li>
-				</ul>
-			</div>			
-		</td>
-		<td style="width: 50%">  
-		        <div id="page-button-container">
-		            <div id="page-nav-button"></div>
-		            <div id="page-nav-text">
-		                Page navigation
-		            </div>
-		        </div>
-		    </td>
-	</tr>
-</table>
-	<!--NAV MENU END-->
+<li class="current_page_item"><a id="btnFirst"    href="#first-container">    FAQ</a></li>
+<li><a id="btnSecond"   href="#second-container">   RULES</a></li>
+<li><a id="btnThird"    href="#third-container">    CATEGORIES</a></li>
+<li><a id="btnFourth"   href="#fourth-container">   ORGANIZERS</a></li>
+<li><a id="btnFifth"    href="#fifth-container">    GUIDES</a></li>
+
 {% endblock %}	
 
 
-{% block nga_logo_section %}{% endblock %}
-{% block home_container %}{% endblock %}
+
+{% block first_container %}{% endblock %}
 
 
-
-
-
-{% block event %}
+{% block second %}
 <div class="picture-center" id="faq-text"></div>
 <div style="color: black;">
-{{ faq.text|safe }}
+    {{ faq.text|safe }}
 </div>
 {% endblock %}	
 
 
 
-{% block start %}
+{% block third %}
 <div class="picture-center" id="rules-text"></div>
 <div style="color: white;">
-{{ rules.text|safe }}
+    {{ rules.text|safe }}
 </div>
 {% endblock %}
 
 
 
-{% block participants %}
+{% block fourth %}
 <div class="picture-center" id="categories-text"></div>
-{{ categories.text|safe }}
+    {{ categories.text|safe }}
 {% endblock %}
 
 
-{% block contact %}
+{% block fifth %}
 <div class="picture-center" id="organizers-text"></div>
 <div id="organizer-content" style="color:black; height:auto; padding-bottom:30px;">
-{{ organizers.text|safe }}
+    {{ organizers.text|safe }}
 </div>
 {% endblock %}
 
 
 
-{% block more_content %}
+{% block template_content_table %}
 
-	<tr id="guides-container">
-		<td style="width: 50%">&nbsp;</td>
+<tr id="guides-container">
+        <td style="width: 50%">&nbsp;</td>
 		<td style="width: 800px; height: 300px">
 		    <!--INSERT TEXT-->
 		    <div class="picture-center" id="guides-text"></div>
 		        <div style="text-align:center">
-		        {{ guides.text|safe }}
+		            {{ guides.text|safe }}
 		        </div>
 		    <!--END INSERT TEXT-->
 		</td>
