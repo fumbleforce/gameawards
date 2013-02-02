@@ -13,8 +13,8 @@
 }
 #profile-top-bar
 {
-    height:100%;
-    padding-bottom:40px;
+    height:73px;;
+    padding-bottom:20px;
 }
 .profile-column
 {
@@ -29,15 +29,9 @@
     background:black;
     width:200px;
     height:200px;
-    margin-right:20px;;
-    margin-left:20px;
     vertical-align:middle;
 }
-#profile-top-bar
-{
-    height:73px;
-    padding-bottom:40px;
-}
+
 #profile-logout
 {
     float:right;
@@ -61,11 +55,11 @@
     height:100%;
     float:left;
     width:100%;
-    padding-bottom:40px;
+    padding-bottom:20px;
 }
 #your-games-container
 {
-    padding-top:30px;
+    padding-top:20px;
 }
 
 
@@ -104,16 +98,11 @@
 {
     border-collapse:separate;   
     border-spacing: 20px;      
-    padding:5px 15px 5px 15px;
-    width:500px;
+   /* padding:5px 15px 5px 15px; */
+    width:100%;
     float:left;
-   -moz-border-radius: 10px;
-   -webkit-border-radius: 10px;
-   border-radius: 10px;
-   
-   -moz-box-shadow:    inset 4px -4px 10px 4px #000000;
-   -webkit-box-shadow: inset 4px -4px 10px 4px #000000;
-   box-shadow:         inset 4px -4px 10px 4px #000000;
+    margin-right:20px;
+
 }
 .profile-info-table td
 {
@@ -129,6 +118,15 @@
 #edit-profile-button
 {
     
+}
+#your-games-title
+{
+    width:200px;
+}
+#your-game-list-container
+{
+    margin-top:20px;
+    margin-bottom:20px;
 }
 
 

@@ -9,7 +9,7 @@
 <div id="profile-container" class="single-page-container">
 
     <div id="profile-top-bar">
-        <div id="profile-top-text" class="inner-shadow">
+        <div id="profile-top-text" class="head-background">
             <h2>Profile information</h2> 
         </div>      
         <div id="profile-logout">
@@ -18,7 +18,7 @@
     </div>
     
     <div id="profile-info-container">
-        <table class="profile-info-table inner-shadow">
+        <table class="profile-info-table text-background">
             <tr>
                 <td>First Name:</td>
                 <td>&nbsp;{{ user.first_name }}</td>
@@ -40,11 +40,7 @@
                 <td>&nbsp;{{ profile.about }}</td>
             </tr>
         </table>
-    
-    
-    <div id="profile-picture" class="profile-column">
-            &nbsp;
-    </div>
+
     </div>
 
     
@@ -53,13 +49,25 @@
     </div>
 
     <div id="your-games-container">
-        <h2>Your games</h2></br>
-
+        <div id="your-games-title" class="head-background">
+            <h2>Your games</h2>
+        </div>
+        <div id="your-game-list-container">
         {% for g in games %}
-            <a href="/runs/{{ g.id }}">  {{ g.name }} </a></br>
+            <div class="game-link text-background">
+            
+                <div class="your-game-list-element" style="float:left">{{ g.name }}</div>
+
+                <div class="your-game-list-element" style="float:right;padding-right:10px;"><a href="/gallery/add_game_pic/{{ g.id }}"><button>Add Screenshot</button></a></div> 
+                               
+                <div class="your-game-list-element" style="float:right;padding-right:10px;"><a href="/runs/edit/{{ g.id }}"><button>Edit</button></a></div>
+                
+                <div class="your-game-list-element" style="float:right;padding-right:10px;"><a href="/runs/youtube/{{ g.id }}"><button>Add Youtube</button></a></div>
+            </div>
+            
         {% endfor %}
-        
-        </br><a href="/runs/register/"><button>Register Game</button></a></br>
+        </div>
+        <a href="/runs/register/"><button>Register Game</button></a>
     </div>
 </div>
 

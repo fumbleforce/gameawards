@@ -12,22 +12,33 @@
                     <div class="game-short-container">
                         <div class="game-icon"></div>
                         <div class="game-short-text-container">
-                            <div class="game-title inner-shadow">
+                            <div class="game-title text-background">
                                 {{ game.name }}
                             </div>
                             
-                            <div class="game-short-desc inner-shadow">
+                            <div class="game-short-desc text-background">
                                 {{ game.short_desc }}
                             </div>
                         </div>
                     </div>
                     <div class="game-long-container">
                     
-                        <div class="game-devs-container">
-                            {{ devs }}
+                        <div class="game-devs-container text-background" style="padding-left:0;padding-right:0;">
+                            <div class="dev-container">
+                                <div class="dev-info">{{ game.leader.username }}</div>
+                                <div class="dev-info">Leader</div>
+
+                            </div>
+                            {% for dev in game.get_devs %}
+                                <div class="dev-container">
+                                    <div class="dev-info">{{ dev.user.username }}</div>
+                                    <div class="dev-info">{{ dev.role }}</div>
+
+                                </div>
+                            {% endfor %}
                         </div>
                         
-                        <div class="game-long-desc inner-shadow">
+                        <div class="game-long-desc text-background">
                             {{ game.description }}
                         </div>
                     

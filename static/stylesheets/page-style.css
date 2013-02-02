@@ -13,8 +13,10 @@ body {
 
 a{
 	cursor: pointer;
-	color:teal;
-	text-decoration:none;
+	color:#9ECE69;
+
+	text-decoration:underline;
+	
 }
 
 p{
@@ -150,6 +152,25 @@ footer{
 
 
 }
+
+.text-background
+{
+	position: relative;
+    overflow:hidden;
+	color: #9ECE69;
+	background: black; /*fallback*/
+	background: rgba(0,0,0,0.2);
+	padding:5px 10px 5px 10px;
+}
+.head-background
+{
+    position: relative;
+    overflow:hidden;
+	color: #9ECE69;
+	background: black; /*fallback*/
+	background: rgba(0,0,0,0.4);
+	padding:5px 10px 5px 10px;   
+}
 	
 .black-border
 {	
@@ -255,8 +276,7 @@ box-shadow:0px 0px 0px 15px #222;
 
 .single-page-container
 {
-    padding-left:30px;
-    padding-right:30px;
+
     height:100%;
 }
 
@@ -447,8 +467,8 @@ box-shadow:0px 0px 0px 15px #222;
 	margin-top: 80px;
 	margin-bottom: 40px;
 	width: 318px; 
-	height: 80px;
-		margin-right:auto;
+	height: 79px;
+	margin-right:auto;
 	margin-left:auto; 
 	background-image: url(../images/participants-text.png) ; 
 }

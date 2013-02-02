@@ -71,7 +71,7 @@
     overflow:hidden;
 
 }
-.game-in-list-container:hover
+/*.game-in-list-container:hover
 {
     height:800px;
     -moz-transition: all 0.5s ease-in-out;
@@ -79,7 +79,7 @@
     -o-transition: all 0.5s ease-in-out;
     -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s;
-}
+}*/
 
 .game-icon
 {
@@ -100,15 +100,14 @@
     font-size:40px;
     text-align:left;
     vertical-align:top;
-    margin-bottom:10px;
-    padding: 0 20px 0 20px;
-    width:500px;
-    height:70px;
+    margin-bottom:20px;
+    width:520px;
+    height:60px;
     overflow:hidden;
 }
 .game-short-desc
 {
-    width:500px;
+    width:520px;
     height:100px;
     overflow:hidden;
     font-size:20px;
@@ -123,20 +122,56 @@
 {
     width:760px;
     height:auto;
-    padding-top:20px;
     float:left;
+    margin-top:20px;
 }
 .game-devs-container
 {
-    width:100px;
-    height:1px;
+    width:200px;
+    height:auto;
     float:left;
+    margin-right:20px;
 }
 .game-long-desc
 {
-    width:500px;
+    width:520px;
     height:100%;
-    float:right;
-    padding-left:20px;
+    float:left;
+
+}
+.dev-container
+{
+    width:180px;
+    height:auto;
+    margin-bottom:10px;
+    margin-top:10px;
+    font-size:12px;
+}
+.dev-info
+{
+    font-size:12px;
+    padding-left:5px;
+    padding-right:5px;
+}
+.dev-separator
+{
+    width:100px;
+    margin-left:50px;
+    margin-right:50px;
+    margin-bottom:20px;
+    margin-top:20px;
+    height:1px;
+
+}
+.your-game-list-element
+{
+    
 }
 
+.game-link
+{
+    margin-top:10px;
+    margin-bottom:20px;
+    height:45px;
+    width:100%;
+}

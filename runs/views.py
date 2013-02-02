@@ -56,11 +56,35 @@ def game_list_request(request):
         context_instance=RequestContext(request))
 
 
-def game_request(request, game_id):
-    game = Game.objects.get(pk=game_id)
-    context = {'game':game}
+def game_edit_request(request, game_id):
+    g = Game.objects.get(pk=game_id)
+    
+    ayah_html = ayah.get_publisher_html()
+    
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/login/')
+    if request.method == 'POST':
+        form = GameRegistrationForm(request.POST, request.FILES)
+        if form.is_valid():
+            secret = request.POST['session_secret']
+            passed = ayah.score_result(secret)
+            if passed:
+                g.name=form.cleaned_data['name']
+                g.short_desc = form.cleaned_data['short_desc']
+                g.description = form.cleaned_data['description']
+                g.icon = form.cleaned_data['icon']
+                g.team = form.cleaned_data['team']
+                g.save()
+                return HttpResponseRedirect('/members/profile/')
+            else:
+                context = {'form':form, 'ayah_html':ayah_html}
+        else:
+            context = {'form':form,'ayah_html':ayah_html}
+    else:
+        form = GameRegistrationForm(instance=g)
+        context = {'form':form,'ayah_html':ayah_html}
     return render_to_response(
-        'runs/game.html', 
+        'runs/register_game.html', 
         context, 
         context_instance=RequestContext(request))
 

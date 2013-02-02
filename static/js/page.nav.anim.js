@@ -18,4 +18,20 @@ $(document).ready(function() {
 	    }
     });
     
+    
+    $('.game-in-list-container').click(function(event) {
+        if ($(this).height() <= 220 && $(this).height() >= 180)
+        {
+            $(this).css('height', '100%');
+            var max = $(this).height();
+            $(this).css('height', '200px');
+            $(this).animate({ height: max+'px' },max/1.5,'linear');
+        }
+        else
+        {
+            var h = $(this).height()
+            $(this).animate({height:'200px'}, h/1.5, 'linear');
+        }
+
+    });
 });
