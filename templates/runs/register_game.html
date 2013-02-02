@@ -8,32 +8,45 @@
     <form action="" method="post">
     {% csrf_token %}
 
-        <h1> Register Game </h1>
-        {% if form.errors %}
-            <p>
-            Please correct the following fields:</br>
-            {% for e in form.errors %}
-                {{ e }}
-            </p>
-            {% endfor %}
-        {% endif %}
-        </br></br>
+
         <div class="register_div">
-                {% if form.name.errors %}<p class="error">{{ form.name.errors }}</p>{% endif %}
-                <p><label for="name"{% if form.name.errors %} class="error"{% endif %}>Name:</label></p>
-                <p>{{ form.name }}</p>
+                <p><label for="name"{% if form.name.errors %} class="error"{% endif %}>Title:</label></p>
+                <p>
+                    {{ form.name }}
+                    <script>
+		                var nameValidation = new LiveValidation('id_name', { validMessage: 'Accepted', wait: 500});
+		                nameValidation.add(Validate.Presence, {failureMessage: "Required"});
+		                nameValidation.add( Validate.Length, { minimum: 1, maximum: 100 } );
+		            </script>  
+                </p>
         </div>
         </br>
         <div class="register_div">
-                {% if form.team.errors %}<p class="error">{{ form.team.errors }}</p>{% endif %}
                 <p><label for="team"{% if form.team.errors %} class="error"{% endif %}>Team:</label></p>
-                <p>{{ form.team }}</p>
+                <p>
+                    {{ form.team }}
+                    <script>
+		                var nameValidation = new LiveValidation('id_team', { validMessage: 'Accepted', wait: 500});
+		                nameValidation.add(Validate.Presence, {failureMessage: "Required"});
+		                nameValidation.add( Validate.Length, { minimum: 1, maximum: 100 } );
+		            </script>  
+               </p>
+
         </div>
         </br>
         <div class="register_div">
-                {% if form.description.errors %}<p class="error">{{ form.description.errors }}</p>{% endif %}
                 <p><label for="description"{% if form.description.errors %} class="error"{% endif %}>Description:</label></p>
-                <p>{{ form.description }}</p>
+                <p>
+                    {{ form.description }}
+                    
+                </p>
+                <p>
+                    <script>
+		                var nameValidation = new LiveValidation('id_description', { validMessage: 'Accepted', wait: 500});
+		                nameValidation.add(Validate.Presence, {failureMessage: "Required"});
+		                nameValidation.add( Validate.Length, { minimum: 100, maximum: 2000 } );
+		            </script>  
+                </p>
         </div>
         </br>
         

@@ -8,13 +8,30 @@
 	    <div id="game_list_container">
             {% if games %}
                 {% for game in games %}
-                <div class="black-container round-and-shadow game-in-list-container">
-                    <h2>
-                        <a href="/runs/{{game.id}}">{{ game.name }}</a>
-                    </h2>
-                    <p>
-                        {{ game.description }}
-                    </p>
+                <div id="game_{{ game.id }}" class="black-container round-and-shadow game-in-list-container">
+                    <div class="game-short-container">
+                        <div class="game-icon"></div>
+                        <div class="game-short-text-container">
+                            <div class="game-title inner-shadow">
+                                {{ game.name }}
+                            </div>
+                            
+                            <div class="game-short-desc inner-shadow">
+                                {{ game.short_desc }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="game-long-container">
+                    
+                        <div class="game-devs-container">
+                            {{ devs }}
+                        </div>
+                        
+                        <div class="game-long-desc inner-shadow">
+                            {{ game.description }}
+                        </div>
+                    
+                    </div>
                 </div>
                 {% endfor %}
             {% else %}

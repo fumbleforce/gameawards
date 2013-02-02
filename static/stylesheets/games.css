@@ -59,6 +59,7 @@
 #game_list_container
 {
     width:800px;
+    height:100%;
     margin-right:auto;
 	margin-left:auto;
 }
@@ -66,5 +67,76 @@
 {
     margin-bottom:30px;
     width:760px;
+    height:200px;
+    overflow:hidden;
+
+}
+.game-in-list-container:hover
+{
+    height:800px;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s;
+}
+
+.game-icon
+{
+    width:200px;
+    height:200px;
+    float:left;
+    background:black;
+}
+.game-short-text-container
+{
+    width:540px;
+    height:200px;
+    padding-left:20px;
+    float:left;
+}
+.game-title
+{
+    font-size:40px;
+    text-align:left;
+    vertical-align:top;
+    margin-bottom:10px;
+    padding: 0 20px 0 20px;
+    width:500px;
+    height:70px;
+    overflow:hidden;
+}
+.game-short-desc
+{
+    width:500px;
+    height:100px;
+    overflow:hidden;
+    font-size:20px;
+}
+.game-short-container
+{
+    width:760px;
+    height:200px;
+    float:top;
+}
+.game-long-container
+{
+    width:760px;
+    height:auto;
+    padding-top:20px;
+    float:left;
+}
+.game-devs-container
+{
+    width:100px;
+    height:1px;
+    float:left;
+}
+.game-long-desc
+{
+    width:500px;
+    height:100%;
+    float:right;
+    padding-left:20px;
 }
 
