@@ -1,0 +1,63 @@
+{% extends "single_page.html" %}
+
+
+
+
+{% block page %}
+
+<div id="add-game-pic-container" class="single-page-container">
+    {% for e in form.errors %}
+        <p>{{e}}</p>
+    {% endfor %}
+    <div id="existing-images-container">
+        {% if images %}
+            {% for img in images %}
+               <div class="text-background existing-image"> 
+                    <div class="existing-image-title">{{ img.title }}</div>
+                    <div class="existing-image-url">{{ img.image.url }}</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> No images have been added </p>
+        {% endif %}
+    </div>
+    <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+
+        <div class="register_div">
+                <p><label for="title"{% if form.image.errors %} class="error"{% endif %}>Title:</label></p>
+                <p>
+                    {{ form.title }}
+                    <script>
+		                var nameValidation = new LiveValidation('id_title', { validMessage: 'Accepted', wait: 500});
+		                nameValidation.add(Validate.Presence, {failureMessage: "Required"});
+		                nameValidation.add( Validate.Length, { minimum: 1, maximum: 100 } );
+		            </script>  
+                </p>
+        </div>
+        </br>
+        <div class="register_div">
+                <p><label for="image"{% if form.image.errors %} class="error"{% endif %}>Image:</label></p>
+                <div style="font-size:12px;">
+                    If this is your game icon, it MUST be 200x200 pixels in size. 
+                </div>
+                <p>
+                    {{ form.image }}
+               </p>
+
+        </div>
+        </br>
+        <div class="register_div">
+                <p><label for="game_icon"{% if form.description.errors %} class="error"{% endif %}>Game Icon?</label></p>
+                <p>
+                    {{ form.game_icon }} <div style="font-size:12px;">Click this button if this picture is your main game icon.</div>
+                </p>
+
+        </div>
+        </br>
+        
+        <p><input type="submit" alt="register" /></p>
+    </form>
+</div>
+{% endblock %}

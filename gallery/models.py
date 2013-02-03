@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from runs.models import Game
+
 
 class Img(models.Model):
     title = models.CharField(max_length = 100)
@@ -25,7 +25,7 @@ class GamePic(models.Model):
     image = models.ImageField(upload_to="images/games")
     added_date = models.DateField()
     owner = models.ForeignKey(User)
-    game = models.ForeignKey(Game)
+    game = models.ForeignKey('runs.Game')
     game_icon = models.BooleanField(default=False)
     
     def __unicode__(self):

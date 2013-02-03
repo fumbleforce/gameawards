@@ -71,22 +71,17 @@
     overflow:hidden;
 
 }
-/*.game-in-list-container:hover
+.game-in-list-container:hover
 {
-    height:800px;
-    -moz-transition: all 0.5s ease-in-out;
-    -ms-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
-    -webkit-transition: all 0.5s ease-in-out;
-    transition: all 0.5s;
-}*/
+    cursor:pointer;
+}
 
 .game-icon
 {
     width:200px;
     height:200px;
     float:left;
-    background:black;
+    background-image:url(../images/default-game-icon.png);
 }
 .game-short-text-container
 {
@@ -172,6 +167,6 @@
 {
     margin-top:10px;
     margin-bottom:20px;
-    height:45px;
+    height:90px;
     width:100%;
 }

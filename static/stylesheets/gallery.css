@@ -1,0 +1,22 @@
+#existing-images-container
+{
+    width:100%;
+    height:auto;
+    margin-bottom:20px;
+}
+.existing-image
+{
+    width:780px;
+    height:25px;
+    margin-bottom:10px;
+}
+.existing-image-title
+{
+    font-size:15px;
+    float:left;
+}
+.existing-image-url
+{
+    float:right;
+    font-size:15px;
+}

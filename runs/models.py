@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from members.models import Team
-
+from gallery.models import GamePic
 
 class Run(models.Model):
     year = models.CharField(max_length = 4)
@@ -30,6 +30,9 @@ class Game(models.Model):
     
     def __unicode__(self):
         return self.name
+    
+    def get_icon(self):
+        return GamePic.objects.filter(game=self, game_icon=True)
 
         
 class Developer(models.Model):

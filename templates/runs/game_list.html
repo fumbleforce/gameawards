@@ -10,7 +10,13 @@
                 {% for game in games %}
                 <div id="game_{{ game.id }}" class="black-container round-and-shadow game-in-list-container">
                     <div class="game-short-container">
-                        <div class="game-icon"></div>
+                        
+                           {% if game.get_icon %}
+                                <div class="game-icon" style="background-image:url({{ game.get_icon.0.image.url }});">
+                            {% else %}
+                                <div class="game-icon">
+                            {% endif %}
+                        </div>
                         <div class="game-short-text-container">
                             <div class="game-title text-background">
                                 {{ game.name }}

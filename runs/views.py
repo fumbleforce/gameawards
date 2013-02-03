@@ -6,6 +6,7 @@ from django.utils import timezone
 from runs.forms import GameRegistrationForm
 from runs.models import Game, Run, Developer
 import ayah
+from gallery.models import GamePic
 
 
 
@@ -24,7 +25,6 @@ def game_registration_request(request):
                 g = form.save(commit=False)
                 #g.name=form.cleaned_data['name']
                 #g.description = form.cleaned_data['description']
-                #g.icon = form.cleaned_data['icon']
                 #g.team = form.cleaned_data['team']
                 g.added_date = timezone.now()
                 g.run = get_object_or_404(Run, current_run = True)
@@ -72,7 +72,6 @@ def game_edit_request(request, game_id):
                 g.name=form.cleaned_data['name']
                 g.short_desc = form.cleaned_data['short_desc']
                 g.description = form.cleaned_data['description']
-                g.icon = form.cleaned_data['icon']
                 g.team = form.cleaned_data['team']
                 g.save()
                 return HttpResponseRedirect('/members/profile/')

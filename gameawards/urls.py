@@ -18,8 +18,11 @@ if socket.gethostname() == "TheMatrix":
         url(r'^resetpassword/', 'members.views.reset_password_request'),
         url(r'^profile/', 'members.views.profile_request'),
         url(r'^games/', 'runs.views.game_list_request'),
+        url(r'^gallery/', include('gallery.urls')),
     )
-    
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+        'document_root': settings.MEDIA_ROOT}))
     
 else:
     urlpatterns = patterns('',
@@ -30,4 +33,6 @@ else:
         url(r'^info/', 'content.views.info_request'),
 
     )
+    
+
 
