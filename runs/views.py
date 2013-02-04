@@ -3,10 +3,9 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.models import User
 from django.template import RequestContext
 from django.utils import timezone
-from runs.forms import GameRegistrationForm
+from runs.forms import GameRegistrationForm, GameDevForm
 from runs.models import Game, Run, Developer
 import ayah
-from gallery.models import GamePic
 
 
 
@@ -23,9 +22,6 @@ def game_registration_request(request):
             passed = ayah.score_result(secret)
             if passed:
                 g = form.save(commit=False)
-                #g.name=form.cleaned_data['name']
-                #g.description = form.cleaned_data['description']
-                #g.team = form.cleaned_data['team']
                 g.added_date = timezone.now()
                 g.run = get_object_or_404(Run, current_run = True)
                 g.leader = request.user
@@ -88,7 +84,28 @@ def game_edit_request(request, game_id):
         context_instance=RequestContext(request))
 
 
-
+def add_game_dev_request(request, game_id):
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/login/')
+    
+    g = Game.objects.get(pk = game_id)
+    devs = Developer.objects.filter(game=g)
+    if request.method == 'POST':
+        form = GameDevForm(request.POST, request.FILES)
+        if form.is_valid():
+            d = form.save(commit=False)
+            d.game = g
+            d.save()
+            return HttpResponseRedirect('/runs/add_game_dev/'+str(game_id))
+        else:
+            context = {'form':form, 'devs':devs}
+    else:
+        form = GameDevForm()
+        context = {'form':form,'devs':devs}
+    return render_to_response(
+        'runs/add_game_dev.html', 
+        context, 
+        context_instance=RequestContext(request))
 
 
 

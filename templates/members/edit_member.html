@@ -1,27 +1,19 @@
 {% extends "single_page.html" %}
 
 
-{% block text_head %}<div id="register-member-text"></div>{% endblock %}
+{% block text_head %}<div id="edit-member-text"></div>{% endblock %}
 
 {% block page %}
 
 <div id="register-member-container" class="single-page-container">
-    <div id="reguster-member-info" class="text-background">
-        Only individuals who intend to participate in the competition as a developer, or member of a team, need to register on this site. </br>There is no other benefit to registering.</br></br>
-        Any registered member found to register games without an intent to participate in the game-development competition or concept competition will be permanently banned without warning.</br> We are only interested in serious contributions.</br></br>
-        Read our <a href="/info/#third-container">Rules</a> for more information.</br></br>
-        
-        Thank you :)
-    </div>
+    
+    {% for e in form.errors %}
+        <p>{{ e }}</p>
+    {% endfor %}
     </br>
     <form action="" method="post">
         {% csrf_token %}
-        {% if form.errors %}<p>Please correct the following fields:</p>{% endif %}
-        <div class="register_div">
-                {% if form.username.errors %}<p class="error">{{ form.username.errors }}</p>{% endif %}
-                <p><label for="username"{% if form.username.errors %} class="error"{% endif %}>Username:</label></p>
-                <p>{{ form.username }}</p>
-        </div></br>
+
         <div class="register_div">
                 {% if form.email.errors %}<p class="error">{{ form.email.errors }}</p>{% endif %}
                 <p><label for="email"{% if form.email.errors %} class="error"{% endif %}>Email:</label></p>
@@ -52,9 +44,6 @@
                 <p><label for="about"{% if form.about.errors %} class="error"{% endif %}>About Yourself:</label></p>
                 <p>{{ form.about }}</p>
         </div></br>
-
-        {{ ayah_html|safe }}
-
 
         <p><input type="submit" alt="register" /></p>
     </form>

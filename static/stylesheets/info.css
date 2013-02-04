@@ -6,11 +6,13 @@
 }
 .org-info
 {
-    height:215px;
+    height:150px;
+    width:570px;
     float:left;
-    margin-top: 50px;
+    margin-top: 40px;
 	margin-bottom: auto;
     padding-left:50px;
+    padding-top:20px;
 
 }
 .org-tags

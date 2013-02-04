@@ -31,13 +31,13 @@
                     
                         <div class="game-devs-container text-background" style="padding-left:0;padding-right:0;">
                             <div class="dev-container">
-                                <div class="dev-info">{{ game.leader.username }}</div>
+                                <div class="dev-info">{{ game.leader.first_name}}&nbsp;{{ game.leader.last_name }}</div>
                                 <div class="dev-info">Leader</div>
 
                             </div>
                             {% for dev in game.get_devs %}
                                 <div class="dev-container">
-                                    <div class="dev-info">{{ dev.user.username }}</div>
+                                    <div class="dev-info">{{ dev.user.first_name}}&nbsp;{{ dev.user.last_name }}</div>
                                     <div class="dev-info">{{ dev.role }}</div>
 
                                 </div>

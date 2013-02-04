@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from members.models import UserProfile
-from members.forms import LoginForm, UserRegistrationForm
+from members.forms import LoginForm, UserRegistrationForm, UserEditForm
 import ayah
 from runs.models import Game
 
@@ -105,4 +105,35 @@ def reset_password_request(request):
         context_instance=RequestContext(request))
     
     
+def edit_member_request(request):
+    
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/members/login/')
+        
+    if request.method == 'POST':
+        form = UserEditForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            user = request.user
+            user.email = form.cleaned_data['email']
+            user.password = form.cleaned_data['password']
+            user.first_name = form.cleaned_data['first_name']
+            user.last_name = form.cleaned_data['last_name']
+            user.save()
+            
+            profile = user.get_profile()
+            profile.about = form.cleaned_data['about']
+            profile.save()
+
+            return HttpResponseRedirect('/members/profile/')
+        else:
+            context = {'form':form}
+    else:
+        form = UserEditForm(instance=request.user)
+        context = {'form':form}
+        
+    return render_to_response(
+        'members/edit_member.html', 
+        context, 
+        context_instance=RequestContext(request))
+           
 

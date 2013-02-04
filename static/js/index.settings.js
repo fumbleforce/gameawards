@@ -136,6 +136,7 @@ function moveLogo(){
 	$('.nt-logo').css('left', (d+200)+'px');
 	$('.arm-logo').css('left', (d+188)+'px');
 	$('.start-logo').css('left', (d+176)+'px');
+	$('.etat-logo').css('left', (d+164)+'px');
 	var d2 = contentwidth;
 	$('.bg-behind-logo').css('left', d2-1+'px');
 	var d3 = contentwidth+780;

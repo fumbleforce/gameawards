@@ -19,7 +19,7 @@ class Run(models.Model):
 
 
 class Game(models.Model):
-    name = models.CharField(max_length = 50, unique=True)
+    name = models.CharField(max_length = 50)
     added_date = models.DateTimeField('date added')
     description = models.TextField(null=True, blank=True)
     short_desc = models.TextField(null=True, blank=True, max_length=170)
@@ -33,6 +33,9 @@ class Game(models.Model):
     
     def get_icon(self):
         return GamePic.objects.filter(game=self, game_icon=True)
+        
+    def get_devs(self):
+        return Developer.objects.filter(game=self)
 
         
 class Developer(models.Model):

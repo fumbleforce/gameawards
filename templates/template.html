@@ -52,18 +52,18 @@
         <td style="width: 50%">&nbsp;</td>
         <td>
             <div class="nav-wrap">
-                <ul class="group" id="nav-elements">
-                    {% if request.path != "/" %}     <li><a href="/">HOME</a></li>{% endif %}
-                    {% if request.path != "/info/" %}<li><a href="/info">INFO</a></li>{% endif %}
-					{% if request.path != "/games/" %}<li><a href="/games">GAMES</a></li>{% endif %}
+                <div class="group" id="nav-elements" style="margin-left=auto;margin-right:auto;width:45%;">
+                    {% if request.path != "/" %}     <a href="/">HOME</a>{% endif %}
+                    {% if request.path != "/info/" %}<a href="/info">INFO</a>{% endif %}
+					{% if request.path != "/games/" %}<a href="/games">GAMES</a>{% endif %}
 					{% if request.path != "/members/profile/" and request.path != "/profile/" %}
 					{% if user.is_authenticated %}
-					    <li><a href="/profile">PROFILE</a></li>
+					    <a href="/profile">PROFILE</a>
 					{% else %}
-					    <li><a href="/profile">LOG IN</a></li>
+					    <a href="/profile">LOG IN</a>
 					{% endif %}
 					{% endif %}
-                </ul>
+                </div>
             </div>			
         </td>
         <td style="width: 50%">&nbsp;</td>

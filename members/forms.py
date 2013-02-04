@@ -41,7 +41,11 @@ class LoginForm(forms.Form):
     password = forms.CharField(label=(u'Password'), widget = forms.PasswordInput(render_value=False))
     
     
-    
+class UserEditForm(ModelForm):
+    class Meta:
+        model = User
+        exclude = ('username', 'date_joined', 'last_login')
+        include = ('UserProfile.about')
     
     
     

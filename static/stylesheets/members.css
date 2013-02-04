@@ -59,7 +59,7 @@
 }
 #your-games-container
 {
-    padding-top:20px;
+    padding-top:40px;
 }
 
 
@@ -126,7 +126,12 @@
 #your-game-list-container
 {
     margin-top:20px;
-    margin-bottom:20px;
+    margin-bottom:40px;
+}
+#reguster-member-info
+{
+    width:780px;
+    height:auto;
 }
 
 

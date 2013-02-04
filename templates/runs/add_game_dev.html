@@ -1,0 +1,56 @@
+{% extends "single_page.html" %}
+
+
+
+
+{% block page %}
+
+<div id="add-game-dev-container" class="single-page-container">
+    {% for e in form.errors %}
+        <p>{{ e }}</p>
+    {% endfor %}
+    <div id="existing-devs-container">
+        {% if devs %}
+            {% for dev in devs %}
+               <div class="text-background existing-devs"> 
+                    <div class="existing-devs-username">{{ dev.user.username }}</div>
+                    <div class="existing-devs-full-name">{{ dev.user.first_name}}&nbsp;{{ dev.user.last_name }}</div>
+                    <div class="existing-devs-role">{{ dev.role }}</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p> No devs have been added </p>
+        {% endif %}
+    </div>
+    <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+
+        <div class="register_div">
+                <p><label for="role"{% if form.role.errors %} class="error"{% endif %}>Role:</label></p>
+                <p>
+                    {{ form.role }}
+                    <script>
+		                var nameValidation = new LiveValidation('id_role', { validMessage: 'Accepted', wait: 500});
+		                nameValidation.add(Validate.Presence, {failureMessage: "Required"});
+		                nameValidation.add( Validate.Length, { minimum: 1, maximum: 100 } );
+		            </script>  
+                </p>
+        </div>
+        </br>
+        <div class="register_div">
+                <p><label for="user"{% if form.user.errors %} class="error"{% endif %}>User:</label></p>
+                <div style="font-size:12px;">
+                    Exact username of the collaborator you want to add(needs to be registered)
+                </div>
+                <p>
+                    {{ form.user }}
+               </p>
+
+        </div>
+        </br>
+        
+        <p><input type="submit" alt="register" /></p>
+    </form>
+</div>
+{% endblock %}

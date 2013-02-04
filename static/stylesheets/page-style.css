@@ -112,6 +112,8 @@ footer{
 .start-logo{background-position:-240px 0px; top: 560px}
 .start-logo:hover{background-position:-240px -60px}
 
+.etat-logo{background-position:-360px 0px; top: 640px}
+.etat-logo:hover{background-position:-360px -60px}
 
 .temp
 {
@@ -161,6 +163,23 @@ footer{
 	background: black; /*fallback*/
 	background: rgba(0,0,0,0.2);
 	padding:5px 10px 5px 10px;
+}
+.text-background a
+{
+    color:black;
+}
+.green-text-background
+{
+	position: relative;
+    overflow:hidden;
+	color: black;
+	background: black; /*fallback*/
+	background: rgba(0,0,0,0.2);
+	padding:5px 10px 5px 10px;
+}
+.green-text-background a
+{
+    color:black;
 }
 .head-background
 {
@@ -324,6 +343,10 @@ box-shadow:0px 0px 0px 15px #222;
 	padding-top: 80px;
 	overflow: hidden; 
 }
+#second-container a
+{
+    color:black;
+}
 #third-container
 {	
 	height: auto;
@@ -342,6 +365,10 @@ box-shadow:0px 0px 0px 15px #222;
 	background-color: #89C559;
 	overflow: hidden; 
 
+}
+#fourth-container a
+{
+    color:black;
 }
 #fifth-container
 {
@@ -471,6 +498,16 @@ box-shadow:0px 0px 0px 15px #222;
 	margin-right:auto;
 	margin-left:auto; 
 	background-image: url(../images/participants-text.png) ; 
+}
+#edit-member-text
+{
+	margin-top: 80px;
+	margin-bottom: 80px;
+	width: 800px; 
+	height: 80px;
+	margin-right:auto;
+	margin-left:auto;
+	background-image: url(../images/edit-member-text.png); 
 }
 
 
