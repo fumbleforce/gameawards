@@ -124,21 +124,21 @@ footer{
 
 .round-and-shadow
 {
-	/* rounded corners */
+	/* rounded corners 
 
     -moz-border-radius: 10px;
 
     -webkit-border-radius: 10px;
 
-    border-radius: 10px;
+    border-radius: 10px;*/
 
     /* add box shadows */
 
-    -moz-box-shadow: 15px 15px 20px rgba(0,0,0,0.3);
+    -moz-box-shadow: 15px 15px 20px rgba(0,0,0,0.5);
 
-    -webkit-box-shadow: 15px 15px 20px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 15px 15px 20px rgba(0,0,0,0.5);
 
-    box-shadow: 15px 15px 20px rgba(0,0,0,0.3);
+    box-shadow: 15px 15px 20px rgba(0,0,0,0.5);
 }
 .inner-shadow
 {

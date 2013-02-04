@@ -115,7 +115,7 @@ def edit_member_request(request):
         if form.is_valid():
             user = request.user
             user.email = form.cleaned_data['email']
-            user.password = form.cleaned_data['password']
+            user.set_password(self.cleaned_data["password"])
             user.first_name = form.cleaned_data['first_name']
             user.last_name = form.cleaned_data['last_name']
             user.save()

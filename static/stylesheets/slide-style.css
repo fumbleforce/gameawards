@@ -242,11 +242,12 @@
 {
 	width: 120px;
 	height: 120px;
-	top: 130px;
-	position: absolute;
+	position: relative;
 	display: block;
 	background: url(../images/slider/contact-button-sprite.png) no-repeat;
 	overflow: hidden;
+	float:left;
+	margin-top:100px;
 }
 
 .facebook-button{background-position: 0px 0px}
@@ -258,9 +259,9 @@
 .mail-button{background-position: -240px 0px}
 .mail-button:hover{background-position: -240px -120px}
 
-.contact-left{left: 60px}
-.contact-center{left: 340px}
-.contact-right{left: 620px}
+.contact-left{margin-left: 73px;margin-right:73px;}
+.contact-center{margin-left: 73px;margin-right:73px;}
+.contact-right{margin-left: 73px;margin-right:73px;}
 
 /*ARROWS FOR IMAGE SLIDERS COMES HERE*/
 a.arrow-button

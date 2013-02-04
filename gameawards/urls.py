@@ -4,7 +4,7 @@ from django.contrib import admin
 admin.autodiscover()
 import os, socket
 
-if socket.gethostname() == "TheMatrix":
+if socket.gethostname() == "TheMatrix" or "Virus":
     urlpatterns = patterns('',
         url(r'^$', 'news.views.index'),
         url(r'^news/', include('news.urls')),

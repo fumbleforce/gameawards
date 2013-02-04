@@ -42,10 +42,15 @@ class LoginForm(forms.Form):
     
     
 class UserEditForm(ModelForm):
+    email = forms.EmailField(label=('Email Address'))
+    password = forms.CharField(label=('Password'), widget = forms.PasswordInput(render_value=False))
+    password1 = forms.CharField(label=('Verify Password'), widget = forms.PasswordInput(render_value=False))
+    first_name = forms.CharField(label=('First Name'))
+    last_name = forms.CharField(label=('Last Name'))
+
     class Meta:
-        model = User
-        exclude = ('username', 'date_joined', 'last_login')
-        include = ('UserProfile.about')
+        model = UserProfile
+        exclude = ('user', 'portrait')
     
     
     

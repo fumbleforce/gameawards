@@ -101,10 +101,8 @@
 		        <div id="participants-text" class="picture-center"></div>
 		        
 		        <!--GAMES SLIDER-->
-			    <div id="participants-slider" class="royalSlider rsMinW ">
-				    {% for slide in games_slide_list %}
-                        {{ slide.text|safe }}
-                    {% endfor %}
+			    <div style="height:400px;width:800px;">
+
 			    </div>
 		        <!--END GAMES SLIDER-->
 		
@@ -117,13 +115,11 @@
 		        <div id="contact-us-text" class="picture-center"></div>
 		
 		        <!--CONTACT US SLIDER-->
-			    <div id="contact-us-slider" class="royalSlider rsMinW ">
-				    {% for slide in contact_slide_list %}
-                        {{ slide.text|safe }}
-                    {% endfor %}
-			    </div>
-		        <!--END CONTACT US SLIDER-->
+			    <a class="contact-button contact-left facebook-button" href="http://www.facebook.com/norwegiangameawards" target="_blank"></a>
+                <a class="contact-button contact-center twitter-button" href="https://twitter.com/Gameawards" target="_blank"></a>
+                <a class="contact-button contact-right mail-button" href="mailto:contact@gameawards.no" target="_blank"></a>
 
+</div>
 {% endblock %}
 
     

@@ -2,12 +2,12 @@
 
 import os, socket, ayah
 
-#Initialization of ayah
+#Initialization of Are you human
 ayah.configure("15aaa63b65ead6b11342d1c7f349c68e875a3f16","5d736518475d70a969d57bf2caadb32ce7160500")
 
 
 
-if socket.gethostname() == "TheMatrix":
+if socket.gethostname() == "TheMatrix" or "Virus":
     DEBUG = True
     TEMPLATE_DEBUG = DEBUG
 
@@ -20,7 +20,7 @@ if socket.gethostname() == "TheMatrix":
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': '/home/jorgen/gameawards/ngadb.db',    # Or path to database file if using sqlite3.
+            'NAME': '/home/jorgen/progging/gameawards/ngadb.db',    # Or path to database file if using sqlite3.
             'USER': '',                      # Not used with sqlite3.
             'PASSWORD': '',                  # Not used with sqlite3.
             'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.

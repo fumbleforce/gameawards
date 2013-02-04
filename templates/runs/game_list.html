@@ -10,11 +10,11 @@
                 {% for game in games %}
                 <div id="game_{{ game.id }}" class="black-container round-and-shadow game-in-list-container">
                     <div class="game-short-container">
-                        
+                        <div class="game-icon">
                            {% if game.get_icon %}
-                                <div class="game-icon" style="background-image:url({{ game.get_icon.0.image.url }});">
+                                <img src="{{ game.get_icon.0.image.url }}" width="200" height="200" />
                             {% else %}
-                                <div class="game-icon">
+                                
                             {% endif %}
                         </div>
                         <div class="game-short-text-container">
@@ -28,26 +28,30 @@
                         </div>
                     </div>
                     <div class="game-long-container">
-                    
-                        <div class="game-devs-container text-background" style="padding-left:0;padding-right:0;">
-                            <div class="dev-container">
-                                <div class="dev-info">{{ game.leader.first_name}}&nbsp;{{ game.leader.last_name }}</div>
-                                <div class="dev-info">Leader</div>
-
-                            </div>
-                            {% for dev in game.get_devs %}
+                        <div class="dev-long-container" style="width:100%;height:auto;">
+                            <div class="game-devs-container text-background" style="padding-left:0;padding-right:0;">
                                 <div class="dev-container">
-                                    <div class="dev-info">{{ dev.user.first_name}}&nbsp;{{ dev.user.last_name }}</div>
-                                    <div class="dev-info">{{ dev.role }}</div>
+                                    <div class="dev-info">{{ game.leader.first_name}}&nbsp;{{ game.leader.last_name }}</div>
+                                    <div class="dev-info">Leader</div>
 
                                 </div>
-                            {% endfor %}
+                                {% for dev in game.get_devs %}
+                                    <div class="dev-container">
+                                        <div class="dev-info">{{ dev.user.first_name}}&nbsp;{{ dev.user.last_name }}</div>
+                                        <div class="dev-info">{{ dev.role }}</div>
+                                        <div class="dev-info">{{ dev.user.get_profile.about }}</div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            
+                            <div class="game-long-desc text-background">
+                                {{ game.description }}
+                            </div>
                         </div>
-                        
-                        <div class="game-long-desc text-background">
-                            {{ game.description }}
+                        {% if game.get_screens %}
+                        <div class="screenshot-container" style="width:100%;height:auto;">
                         </div>
-                    
+                        {% endif %}
                     </div>
                 </div>
                 {% endfor %}
