@@ -51,13 +51,15 @@
                         {% if game.get_screens %}
                         <div class="screen-gallery text-background">
                             {% for s in game.get_screens %}
-                                <img src="{{ s.image.url }}"></img>
+                            <div class="screen-img" style="background-image:url('{{ s.image.url }}');">
+                            </div>
 	                        {% endfor %}
                         </div>
                         {% endif %}
                         {% if game.get_vids %}
                         <div class="video-list text-background">
                             {% for v in game.get_vids %}
+                                <div class="screen-img" style="background-image:url(>
                                 <a class="screen-img" href="{{ v.video.url }}">{{ v.title }}</a>
 	                        {% endfor %}
                         </div>

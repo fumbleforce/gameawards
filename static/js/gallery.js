@@ -1,12 +1,11 @@
 $(document).ready(function() {
 
     $('.screen-img').click(function() {
-        $(this).animate({
-            top:'-200px',
-            left:'50px',
-            height:'auto',
-            width:'auto',
-            position:'absolute',
+        $(this).css({
+            top:'100px',
+            height:'800px',
+            width:'800px',
+            position:'fixed',
         });
     });
 });
