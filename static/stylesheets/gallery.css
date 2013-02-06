@@ -20,3 +20,31 @@
     float:right;
     font-size:15px;
 }
+.screen-gallery
+{
+    margin-top:20px;
+    width:760px;
+    height:200px;
+    overflow:visible;
+    padding-top:20px;
+    padding-bottom:20px;
+    padding-left:0;
+    padding-right:0;
+}
+
+.screen-gallery img
+{
+    margin-left:26px;
+    margin-right:26px;
+    height:200px;
+    width:200px;
+    float:left;
+    text-align:center;
+    max-width:600px;
+    max-height:600px;
+    z-index:6000;
+}
+.screen-gallery img:hover
+{
+
+}

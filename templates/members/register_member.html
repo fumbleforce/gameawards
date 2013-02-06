@@ -19,33 +19,63 @@
         {% if form.errors %}<p>Please correct the following fields:</p>{% endif %}
         <div class="register_div">
                 {% if form.username.errors %}<p class="error">{{ form.username.errors }}</p>{% endif %}
-                <p><label for="username"{% if form.username.errors %} class="error"{% endif %}>Username:</label></p>
+                <p><label for="username"{% if form.username.errors %} class="error"{% endif %}>Username: *</label></p>
                 <p>{{ form.username }}</p>
+                <script>
+		                var v = new LiveValidation('id_username', { validMessage: 'Accepted', wait: 500});
+		                v.add(Validate.Presence, {failureMessage: "Required"});
+		                v.add( Validate.Length, { minimum: 1, maximum: 100 } );
+		        </script>  
         </div></br>
         <div class="register_div">
                 {% if form.email.errors %}<p class="error">{{ form.email.errors }}</p>{% endif %}
-                <p><label for="email"{% if form.email.errors %} class="error"{% endif %}>Email:</label></p>
+                <p><label for="email"{% if form.email.errors %} class="error"{% endif %}>Email: *</label></p>
                 <p>{{ form.email }}</p>
+                <script>
+		                var v = new LiveValidation('id_email', { validMessage: 'Accepted', wait: 500});
+		                v.add(Validate.Presence, {failureMessage: "Required"});
+		                v.add( Validate.Length, { minimum: 1, maximum: 100 } );
+		                v.add( Validate.Email );
+		        </script>  
         </div></br>
         <div class="register_div">
                 {% if form.password.errors %}<p class="error">{{ form.password.errors }}</p>{% endif %}
-                <p><label for="password"{% if form.password.errors %} class="error"{% endif %}>Password:</label></p>
+                <p><label for="password"{% if form.password.errors %} class="error"{% endif %}>Password: *</label></p>
                 <p>{{ form.password }}</p>
+                <script>
+		                var v = new LiveValidation('id_password', { validMessage: 'Accepted', wait: 500});
+		                v.add(Validate.Presence, {failureMessage: "Required"});
+		                v.add( Validate.Length, { minimum: 1, maximum: 100 } );
+		        </script> 
         </div></br>
         <div class="register_div">
                 {% if form.password1.errors %}<p class="error">{{ form.password1.errors }}</p>{% endif %}
-                <p><label for="password1"{% if form.password1.errors %} class="error"{% endif %}>Verify Password:</label></p>
+                <p><label for="password1"{% if form.password1.errors %} class="error"{% endif %}>Verify Password: *</label></p>
                 <p>{{ form.password1 }}</p>
+                <script>
+		                var v = new LiveValidation('id_password1', { validMessage: 'Accepted', wait: 500});
+		                v.add(Validate.Presence, {failureMessage: "Required"});
+		                v.add( Validate.Length, { minimum: 1, maximum: 100 } );
+		                v.add( Validate.Confirmation, { match: 'id_password' } );
+		        </script> 
         </div></br>
         <div class="register_div">
                 {% if form.first_name.errors %}<p class="error">{{ form.first_name.errors }}</p>{% endif %}
                 <p><label for="first_name"{% if form.first_name.errors %} class="error"{% endif %}>First Name:</label></p>
                 <p>{{ form.first_name }}</p>
+                <script>
+		                var v = new LiveValidation('id_first_name', { validMessage: 'Accepted', wait: 500});
+		                v.add( Validate.Length, { minimum: 1, maximum: 100 } );
+		        </script>  
         </div></br>
         <div class="register_div">
                 {% if form.last_name.errors %}<p class="error">{{ form.last_name.errors }}</p>{% endif %}
                 <p><label for="last_name"{% if form.last_name.errors %} class="error"{% endif %}>Last Name:</label></p>
                 <p>{{ form.last_name }}</p>
+                <script>
+		                var v = new LiveValidation('id_last_name', { validMessage: 'Accepted', wait: 500});
+		                v.add( Validate.Length, { minimum: 1, maximum: 100 } );
+		        </script>  
         </div></br>
         <div class="register_div">
                 {% if form.about.errors %}<p class="error">{{ form.about.errors }}</p>{% endif %}

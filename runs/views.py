@@ -79,7 +79,7 @@ def game_edit_request(request, game_id):
         form = GameRegistrationForm(instance=g)
         context = {'form':form,'ayah_html':ayah_html}
     return render_to_response(
-        'runs/register_game.html', 
+        'runs/edit_game.html', 
         context, 
         context_instance=RequestContext(request))
 
@@ -95,6 +95,7 @@ def add_game_dev_request(request, game_id):
         if form.is_valid():
             d = form.save(commit=False)
             d.game = g
+            d.user = User.objects.get(username=form.cleaned_data['user'])
             d.save()
             return HttpResponseRedirect('/runs/add_game_dev/'+str(game_id))
         else:

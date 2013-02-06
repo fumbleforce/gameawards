@@ -18,7 +18,7 @@ $(document).ready(function() {
 	    }
     });
     
-    
+    /*
     $('.game-in-list-container').click(function(event) {
         if ($(this).height() <= 220 && $(this).height() >= 180)
         {
@@ -31,6 +31,28 @@ $(document).ready(function() {
         {
             var h = $(this).height()
             $(this).animate({height:'200px'}, h/1.5, 'linear');
+        }
+
+    });*/
+    
+     
+    $('.game-short-container').click(function(event) {
+        
+        var p = $(this).parent();
+        
+        if (p.height() <= 220 && p.height() >= 180)
+        {
+            p.children().show();
+            p.css('height', '100%');
+            var max = p.height();
+            p.css('height', '200px');
+            p.animate({ height: max+'px' },max/1.5,'linear');
+        }
+        else
+        {   
+            p.children('.game-long-container').hide('slow');
+            var h = p.height()
+            p.animate({height:'200px'}, h/1.5, 'linear');
         }
 
     });

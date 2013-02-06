@@ -12,7 +12,7 @@
     {% endfor %}
 
         <div class="register_div">
-                <p><label for="name"{% if form.name.errors %} class="error"{% endif %}>Title:</label></p>
+                <p><label for="name"{% if form.name.errors %} class="error"{% endif %}>Title: *</label></p>
                 <p>
                     {{ form.name }}
                     <script>
@@ -29,7 +29,6 @@
                     {{ form.team }}
                     <script>
 		                var nameValidation = new LiveValidation('id_team', { validMessage: 'Accepted', wait: 500});
-		                nameValidation.add(Validate.Presence, {failureMessage: "Required"});
 		                nameValidation.add( Validate.Length, { minimum: 1, maximum: 50 } );
 		            </script>  
                </p>
@@ -37,7 +36,7 @@
         </div>
         </br>
         <div class="register_div">
-                <p><label for="short_desc"{% if form.short_desc.errors %} class="error"{% endif %}>Short Description:</label></p>
+                <p><label for="short_desc"{% if form.short_desc.errors %} class="error"{% endif %}>Short Description: *</label></p>
                 <p>
                     {{ form.short_desc }}
                     
@@ -51,7 +50,7 @@
                 </p>
         </div>
         <div class="register_div">
-                <p><label for="description"{% if form.description.errors %} class="error"{% endif %}>Long Description:</label></p>
+                <p><label for="description"{% if form.description.errors %} class="error"{% endif %}>Long Description: *</label></p>
                 <p>
                     {{ form.description }}
                     

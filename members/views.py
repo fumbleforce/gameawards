@@ -115,7 +115,7 @@ def edit_member_request(request):
         if form.is_valid():
             user = request.user
             user.email = form.cleaned_data['email']
-            user.set_password(self.cleaned_data["password"])
+            user.set_password(form.cleaned_data["password"])
             user.first_name = form.cleaned_data['first_name']
             user.last_name = form.cleaned_data['last_name']
             user.save()
@@ -128,7 +128,8 @@ def edit_member_request(request):
         else:
             context = {'form':form}
     else:
-        form = UserEditForm(instance=request.user)
+        ab = request.user.get_profile().about
+        form = UserEditForm(instance=request.user, initial={'about':ab})
         context = {'form':form}
         
     return render_to_response(

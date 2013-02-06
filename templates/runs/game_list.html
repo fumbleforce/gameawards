@@ -28,18 +28,18 @@
                         </div>
                     </div>
                     <div class="game-long-container">
-                        <div class="dev-long-container" style="width:100%;height:auto;">
+                        <div class="dev-long-container">
                             <div class="game-devs-container text-background" style="padding-left:0;padding-right:0;">
                                 <div class="dev-container">
-                                    <div class="dev-info">{{ game.leader.first_name}}&nbsp;{{ game.leader.last_name }}</div>
-                                    <div class="dev-info">Leader</div>
-
+                                    <div class="dev-info dev-name">{{ game.leader.first_name}}&nbsp;{{ game.leader.last_name }}</div>
+                                    <div class="dev-info dev-role">Leader</div>
+                                    <div class="dev-info dev-about">{{ game.leader.get_profile.about }}</div>
                                 </div>
                                 {% for dev in game.get_devs %}
                                     <div class="dev-container">
-                                        <div class="dev-info">{{ dev.user.first_name}}&nbsp;{{ dev.user.last_name }}</div>
-                                        <div class="dev-info">{{ dev.role }}</div>
-                                        <div class="dev-info">{{ dev.user.get_profile.about }}</div>
+                                        <div class="dev-info dev-name">{{ dev.user.first_name}}&nbsp;{{ dev.user.last_name }}</div>
+                                        <div class="dev-info dev-role">{{ dev.role }}</div>
+                                        <div class="dev-info dev-about">{{ dev.user.get_profile.about }}</div>
                                     </div>
                                 {% endfor %}
                             </div>
@@ -49,13 +49,17 @@
                             </div>
                         </div>
                         {% if game.get_screens %}
-                        <div class="screenshot-container" style="width:100%;height:auto;position:relative;float:left;">
-                            <div id="simple-horizontal" class="royalSlider rsDefault">
-                                {% for s in game.get_screens %}
-                                    <a class="rsImg" href="{{ s.image.url }}"></a>
-	                              <!--<a class="rsImg" data-rsvideo="hhttps://vimeo.com/44388232" href="http://b.vimeocdn.com/ts/308/375/308375094_640.jpg"></a>-->
-	                            {% endfor %}
-	                        </div>
+                        <div class="screen-gallery text-background">
+                            {% for s in game.get_screens %}
+                                <img src="{{ s.image.url }}"></img>
+	                        {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if game.get_vids %}
+                        <div class="video-list text-background">
+                            {% for v in game.get_vids %}
+                                <a class="screen-img" href="{{ v.video.url }}">{{ v.title }}</a>
+	                        {% endfor %}
                         </div>
                         {% endif %}
                     </div>

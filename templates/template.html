@@ -18,6 +18,7 @@
     <script src="{{ STATIC_URL }}js/toggle.div.js"></script>
     <script src="{{ STATIC_URL }}js/page.nav.anim.js"></script>
     <script src="{{ STATIC_URL }}js/livevalidation.js"></script>
+    <script src="{{ STATIC_URL }}js/gallery.js"></script>
     {% block template_head %}{% endblock %}
     
 {% endblock %}
@@ -60,7 +61,7 @@
 					{% if user.is_authenticated %}
 					    <a class="anav" href="/profile">PROFILE</a>
 					{% else %}
-					    <a class="anav" xhref="/profile">LOG IN</a>
+					    <a class="anav" href="/profile">LOG IN</a>
 					{% endif %}
 					{% endif %}
                 </div>

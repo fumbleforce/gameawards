@@ -16,7 +16,18 @@ class GameRegistrationForm(ModelForm):
         
         
 class GameDevForm(ModelForm):
+    user = forms.CharField(label=(u'User name'))
     
     class Meta:
         model = Developer
-        exclude = ('game')
+        exclude = ('game', 'user')
+    
+    
+    def clean(self):
+        username = self.cleaned_data['user']
+        try:
+            User.objects.get(username=username)
+        except User.DoesNotExist:
+            raise forms.ValidationError('This is not a registered User.')
+        return self.cleaned_data
+    
