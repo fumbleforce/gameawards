@@ -20,13 +20,14 @@ def add_gamepic_request(request,game_id):
             p.added_date = timezone.now()
             p.image = request.FILES['image']
             p.game = get_object_or_404(Game, pk=game_id)
-            p.owner = request.user            
-            if request.POST['game_icon']:
-                gs = GamePic.objects.filter(game=g, game_icon=True)
+            p.owner = request.user        
+            p.save()    
+            if p.game_icon:
+                gs = GamePic.objects.filter(pk!=p.id, game=g, game_icon=True)
                 for gp in gs:
                     gp.game_icon=False;
                     gp.save()
-            p.save()
+            
 
             return HttpResponseRedirect('/gallery/add_game_pic/'+str(game_id))
         else:

@@ -36,6 +36,9 @@ class Game(models.Model):
         
     def get_devs(self):
         return Developer.objects.filter(game=self)
+        
+    def get_screens(self):
+        return GamePic.objects.filter(game=self, game_icon=False)
 
         
 class Developer(models.Model):
