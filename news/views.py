@@ -10,7 +10,7 @@ def index(request):
     getstarted_slide_list = Slide.objects.filter(belongs_to = 3).order_by('title')
     games_slide_list = Slide.objects.filter(belongs_to = 4).order_by('title')
     contact_slide_list = Slide.objects.filter(belongs_to = 5).order_by('title')
-    game_list = Game.objects.order_by('likes')[:8]
+    game_list = Game.objects.order_by('-added_date')[:3]
     return render_to_response(
         'news/index.html', 
         {

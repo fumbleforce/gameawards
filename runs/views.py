@@ -6,7 +6,7 @@ from django.utils import timezone
 from runs.forms import GameRegistrationForm, GameDevForm
 from runs.models import Game, Run, Developer
 import ayah
-
+from gameawards.utils import sanitizeHtml
 
 
 def game_registration_request(request):
@@ -23,6 +23,7 @@ def game_registration_request(request):
             if passed:
                 g = form.save(commit=False)
                 g.added_date = timezone.now()
+                g.description = sanitizeHtml(request.POST['description'])
                 g.run = get_object_or_404(Run, current_run = True)
                 g.leader = request.user
                 g.save()
@@ -44,7 +45,7 @@ def game_registration_request(request):
 
 def game_list_request(request):
     curr_run = Run.objects.get(current_run = True)
-    game_list = Game.objects.filter(run=curr_run)
+    game_list = Game.objects.filter(run=curr_run).order_by('-added_date')
     context = {'games':game_list}
     return render_to_response(
         'runs/game_list.html', 

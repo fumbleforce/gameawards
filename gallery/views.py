@@ -23,10 +23,11 @@ def add_gamepic_request(request,game_id):
             p.owner = request.user        
             p.save()    
             if p.game_icon:
-                gs = GamePic.objects.filter(pk!=p.id, game=g, game_icon=True)
+                gs = GamePic.objects.filter(game=g, game_icon=True)
                 for gp in gs:
-                    gp.game_icon=False;
-                    gp.save()
+                    if gp.id != p.id:
+                        gp.game_icon=False;
+                        gp.save()
             
 
             return HttpResponseRedirect('/gallery/add_game_pic/'+str(game_id))

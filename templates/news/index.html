@@ -2,6 +2,7 @@
 
 {% block template_head %}
 
+<link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/index.css" />
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhjFDtSrKYC74aDhRS9YgHPibTkpShps8&sensor=true"></script>
 <script src="{{ STATIC_URL }}js/map.style.js"></script>
 <script src="{{ STATIC_URL }}js/index.settings.js"></script>
@@ -98,11 +99,36 @@
 
 
  {% block fourth %}
+                <div id="game-whole-container">
 		        <div id="participants-text" class="picture-center"></div>
 		        
 		        <!--GAMES SLIDER-->
-			    <div style="height:400px;width:800px;">
-
+			    <div id="game-sample-container">
+                    <div id="game-sample-list">
+                        {% for g in game_list %}
+                        
+                            <div class="sample-game-container">
+                                <a href="/games/#game_{{ g.id }}">
+                                <div class="sample-game-icon">
+                                   <img src="{{ g.get_icon.image.url }}" />
+                                </div></a>
+                                <div class="sample-game-title green-text-background">
+                                    {{ g.name }}
+                                </div>
+                                <div class="sample-game-desc green-text-background">
+                                    {{ g.short_desc }}
+                                </div>
+                            
+                            </div>
+                        
+                        {% endfor %}
+                    </div>
+                    <div id="game-sample-links">
+                        <a href="/games/">See more games!</a></br>
+                        <a href="/info/#guides-container">Submission guide</a></br>
+                        <a href="/info/#third-container">Participation Rules</a>
+                    </div>
+			    </div>                    
 			    </div>
 		        <!--END GAMES SLIDER-->
 		

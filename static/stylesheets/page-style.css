@@ -4,11 +4,15 @@
 	border: 0px;
 	border-spacing: 0px;
 	font-family: 'Titillium Web', 'Trebuchet MS', sans-serif; 
-    font-weight: normal; 
-    font-size:26px;
+
 }
 body {
 	background: black;	
+}
+
+button
+{
+    font-size:26px;
 }
 
 a{

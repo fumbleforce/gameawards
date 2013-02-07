@@ -1,0 +1,62 @@
+#game-whole-container
+{
+    height:auto;
+    width:800px;
+}
+#game-sample-container
+{
+    width:800px;
+    height:600px;
+
+}
+#game-sample-list
+{
+    width:700px;
+    height:400px;
+    padding-left:50px;
+    padding-right:50px;
+    margin-bottom:40px;
+
+}
+.sample-game-container
+{
+    margin-right:16px;
+    margin-left:16px;
+    width:200px;
+    height:auto;
+    float:left;
+}
+.sample-game-desc
+{
+    width:200px;
+    height:auto;
+    
+}
+.sample-game-title
+{
+    width:200px;
+    height:55px;
+    margin-bottom:20px;
+}
+.sample-game-icon
+{
+    width:200px;
+    height:200px;
+    overflow:hidden;
+    margin-bottom:20px;
+    background-image:url(../images/default-game-icon.png);
+}
+.sample-game-icon img
+{
+    width:200px;
+    height:200px;
+}
+#game-sample-links
+{
+
+    width:700px;
+    height:auto;
+    padding-right:100px;
+    margin-bottom:40px;
+    text-align:right;
+}

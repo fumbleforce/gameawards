@@ -1,7 +1,7 @@
 {% extends "single_page.html" %}
 
 {% block content_table %}
-
+<div id=hidden-div></div>
 <div style="width:100%;padding-top:40px">
 	<div class="green-container">
 	    <div id="games-text"></div>
@@ -12,7 +12,7 @@
                     <div class="game-short-container">
                         <div class="game-icon">
                            {% if game.get_icon %}
-                                <img src="{{ game.get_icon.0.image.url }}" width="200" height="200" />
+                                <img src="{{ game.get_icon.image.url }}" width="200" height="200" />
                             {% else %}
                                 
                             {% endif %}
@@ -45,13 +45,14 @@
                             </div>
                             
                             <div class="game-long-desc text-background">
-                                {{ game.description }}
+                                {{ game.description|safe }}
                             </div>
                         </div>
                         {% if game.get_screens %}
-                        <div class="screen-gallery text-background">
+                        <div class="screen-gallery text-background" style="height:{{ game.get_screen_height }}px;">
                             {% for s in game.get_screens %}
-                            <div class="screen-img" style="background-image:url('{{ s.image.url }}');">
+                            <div class="screen-img">
+                                <img class="screen-in-list" src="{{ s.image.url }}" />
                             </div>
 	                        {% endfor %}
                         </div>

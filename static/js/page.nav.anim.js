@@ -61,11 +61,9 @@ $(document).ready(function() {
 
         var w = 0;
         $('.anav').each(function() {
-            w = w + $(this).width() + 20;
+            w = w + $(this).width() + 21;
         });
-        $('.page-nav-group').css('width', w);
-        $('.page-nav-group').css('margin-left', 'auto');
-        $('.page-nav-group').css('margin-right', 'auto');
+        $('.page-nav-group').css({'width': w, 'margin-left':'auto', 'margin-right':'auto'});
     }
     alignNav();
 });

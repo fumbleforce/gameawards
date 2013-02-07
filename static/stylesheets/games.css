@@ -133,8 +133,41 @@
     height:auto;
     float:left;
     display:table-row;
+    font-size:14px;
+    font-weight:normal;
 
 }
+
+.game-long-desc b
+{
+    font-size: 14px;
+}
+.game-long-desc strong
+{
+    font-size: 14px;
+}
+.game-long-desc p
+{
+    font-size: 14px;
+}
+.game-long-desc i
+{
+    font-size: 14px;
+}
+.game-long-desc h3
+{
+    font-size: 22px;
+}
+.game-long-desc h2
+{
+    font-size: 25px;
+}
+.game-long-desc h1
+{
+    font-size: 30px;
+}
+
+
 .dev-container
 {
     width:180px;
@@ -173,7 +206,7 @@
 }
 .your-game-list-element
 {
-    
+    font-size:26px;
 }
 
 .game-link
@@ -220,6 +253,7 @@
     width:760px;
     display:table;
 }
+
 
 
 

@@ -30,17 +30,29 @@ class Game(models.Model):
     
     def __unicode__(self):
         return self.name
-    
-    def get_icon(self):
-        return GamePic.objects.filter(game=self, game_icon=True)
         
     def get_devs(self):
         return Developer.objects.filter(game=self)
         
     def get_screens(self):
-        return GamePic.objects.filter(game=self, game_icon=False)[:3]
-
+        return GamePic.objects.filter(game=self, game_icon=False)
         
+    def get_icon(self):
+        return GamePic.objects.get(game=self, game_icon=True)
+    
+    def get_screen_height(self):
+        sc = GamePic.objects.filter(game=self, game_icon=False).count();
+        r = 1
+        c = 0
+        if sc > 8:
+            r+=1
+            for i in range(sc-8):
+                c += 1
+                if c== 8:
+                    r += 1
+                    c = 0
+        return r*80+(r-1)*10
+                
 class Developer(models.Model):
     user = models.ForeignKey(User)
     role = models.CharField(max_length = 300)
