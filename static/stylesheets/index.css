@@ -28,15 +28,17 @@
 }
 .sample-game-desc
 {
-    width:200px;
-    height:auto;
+    width:180px;
+    height:200px;
     
 }
 .sample-game-title
 {
-    width:200px;
+    width:180px;
     height:55px;
     margin-bottom:20px;
+    font-size:20px;
+    overflow:hidden;
 }
 .sample-game-icon
 {

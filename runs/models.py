@@ -27,6 +27,7 @@ class Game(models.Model):
     leader = models.ForeignKey(User)
     run = models.ForeignKey(Run)
     likes = models.IntegerField(default=0)
+    concept_only = models.BooleanField(default=False)
     
     def __unicode__(self):
         return self.name

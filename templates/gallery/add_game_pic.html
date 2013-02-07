@@ -6,9 +6,7 @@
 {% block page %}
 
 <div id="add-game-pic-container" class="single-page-container">
-    {% for e in form.errors %}
-        <p>{{e}}</p>
-    {% endfor %}
+
     <div id="existing-images-container">
         {% if images %}
             {% for img in images %}
@@ -50,8 +48,9 @@
         </br>
         <div class="register_div">
                 <p><label for="game_icon"{% if form.description.errors %} class="error"{% endif %}>Game Icon?</label></p>
+                <div style="font-size:12px;">Click this button if this picture is your main game icon.</div>
                 <p>
-                    {{ form.game_icon }} <div style="font-size:12px;">Click this button if this picture is your main game icon.</div>
+                    {{ form.game_icon }} 
                 </p>
 
         </div>

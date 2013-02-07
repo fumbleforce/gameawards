@@ -210,7 +210,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'gameawards2',    # Or path to database file if using sqlite3.
+            'NAME': 'gameawards',    # Or path to database file if using sqlite3.
             'USER': 'gameawards',                      # Not used with sqlite3.
             'PASSWORD': 'greenballs',                  # Not used with sqlite3.
             'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -260,7 +260,7 @@ else:
     # Don't put anything in this directory yourself; store your static files
     # in apps' "static/" subdirectories and in STATICFILES_DIRS.
     # Example: "/home/media/media.lawrence.com/static/"
-    STATIC_ROOT = '/home/gameawards/webapps/gastatic2/'
+    STATIC_ROOT = '/home/gameawards/webapps/gastatic/'
 
     # URL prefix for static files.
     # Example: "http://media.lawrence.com/static/"
@@ -268,7 +268,7 @@ else:
 
     # Additional locations of static files
     STATICFILES_DIRS = (
-        "/home/gameawards/webapps/django2/gameawards/static",
+        "/home/gameawards/webapps/django/gameawards/static",
         # Put strings here, like "/home/html/static" or "C:/www/django/static".
         # Always use forward slashes, even on Windows.
         # Don't forget to use absolute paths, not relative paths.
@@ -311,7 +311,7 @@ else:
         # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
         # Always use forward slashes, even on Windows.
         # Don't forget to use absolute paths, not relative paths.
-        '/home/gameawards/webapps/django2/gameawards/templates'
+        '/home/gameawards/webapps/django/gameawards/templates'
     )
 
     ACCOUNT_ACTIVATION_DAYS = 7

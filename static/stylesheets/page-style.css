@@ -177,14 +177,16 @@ footer{
 {
 	position: relative;
     overflow:hidden;
-	color: black;
+	color: #9ECE69;
+
+	font-weight:700;
 	background: black; /*fallback*/
-	background: rgba(0,0,0,0.2);
+	background: rgba(0,0,0,0.6);
 	padding:5px 10px 5px 10px;
 }
-.green-text-background a
+.green-text-background p
 {
-    color:black;
+    font-size:26px;
 }
 .head-background
 {

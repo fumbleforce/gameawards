@@ -30,3 +30,14 @@ class GamePic(models.Model):
     
     def __unicode__(self):
         return self.title
+        
+class AdminPic(models.Model):
+    title = models.CharField(max_length = 100)
+    added_date = models.DateField()
+    image = models.ImageField(upload_to="images/admin")
+    
+    
+    
+    
+    
+    
