@@ -9,9 +9,15 @@ $(document).ready(function() {
             $that.removeClass("screen-img-focus");
         }
         else{
-            $hidden.show()
+            $hidden.show()        
+                
+            var $sibs = $that.siblings();
+            $sibs.removeClass("screen-img-focus");
+            $sibs.children('img').addClass("screen-in-list");
+
             $img.removeClass("screen-in-list");
             $that.addClass("screen-img-focus");
+
             $hidden.height($that.height()+10);
         }
     });
