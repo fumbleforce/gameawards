@@ -7,7 +7,7 @@ ayah.configure("15aaa63b65ead6b11342d1c7f349c68e875a3f16","5d736518475d70a969d57
 
 
 
-if socket.gethostname() == "TheMatrix" or "Virus":
+if socket.gethostname() == ("TheMatrix" or "Virus"):
     DEBUG = True
     TEMPLATE_DEBUG = DEBUG
 
