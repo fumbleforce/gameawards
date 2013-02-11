@@ -16,8 +16,7 @@ class Team(models.Model):
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
-    about = models.TextField()
-    portrait = models.ImageField(upload_to='images/members', null=True, blank=True)
+    about = models.TextField(null=True, blank=True)
     
     def __unicode__(self):
         return self.user.username
