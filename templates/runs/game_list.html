@@ -23,6 +23,7 @@
                             </div>
                             
                             <div class="game-short-desc text-background">
+                                {% if game.concept_only %}[Concept only]<br>{% endif %}
                                 {{ game.short_desc }}
                             </div>
                         </div>

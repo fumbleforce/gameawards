@@ -23,6 +23,16 @@
                 </p>
         </div>
         </br>
+       <div class="register_div">
+                <p><label for="concept_only"{% if form.concept_only.errors %} class="error"{% endif %}>Concept Only? </label></p>
+                <div class="text-background" style="font-size:17px;">
+                    If you intend to ONLY deliver a concept document and not a working game, to compete for the concept award, click this box!
+                </div>
+                <p>
+                    {{ form.concept_only }}
+                </p>
+        </div>
+        <br>
         <div class="register_div">
                 <p><label for="team"{% if form.team.errors %} class="error"{% endif %}>Team:</label></p>
                 <p>

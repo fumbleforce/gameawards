@@ -66,6 +66,10 @@ def game_edit_request(request, game_id):
             secret = request.POST['session_secret']
             passed = ayah.score_result(secret)
             if passed:
+                try:
+                    g.concept_only=form.cleaned_data['concept_only']
+                except Error:
+                    pass
                 g.name=form.cleaned_data['name']
                 g.short_desc = form.cleaned_data['short_desc']
                 g.description = form.cleaned_data['description']
