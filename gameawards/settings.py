@@ -113,6 +113,7 @@ if socket.gethostname() == ("TheMatrix" or "Virus"):
         'debug_toolbar.middleware.DebugToolbarMiddleware',
         'snippetscream.ProfileMiddleware',
     )
+        
 
     ROOT_URLCONF = 'gameawards.urls'
 
