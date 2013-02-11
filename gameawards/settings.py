@@ -110,6 +110,8 @@ if socket.gethostname() == ("TheMatrix" or "Virus"):
         'django.contrib.messages.middleware.MessageMiddleware',
         # Uncomment the next line for simple clickjacking protection:
         # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+        'snippetscream.ProfileMiddleware',
     )
 
     ROOT_URLCONF = 'gameawards.urls'
@@ -142,10 +144,11 @@ if socket.gethostname() == ("TheMatrix" or "Virus"):
         'content',
         'south',
         'gallery',
-
+        'debug_toolbar',
         
     )
     
+    INTERNAL_IPS = ('127.0.0.1',)
     
     TEMPLATE_CONTEXT_PROCESSORS = (
     "django.contrib.auth.context_processors.auth",
