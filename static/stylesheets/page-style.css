@@ -61,6 +61,18 @@ footer{
 {
     color:red;
 }
+.clearfix
+{
+    display: inline-block;
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
 .logo-back
 {
 	left: 10%;

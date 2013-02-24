@@ -121,7 +121,7 @@
 }
 #your-games-title
 {
-    width:200px;
+    width:210px;
 }
 #your-game-list-container
 {
@@ -134,5 +134,14 @@
     height:auto;
     font-size:17px;
 }
-
+#login-icon
+{
+    margin-left:50px;
+    float:left;
+}
+#login-form
+{
+    float:left;
+    
+}
 

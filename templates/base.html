@@ -7,12 +7,17 @@
             {% block title %}Norwegian Game Awards{% endblock %}
         </title>
         <meta charset=utf-8">
+        <meta name="description" content="The largest game-development competition for students in Norway. A non-profit organization located at the Norwegian University of Science and Technology (NTNU).">
+        
+        
+        
         <link rel="shortcut icon" href="{{ STATIC_URL }}images/favicon.ico" />
         
         <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Titillium+Web:700' />
         <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/page-style.css" />
         <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/nav-bar.css" />
         
+        <script src="{{ STATIC_URL }}js/jquery-1.8.0.min.js"></script>
         <!-- In case of Internet Explorer -->
         <!--[if IE]>
         <script src=”http://html5shiv.googlecode.com/svn/trunk/html5.js”></script>
@@ -49,6 +54,17 @@
 	            </tr>
             </table>
         </footer>
+        
+        
+    <!-- Scripts -->
+
+    <script src="{{ STATIC_URL }}js/jquery.viewport.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.easing-1.3.js"></script>
+    <script src="{{ STATIC_URL }}js/jquery.royalslider.custom.min.js"></script>
+    <script src="{{ STATIC_URL }}js/livevalidation.js"></script>
+    <script src="{{ STATIC_URL }}js/page.func.js"></script>
+    
+    {% block base_scripts %}{% endblock %}
     </body>
 </html>
 

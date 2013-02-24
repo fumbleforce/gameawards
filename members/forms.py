@@ -54,4 +54,8 @@ class UserEditForm(ModelForm):
     
     
     
+class ResetPasswordForm(forms.Form):
+    username = forms.CharField(label=(u'User name'))
     
+class ForgotUsernameForm(forms.Form):
+    email = forms.EmailField(label=('Email Address'))

@@ -3,10 +3,6 @@
 {% block template_head %}
 
 <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/index.css" />
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhjFDtSrKYC74aDhRS9YgHPibTkpShps8&sensor=true"></script>
-<script src="{{ STATIC_URL }}js/map.style.js"></script>
-<script src="{{ STATIC_URL }}js/index.settings.js"></script>
-<script src="{{ STATIC_URL }}js/nav.control.js"></script>
 
 {% endblock %}
 
@@ -152,6 +148,17 @@
 {% block after_content_table %}
 <div id="map_canvas" style="height: 400px; width: 100%"></div>
 {% endblock %}
-    
+
+
+
+
+{% block base_scripts %}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhjFDtSrKYC74aDhRS9YgHPibTkpShps8&sensor=true"></script>
+<script src="{{ STATIC_URL }}js/map.style.js"></script>
+<script src="{{ STATIC_URL }}js/index.settings.js"></script>
+<script src="{{ STATIC_URL }}js/nav.control.js"></script>
+{% endblock %}
+
+
 
 

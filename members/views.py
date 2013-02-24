@@ -4,10 +4,10 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from members.models import UserProfile
-from members.forms import LoginForm, UserRegistrationForm, UserEditForm
+from members.forms import LoginForm, UserRegistrationForm, UserEditForm, ForgotUsernameForm, ResetPasswordForm
 import ayah
 from runs.models import Game
-
+from django.core.mail import send_mail
 
 def member_registration(request):
     '''
@@ -98,11 +98,78 @@ def logout_request(request):
     return HttpResponseRedirect('/')
     
     
-def reset_password_request(request):
+
+
+def sent_email_request(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/members/profile/')
+    
+    userform = ResetPasswordForm()
+    emailform = ForgotUsernameForm(request.POST)
+    
+    user = User.objects.get(email=request.POST['email'])
+    if user:
+        newpass = "abcabc"
+        user.set_password(newpass)
+        user.save()
+        status = "Mail containing username and new password sent."
+        send_mail('Password Reset', 'Here is your new login information. You can change your password on your profile page once logged in. Username: '+ user.username + " Password: "+ str(newpass), 'no-reply@gameawards.no',
+    [user.email], fail_silently=False)
+        
+    else:
+        status = "Could not find a user with that email address."
+        
     return render_to_response(
         'members/resetpassword.html', 
-        {}, 
+        {'status':status, 'userform':userform, 'emailform':emailform}, 
         context_instance=RequestContext(request))
+
+
+
+def sent_user_request(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/members/profile/')
+
+    userform = ResetPasswordForm(request.POST)
+    emailform = ForgotUsernameForm()
+    
+    user = User.objects.get(username=request.POST['username'])
+    if user:
+        newpass = "abcabc"
+        user.set_password(newpass)
+        user.save()
+        status = "Mail containing username and new password sent."
+        send_mail('Password Reset', 'Here is your new login information. You can change your password on your profile page once logged in. Username: '+ user.username + " Password: "+ str(newpass), 'no-reply@gameawards.no',
+    [user.email], fail_silently=False)
+        
+    else:
+        status = "Could not find a user with that username."
+        
+    return render_to_response(
+        'members/resetpassword.html', 
+        {'status':status, 'userform':userform, 'emailform':emailform}, 
+        context_instance=RequestContext(request))
+    
+    
+
+
+
+def reset_password_request(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/members/profile/')
+        
+    userform = ResetPasswordForm()
+    emailform = ForgotUsernameForm()
+    status = "Fill in either the username field or the email field and press submit"
+           
+    return render_to_response(
+        'members/resetpassword.html', 
+        {'status':status, 'userform':userform, 'emailform':emailform}, 
+        context_instance=RequestContext(request))
+    
+    
+    
+    
     
     
 def edit_member_request(request):

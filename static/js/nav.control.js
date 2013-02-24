@@ -58,18 +58,23 @@ $(function() {
     });   
     
 	function moveSlider(){
+	        var pages = ['#second-container','#third-container','#fourth-container','#fifth-container'];
 	    	windowPos = $(window).scrollTop();
-			var pages = ['#first-container','#second-container','#third-container','#fourth-container','#fifth-container'];
+	    	if (window.location.pathname === '/'){
+			    pages = ['#first-container','#second-container','#third-container','#fourth-container','#fifth-container'];
+			}
+			
 			var distances = [];
-			for(var i = 0; i < 5; i++)
+			for(var i = 0; i < pages.length; i++)
 			{
-				var offset = $(pages[i]).offset();
+				var offset = $(pages[i]).offset(); 
+				console.log(pages[i]);
 				var d = Math.abs(windowPos - offset.top);
 				distances.push(d); 
 			}
 			
 			shortest = 0;
-			for (var j = 1; j < 5; j++)	if (distances[shortest] > distances[j]) shortest = j;
+			for (var j = 1; j < pages.length; j++)	if (distances[shortest] > distances[j]) shortest = j;
 			
 			navElem = $("#nav-elements li a");
 			
