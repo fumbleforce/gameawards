@@ -8,6 +8,12 @@ from members.forms import LoginForm, UserRegistrationForm, UserEditForm, ForgotU
 import ayah
 from runs.models import Game
 from django.core.mail import send_mail
+import random
+import string
+
+def pass_gen(size=6, chars=string.ascii_lowercase + string.digits):
+    return ''.join(random.choice(chars) for x in range(size))
+
 
 def member_registration(request):
     '''
@@ -109,7 +115,7 @@ def sent_email_request(request):
     
     user = User.objects.get(email=request.POST['email'])
     if user:
-        newpass = "abcabc"
+        newpass = pass_gen()
         user.set_password(newpass)
         user.save()
         status = "Mail containing username and new password sent."
@@ -135,7 +141,7 @@ def sent_user_request(request):
     
     user = User.objects.get(username=request.POST['username'])
     if user:
-        newpass = "abcabc"
+        newpass = pass_gen()
         user.set_password(newpass)
         user.save()
         status = "Mail containing username and new password sent."
