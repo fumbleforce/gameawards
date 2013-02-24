@@ -6,6 +6,66 @@ from django.core.mail import send_mail
 #Initialization of Are you human
 ayah.configure("15aaa63b65ead6b11342d1c7f349c68e875a3f16","5d736518475d70a969d57bf2caadb32ce7160500")
 
+#DEV SETTINGS
+if socket.gethostname() == ("TheMatrix" or "Virus"):
+    DEBUG = True
+    TEMPLATE_DEBUG = DEBUG
+
+    ADMINS = (
+        ('admin', 'web@gameawards.com'),
+    )
+
+    MANAGERS = ADMINS
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': '/home/jorgen/progging/gameawards/ngadb.db',    # Or path to database file if using sqlite3.
+            'USER': '',                      # Not used with sqlite3.
+            'PASSWORD': '',                  # Not used with sqlite3.
+            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        }
+    }
+    
+    MEDIA_ROOT = '/home/jorgen/gameawards/media/'
+    MEDIA_URL = '/media/'
+    STATIC_ROOT = '/home/jorgen/gameawards/static/'
+    STATIC_URL = '/static/'
+    STATICFILES_DIRS = ("/home/jorgen/progging/gameawards/static",)
+    TEMPLATE_DIRS = ('/home/jorgen/progging/gameawards/templates')
+
+
+
+# PRODUCTION SETTINGS
+else:
+    
+    DEBUG = False
+    TEMPLATE_DEBUG = DEBUG
+
+    ADMINS = (
+        ('admin', 'web@gameawards.com'),
+    )
+
+    MANAGERS = ADMINS
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': 'gameawards',    # Or path to database file if using sqlite3.
+            'USER': 'gameawards',                      # Not used with sqlite3.
+            'PASSWORD': 'greenballs',                  # Not used with sqlite3.
+            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        }
+    }
+
+    MEDIA_ROOT = '/home/gameawards/webapps/gamedia/'
+    MEDIA_URL = '/media/'
+    STATIC_URL = '/static/'
+    STATIC_ROOT = '/home/gameawards/webapps/gastatic/'
+    STATICFILES_DIRS = ("/home/gameawards/webapps/django/gameawards/static",)
+    TEMPLATE_DIRS = ('/home/gameawards/webapps/django/gameawards/templates')
 
 
 #COMMON SETTINGS
@@ -60,7 +120,6 @@ if True:
         'django.contrib.messages.middleware.MessageMiddleware',
         # Uncomment the next line for simple clickjacking protection:
         # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
-        'snippetscream.ProfileMiddleware',
     )
         
     ROOT_URLCONF = 'gameawards.urls'
@@ -138,66 +197,6 @@ if True:
     SERVER_EMAIL = 'web@gameawards.no'
     
 
-#DEV SETTINGS
-if socket.gethostname() == ("TheMatrix" or "Virus"):
-    DEBUG = True
-    TEMPLATE_DEBUG = DEBUG
-
-    ADMINS = (
-        ('admin', 'web@gameawards.com'),
-    )
-
-    MANAGERS = ADMINS
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': '/home/jorgen/progging/gameawards/ngadb.db',    # Or path to database file if using sqlite3.
-            'USER': '',                      # Not used with sqlite3.
-            'PASSWORD': '',                  # Not used with sqlite3.
-            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-        }
-    }
-    
-    MEDIA_ROOT = '/home/jorgen/gameawards/media/'
-    MEDIA_URL = '/media/'
-    STATIC_ROOT = '/home/jorgen/gameawards/static/'
-    STATIC_URL = '/static/'
-    STATICFILES_DIRS = ("/home/jorgen/progging/gameawards/static",)
-    TEMPLATE_DIRS = ('/home/jorgen/progging/gameawards/templates')
-
-
-
-# PRODUCTION SETTINGS
-else:
-    
-    DEBUG = True
-    TEMPLATE_DEBUG = DEBUG
-
-    ADMINS = (
-        ('admin', 'web@gameawards.com'),
-    )
-
-    MANAGERS = ADMINS
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'gameawards',    # Or path to database file if using sqlite3.
-            'USER': 'gameawards',                      # Not used with sqlite3.
-            'PASSWORD': 'greenballs',                  # Not used with sqlite3.
-            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-        }
-    }
-
-    MEDIA_ROOT = '/home/gameawards/webapps/gamedia/'
-    MEDIA_URL = '/media/'
-    STATIC_URL = '/static/'
-    STATIC_ROOT = '/home/gameawards/webapps/gastatic/'
-    STATICFILES_DIRS = ("/home/gameawards/webapps/django/gameawards/static",)
-    TEMPLATE_DIRS = ('/home/gameawards/webapps/django/gameawards/templates')
 
 
 
