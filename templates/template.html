@@ -46,9 +46,9 @@
         <td>
             <div class="nav-wrap">
                 <div class="group page-nav-group" id="nav-elements">
-                    {% if request.path != "/" %}     <a class="anav" href="/">HOME</a>{% endif %}
+                    {% if request.path != "/" %}    <a class="anav" href="/">HOME</a>{% endif %}
                     {% if request.path != "/info/" %}<a class="anav" href="/info">INFO</a>{% endif %}
-					{% if request.path != "/games/" %}<a class="anav" href="/games">GAMES</a>{% endif %}
+					{% if request.path != "/games/" %}<a class="anav" href="/games">GAME LIST</a>{% endif %}
 					{% if request.path != "/members/profile/" and request.path != "/profile/" %}
 					{% if user.is_authenticated %}
 					    <a class="anav" href="/profile">PROFILE</a>

@@ -97,13 +97,13 @@
     vertical-align:top;
     margin-bottom:20px;
     width:520px;
-    height:60px;
+    height:48px;
     overflow:hidden;
 }
 .game-short-desc
 {
     width:520px;
-    height:100px;
+    height:110px;
     overflow:hidden;
     font-size:20px;
 }
