@@ -19,11 +19,11 @@
 	
 	<div class="green-container">
 	{% block text_head %}<div style="margin-top: 80px;width: 367px; height: 80px; "></div>{% endblock %}
-		
+		{% block green_page %}
 		    <div class="black-container round-and-shadow">
 		        {% block page %}{% endblock %}
 		    </div>
-
+        {% endblock %}
     </div>
 </div>
 {% endblock %}

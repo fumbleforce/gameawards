@@ -1,14 +1,20 @@
-{% extends "base.html" %}
+{% extends "single_page.html" %}
 
-{% block content %}
-    <h1>
+
+{% block text_head %}<div style="height: 80px; "></div>{% endblock %}
+
+{% block green_page %}
+<div class="black-container" style="width:400px;height:auto;margin-left:auto;margin-right:auto;">
+    
+    <h1 class="head-background">
         {{post.title}}
     </h1>
-    <p>
-        {{post.content|safe}}
-    </p>
-    <p>
+    <div>
         {{post.pub_date}}
-    </p>
-
+    </div><br>
+    <div class="text-background">
+        {{post.content|safe}}
+    </div>
+    
+</div>
 {% endblock %}
