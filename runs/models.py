@@ -70,5 +70,5 @@ class Upload(models.Model):
     title = models.CharField(max_length = 100)
     version = models.CharField(max_length = 10,null=True, blank=True)
     game = models.ForeignKey(Game)
-    uploaded_file = models.FileField(upload_to=('submissions/'+game.name))
+    uploaded_file = models.FileField(upload_to='submissions')
     

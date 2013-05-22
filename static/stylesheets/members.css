@@ -121,7 +121,11 @@
 }
 #your-games-title
 {
-    width:210px;
+    clear:both;
+}
+#your-uploads-title
+{
+    clear:both;
 }
 #your-game-list-container
 {

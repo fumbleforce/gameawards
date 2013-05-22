@@ -93,6 +93,21 @@ if True:
 
     # If you set this to False, Django will not use timezone-aware datetimes.
     USE_TZ = True 
+    
+    
+    ACCEPTED_UPLOAD_FILETYPES = ["pdf", "zip", "rar"]
+    
+    """
+    2.5MB - 2621440
+    5MB - 5242880
+    10MB - 10485760
+    20MB - 20971520
+    50MB - 5242880
+    100MB 104857600
+    250MB - 214958080
+    500MB - 429916160
+    """
+    MAX_UPLOAD_SIZE = 104857600
 
     # List of finder classes that know how to find static files in
     # various locations.
