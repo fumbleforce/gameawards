@@ -53,7 +53,7 @@ class Game(models.Model):
                     r += 1
                     c = 0
         return r*80+(r-1)*10
-                
+
 class Developer(models.Model):
     user = models.ForeignKey(User)
     role = models.CharField(max_length = 300)
@@ -62,4 +62,13 @@ class Developer(models.Model):
     def __unicode__(self):
         return self.user.username
         
+        
+class Upload(models.Model):
+    """
+    Model for uploads, allowed formats are in Settings.
+    """
+    title = models.CharField(max_length = 100)
+    version = models.CharField(max_length = 10,null=True, blank=True)
+    game = models.ForeignKey(Game)
+    uploaded_file = models.FileField(upload_to=('submissions/'+game.name))
     

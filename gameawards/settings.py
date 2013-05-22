@@ -7,7 +7,7 @@ from django.core.mail import send_mail
 ayah.configure("15aaa63b65ead6b11342d1c7f349c68e875a3f16","5d736518475d70a969d57bf2caadb32ce7160500")
 
 #DEV SETTINGS
-if socket.gethostname() == ("TheMatrix" or "Virus"):
+if socket.gethostname() == ("TheMatrix" or "Virus" or "xishan"):
     DEBUG = True
     TEMPLATE_DEBUG = DEBUG
 
