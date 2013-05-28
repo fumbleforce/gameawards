@@ -67,8 +67,8 @@ class Upload(models.Model):
     """
     Model for uploads, allowed formats are in Settings.
     """
-    title = models.CharField(max_length = 100)
-    version = models.CharField(max_length = 10,null=True, blank=True)
-    game = models.ForeignKey(Game)
-    uploaded_file = models.FileField(upload_to='submissions')
+    title = models.CharField(max_length = 100, verbose_name=u"Title")
+    version = models.CharField(max_length = 10,null=True, blank=True, verbose_name=u"Version")
+    game = models.ForeignKey(Game, verbose_name=u"Name")
+    uploaded_file = models.FileField(upload_to='submissions', verbose_name=u"Uploaded file")
     

@@ -108,6 +108,8 @@ if True:
     500MB - 429916160
     """
     MAX_UPLOAD_SIZE = 104857600
+    
+    FILE_UPLOAD_MAX_MEMORY_SIZE = 114857600
 
     # List of finder classes that know how to find static files in
     # various locations.

@@ -75,9 +75,10 @@
         </div>
         <div id="your-upload-list-container">
         {% for u in uploads %}
-            <div class="game-link text-background">
-                <div class="your-game-list-element" style="float:left;width:780px;">{{ u.title }}</div>
-                <div class="your-game-list-element" style="float:left;width:780px;">{{ u.version }}</div>
+            <div class="upload-link text-background">
+                <div class="existing-left">&nbsp;{{ u.title }}</div>
+                <div class="existing-mid">&nbsp;{{ u.version }}</div>
+                <div class="existing-right">&nbsp;{{ u.game.name }}</div>
             </div>
             
         {% endfor %}

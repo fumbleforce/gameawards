@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.template import RequestContext
 from django.utils import timezone
 from runs.forms import GameRegistrationForm, GameDevForm, UploadForm
-from runs.models import Game, Run, Developer
+from runs.models import Game, Run, Developer, Upload
 import ayah
 from gameawards.utils import sanitizeHtml
 from django.contrib.auth.decorators import login_required
@@ -122,6 +122,7 @@ def submit_game_request(request):
     """
     
     reg_games = Game.objects.filter(leader=request.user)
+    uploads = Upload.objects.filter(game__leader=request.user)
     if request.method == 'POST':
         form = UploadForm(request.POST, request.FILES)
         if form.is_valid():
@@ -130,10 +131,10 @@ def submit_game_request(request):
             d.save()
             return HttpResponseRedirect('/runs/upload/')
         else:
-            context = {'form':form}
+            context = {'form':form, 'uploads':uploads}
     else:
         form = UploadForm()
-        context = {'form':form}
+        context = {'form':form, 'uploads':uploads}
     
     return render_to_response(
         'runs/upload.html', 
