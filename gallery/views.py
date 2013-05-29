@@ -8,6 +8,9 @@ from runs.models import Game
 from gallery.models import GamePic
 
 def add_gamepic_request(request,game_id):
+    """
+    Open a page where user can add pictures to the specified game.
+    """
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/login/')
     
