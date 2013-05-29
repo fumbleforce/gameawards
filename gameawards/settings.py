@@ -40,7 +40,7 @@ if socket.gethostname() == ("TheMatrix" or "Virus" or "xishan"):
 # PRODUCTION SETTINGS
 else:
     
-    DEBUG = False
+    DEBUG = True
     TEMPLATE_DEBUG = DEBUG
 
     ADMINS = (
