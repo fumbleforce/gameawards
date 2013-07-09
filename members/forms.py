@@ -33,9 +33,9 @@ class UserRegistrationForm(ModelForm):
             raise forms.ValidationError('Passwords did not match.')
             
         return self.cleaned_data
-        
-        
-        
+
+
+
 class LoginForm(forms.Form):
     username = forms.CharField(label=(u'User name'))
     password = forms.CharField(label=(u'Password'), widget = forms.PasswordInput(render_value=False))
