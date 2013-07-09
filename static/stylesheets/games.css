@@ -216,6 +216,13 @@
     height:80px;
     width:780px;
 }
+.upload-link
+{
+    margin-top:10px;
+    margin-bottom:20px;
+    height:40px;
+    width:780px;
+}
 #existing-devs-container
 {
     width:100%;
@@ -227,26 +234,7 @@
     width:100%;
     height:25px;
 }
-.existing-devs-username
-{
-    float:left;
-    font-size:15px;
-    width:33%;
-}
-.existing-devs-full-name
-{
-    float:left;
-    font-size:15px;
-    width:33%;
-    text-align:center;
-}
-.existing-devs-role
-{
-    float:right;
-    font-size:15px;
-    width:33%;
-    text-align:right;
-}
+
 .dev-long-container
 {
     height:auto;

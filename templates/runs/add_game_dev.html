@@ -11,9 +11,9 @@
         {% if devs %}
             {% for dev in devs %}
                <div class="text-background existing-devs"> 
-                    <div class="existing-devs-username">{{ dev.user.username }}</div>
-                    <div class="existing-devs-full-name">{{ dev.user.first_name}}&nbsp;{{ dev.user.last_name }}</div>
-                    <div class="existing-devs-role">{{ dev.role }}</div>
+                    <div class="existing-left">{{ dev.user.username }}</div>
+                    <div class="existing-mid">{{ dev.user.first_name}}&nbsp;{{ dev.user.last_name }}</div>
+                    <div class="existing-right">{{ dev.role }}</div>
                 </div>
             {% endfor %}
         {% else %}

@@ -11,8 +11,9 @@
         {% if images %}
             {% for img in images %}
                <div class="text-background existing-image"> 
-                    <div class="existing-image-title">{{ img.title }}</div>
-                    <div class="existing-image-url">{{ img.image.url }}</div>
+                    <div class="existing-left">{{ img.title }}</div>
+                    <div class="existing-mid">{{ img.image.url }}</div>
+                    <a href="/gallery/del_game_pic/{{ img.id }}"><button class="existing-right" style="width:70px;">Remove</button></a>
                 </div>
             {% endfor %}
         {% else %}

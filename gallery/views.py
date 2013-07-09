@@ -8,6 +8,9 @@ from runs.models import Game
 from gallery.models import GamePic
 
 def add_gamepic_request(request,game_id):
+    """
+    Open a page where user can add pictures to the specified game.
+    """
     if not request.user.is_authenticated():
         return HttpResponseRedirect('/login/')
     
@@ -41,3 +44,34 @@ def add_gamepic_request(request,game_id):
         'gallery/add_game_pic.html', 
         context, 
         context_instance=RequestContext(request))
+        
+        
+def del_gamepic_request(request, pic_id):
+    """
+    Delete pic with pic_id
+    """
+    if not request.user.is_authenticated():
+        return HttpResponseRedirect('/login/')
+        
+    pic = GamePic.objects.get(pk=pic_id)
+    g = pic.game.id
+    if pic:
+        if pic.owner == request.user:
+            pic.image.delete()
+            pic.delete()
+    
+    return HttpResponseRedirect('/gallery/add_game_pic/'+str(g))
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

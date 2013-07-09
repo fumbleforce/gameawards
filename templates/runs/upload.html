@@ -1,0 +1,83 @@
+{% extends "single_page.html" %}
+
+
+
+{% block page %}
+
+<div id="upload-game-container" class="single-page-container">
+
+
+<div id="existing-devs-container">
+    {% if uploads %}
+        {% for u in uploads %}
+           <div class="text-background existing-devs"> 
+                <div class="existing-left">{{ u.title }}</div>
+                <div class="existing-mid">{{ u.version }}</div>
+                <div class="existing-right">{{ u.game.name }}</div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p> Nothing has been uploaded </p>
+    {% endif %}
+</div>
+
+
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    {% if form.errors %}
+        {{ form.errors.as_text }}<br><br>
+    {% endif %}
+
+    <div class="register_div">
+        <p><label for="title"{% if form.title.errors %} class="error"{% endif %}>Title: *</label></p>
+        <p>
+            {{ form.title }}
+            <script>
+                var nameValidation = new LiveValidation('id_title', { validMessage: 'Accepted', wait: 500});
+                nameValidation.add(Validate.Presence, {failureMessage: "Required"});
+                nameValidation.add( Validate.Length, { minimum: 1, maximum: 100 } );
+            </script>  
+        </p>
+    </div>
+    <br>
+    <div class="register_div">
+            <p><label for="version"{% if form.version.errors %} class="error"{% endif %}>Version: *</label></p>
+            <p>
+                {{ form.version }}
+                <script>
+	                var nameValidation = new LiveValidation('id_version', { validMessage: 'Accepted', wait: 500});
+	                nameValidation.add(Validate.Presence, {failureMessage: "Required"});
+	                nameValidation.add( Validate.Length, { minimum: 1, maximum: 10 } );
+	            </script>  
+            </p>
+    </div>
+    <br>
+    <div class="register_div">
+        <p><label for="game"{% if form.game.errors %} class="error"{% endif %}>Game: *</label></p>
+        <p>
+            {{ form.game }}
+        </p>
+    </div>
+    <br>
+    <div class="register_div">
+        <p><label for="uploaded_file"{% if form.uploaded_file.errors %} class="error"{% endif %}>File: *</label></p>
+        <p>
+            {{ form.uploaded_file }}
+        </p>
+    </div>
+    <br>
+
+    <p><input type="submit" alt="upload" /></p>
+</div>
+
+
+
+
+
+
+
+
+
+{% endblock %}
