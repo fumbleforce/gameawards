@@ -72,3 +72,9 @@ class Upload(models.Model):
     game = models.ForeignKey(Game, verbose_name=u"Name")
     uploaded_file = models.FileField(upload_to='submissions', verbose_name=u"Uploaded file")
     
+    
+    
+    
+    
+    
+    

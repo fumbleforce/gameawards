@@ -162,6 +162,7 @@ if True:
         'south',
         'gallery',
         
+        'cleanup',
         
     )
     
