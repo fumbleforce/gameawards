@@ -142,7 +142,11 @@ def submit_game_request(request):
             d = form.save(commit=False)
             fi=request.FILES['uploaded_file']
             directory = "%ssubmissions/%s" % (settings.MEDIA_ROOT, d.game.name)
-            file_name = "%s/%s_%s" % (directory,datetime.now().strftime('%Y.%m.%d.%H.%M'), fi.name)
+            name = "%s_%s" % (datetime.now().strftime('%Y.%m.%d.%H.%M'), fi.name)
+            
+            while len("%s/%s" % (directory,name)) >= 100:
+                name = name[1:]
+            file_name = "%s/%s" % (directory,name)
             try:
                 os.mkdir(directory)
             except OSError:
