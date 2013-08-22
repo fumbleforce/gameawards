@@ -51,7 +51,7 @@
     <div id="your-games-container">
         <div id="your-games-title" class="head-background">
             <h2 style="float:left">Your games</h2>
-            <a href="/runs/register/" style="float:right"><button>Register Game</button></a>
+            {% if registration %}<a href="/runs/register/" style="float:right"><button>Register Game</button></a>{% endif %}
         </div>
         <div id="your-game-list-container">
         {% for g in games %}

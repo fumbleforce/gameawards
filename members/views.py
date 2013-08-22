@@ -6,7 +6,7 @@ from django.template import RequestContext
 from members.models import UserProfile
 from members.forms import LoginForm, UserRegistrationForm, UserEditForm, ForgotUsernameForm, ResetPasswordForm
 import ayah
-from runs.models import Game, Upload
+from runs.models import Game, Upload, Run
 from django.core.mail import send_mail
 import random
 import string
@@ -64,8 +64,9 @@ def profile_request(request):
         user = request.user
         profile = user.get_profile()
         games = Game.objects.filter(leader=user)
+        reg = Run.objects.get(current_run=True).submission_open
         uploads = Upload.objects.filter(game__leader=user)
-        context = {'user':user, 'games':games,'profile':profile, 'uploads':uploads}
+        context = {'user':user, 'games':games,'profile':profile, 'uploads':uploads, 'registration':reg}
         return render_to_response(
             'members/profile.html', 
             context, 
