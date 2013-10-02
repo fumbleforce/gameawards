@@ -3,9 +3,9 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.models import User
 from django.template import RequestContext
 from django.utils import timezone
-from gallery.forms import GamePicForm
+from gameawards.apps.gallery.forms import GamePicForm
 from runs.models import Game
-from gallery.models import GamePic
+from gameawards.apps.gallery.models import GamePic
 
 def add_gamepic_request(request,game_id):
     """

@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from gameawards import settings
+from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
 import os, socket

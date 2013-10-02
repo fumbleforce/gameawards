@@ -1,0 +1,871 @@
+2013-10-02 13:06:39,626 [DEBUG] django.db.backends: (0.014) 
+            SELECT c.relname
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('r', 'v', '')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid); args=()
+2013-10-02 13:06:39,669 [DEBUG] django.db.backends: (0.041) CREATE TABLE "auth_permission" (
+    "id" serial NOT NULL PRIMARY KEY,
+    "name" varchar(50) NOT NULL,
+    "content_type_id" integer NOT NULL,
+    "codename" varchar(100) NOT NULL,
+    UNIQUE ("content_type_id", "codename")
+)
+;; args=()
+2013-10-02 13:06:39,700 [DEBUG] django.db.backends: (0.030) CREATE TABLE "auth_group_permissions" (
+    "id" serial NOT NULL PRIMARY KEY,
+    "group_id" integer NOT NULL,
+    "permission_id" integer NOT NULL REFERENCES "auth_permission" ("id") DEFERRABLE INITIALLY DEFERRED,
+    UNIQUE ("group_id", "permission_id")
+)
+;; args=()
+2013-10-02 13:06:39,724 [DEBUG] django.db.backends: (0.024) CREATE TABLE "auth_group" (
+    "id" serial NOT NULL PRIMARY KEY,
+    "name" varchar(80) NOT NULL UNIQUE
+)
+;; args=()
+2013-10-02 13:06:39,727 [DEBUG] django.db.backends: (0.002) ALTER TABLE "auth_group_permissions" ADD CONSTRAINT "group_id_refs_id_f4b32aac" FOREIGN KEY ("group_id") REFERENCES "auth_group" ("id") DEFERRABLE INITIALLY DEFERRED;; args=()
+2013-10-02 13:06:39,758 [DEBUG] django.db.backends: (0.030) CREATE TABLE "auth_user_groups" (
+    "id" serial NOT NULL PRIMARY KEY,
+    "user_id" integer NOT NULL,
+    "group_id" integer NOT NULL REFERENCES "auth_group" ("id") DEFERRABLE INITIALLY DEFERRED,
+    UNIQUE ("user_id", "group_id")
+)
+;; args=()
+2013-10-02 13:06:39,802 [DEBUG] django.db.backends: (0.043) CREATE TABLE "auth_user_user_permissions" (
+    "id" serial NOT NULL PRIMARY KEY,
+    "user_id" integer NOT NULL,
+    "permission_id" integer NOT NULL REFERENCES "auth_permission" ("id") DEFERRABLE INITIALLY DEFERRED,
+    UNIQUE ("user_id", "permission_id")
+)
+;; args=()
+2013-10-02 13:06:39,827 [DEBUG] django.db.backends: (0.024) CREATE TABLE "auth_user" (
+    "id" serial NOT NULL PRIMARY KEY,
+    "password" varchar(128) NOT NULL,
+    "last_login" timestamp with time zone NOT NULL,
+    "is_superuser" boolean NOT NULL,
+    "username" varchar(30) NOT NULL UNIQUE,
+    "first_name" varchar(30) NOT NULL,
+    "last_name" varchar(30) NOT NULL,
+    "email" varchar(75) NOT NULL,
+    "is_staff" boolean NOT NULL,
+    "is_active" boolean NOT NULL,
+    "date_joined" timestamp with time zone NOT NULL
+)
+;; args=()
+2013-10-02 13:06:39,830 [DEBUG] django.db.backends: (0.002) ALTER TABLE "auth_user_groups" ADD CONSTRAINT "user_id_refs_id_40c41112" FOREIGN KEY ("user_id") REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED;; args=()
+2013-10-02 13:06:39,832 [DEBUG] django.db.backends: (0.002) ALTER TABLE "auth_user_user_permissions" ADD CONSTRAINT "user_id_refs_id_4dc23c39" FOREIGN KEY ("user_id") REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED;; args=()
+2013-10-02 13:06:39,864 [DEBUG] django.db.backends: (0.030) CREATE TABLE "django_content_type" (
+    "id" serial NOT NULL PRIMARY KEY,
+    "name" varchar(100) NOT NULL,
+    "app_label" varchar(100) NOT NULL,
+    "model" varchar(100) NOT NULL,
+    UNIQUE ("app_label", "model")
+)
+;; args=()
+2013-10-02 13:06:39,867 [DEBUG] django.db.backends: (0.003) ALTER TABLE "auth_permission" ADD CONSTRAINT "content_type_id_refs_id_d043b34a" FOREIGN KEY ("content_type_id") REFERENCES "django_content_type" ("id") DEFERRABLE INITIALLY DEFERRED;; args=()
+2013-10-02 13:06:39,892 [DEBUG] django.db.backends: (0.024) CREATE TABLE "django_session" (
+    "session_key" varchar(40) NOT NULL PRIMARY KEY,
+    "session_data" text NOT NULL,
+    "expire_date" timestamp with time zone NOT NULL
+)
+;; args=()
+2013-10-02 13:06:39,938 [DEBUG] django.db.backends: (0.045) CREATE TABLE "django_admin_log" (
+    "id" serial NOT NULL PRIMARY KEY,
+    "action_time" timestamp with time zone NOT NULL,
+    "user_id" integer NOT NULL REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED,
+    "content_type_id" integer REFERENCES "django_content_type" ("id") DEFERRABLE INITIALLY DEFERRED,
+    "object_id" text,
+    "object_repr" varchar(200) NOT NULL,
+    "action_flag" smallint CHECK ("action_flag" >= 0) NOT NULL,
+    "change_message" text NOT NULL
+)
+;; args=()
+2013-10-02 13:06:39,963 [DEBUG] django.db.backends: (0.024) CREATE TABLE "south_migrationhistory" (
+    "id" serial NOT NULL PRIMARY KEY,
+    "app_name" varchar(255) NOT NULL,
+    "migration" varchar(255) NOT NULL,
+    "applied" timestamp with time zone NOT NULL
+)
+;; args=()
+2013-10-02 13:06:39,984 [DEBUG] django.db.backends: (0.002) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'permission'  AND "django_content_type"."app_label" = 'auth' ); args=('permission', u'auth')
+2013-10-02 13:06:39,985 [DEBUG] django.db.backends: (0.000) SAVEPOINT s140076677719808_x1; args=()
+2013-10-02 13:06:39,986 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('permission', 'auth', 'permission') RETURNING "django_content_type"."id"; args=(u'permission', u'auth', 'permission')
+2013-10-02 13:06:39,992 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'group'  AND "django_content_type"."app_label" = 'auth' ); args=('group', u'auth')
+2013-10-02 13:06:39,993 [DEBUG] django.db.backends: (0.000) SAVEPOINT s140076677719808_x1; args=()
+2013-10-02 13:06:39,994 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('group', 'auth', 'group') RETURNING "django_content_type"."id"; args=(u'group', u'auth', 'group')
+2013-10-02 13:06:39,999 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'user'  AND "django_content_type"."app_label" = 'auth' ); args=('user', u'auth')
+2013-10-02 13:06:40,000 [DEBUG] django.db.backends: (0.000) SAVEPOINT s140076677719808_x1; args=()
+2013-10-02 13:06:40,001 [DEBUG] django.db.backends: (0.000) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('user', 'auth', 'user') RETURNING "django_content_type"."id"; args=(u'user', u'auth', 'user')
+2013-10-02 13:06:40,013 [DEBUG] django.db.backends: (0.002) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (1, 2, 3) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(1, 2, 3)
+2013-10-02 13:06:40,016 [DEBUG] django.db.backends: (0.001) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") VALUES ('Can add permission', 1, 'add_permission'), ('Can change permission', 1, 'change_permission'), ('Can delete permission', 1, 'delete_permission'), ('Can add group', 2, 'add_group'), ('Can change group', 2, 'change_group'), ('Can delete group', 2, 'delete_group'), ('Can add user', 3, 'add_user'), ('Can change user', 3, 'change_user'), ('Can delete user', 3, 'delete_user'); args=(u'Can add permission', 1, u'add_permission', u'Can change permission', 1, u'change_permission', u'Can delete permission', 1, u'delete_permission', u'Can add group', 2, u'add_group', u'Can change group', 2, u'change_group', u'Can delete group', 2, u'delete_group', u'Can add user', 3, u'add_user', u'Can change user', 3, u'change_user', u'Can delete user', 3, u'delete_user')
+2013-10-02 13:06:46,451 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'jorgen' ; args=(u'jorgen',)
+2013-10-02 13:06:49,536 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'admin' ; args=('admin',)
+2013-10-02 13:06:56,958 [DEBUG] django.db.backends: (0.001) INSERT INTO "auth_user" ("password", "last_login", "is_superuser", "username", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined") VALUES ('pbkdf2_sha256$10000$FiDE3Q6lpTL9$3tQKghnP/tK1BMTUTUlFVlAQ9SvgUajTo7MJilH1v64=', '2013-10-02 11:06:56.835587+00:00', false, 'admin', '', '', 'admin@admin.no', false, true, '2013-10-02 11:06:56.835587+00:00') RETURNING "auth_user"."id"; args=(u'pbkdf2_sha256$10000$FiDE3Q6lpTL9$3tQKghnP/tK1BMTUTUlFVlAQ9SvgUajTo7MJilH1v64=', u'2013-10-02 11:06:56.835587+00:00', False, 'admin', u'', u'', u'admin@admin.no', False, True, u'2013-10-02 11:06:56.835587+00:00')
+2013-10-02 13:06:56,967 [DEBUG] django.db.backends: (0.001) INSERT INTO "members_userprofile" ("user_id", "about") VALUES (1, NULL) RETURNING "members_userprofile"."id"; args=(1, None)
+2013-10-02 13:07:26,514 [DEBUG] django.db.backends: (0.005) 
+            SELECT c.relname
+            FROM pg_catalog.pg_class c
+            LEFT JOIN pg_catalog.pg_namespace n ON n.oid = c.relnamespace
+            WHERE c.relkind IN ('r', 'v', '')
+                AND n.nspname NOT IN ('pg_catalog', 'pg_toast')
+                AND pg_catalog.pg_table_is_visible(c.oid); args=()
+2013-10-02 13:07:26,521 [DEBUG] django.db.backends: (0.002) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'permission'  AND "django_content_type"."app_label" = 'auth' ); args=('permission', u'auth')
+2013-10-02 13:07:26,527 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'group'  AND "django_content_type"."app_label" = 'auth' ); args=('group', u'auth')
+2013-10-02 13:07:26,531 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'user'  AND "django_content_type"."app_label" = 'auth' ); args=('user', u'auth')
+2013-10-02 13:07:26,536 [DEBUG] django.db.backends: (0.002) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (1, 2, 3) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(1, 2, 3)
+2013-10-02 13:07:26,538 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'auth'  ORDER BY "django_content_type"."name" ASC; args=(u'auth',)
+2013-10-02 13:07:26,542 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'contenttype'  AND "django_content_type"."app_label" = 'contenttypes' ); args=('contenttype', u'contenttypes')
+2013-10-02 13:07:26,543 [DEBUG] django.db.backends: (0.000) SAVEPOINT s140094602118912_x1; args=()
+2013-10-02 13:07:26,545 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('content type', 'contenttypes', 'contenttype') RETURNING "django_content_type"."id"; args=(u'content type', u'contenttypes', 'contenttype')
+2013-10-02 13:07:26,557 [DEBUG] django.db.backends: (0.001) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (4) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(4,)
+2013-10-02 13:07:26,559 [DEBUG] django.db.backends: (0.001) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") VALUES ('Can add content type', 4, 'add_contenttype'), ('Can change content type', 4, 'change_contenttype'), ('Can delete content type', 4, 'delete_contenttype'); args=(u'Can add content type', 4, u'add_contenttype', u'Can change content type', 4, u'change_contenttype', u'Can delete content type', 4, u'delete_contenttype')
+2013-10-02 13:07:26,572 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'contenttypes'  ORDER BY "django_content_type"."name" ASC; args=(u'contenttypes',)
+2013-10-02 13:07:26,575 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'session'  AND "django_content_type"."app_label" = 'sessions' ); args=('session', u'sessions')
+2013-10-02 13:07:26,576 [DEBUG] django.db.backends: (0.000) SAVEPOINT s140094602118912_x1; args=()
+2013-10-02 13:07:26,577 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('session', 'sessions', 'session') RETURNING "django_content_type"."id"; args=(u'session', u'sessions', 'session')
+2013-10-02 13:07:26,583 [DEBUG] django.db.backends: (0.001) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (5) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(5,)
+2013-10-02 13:07:26,585 [DEBUG] django.db.backends: (0.001) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") VALUES ('Can add session', 5, 'add_session'), ('Can change session', 5, 'change_session'), ('Can delete session', 5, 'delete_session'); args=(u'Can add session', 5, u'add_session', u'Can change session', 5, u'change_session', u'Can delete session', 5, u'delete_session')
+2013-10-02 13:07:26,590 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'sessions'  ORDER BY "django_content_type"."name" ASC; args=(u'sessions',)
+2013-10-02 13:07:26,596 [DEBUG] django.db.backends: (0.000) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'logentry'  AND "django_content_type"."app_label" = 'admin' ); args=('logentry', u'admin')
+2013-10-02 13:07:26,597 [DEBUG] django.db.backends: (0.000) SAVEPOINT s140094602118912_x1; args=()
+2013-10-02 13:07:26,598 [DEBUG] django.db.backends: (0.000) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('log entry', 'admin', 'logentry') RETURNING "django_content_type"."id"; args=(u'log entry', u'admin', 'logentry')
+2013-10-02 13:07:26,608 [DEBUG] django.db.backends: (0.001) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (6) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(6,)
+2013-10-02 13:07:26,610 [DEBUG] django.db.backends: (0.001) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") VALUES ('Can add log entry', 6, 'add_logentry'), ('Can change log entry', 6, 'change_logentry'), ('Can delete log entry', 6, 'delete_logentry'); args=(u'Can add log entry', 6, u'add_logentry', u'Can change log entry', 6, u'change_logentry', u'Can delete log entry', 6, u'delete_logentry')
+2013-10-02 13:07:26,615 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'admin'  ORDER BY "django_content_type"."name" ASC; args=(u'admin',)
+2013-10-02 13:07:26,620 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'migrationhistory'  AND "django_content_type"."app_label" = 'south' ); args=('migrationhistory', u'south')
+2013-10-02 13:07:26,620 [DEBUG] django.db.backends: (0.000) SAVEPOINT s140094602118912_x1; args=()
+2013-10-02 13:07:26,622 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('migration history', 'south', 'migrationhistory') RETURNING "django_content_type"."id"; args=(u'migration history', u'south', 'migrationhistory')
+2013-10-02 13:07:26,627 [DEBUG] django.db.backends: (0.001) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (7) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(7,)
+2013-10-02 13:07:26,629 [DEBUG] django.db.backends: (0.001) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") VALUES ('Can add migration history', 7, 'add_migrationhistory'), ('Can change migration history', 7, 'change_migrationhistory'), ('Can delete migration history', 7, 'delete_migrationhistory'); args=(u'Can add migration history', 7, u'add_migrationhistory', u'Can change migration history', 7, u'change_migrationhistory', u'Can delete migration history', 7, u'delete_migrationhistory')
+2013-10-02 13:07:26,640 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'south'  ORDER BY "django_content_type"."name" ASC; args=(u'south',)
+2013-10-02 13:07:26,656 [DEBUG] django.db.backends: (0.000) SET CONSTRAINTS ALL IMMEDIATE; args=()
+2013-10-02 13:07:26,656 [DEBUG] django.db.backends: (0.000) SET CONSTRAINTS ALL DEFERRED; args=()
+2013-10-02 13:07:39,247 [DEBUG] django.db.backends: (0.002) SELECT "south_migrationhistory"."id", "south_migrationhistory"."app_name", "south_migrationhistory"."migration", "south_migrationhistory"."applied" FROM "south_migrationhistory" WHERE "south_migrationhistory"."applied" IS NOT NULL ORDER BY "south_migrationhistory"."applied" ASC; args=()
+2013-10-02 13:07:39,255 [DEBUG] django.db.backends: (0.002) CREATE TABLE DDL_TRANSACTION_TEST (X INT); args=()
+2013-10-02 13:07:39,257 [DEBUG] django.db.backends: (0.001) CREATE TABLE DDL_TRANSACTION_TEST (X INT); args=()
+2013-10-02 13:07:39,260 [DEBUG] django.db.backends: (0.003) DROP TABLE DDL_TRANSACTION_TEST; args=()
+2013-10-02 13:07:39,280 [DEBUG] south: execute "CREATE TABLE "news_newspost" ("id" serial NOT NULL PRIMARY KEY, "title" varchar(300) NOT NULL, "pub_date" timestamp with time zone NOT NULL, "content" text NOT NULL);" with params "[]"
+2013-10-02 13:07:39,306 [DEBUG] django.db.backends: (0.026) CREATE TABLE "news_newspost" ("id" serial NOT NULL PRIMARY KEY, "title" varchar(300) NOT NULL, "pub_date" timestamp with time zone NOT NULL, "content" text NOT NULL);; args=[]
+2013-10-02 13:07:39,319 [DEBUG] django.db.backends: (0.002) SELECT "south_migrationhistory"."id", "south_migrationhistory"."app_name", "south_migrationhistory"."migration", "south_migrationhistory"."applied" FROM "south_migrationhistory" WHERE ("south_migrationhistory"."app_name" = 'news'  AND "south_migrationhistory"."migration" = '0001_initial' ); args=('news', '0001_initial')
+2013-10-02 13:07:39,321 [DEBUG] django.db.backends: (0.001) INSERT INTO "south_migrationhistory" ("app_name", "migration", "applied") VALUES ('news', '0001_initial', '2013-10-02 11:07:39.319892+00:00') RETURNING "south_migrationhistory"."id"; args=('news', '0001_initial', u'2013-10-02 11:07:39.319892+00:00')
+2013-10-02 13:07:39,327 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'newspost'  AND "django_content_type"."app_label" = 'news' ); args=('newspost', u'news')
+2013-10-02 13:07:39,327 [DEBUG] django.db.backends: (0.000) SAVEPOINT s139691107297024_x1; args=()
+2013-10-02 13:07:39,329 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('newspost', 'news', 'newspost') RETURNING "django_content_type"."id"; args=(u'newspost', u'news', 'newspost')
+2013-10-02 13:07:39,341 [DEBUG] django.db.backends: (0.002) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (8) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(8,)
+2013-10-02 13:07:39,343 [DEBUG] django.db.backends: (0.001) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") VALUES ('Can add newspost', 8, 'add_newspost'), ('Can change newspost', 8, 'change_newspost'), ('Can delete newspost', 8, 'delete_newspost'); args=(u'Can add newspost', 8, u'add_newspost', u'Can change newspost', 8, u'change_newspost', u'Can delete newspost', 8, u'delete_newspost')
+2013-10-02 13:07:39,353 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'news'  ORDER BY "django_content_type"."name" ASC; args=(u'news',)
+2013-10-02 13:07:39,368 [DEBUG] django.db.backends: (0.000) SET CONSTRAINTS ALL IMMEDIATE; args=()
+2013-10-02 13:07:39,369 [DEBUG] django.db.backends: (0.000) SET CONSTRAINTS ALL DEFERRED; args=()
+2013-10-02 13:07:39,396 [DEBUG] django.db.backends: (0.002) SELECT "south_migrationhistory"."id", "south_migrationhistory"."app_name", "south_migrationhistory"."migration", "south_migrationhistory"."applied" FROM "south_migrationhistory" WHERE "south_migrationhistory"."applied" IS NOT NULL ORDER BY "south_migrationhistory"."applied" ASC; args=()
+2013-10-02 13:07:39,423 [DEBUG] south: execute "CREATE TABLE "runs_run" ("id" serial NOT NULL PRIMARY KEY, "year" varchar(4) NOT NULL, "start_date" timestamp with time zone NOT NULL, "current_run" boolean NOT NULL, "submission_open" boolean NOT NULL);" with params "[]"
+2013-10-02 13:07:39,444 [DEBUG] django.db.backends: (0.021) CREATE TABLE "runs_run" ("id" serial NOT NULL PRIMARY KEY, "year" varchar(4) NOT NULL, "start_date" timestamp with time zone NOT NULL, "current_run" boolean NOT NULL, "submission_open" boolean NOT NULL);; args=[]
+2013-10-02 13:07:39,451 [DEBUG] south: execute "CREATE TABLE "runs_game" ("id" serial NOT NULL PRIMARY KEY, "name" varchar(200) NOT NULL UNIQUE, "added_date" timestamp with time zone NOT NULL, "description" text NULL, "team" varchar(200) NULL, "leader_id" integer NOT NULL, "run_id" integer NOT NULL, "likes" integer NOT NULL);" with params "[]"
+2013-10-02 13:07:39,504 [DEBUG] django.db.backends: (0.053) CREATE TABLE "runs_game" ("id" serial NOT NULL PRIMARY KEY, "name" varchar(200) NOT NULL UNIQUE, "added_date" timestamp with time zone NOT NULL, "description" text NULL, "team" varchar(200) NULL, "leader_id" integer NOT NULL, "run_id" integer NOT NULL, "likes" integer NOT NULL);; args=[]
+2013-10-02 13:07:39,507 [DEBUG] south: execute "CREATE TABLE "runs_developer" ("id" serial NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "role" varchar(300) NOT NULL, "game_id" integer NOT NULL);" with params "[]"
+2013-10-02 13:07:39,520 [DEBUG] django.db.backends: (0.013) CREATE TABLE "runs_developer" ("id" serial NOT NULL PRIMARY KEY, "user_id" integer NOT NULL, "role" varchar(300) NOT NULL, "game_id" integer NOT NULL);; args=[]
+2013-10-02 13:07:39,521 [DEBUG] south: execute "CREATE INDEX "runs_game_name_like" ON "runs_game" ("name" varchar_pattern_ops);" with params "[]"
+2013-10-02 13:07:39,537 [DEBUG] django.db.backends: (0.016) CREATE INDEX "runs_game_name_like" ON "runs_game" ("name" varchar_pattern_ops);; args=[]
+2013-10-02 13:07:39,538 [DEBUG] south: execute "ALTER TABLE "runs_game" ADD CONSTRAINT "leader_id_refs_id_16e751cb0f5cfc32" FOREIGN KEY ("leader_id") REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED;" with params "[]"
+2013-10-02 13:07:39,542 [DEBUG] django.db.backends: (0.004) ALTER TABLE "runs_game" ADD CONSTRAINT "leader_id_refs_id_16e751cb0f5cfc32" FOREIGN KEY ("leader_id") REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED;; args=[]
+2013-10-02 13:07:39,542 [DEBUG] south: execute "CREATE INDEX "runs_game_leader_id" ON "runs_game" ("leader_id");" with params "[]"
+2013-10-02 13:07:39,556 [DEBUG] django.db.backends: (0.013) CREATE INDEX "runs_game_leader_id" ON "runs_game" ("leader_id");; args=[]
+2013-10-02 13:07:39,557 [DEBUG] south: execute "ALTER TABLE "runs_game" ADD CONSTRAINT "run_id_refs_id_5dc3883ba47c5b8b" FOREIGN KEY ("run_id") REFERENCES "runs_run" ("id") DEFERRABLE INITIALLY DEFERRED;" with params "[]"
+2013-10-02 13:07:39,559 [DEBUG] django.db.backends: (0.002) ALTER TABLE "runs_game" ADD CONSTRAINT "run_id_refs_id_5dc3883ba47c5b8b" FOREIGN KEY ("run_id") REFERENCES "runs_run" ("id") DEFERRABLE INITIALLY DEFERRED;; args=[]
+2013-10-02 13:07:39,559 [DEBUG] south: execute "CREATE INDEX "runs_game_run_id" ON "runs_game" ("run_id");" with params "[]"
+2013-10-02 13:07:39,580 [DEBUG] django.db.backends: (0.020) CREATE INDEX "runs_game_run_id" ON "runs_game" ("run_id");; args=[]
+2013-10-02 13:07:39,580 [DEBUG] south: execute "ALTER TABLE "runs_developer" ADD CONSTRAINT "user_id_refs_id_25ad3f4589196a2d" FOREIGN KEY ("user_id") REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED;" with params "[]"
+2013-10-02 13:07:39,582 [DEBUG] django.db.backends: (0.002) ALTER TABLE "runs_developer" ADD CONSTRAINT "user_id_refs_id_25ad3f4589196a2d" FOREIGN KEY ("user_id") REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED;; args=[]
+2013-10-02 13:07:39,583 [DEBUG] south: execute "CREATE INDEX "runs_developer_user_id" ON "runs_developer" ("user_id");" with params "[]"
+2013-10-02 13:07:39,602 [DEBUG] django.db.backends: (0.019) CREATE INDEX "runs_developer_user_id" ON "runs_developer" ("user_id");; args=[]
+2013-10-02 13:07:39,602 [DEBUG] south: execute "ALTER TABLE "runs_developer" ADD CONSTRAINT "game_id_refs_id_215b5a320690115a" FOREIGN KEY ("game_id") REFERENCES "runs_game" ("id") DEFERRABLE INITIALLY DEFERRED;" with params "[]"
+2013-10-02 13:07:39,605 [DEBUG] django.db.backends: (0.002) ALTER TABLE "runs_developer" ADD CONSTRAINT "game_id_refs_id_215b5a320690115a" FOREIGN KEY ("game_id") REFERENCES "runs_game" ("id") DEFERRABLE INITIALLY DEFERRED;; args=[]
+2013-10-02 13:07:39,605 [DEBUG] south: execute "CREATE INDEX "runs_developer_game_id" ON "runs_developer" ("game_id");" with params "[]"
+2013-10-02 13:07:39,611 [DEBUG] django.db.backends: (0.005) CREATE INDEX "runs_developer_game_id" ON "runs_developer" ("game_id");; args=[]
+2013-10-02 13:07:39,628 [DEBUG] django.db.backends: (0.002) SELECT "south_migrationhistory"."id", "south_migrationhistory"."app_name", "south_migrationhistory"."migration", "south_migrationhistory"."applied" FROM "south_migrationhistory" WHERE ("south_migrationhistory"."app_name" = 'runs'  AND "south_migrationhistory"."migration" = '0001_initial' ); args=('runs', '0001_initial')
+2013-10-02 13:07:39,630 [DEBUG] django.db.backends: (0.001) INSERT INTO "south_migrationhistory" ("app_name", "migration", "applied") VALUES ('runs', '0001_initial', '2013-10-02 11:07:39.629215+00:00') RETURNING "south_migrationhistory"."id"; args=('runs', '0001_initial', u'2013-10-02 11:07:39.629215+00:00')
+2013-10-02 13:07:39,657 [DEBUG] south: execute "ALTER TABLE "runs_game" ADD COLUMN "short_desc" text NULL;" with params "[]"
+2013-10-02 13:07:39,658 [DEBUG] django.db.backends: (0.001) ALTER TABLE "runs_game" ADD COLUMN "short_desc" text NULL;; args=[]
+2013-10-02 13:07:39,659 [DEBUG] south: execute "ALTER TABLE "runs_game" ALTER COLUMN "short_desc" TYPE text, ALTER COLUMN "short_desc" DROP NOT NULL, ALTER COLUMN "short_desc" DROP DEFAULT;" with params "[]"
+2013-10-02 13:07:39,659 [DEBUG] django.db.backends: (0.001) ALTER TABLE "runs_game" ALTER COLUMN "short_desc" TYPE text, ALTER COLUMN "short_desc" DROP NOT NULL, ALTER COLUMN "short_desc" DROP DEFAULT;; args=[]
+2013-10-02 13:07:39,660 [DEBUG] south: execute "
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.constraint_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = %s AND
+                    kc.table_name = %s
+            " with params "['public', 'runs_game']"
+2013-10-02 13:07:39,688 [DEBUG] django.db.backends: (0.027) 
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.constraint_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = 'public' AND
+                    kc.table_name = 'runs_game'
+            ; args=['public', 'runs_game']
+2013-10-02 13:07:39,688 [DEBUG] south: execute "
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.key_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = %s AND
+                    kc.table_name = %s
+            " with params "['public', 'runs_game']"
+2013-10-02 13:07:39,697 [DEBUG] django.db.backends: (0.009) 
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.key_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = 'public' AND
+                    kc.table_name = 'runs_game'
+            ; args=['public', 'runs_game']
+2013-10-02 13:07:39,697 [DEBUG] south: execute "
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.constraint_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = %s AND
+                    kc.table_name = %s
+            " with params "['public', 'runs_game']"
+2013-10-02 13:07:39,714 [DEBUG] django.db.backends: (0.017) 
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.constraint_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = 'public' AND
+                    kc.table_name = 'runs_game'
+            ; args=['public', 'runs_game']
+2013-10-02 13:07:39,715 [DEBUG] south: execute "
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.key_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = %s AND
+                    kc.table_name = %s
+            " with params "['public', 'runs_game']"
+2013-10-02 13:07:39,719 [DEBUG] django.db.backends: (0.004) 
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.key_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = 'public' AND
+                    kc.table_name = 'runs_game'
+            ; args=['public', 'runs_game']
+2013-10-02 13:07:39,720 [DEBUG] south: execute "ALTER TABLE "runs_game" ALTER COLUMN "name" TYPE varchar(50), ALTER COLUMN "name" SET NOT NULL, ALTER COLUMN "name" DROP DEFAULT;" with params "[]"
+2013-10-02 13:07:39,795 [DEBUG] django.db.backends: (0.075) ALTER TABLE "runs_game" ALTER COLUMN "name" TYPE varchar(50), ALTER COLUMN "name" SET NOT NULL, ALTER COLUMN "name" DROP DEFAULT;; args=[]
+2013-10-02 13:07:39,796 [DEBUG] south: execute "
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.constraint_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = %s AND
+                    kc.table_name = %s
+            " with params "['public', 'runs_game']"
+2013-10-02 13:07:39,815 [DEBUG] django.db.backends: (0.018) 
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.constraint_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = 'public' AND
+                    kc.table_name = 'runs_game'
+            ; args=['public', 'runs_game']
+2013-10-02 13:07:39,815 [DEBUG] south: execute "
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.key_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = %s AND
+                    kc.table_name = %s
+            " with params "['public', 'runs_game']"
+2013-10-02 13:07:39,821 [DEBUG] django.db.backends: (0.006) 
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.key_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = 'public' AND
+                    kc.table_name = 'runs_game'
+            ; args=['public', 'runs_game']
+2013-10-02 13:07:39,822 [DEBUG] south: execute "
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.constraint_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = %s AND
+                    kc.table_name = %s
+            " with params "['public', 'runs_game']"
+2013-10-02 13:07:39,840 [DEBUG] django.db.backends: (0.018) 
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.constraint_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = 'public' AND
+                    kc.table_name = 'runs_game'
+            ; args=['public', 'runs_game']
+2013-10-02 13:07:39,841 [DEBUG] south: execute "
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.key_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = %s AND
+                    kc.table_name = %s
+            " with params "['public', 'runs_game']"
+2013-10-02 13:07:39,848 [DEBUG] django.db.backends: (0.007) 
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.key_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = 'public' AND
+                    kc.table_name = 'runs_game'
+            ; args=['public', 'runs_game']
+2013-10-02 13:07:39,849 [DEBUG] south: execute "ALTER TABLE "runs_game" ALTER COLUMN "team" TYPE varchar(50), ALTER COLUMN "team" DROP NOT NULL, ALTER COLUMN "team" DROP DEFAULT;" with params "[]"
+2013-10-02 13:07:39,928 [DEBUG] django.db.backends: (0.078) ALTER TABLE "runs_game" ALTER COLUMN "team" TYPE varchar(50), ALTER COLUMN "team" DROP NOT NULL, ALTER COLUMN "team" DROP DEFAULT;; args=[]
+2013-10-02 13:07:39,944 [DEBUG] django.db.backends: (0.001) SELECT "south_migrationhistory"."id", "south_migrationhistory"."app_name", "south_migrationhistory"."migration", "south_migrationhistory"."applied" FROM "south_migrationhistory" WHERE ("south_migrationhistory"."app_name" = 'runs'  AND "south_migrationhistory"."migration" = '0002_auto__add_field_game_short_desc__chg_field_game_name__chg_field_game_t' ); args=('runs', '0002_auto__add_field_game_short_desc__chg_field_game_name__chg_field_game_t')
+2013-10-02 13:07:39,946 [DEBUG] django.db.backends: (0.000) INSERT INTO "south_migrationhistory" ("app_name", "migration", "applied") VALUES ('runs', '0002_auto__add_field_game_short_desc__chg_field_game_name__chg_field_game_t', '2013-10-02 11:07:39.945400+00:00') RETURNING "south_migrationhistory"."id"; args=('runs', '0002_auto__add_field_game_short_desc__chg_field_game_name__chg_field_game_t', u'2013-10-02 11:07:39.945400+00:00')
+2013-10-02 13:07:39,968 [DEBUG] south: execute "
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.constraint_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = %s AND
+                    kc.table_name = %s
+            " with params "['public', 'runs_game']"
+2013-10-02 13:07:39,988 [DEBUG] django.db.backends: (0.020) 
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.constraint_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = 'public' AND
+                    kc.table_name = 'runs_game'
+            ; args=['public', 'runs_game']
+2013-10-02 13:07:39,988 [DEBUG] south: execute "
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.key_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = %s AND
+                    kc.table_name = %s
+            " with params "['public', 'runs_game']"
+2013-10-02 13:07:39,993 [DEBUG] django.db.backends: (0.004) 
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.key_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = 'public' AND
+                    kc.table_name = 'runs_game'
+            ; args=['public', 'runs_game']
+2013-10-02 13:07:39,994 [DEBUG] south: execute "
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.constraint_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = %s AND
+                    kc.table_name = %s
+            " with params "['public', 'runs_game']"
+2013-10-02 13:07:40,008 [DEBUG] django.db.backends: (0.013) 
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.constraint_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = 'public' AND
+                    kc.table_name = 'runs_game'
+            ; args=['public', 'runs_game']
+2013-10-02 13:07:40,008 [DEBUG] south: execute "
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.key_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = %s AND
+                    kc.table_name = %s
+            " with params "['public', 'runs_game']"
+2013-10-02 13:07:40,013 [DEBUG] django.db.backends: (0.005) 
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.key_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = 'public' AND
+                    kc.table_name = 'runs_game'
+            ; args=['public', 'runs_game']
+2013-10-02 13:07:40,014 [DEBUG] south: execute "ALTER TABLE "runs_game" ALTER COLUMN "short_desc" TYPE text, ALTER COLUMN "short_desc" DROP NOT NULL, ALTER COLUMN "short_desc" DROP DEFAULT;" with params "[]"
+2013-10-02 13:07:40,015 [DEBUG] django.db.backends: (0.001) ALTER TABLE "runs_game" ALTER COLUMN "short_desc" TYPE text, ALTER COLUMN "short_desc" DROP NOT NULL, ALTER COLUMN "short_desc" DROP DEFAULT;; args=[]
+2013-10-02 13:07:40,019 [DEBUG] django.db.backends: (0.001) SELECT "south_migrationhistory"."id", "south_migrationhistory"."app_name", "south_migrationhistory"."migration", "south_migrationhistory"."applied" FROM "south_migrationhistory" WHERE ("south_migrationhistory"."app_name" = 'runs'  AND "south_migrationhistory"."migration" = '0003_auto__chg_field_game_short_desc' ); args=('runs', '0003_auto__chg_field_game_short_desc')
+2013-10-02 13:07:40,021 [DEBUG] django.db.backends: (0.000) INSERT INTO "south_migrationhistory" ("app_name", "migration", "applied") VALUES ('runs', '0003_auto__chg_field_game_short_desc', '2013-10-02 11:07:40.020328+00:00') RETURNING "south_migrationhistory"."id"; args=('runs', '0003_auto__chg_field_game_short_desc', u'2013-10-02 11:07:40.020328+00:00')
+2013-10-02 13:07:40,046 [DEBUG] south: execute "
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.constraint_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = %s AND
+                    kc.table_name = %s
+            " with params "['public', 'runs_game']"
+2013-10-02 13:07:40,064 [DEBUG] django.db.backends: (0.018) 
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.constraint_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = 'public' AND
+                    kc.table_name = 'runs_game'
+            ; args=['public', 'runs_game']
+2013-10-02 13:07:40,064 [DEBUG] south: execute "
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.key_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = %s AND
+                    kc.table_name = %s
+            " with params "['public', 'runs_game']"
+2013-10-02 13:07:40,069 [DEBUG] django.db.backends: (0.004) 
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.key_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = 'public' AND
+                    kc.table_name = 'runs_game'
+            ; args=['public', 'runs_game']
+2013-10-02 13:07:40,069 [DEBUG] south: execute "ALTER TABLE "runs_game" DROP CONSTRAINT "runs_game_name_key"" with params "[]"
+2013-10-02 13:07:40,070 [DEBUG] django.db.backends: (0.001) ALTER TABLE "runs_game" DROP CONSTRAINT "runs_game_name_key"; args=[]
+2013-10-02 13:07:40,076 [DEBUG] django.db.backends: (0.001) SELECT "south_migrationhistory"."id", "south_migrationhistory"."app_name", "south_migrationhistory"."migration", "south_migrationhistory"."applied" FROM "south_migrationhistory" WHERE ("south_migrationhistory"."app_name" = 'runs'  AND "south_migrationhistory"."migration" = '0004_auto__del_unique_game_name' ); args=('runs', '0004_auto__del_unique_game_name')
+2013-10-02 13:07:40,077 [DEBUG] django.db.backends: (0.000) INSERT INTO "south_migrationhistory" ("app_name", "migration", "applied") VALUES ('runs', '0004_auto__del_unique_game_name', '2013-10-02 11:07:40.076841+00:00') RETURNING "south_migrationhistory"."id"; args=('runs', '0004_auto__del_unique_game_name', u'2013-10-02 11:07:40.076841+00:00')
+2013-10-02 13:07:40,100 [DEBUG] south: execute "ALTER TABLE "runs_game" ADD COLUMN "concept_only" boolean NOT NULL DEFAULT False;" with params "[]"
+2013-10-02 13:07:40,167 [DEBUG] django.db.backends: (0.066) ALTER TABLE "runs_game" ADD COLUMN "concept_only" boolean NOT NULL DEFAULT False;; args=[]
+2013-10-02 13:07:40,167 [DEBUG] south: execute "ALTER TABLE "runs_game" ALTER COLUMN "concept_only" TYPE boolean, ALTER COLUMN "concept_only" SET NOT NULL, ALTER COLUMN "concept_only" DROP DEFAULT;" with params "[]"
+2013-10-02 13:07:40,169 [DEBUG] django.db.backends: (0.001) ALTER TABLE "runs_game" ALTER COLUMN "concept_only" TYPE boolean, ALTER COLUMN "concept_only" SET NOT NULL, ALTER COLUMN "concept_only" DROP DEFAULT;; args=[]
+2013-10-02 13:07:40,183 [DEBUG] django.db.backends: (0.001) SELECT "south_migrationhistory"."id", "south_migrationhistory"."app_name", "south_migrationhistory"."migration", "south_migrationhistory"."applied" FROM "south_migrationhistory" WHERE ("south_migrationhistory"."app_name" = 'runs'  AND "south_migrationhistory"."migration" = '0005_auto__add_field_game_concept_only' ); args=('runs', '0005_auto__add_field_game_concept_only')
+2013-10-02 13:07:40,184 [DEBUG] django.db.backends: (0.000) INSERT INTO "south_migrationhistory" ("app_name", "migration", "applied") VALUES ('runs', '0005_auto__add_field_game_concept_only', '2013-10-02 11:07:40.183867+00:00') RETURNING "south_migrationhistory"."id"; args=('runs', '0005_auto__add_field_game_concept_only', u'2013-10-02 11:07:40.183867+00:00')
+2013-10-02 13:07:40,210 [DEBUG] south: execute "CREATE TABLE "runs_upload" ("id" serial NOT NULL PRIMARY KEY, "title" varchar(100) NOT NULL, "version" varchar(10) NULL, "game_id" integer NOT NULL, "uploaded_file" varchar(100) NOT NULL);" with params "[]"
+2013-10-02 13:07:40,229 [DEBUG] django.db.backends: (0.019) CREATE TABLE "runs_upload" ("id" serial NOT NULL PRIMARY KEY, "title" varchar(100) NOT NULL, "version" varchar(10) NULL, "game_id" integer NOT NULL, "uploaded_file" varchar(100) NOT NULL);; args=[]
+2013-10-02 13:07:40,229 [DEBUG] south: execute "ALTER TABLE "runs_upload" ADD CONSTRAINT "game_id_refs_id_38e87489dd068d78" FOREIGN KEY ("game_id") REFERENCES "runs_game" ("id") DEFERRABLE INITIALLY DEFERRED;" with params "[]"
+2013-10-02 13:07:40,231 [DEBUG] django.db.backends: (0.002) ALTER TABLE "runs_upload" ADD CONSTRAINT "game_id_refs_id_38e87489dd068d78" FOREIGN KEY ("game_id") REFERENCES "runs_game" ("id") DEFERRABLE INITIALLY DEFERRED;; args=[]
+2013-10-02 13:07:40,231 [DEBUG] south: execute "CREATE INDEX "runs_upload_game_id" ON "runs_upload" ("game_id");" with params "[]"
+2013-10-02 13:07:40,248 [DEBUG] django.db.backends: (0.016) CREATE INDEX "runs_upload_game_id" ON "runs_upload" ("game_id");; args=[]
+2013-10-02 13:07:40,260 [DEBUG] django.db.backends: (0.001) SELECT "south_migrationhistory"."id", "south_migrationhistory"."app_name", "south_migrationhistory"."migration", "south_migrationhistory"."applied" FROM "south_migrationhistory" WHERE ("south_migrationhistory"."app_name" = 'runs'  AND "south_migrationhistory"."migration" = '0006_auto__add_upload' ); args=('runs', '0006_auto__add_upload')
+2013-10-02 13:07:40,261 [DEBUG] django.db.backends: (0.000) INSERT INTO "south_migrationhistory" ("app_name", "migration", "applied") VALUES ('runs', '0006_auto__add_upload', '2013-10-02 11:07:40.260599+00:00') RETURNING "south_migrationhistory"."id"; args=('runs', '0006_auto__add_upload', u'2013-10-02 11:07:40.260599+00:00')
+2013-10-02 13:07:40,270 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'run'  AND "django_content_type"."app_label" = 'runs' ); args=('run', u'runs')
+2013-10-02 13:07:40,271 [DEBUG] django.db.backends: (0.000) SAVEPOINT s139691107297024_x1; args=()
+2013-10-02 13:07:40,272 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('run', 'runs', 'run') RETURNING "django_content_type"."id"; args=(u'run', u'runs', 'run')
+2013-10-02 13:07:40,277 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'game'  AND "django_content_type"."app_label" = 'runs' ); args=('game', u'runs')
+2013-10-02 13:07:40,278 [DEBUG] django.db.backends: (0.000) SAVEPOINT s139691107297024_x1; args=()
+2013-10-02 13:07:40,279 [DEBUG] django.db.backends: (0.000) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('game', 'runs', 'game') RETURNING "django_content_type"."id"; args=(u'game', u'runs', 'game')
+2013-10-02 13:07:40,293 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'developer'  AND "django_content_type"."app_label" = 'runs' ); args=('developer', u'runs')
+2013-10-02 13:07:40,293 [DEBUG] django.db.backends: (0.000) SAVEPOINT s139691107297024_x1; args=()
+2013-10-02 13:07:40,294 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('developer', 'runs', 'developer') RETURNING "django_content_type"."id"; args=(u'developer', u'runs', 'developer')
+2013-10-02 13:07:40,300 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'upload'  AND "django_content_type"."app_label" = 'runs' ); args=('upload', u'runs')
+2013-10-02 13:07:40,301 [DEBUG] django.db.backends: (0.000) SAVEPOINT s139691107297024_x1; args=()
+2013-10-02 13:07:40,302 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('upload', 'runs', 'upload') RETURNING "django_content_type"."id"; args=(u'upload', u'runs', 'upload')
+2013-10-02 13:07:40,309 [DEBUG] django.db.backends: (0.002) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (9, 10, 11, 12) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(9, 10, 11, 12)
+2013-10-02 13:07:40,312 [DEBUG] django.db.backends: (0.001) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") VALUES ('Can add run', 9, 'add_run'), ('Can change run', 9, 'change_run'), ('Can delete run', 9, 'delete_run'), ('Can add game', 10, 'add_game'), ('Can change game', 10, 'change_game'), ('Can delete game', 10, 'delete_game'), ('Can add developer', 11, 'add_developer'), ('Can change developer', 11, 'change_developer'), ('Can delete developer', 11, 'delete_developer'), ('Can add upload', 12, 'add_upload'), ('Can change upload', 12, 'change_upload'), ('Can delete upload', 12, 'delete_upload'); args=(u'Can add run', 9, u'add_run', u'Can change run', 9, u'change_run', u'Can delete run', 9, u'delete_run', u'Can add game', 10, u'add_game', u'Can change game', 10, u'change_game', u'Can delete game', 10, u'delete_game', u'Can add developer', 11, u'add_developer', u'Can change developer', 11, u'change_developer', u'Can delete developer', 11, u'delete_developer', u'Can add upload', 12, u'add_upload', u'Can change upload', 12, u'change_upload', u'Can delete upload', 12, u'delete_upload')
+2013-10-02 13:07:40,326 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'runs'  ORDER BY "django_content_type"."name" ASC; args=(u'runs',)
+2013-10-02 13:07:40,335 [DEBUG] django.db.backends: (0.000) SET CONSTRAINTS ALL IMMEDIATE; args=()
+2013-10-02 13:07:40,335 [DEBUG] django.db.backends: (0.000) SET CONSTRAINTS ALL DEFERRED; args=()
+2013-10-02 13:07:40,370 [DEBUG] django.db.backends: (0.002) SELECT "south_migrationhistory"."id", "south_migrationhistory"."app_name", "south_migrationhistory"."migration", "south_migrationhistory"."applied" FROM "south_migrationhistory" WHERE "south_migrationhistory"."applied" IS NOT NULL ORDER BY "south_migrationhistory"."applied" ASC; args=()
+2013-10-02 13:07:40,391 [DEBUG] south: execute "CREATE TABLE "members_team" ("id" serial NOT NULL PRIMARY KEY, "name" varchar(200) NOT NULL, "created_date" timestamp with time zone NOT NULL, "icon" varchar(100) NULL);" with params "[]"
+2013-10-02 13:07:40,415 [DEBUG] django.db.backends: (0.024) CREATE TABLE "members_team" ("id" serial NOT NULL PRIMARY KEY, "name" varchar(200) NOT NULL, "created_date" timestamp with time zone NOT NULL, "icon" varchar(100) NULL);; args=[]
+2013-10-02 13:07:40,417 [DEBUG] south: execute "CREATE TABLE "members_team_devs" ("id" serial NOT NULL PRIMARY KEY, "team_id" integer NOT NULL, "user_id" integer NOT NULL);" with params "[]"
+2013-10-02 13:07:40,433 [DEBUG] django.db.backends: (0.016) CREATE TABLE "members_team_devs" ("id" serial NOT NULL PRIMARY KEY, "team_id" integer NOT NULL, "user_id" integer NOT NULL);; args=[]
+2013-10-02 13:07:40,433 [DEBUG] south: execute "ALTER TABLE "members_team_devs" ADD CONSTRAINT "members_team_devs_team_id_58cb82076b7df1f5_uniq" UNIQUE ("team_id", "user_id")" with params "[]"
+2013-10-02 13:07:40,445 [DEBUG] django.db.backends: (0.011) ALTER TABLE "members_team_devs" ADD CONSTRAINT "members_team_devs_team_id_58cb82076b7df1f5_uniq" UNIQUE ("team_id", "user_id"); args=[]
+2013-10-02 13:07:40,447 [DEBUG] south: execute "CREATE TABLE "members_userprofile" ("id" serial NOT NULL PRIMARY KEY, "user_id" integer NOT NULL UNIQUE, "about" text NOT NULL, "portrait" varchar(100) NULL);" with params "[]"
+2013-10-02 13:07:40,506 [DEBUG] django.db.backends: (0.059) CREATE TABLE "members_userprofile" ("id" serial NOT NULL PRIMARY KEY, "user_id" integer NOT NULL UNIQUE, "about" text NOT NULL, "portrait" varchar(100) NULL);; args=[]
+2013-10-02 13:07:40,507 [DEBUG] south: execute "ALTER TABLE "members_team_devs" ADD CONSTRAINT "team_id_refs_id_4bd6989b7345b2c7" FOREIGN KEY ("team_id") REFERENCES "members_team" ("id") DEFERRABLE INITIALLY DEFERRED;" with params "[]"
+2013-10-02 13:07:40,509 [DEBUG] django.db.backends: (0.002) ALTER TABLE "members_team_devs" ADD CONSTRAINT "team_id_refs_id_4bd6989b7345b2c7" FOREIGN KEY ("team_id") REFERENCES "members_team" ("id") DEFERRABLE INITIALLY DEFERRED;; args=[]
+2013-10-02 13:07:40,510 [DEBUG] south: execute "CREATE INDEX "members_team_devs_team_id" ON "members_team_devs" ("team_id");" with params "[]"
+2013-10-02 13:07:40,526 [DEBUG] django.db.backends: (0.016) CREATE INDEX "members_team_devs_team_id" ON "members_team_devs" ("team_id");; args=[]
+2013-10-02 13:07:40,526 [DEBUG] south: execute "ALTER TABLE "members_team_devs" ADD CONSTRAINT "user_id_refs_id_105fc7038aee88df" FOREIGN KEY ("user_id") REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED;" with params "[]"
+2013-10-02 13:07:40,529 [DEBUG] django.db.backends: (0.002) ALTER TABLE "members_team_devs" ADD CONSTRAINT "user_id_refs_id_105fc7038aee88df" FOREIGN KEY ("user_id") REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED;; args=[]
+2013-10-02 13:07:40,529 [DEBUG] south: execute "CREATE INDEX "members_team_devs_user_id" ON "members_team_devs" ("user_id");" with params "[]"
+2013-10-02 13:07:40,546 [DEBUG] django.db.backends: (0.016) CREATE INDEX "members_team_devs_user_id" ON "members_team_devs" ("user_id");; args=[]
+2013-10-02 13:07:40,546 [DEBUG] south: execute "ALTER TABLE "members_userprofile" ADD CONSTRAINT "user_id_refs_id_198dbcf62f9ff83b" FOREIGN KEY ("user_id") REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED;" with params "[]"
+2013-10-02 13:07:40,549 [DEBUG] django.db.backends: (0.002) ALTER TABLE "members_userprofile" ADD CONSTRAINT "user_id_refs_id_198dbcf62f9ff83b" FOREIGN KEY ("user_id") REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED;; args=[]
+2013-10-02 13:07:40,561 [DEBUG] django.db.backends: (0.002) SELECT "south_migrationhistory"."id", "south_migrationhistory"."app_name", "south_migrationhistory"."migration", "south_migrationhistory"."applied" FROM "south_migrationhistory" WHERE ("south_migrationhistory"."app_name" = 'members'  AND "south_migrationhistory"."migration" = '0001_initial' ); args=('members', '0001_initial')
+2013-10-02 13:07:40,563 [DEBUG] django.db.backends: (0.001) INSERT INTO "south_migrationhistory" ("app_name", "migration", "applied") VALUES ('members', '0001_initial', '2013-10-02 11:07:40.561983+00:00') RETURNING "south_migrationhistory"."id"; args=('members', '0001_initial', u'2013-10-02 11:07:40.561983+00:00')
+2013-10-02 13:07:40,587 [DEBUG] south: execute "ALTER TABLE "members_userprofile" DROP COLUMN "portrait" CASCADE;" with params "[]"
+2013-10-02 13:07:40,588 [DEBUG] django.db.backends: (0.001) ALTER TABLE "members_userprofile" DROP COLUMN "portrait" CASCADE;; args=[]
+2013-10-02 13:07:40,589 [DEBUG] south: execute "
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.constraint_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = %s AND
+                    kc.table_name = %s
+            " with params "['public', 'members_userprofile']"
+2013-10-02 13:07:40,611 [DEBUG] django.db.backends: (0.022) 
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.constraint_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = 'public' AND
+                    kc.table_name = 'members_userprofile'
+            ; args=['public', 'members_userprofile']
+2013-10-02 13:07:40,612 [DEBUG] south: execute "
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.key_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = %s AND
+                    kc.table_name = %s
+            " with params "['public', 'members_userprofile']"
+2013-10-02 13:07:40,617 [DEBUG] django.db.backends: (0.005) 
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.key_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = 'public' AND
+                    kc.table_name = 'members_userprofile'
+            ; args=['public', 'members_userprofile']
+2013-10-02 13:07:40,618 [DEBUG] south: execute "
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.constraint_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = %s AND
+                    kc.table_name = %s
+            " with params "['public', 'members_userprofile']"
+2013-10-02 13:07:40,634 [DEBUG] django.db.backends: (0.016) 
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.constraint_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = 'public' AND
+                    kc.table_name = 'members_userprofile'
+            ; args=['public', 'members_userprofile']
+2013-10-02 13:07:40,635 [DEBUG] south: execute "
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.key_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = %s AND
+                    kc.table_name = %s
+            " with params "['public', 'members_userprofile']"
+2013-10-02 13:07:40,639 [DEBUG] django.db.backends: (0.004) 
+                SELECT kc.constraint_name, kc.column_name, c.constraint_type
+                FROM information_schema.key_column_usage AS kc
+                JOIN information_schema.table_constraints AS c ON
+                    kc.table_schema = c.table_schema AND
+                    kc.table_name = c.table_name AND
+                    kc.constraint_name = c.constraint_name
+                WHERE
+                    kc.table_schema = 'public' AND
+                    kc.table_name = 'members_userprofile'
+            ; args=['public', 'members_userprofile']
+2013-10-02 13:07:40,640 [DEBUG] south: execute "ALTER TABLE "members_userprofile" ALTER COLUMN "about" TYPE text, ALTER COLUMN "about" DROP NOT NULL, ALTER COLUMN "about" DROP DEFAULT;" with params "[]"
+2013-10-02 13:07:40,641 [DEBUG] django.db.backends: (0.001) ALTER TABLE "members_userprofile" ALTER COLUMN "about" TYPE text, ALTER COLUMN "about" DROP NOT NULL, ALTER COLUMN "about" DROP DEFAULT;; args=[]
+2013-10-02 13:07:40,652 [DEBUG] django.db.backends: (0.001) SELECT "south_migrationhistory"."id", "south_migrationhistory"."app_name", "south_migrationhistory"."migration", "south_migrationhistory"."applied" FROM "south_migrationhistory" WHERE ("south_migrationhistory"."app_name" = 'members'  AND "south_migrationhistory"."migration" = '0002_auto__del_field_userprofile_portrait__chg_field_userprofile_about' ); args=('members', '0002_auto__del_field_userprofile_portrait__chg_field_userprofile_about')
+2013-10-02 13:07:40,654 [DEBUG] django.db.backends: (0.000) INSERT INTO "south_migrationhistory" ("app_name", "migration", "applied") VALUES ('members', '0002_auto__del_field_userprofile_portrait__chg_field_userprofile_about', '2013-10-02 11:07:40.653179+00:00') RETURNING "south_migrationhistory"."id"; args=('members', '0002_auto__del_field_userprofile_portrait__chg_field_userprofile_about', u'2013-10-02 11:07:40.653179+00:00')
+2013-10-02 13:07:40,659 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'team'  AND "django_content_type"."app_label" = 'members' ); args=('team', u'members')
+2013-10-02 13:07:40,660 [DEBUG] django.db.backends: (0.000) SAVEPOINT s139691107297024_x1; args=()
+2013-10-02 13:07:40,661 [DEBUG] django.db.backends: (0.000) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('team', 'members', 'team') RETURNING "django_content_type"."id"; args=(u'team', u'members', 'team')
+2013-10-02 13:07:40,672 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'userprofile'  AND "django_content_type"."app_label" = 'members' ); args=('userprofile', 'members')
+2013-10-02 13:07:40,672 [DEBUG] django.db.backends: (0.000) SAVEPOINT s139691107297024_x1; args=()
+2013-10-02 13:07:40,674 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('user profile', 'members', 'userprofile') RETURNING "django_content_type"."id"; args=(u'user profile', 'members', 'userprofile')
+2013-10-02 13:07:40,686 [DEBUG] django.db.backends: (0.002) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (13, 14) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(13, 14)
+2013-10-02 13:07:40,688 [DEBUG] django.db.backends: (0.001) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") VALUES ('Can add team', 13, 'add_team'), ('Can change team', 13, 'change_team'), ('Can delete team', 13, 'delete_team'), ('Can add user profile', 14, 'add_userprofile'), ('Can change user profile', 14, 'change_userprofile'), ('Can delete user profile', 14, 'delete_userprofile'); args=(u'Can add team', 13, u'add_team', u'Can change team', 13, u'change_team', u'Can delete team', 13, u'delete_team', u'Can add user profile', 14, u'add_userprofile', u'Can change user profile', 14, u'change_userprofile', u'Can delete user profile', 14, u'delete_userprofile')
+2013-10-02 13:07:40,694 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'members'  ORDER BY "django_content_type"."name" ASC; args=(u'members',)
+2013-10-02 13:07:40,703 [DEBUG] django.db.backends: (0.000) SET CONSTRAINTS ALL IMMEDIATE; args=()
+2013-10-02 13:07:40,703 [DEBUG] django.db.backends: (0.000) SET CONSTRAINTS ALL DEFERRED; args=()
+2013-10-02 13:07:40,733 [DEBUG] django.db.backends: (0.002) SELECT "south_migrationhistory"."id", "south_migrationhistory"."app_name", "south_migrationhistory"."migration", "south_migrationhistory"."applied" FROM "south_migrationhistory" WHERE "south_migrationhistory"."applied" IS NOT NULL ORDER BY "south_migrationhistory"."applied" ASC; args=()
+2013-10-02 13:07:40,740 [DEBUG] south: execute "CREATE TABLE "content_general" ("id" serial NOT NULL PRIMARY KEY, "title" varchar(200) NOT NULL, "text" text NOT NULL);" with params "[]"
+2013-10-02 13:07:40,767 [DEBUG] django.db.backends: (0.026) CREATE TABLE "content_general" ("id" serial NOT NULL PRIMARY KEY, "title" varchar(200) NOT NULL, "text" text NOT NULL);; args=[]
+2013-10-02 13:07:40,769 [DEBUG] south: execute "CREATE TABLE "content_slide" ("id" serial NOT NULL PRIMARY KEY, "title" varchar(200) NOT NULL, "text" text NOT NULL, "belongs_to" integer NOT NULL);" with params "[]"
+2013-10-02 13:07:40,794 [DEBUG] django.db.backends: (0.024) CREATE TABLE "content_slide" ("id" serial NOT NULL PRIMARY KEY, "title" varchar(200) NOT NULL, "text" text NOT NULL, "belongs_to" integer NOT NULL);; args=[]
+2013-10-02 13:07:40,815 [DEBUG] django.db.backends: (0.002) SELECT "south_migrationhistory"."id", "south_migrationhistory"."app_name", "south_migrationhistory"."migration", "south_migrationhistory"."applied" FROM "south_migrationhistory" WHERE ("south_migrationhistory"."app_name" = 'content'  AND "south_migrationhistory"."migration" = '0001_initial' ); args=('content', '0001_initial')
+2013-10-02 13:07:40,817 [DEBUG] django.db.backends: (0.001) INSERT INTO "south_migrationhistory" ("app_name", "migration", "applied") VALUES ('content', '0001_initial', '2013-10-02 11:07:40.816331+00:00') RETURNING "south_migrationhistory"."id"; args=('content', '0001_initial', u'2013-10-02 11:07:40.816331+00:00')
+2013-10-02 13:07:40,823 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'general'  AND "django_content_type"."app_label" = 'content' ); args=('general', u'content')
+2013-10-02 13:07:40,824 [DEBUG] django.db.backends: (0.000) SAVEPOINT s139691107297024_x1; args=()
+2013-10-02 13:07:40,825 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('general', 'content', 'general') RETURNING "django_content_type"."id"; args=(u'general', u'content', 'general')
+2013-10-02 13:07:40,844 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'slide'  AND "django_content_type"."app_label" = 'content' ); args=('slide', u'content')
+2013-10-02 13:07:40,844 [DEBUG] django.db.backends: (0.000) SAVEPOINT s139691107297024_x1; args=()
+2013-10-02 13:07:40,845 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('slide', 'content', 'slide') RETURNING "django_content_type"."id"; args=(u'slide', u'content', 'slide')
+2013-10-02 13:07:40,853 [DEBUG] django.db.backends: (0.002) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (16, 15) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(16, 15)
+2013-10-02 13:07:40,855 [DEBUG] django.db.backends: (0.001) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") VALUES ('Can add general', 15, 'add_general'), ('Can change general', 15, 'change_general'), ('Can delete general', 15, 'delete_general'), ('Can add slide', 16, 'add_slide'), ('Can change slide', 16, 'change_slide'), ('Can delete slide', 16, 'delete_slide'); args=(u'Can add general', 15, u'add_general', u'Can change general', 15, u'change_general', u'Can delete general', 15, u'delete_general', u'Can add slide', 16, u'add_slide', u'Can change slide', 16, u'change_slide', u'Can delete slide', 16, u'delete_slide')
+2013-10-02 13:07:40,866 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'content'  ORDER BY "django_content_type"."name" ASC; args=(u'content',)
+2013-10-02 13:07:40,875 [DEBUG] django.db.backends: (0.000) SET CONSTRAINTS ALL IMMEDIATE; args=()
+2013-10-02 13:07:40,875 [DEBUG] django.db.backends: (0.000) SET CONSTRAINTS ALL DEFERRED; args=()
+2013-10-02 13:07:40,908 [DEBUG] django.db.backends: (0.002) SELECT "south_migrationhistory"."id", "south_migrationhistory"."app_name", "south_migrationhistory"."migration", "south_migrationhistory"."applied" FROM "south_migrationhistory" WHERE "south_migrationhistory"."applied" IS NOT NULL ORDER BY "south_migrationhistory"."applied" ASC; args=()
+2013-10-02 13:07:40,938 [DEBUG] south: execute "CREATE TABLE "gallery_img" ("id" serial NOT NULL PRIMARY KEY, "title" varchar(100) NOT NULL, "image" varchar(100) NOT NULL, "added_date" date NOT NULL, "owner_id" integer NOT NULL);" with params "[]"
+2013-10-02 13:07:40,954 [DEBUG] django.db.backends: (0.015) CREATE TABLE "gallery_img" ("id" serial NOT NULL PRIMARY KEY, "title" varchar(100) NOT NULL, "image" varchar(100) NOT NULL, "added_date" date NOT NULL, "owner_id" integer NOT NULL);; args=[]
+2013-10-02 13:07:40,956 [DEBUG] south: execute "CREATE TABLE "gallery_profilepic" ("id" serial NOT NULL PRIMARY KEY, "title" varchar(100) NOT NULL, "image" varchar(100) NOT NULL, "added_date" date NOT NULL, "owner_id" integer NOT NULL);" with params "[]"
+2013-10-02 13:07:40,970 [DEBUG] django.db.backends: (0.013) CREATE TABLE "gallery_profilepic" ("id" serial NOT NULL PRIMARY KEY, "title" varchar(100) NOT NULL, "image" varchar(100) NOT NULL, "added_date" date NOT NULL, "owner_id" integer NOT NULL);; args=[]
+2013-10-02 13:07:40,974 [DEBUG] south: execute "CREATE TABLE "gallery_gamepic" ("id" serial NOT NULL PRIMARY KEY, "title" varchar(100) NOT NULL, "image" varchar(100) NOT NULL, "added_date" date NOT NULL, "owner_id" integer NOT NULL, "game_id" integer NOT NULL, "game_icon" boolean NOT NULL);" with params "[]"
+2013-10-02 13:07:40,996 [DEBUG] django.db.backends: (0.021) CREATE TABLE "gallery_gamepic" ("id" serial NOT NULL PRIMARY KEY, "title" varchar(100) NOT NULL, "image" varchar(100) NOT NULL, "added_date" date NOT NULL, "owner_id" integer NOT NULL, "game_id" integer NOT NULL, "game_icon" boolean NOT NULL);; args=[]
+2013-10-02 13:07:40,997 [DEBUG] south: execute "ALTER TABLE "gallery_img" ADD CONSTRAINT "owner_id_refs_id_1a2456ee2d5f022f" FOREIGN KEY ("owner_id") REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED;" with params "[]"
+2013-10-02 13:07:41,000 [DEBUG] django.db.backends: (0.003) ALTER TABLE "gallery_img" ADD CONSTRAINT "owner_id_refs_id_1a2456ee2d5f022f" FOREIGN KEY ("owner_id") REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED;; args=[]
+2013-10-02 13:07:41,000 [DEBUG] south: execute "CREATE INDEX "gallery_img_owner_id" ON "gallery_img" ("owner_id");" with params "[]"
+2013-10-02 13:07:41,017 [DEBUG] django.db.backends: (0.016) CREATE INDEX "gallery_img_owner_id" ON "gallery_img" ("owner_id");; args=[]
+2013-10-02 13:07:41,017 [DEBUG] south: execute "ALTER TABLE "gallery_profilepic" ADD CONSTRAINT "owner_id_refs_id_36a6200de1c68302" FOREIGN KEY ("owner_id") REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED;" with params "[]"
+2013-10-02 13:07:41,020 [DEBUG] django.db.backends: (0.002) ALTER TABLE "gallery_profilepic" ADD CONSTRAINT "owner_id_refs_id_36a6200de1c68302" FOREIGN KEY ("owner_id") REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED;; args=[]
+2013-10-02 13:07:41,020 [DEBUG] south: execute "CREATE INDEX "gallery_profilepic_owner_id" ON "gallery_profilepic" ("owner_id");" with params "[]"
+2013-10-02 13:07:41,031 [DEBUG] django.db.backends: (0.011) CREATE INDEX "gallery_profilepic_owner_id" ON "gallery_profilepic" ("owner_id");; args=[]
+2013-10-02 13:07:41,032 [DEBUG] south: execute "ALTER TABLE "gallery_gamepic" ADD CONSTRAINT "owner_id_refs_id_7f347029f437068a" FOREIGN KEY ("owner_id") REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED;" with params "[]"
+2013-10-02 13:07:41,034 [DEBUG] django.db.backends: (0.002) ALTER TABLE "gallery_gamepic" ADD CONSTRAINT "owner_id_refs_id_7f347029f437068a" FOREIGN KEY ("owner_id") REFERENCES "auth_user" ("id") DEFERRABLE INITIALLY DEFERRED;; args=[]
+2013-10-02 13:07:41,034 [DEBUG] south: execute "CREATE INDEX "gallery_gamepic_owner_id" ON "gallery_gamepic" ("owner_id");" with params "[]"
+2013-10-02 13:07:41,047 [DEBUG] django.db.backends: (0.013) CREATE INDEX "gallery_gamepic_owner_id" ON "gallery_gamepic" ("owner_id");; args=[]
+2013-10-02 13:07:41,048 [DEBUG] south: execute "ALTER TABLE "gallery_gamepic" ADD CONSTRAINT "game_id_refs_id_6bf0655011b10d03" FOREIGN KEY ("game_id") REFERENCES "runs_game" ("id") DEFERRABLE INITIALLY DEFERRED;" with params "[]"
+2013-10-02 13:07:41,051 [DEBUG] django.db.backends: (0.002) ALTER TABLE "gallery_gamepic" ADD CONSTRAINT "game_id_refs_id_6bf0655011b10d03" FOREIGN KEY ("game_id") REFERENCES "runs_game" ("id") DEFERRABLE INITIALLY DEFERRED;; args=[]
+2013-10-02 13:07:41,051 [DEBUG] south: execute "CREATE INDEX "gallery_gamepic_game_id" ON "gallery_gamepic" ("game_id");" with params "[]"
+2013-10-02 13:07:41,062 [DEBUG] django.db.backends: (0.011) CREATE INDEX "gallery_gamepic_game_id" ON "gallery_gamepic" ("game_id");; args=[]
+2013-10-02 13:07:41,076 [DEBUG] django.db.backends: (0.002) SELECT "south_migrationhistory"."id", "south_migrationhistory"."app_name", "south_migrationhistory"."migration", "south_migrationhistory"."applied" FROM "south_migrationhistory" WHERE ("south_migrationhistory"."app_name" = 'gallery'  AND "south_migrationhistory"."migration" = '0001_initial' ); args=('gallery', '0001_initial')
+2013-10-02 13:07:41,077 [DEBUG] django.db.backends: (0.001) INSERT INTO "south_migrationhistory" ("app_name", "migration", "applied") VALUES ('gallery', '0001_initial', '2013-10-02 11:07:41.076537+00:00') RETURNING "south_migrationhistory"."id"; args=('gallery', '0001_initial', u'2013-10-02 11:07:41.076537+00:00')
+2013-10-02 13:07:41,105 [DEBUG] south: execute "CREATE TABLE "gallery_adminpic" ("id" serial NOT NULL PRIMARY KEY, "title" varchar(100) NOT NULL, "added_date" date NOT NULL, "image" varchar(100) NOT NULL);" with params "[]"
+2013-10-02 13:07:41,119 [DEBUG] django.db.backends: (0.013) CREATE TABLE "gallery_adminpic" ("id" serial NOT NULL PRIMARY KEY, "title" varchar(100) NOT NULL, "added_date" date NOT NULL, "image" varchar(100) NOT NULL);; args=[]
+2013-10-02 13:07:41,130 [DEBUG] django.db.backends: (0.001) SELECT "south_migrationhistory"."id", "south_migrationhistory"."app_name", "south_migrationhistory"."migration", "south_migrationhistory"."applied" FROM "south_migrationhistory" WHERE ("south_migrationhistory"."app_name" = 'gallery'  AND "south_migrationhistory"."migration" = '0002_auto__add_adminpic' ); args=('gallery', '0002_auto__add_adminpic')
+2013-10-02 13:07:41,132 [DEBUG] django.db.backends: (0.000) INSERT INTO "south_migrationhistory" ("app_name", "migration", "applied") VALUES ('gallery', '0002_auto__add_adminpic', '2013-10-02 11:07:41.131349+00:00') RETURNING "south_migrationhistory"."id"; args=('gallery', '0002_auto__add_adminpic', u'2013-10-02 11:07:41.131349+00:00')
+2013-10-02 13:07:41,141 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'img'  AND "django_content_type"."app_label" = 'gallery' ); args=('img', u'gallery')
+2013-10-02 13:07:41,142 [DEBUG] django.db.backends: (0.000) SAVEPOINT s139691107297024_x1; args=()
+2013-10-02 13:07:41,143 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('img', 'gallery', 'img') RETURNING "django_content_type"."id"; args=(u'img', u'gallery', 'img')
+2013-10-02 13:07:41,149 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'profilepic'  AND "django_content_type"."app_label" = 'gallery' ); args=('profilepic', u'gallery')
+2013-10-02 13:07:41,150 [DEBUG] django.db.backends: (0.000) SAVEPOINT s139691107297024_x1; args=()
+2013-10-02 13:07:41,151 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('profile pic', 'gallery', 'profilepic') RETURNING "django_content_type"."id"; args=(u'profile pic', u'gallery', 'profilepic')
+2013-10-02 13:07:41,162 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'gamepic'  AND "django_content_type"."app_label" = 'gallery' ); args=('gamepic', u'gallery')
+2013-10-02 13:07:41,163 [DEBUG] django.db.backends: (0.000) SAVEPOINT s139691107297024_x1; args=()
+2013-10-02 13:07:41,164 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('game pic', 'gallery', 'gamepic') RETURNING "django_content_type"."id"; args=(u'game pic', u'gallery', 'gamepic')
+2013-10-02 13:07:41,169 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'adminpic'  AND "django_content_type"."app_label" = 'gallery' ); args=('adminpic', u'gallery')
+2013-10-02 13:07:41,170 [DEBUG] django.db.backends: (0.000) SAVEPOINT s139691107297024_x1; args=()
+2013-10-02 13:07:41,171 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_content_type" ("name", "app_label", "model") VALUES ('admin pic', 'gallery', 'adminpic') RETURNING "django_content_type"."id"; args=(u'admin pic', u'gallery', 'adminpic')
+2013-10-02 13:07:41,178 [DEBUG] django.db.backends: (0.002) SELECT "auth_permission"."content_type_id", "auth_permission"."codename" FROM "auth_permission" INNER JOIN "django_content_type" ON ("auth_permission"."content_type_id" = "django_content_type"."id") WHERE "auth_permission"."content_type_id" IN (17, 18, 19, 20) ORDER BY "django_content_type"."app_label" ASC, "django_content_type"."model" ASC, "auth_permission"."codename" ASC; args=(17, 18, 19, 20)
+2013-10-02 13:07:41,181 [DEBUG] django.db.backends: (0.001) INSERT INTO "auth_permission" ("name", "content_type_id", "codename") VALUES ('Can add img', 17, 'add_img'), ('Can change img', 17, 'change_img'), ('Can delete img', 17, 'delete_img'), ('Can add profile pic', 18, 'add_profilepic'), ('Can change profile pic', 18, 'change_profilepic'), ('Can delete profile pic', 18, 'delete_profilepic'), ('Can add game pic', 19, 'add_gamepic'), ('Can change game pic', 19, 'change_gamepic'), ('Can delete game pic', 19, 'delete_gamepic'), ('Can add admin pic', 20, 'add_adminpic'), ('Can change admin pic', 20, 'change_adminpic'), ('Can delete admin pic', 20, 'delete_adminpic'); args=(u'Can add img', 17, u'add_img', u'Can change img', 17, u'change_img', u'Can delete img', 17, u'delete_img', u'Can add profile pic', 18, u'add_profilepic', u'Can change profile pic', 18, u'change_profilepic', u'Can delete profile pic', 18, u'delete_profilepic', u'Can add game pic', 19, u'add_gamepic', u'Can change game pic', 19, u'change_gamepic', u'Can delete game pic', 19, u'delete_gamepic', u'Can add admin pic', 20, u'add_adminpic', u'Can change admin pic', 20, u'change_adminpic', u'Can delete admin pic', 20, u'delete_adminpic')
+2013-10-02 13:07:41,193 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE "django_content_type"."app_label" = 'gallery'  ORDER BY "django_content_type"."name" ASC; args=(u'gallery',)
+2013-10-02 13:07:41,201 [DEBUG] django.db.backends: (0.000) SET CONSTRAINTS ALL IMMEDIATE; args=()
+2013-10-02 13:07:41,202 [DEBUG] django.db.backends: (0.000) SET CONSTRAINTS ALL DEFERRED; args=()
+2013-10-02 13:08:05,698 [DEBUG] django.db.backends: (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = '53se5g3vejl3wt7wek124atvhpauzg2k'  AND "django_session"."expire_date" > '2013-10-02 11:08:05.669000+00:00' ); args=('53se5g3vejl3wt7wek124atvhpauzg2k', u'2013-10-02 11:08:05.669000+00:00')
+2013-10-02 13:08:05,701 [DEBUG] django.db.backends: (0.001) SELECT (1) AS "a" FROM "django_session" WHERE "django_session"."session_key" = 'eeygk80oh73tx59t3nit08ntekzt6dbr'  LIMIT 1; args=(u'eeygk80oh73tx59t3nit08ntekzt6dbr',)
+2013-10-02 13:08:05,702 [DEBUG] django.db.backends: (0.000) SAVEPOINT s140207793587968_x1; args=()
+2013-10-02 13:08:05,703 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_session" ("session_key", "session_data", "expire_date") VALUES ('eeygk80oh73tx59t3nit08ntekzt6dbr', 'ZWExMDlmYjZiNTRkOGMwNTBmNWUxYTZlYzFlMzk3YWM0NDA5ODkyYjqAAn1xAS4=', '2013-10-16 11:08:05.701740+00:00'); args=(u'eeygk80oh73tx59t3nit08ntekzt6dbr', u'ZWExMDlmYjZiNTRkOGMwNTBmNWUxYTZlYzFlMzk3YWM0NDA5ODkyYjqAAn1xAS4=', u'2013-10-16 11:08:05.701740+00:00')
+2013-10-02 13:08:05,713 [DEBUG] django.db.backends: (0.001) SELECT "content_slide"."id", "content_slide"."title", "content_slide"."text", "content_slide"."belongs_to" FROM "content_slide" WHERE "content_slide"."belongs_to" = 1  ORDER BY "content_slide"."title" ASC; args=(1,)
+2013-10-02 13:08:05,715 [DEBUG] django.db.backends: (0.000) SELECT "content_slide"."id", "content_slide"."title", "content_slide"."text", "content_slide"."belongs_to" FROM "content_slide" WHERE "content_slide"."belongs_to" = 2  ORDER BY "content_slide"."title" ASC; args=(2,)
+2013-10-02 13:08:05,716 [DEBUG] django.db.backends: (0.001) SELECT "content_slide"."id", "content_slide"."title", "content_slide"."text", "content_slide"."belongs_to" FROM "content_slide" WHERE "content_slide"."belongs_to" = 3  ORDER BY "content_slide"."title" ASC; args=(3,)
+2013-10-02 13:08:05,719 [DEBUG] django.db.backends: (0.002) SELECT "runs_game"."id", "runs_game"."name", "runs_game"."added_date", "runs_game"."description", "runs_game"."short_desc", "runs_game"."team", "runs_game"."leader_id", "runs_game"."run_id", "runs_game"."likes", "runs_game"."concept_only" FROM "runs_game" ORDER BY "runs_game"."added_date" DESC LIMIT 3; args=()
+2013-10-02 13:08:05,722 [DEBUG] django.db.backends: (0.000) SAVEPOINT s140207793587968_x1; args=()
+2013-10-02 13:08:05,725 [DEBUG] django.db.backends: (0.001) SELECT (1) AS "a" FROM "django_session" WHERE "django_session"."session_key" = 'eeygk80oh73tx59t3nit08ntekzt6dbr'  LIMIT 1; args=(u'eeygk80oh73tx59t3nit08ntekzt6dbr',)
+2013-10-02 13:08:05,728 [DEBUG] django.db.backends: (0.001) UPDATE "django_session" SET "session_data" = 'ZWExMDlmYjZiNTRkOGMwNTBmNWUxYTZlYzFlMzk3YWM0NDA5ODkyYjqAAn1xAS4=', "expire_date" = '2013-10-16 11:08:05.722327+00:00' WHERE "django_session"."session_key" = 'eeygk80oh73tx59t3nit08ntekzt6dbr' ; args=(u'ZWExMDlmYjZiNTRkOGMwNTBmNWUxYTZlYzFlMzk3YWM0NDA5ODkyYjqAAn1xAS4=', u'2013-10-16 11:08:05.722327+00:00', u'eeygk80oh73tx59t3nit08ntekzt6dbr')
+2013-10-02 13:08:17,315 [DEBUG] django.db.backends: (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'eeygk80oh73tx59t3nit08ntekzt6dbr'  AND "django_session"."expire_date" > '2013-10-02 11:08:17.291598+00:00' ); args=('eeygk80oh73tx59t3nit08ntekzt6dbr', u'2013-10-02 11:08:17.291598+00:00')
+2013-10-02 13:08:54,185 [DEBUG] django.db.backends: (0.003) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'eeygk80oh73tx59t3nit08ntekzt6dbr'  AND "django_session"."expire_date" > '2013-10-02 11:08:54.162567+00:00' ); args=('eeygk80oh73tx59t3nit08ntekzt6dbr', u'2013-10-02 11:08:54.162567+00:00')
+2013-10-02 13:08:54,257 [DEBUG] django.db.backends: (0.000) SAVEPOINT s140008934606592_x1; args=()
+2013-10-02 13:08:54,259 [DEBUG] django.db.backends: (0.001) SELECT (1) AS "a" FROM "django_session" WHERE "django_session"."session_key" = 'eeygk80oh73tx59t3nit08ntekzt6dbr'  LIMIT 1; args=('eeygk80oh73tx59t3nit08ntekzt6dbr',)
+2013-10-02 13:08:54,261 [DEBUG] django.db.backends: (0.001) UPDATE "django_session" SET "session_data" = 'MzBmOGNmMDY0OGYzZTY1Nzg5OGQ1MjI0OWFhMTg3NmYwODcxNDczNTqAAn1xAVgKAAAAdGVzdGNvb2tpZXECWAYAAAB3b3JrZWRxA3Mu', "expire_date" = '2013-10-16 11:08:54.256977+00:00' WHERE "django_session"."session_key" = 'eeygk80oh73tx59t3nit08ntekzt6dbr' ; args=(u'MzBmOGNmMDY0OGYzZTY1Nzg5OGQ1MjI0OWFhMTg3NmYwODcxNDczNTqAAn1xAVgKAAAAdGVzdGNvb2tpZXECWAYAAAB3b3JrZWRxA3Mu', u'2013-10-16 11:08:54.256977+00:00', 'eeygk80oh73tx59t3nit08ntekzt6dbr')
+2013-10-02 13:08:56,124 [DEBUG] django.db.backends: (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'eeygk80oh73tx59t3nit08ntekzt6dbr'  AND "django_session"."expire_date" > '2013-10-02 11:08:56.105023+00:00' ); args=('eeygk80oh73tx59t3nit08ntekzt6dbr', u'2013-10-02 11:08:56.105023+00:00')
+2013-10-02 13:08:56,129 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'admin' ; args=(u'admin',)
+2013-10-02 13:08:56,316 [DEBUG] django.db.backends: (0.000) SAVEPOINT s140008934606592_x1; args=()
+2013-10-02 13:08:56,319 [DEBUG] django.db.backends: (0.001) SELECT (1) AS "a" FROM "django_session" WHERE "django_session"."session_key" = 'eeygk80oh73tx59t3nit08ntekzt6dbr'  LIMIT 1; args=('eeygk80oh73tx59t3nit08ntekzt6dbr',)
+2013-10-02 13:08:56,321 [DEBUG] django.db.backends: (0.001) UPDATE "django_session" SET "session_data" = 'OTIzM2YyOGIzNjc3MzZmOWU1ZmU0YjJlY2Y2ZTExZmU1YTA3MGNmZjqAAn1xAVgKAAAAdGVzdGNvb2tpZVgGAAAAd29ya2VkcQJzLg==', "expire_date" = '2013-10-16 11:08:56.316151+00:00' WHERE "django_session"."session_key" = 'eeygk80oh73tx59t3nit08ntekzt6dbr' ; args=(u'OTIzM2YyOGIzNjc3MzZmOWU1ZmU0YjJlY2Y2ZTExZmU1YTA3MGNmZjqAAn1xAVgKAAAAdGVzdGNvb2tpZVgGAAAAd29ya2VkcQJzLg==', u'2013-10-16 11:08:56.316151+00:00', 'eeygk80oh73tx59t3nit08ntekzt6dbr')
+2013-10-02 13:08:58,908 [DEBUG] django.db.backends: (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'eeygk80oh73tx59t3nit08ntekzt6dbr'  AND "django_session"."expire_date" > '2013-10-02 11:08:58.888281+00:00' ); args=('eeygk80oh73tx59t3nit08ntekzt6dbr', u'2013-10-02 11:08:58.888281+00:00')
+2013-10-02 13:08:58,912 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'admin' ; args=(u'admin',)
+2013-10-02 13:08:59,048 [DEBUG] django.db.backends: (0.000) SAVEPOINT s140008934606592_x1; args=()
+2013-10-02 13:08:59,050 [DEBUG] django.db.backends: (0.001) SELECT (1) AS "a" FROM "django_session" WHERE "django_session"."session_key" = 'eeygk80oh73tx59t3nit08ntekzt6dbr'  LIMIT 1; args=('eeygk80oh73tx59t3nit08ntekzt6dbr',)
+2013-10-02 13:08:59,052 [DEBUG] django.db.backends: (0.001) UPDATE "django_session" SET "session_data" = 'OTIzM2YyOGIzNjc3MzZmOWU1ZmU0YjJlY2Y2ZTExZmU1YTA3MGNmZjqAAn1xAVgKAAAAdGVzdGNvb2tpZVgGAAAAd29ya2VkcQJzLg==', "expire_date" = '2013-10-16 11:08:59.047946+00:00' WHERE "django_session"."session_key" = 'eeygk80oh73tx59t3nit08ntekzt6dbr' ; args=(u'OTIzM2YyOGIzNjc3MzZmOWU1ZmU0YjJlY2Y2ZTExZmU1YTA3MGNmZjqAAn1xAVgKAAAAdGVzdGNvb2tpZVgGAAAAd29ya2VkcQJzLg==', u'2013-10-16 11:08:59.047946+00:00', 'eeygk80oh73tx59t3nit08ntekzt6dbr')
+2013-10-02 13:23:47,015 [DEBUG] django.db.backends: (0.003) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'jorgen' ; args=(u'jorgen',)
+2013-10-02 13:23:50,704 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'admin' ; args=('admin',)
+2013-10-02 13:23:53,924 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'jorgen' ; args=(u'jorgen',)
+2013-10-02 13:24:03,232 [DEBUG] django.db.backends: (0.001) INSERT INTO "auth_user" ("password", "last_login", "is_superuser", "username", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined") VALUES ('pbkdf2_sha256$10000$4QE1v4W5jgE5$Ctu21tAP7qm4NeuS8HmBYTBRw8NyPGGIm5aRtGU5msU=', '2013-10-02 11:24:03.109457+00:00', false, 'jorgen', '', '', '', false, true, '2013-10-02 11:24:03.109457+00:00') RETURNING "auth_user"."id"; args=(u'pbkdf2_sha256$10000$4QE1v4W5jgE5$Ctu21tAP7qm4NeuS8HmBYTBRw8NyPGGIm5aRtGU5msU=', u'2013-10-02 11:24:03.109457+00:00', False, u'jorgen', u'', u'', u'', False, True, u'2013-10-02 11:24:03.109457+00:00')
+2013-10-02 13:24:03,243 [DEBUG] django.db.backends: (0.001) INSERT INTO "members_userprofile" ("user_id", "about") VALUES (2, NULL) RETURNING "members_userprofile"."id"; args=(2, None)
+2013-10-02 13:24:03,255 [DEBUG] django.db.backends: (0.001) SELECT (1) AS "a" FROM "auth_user" WHERE "auth_user"."id" = 2  LIMIT 1; args=(2,)
+2013-10-02 13:24:03,257 [DEBUG] django.db.backends: (0.001) UPDATE "auth_user" SET "password" = 'pbkdf2_sha256$10000$4QE1v4W5jgE5$Ctu21tAP7qm4NeuS8HmBYTBRw8NyPGGIm5aRtGU5msU=', "last_login" = '2013-10-02 11:24:03.109457+00:00', "is_superuser" = true, "username" = 'jorgen', "first_name" = '', "last_name" = '', "email" = '', "is_staff" = true, "is_active" = true, "date_joined" = '2013-10-02 11:24:03.109457+00:00' WHERE "auth_user"."id" = 2 ; args=(u'pbkdf2_sha256$10000$4QE1v4W5jgE5$Ctu21tAP7qm4NeuS8HmBYTBRw8NyPGGIm5aRtGU5msU=', u'2013-10-02 11:24:03.109457+00:00', True, u'jorgen', u'', u'', u'', True, True, u'2013-10-02 11:24:03.109457+00:00', 2)
+2013-10-02 13:24:22,786 [DEBUG] django.db.backends: (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'eeygk80oh73tx59t3nit08ntekzt6dbr'  AND "django_session"."expire_date" > '2013-10-02 11:24:22.762187+00:00' ); args=('eeygk80oh73tx59t3nit08ntekzt6dbr', u'2013-10-02 11:24:22.762187+00:00')
+2013-10-02 13:24:22,834 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'jorgen' ; args=(u'jorgen',)
+2013-10-02 13:24:22,956 [DEBUG] django.db.backends: (0.001) SELECT (1) AS "a" FROM "django_session" WHERE "django_session"."session_key" = 'nqxiigjop3k0utlou8w10sn73xu2qo8a'  LIMIT 1; args=(u'nqxiigjop3k0utlou8w10sn73xu2qo8a',)
+2013-10-02 13:24:22,957 [DEBUG] django.db.backends: (0.000) SAVEPOINT s140163473794816_x1; args=()
+2013-10-02 13:24:22,958 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_session" ("session_key", "session_data", "expire_date") VALUES ('nqxiigjop3k0utlou8w10sn73xu2qo8a', 'MmU1MTUyZTc4ODhhNWMwMGJkZmYyYzlmY2UyN2E2YjI5NTc3YjNjNDqAAn1xAVgKAAAAdGVzdGNvb2tpZVgGAAAAd29ya2Vkcy4=', '2013-10-16 11:24:22.956726+00:00'); args=(u'nqxiigjop3k0utlou8w10sn73xu2qo8a', u'MmU1MTUyZTc4ODhhNWMwMGJkZmYyYzlmY2UyN2E2YjI5NTc3YjNjNDqAAn1xAVgKAAAAdGVzdGNvb2tpZVgGAAAAd29ya2Vkcy4=', u'2013-10-16 11:24:22.956726+00:00')
+2013-10-02 13:24:22,968 [DEBUG] django.db.backends: (0.001) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE "django_session"."session_key" = 'eeygk80oh73tx59t3nit08ntekzt6dbr' ; args=('eeygk80oh73tx59t3nit08ntekzt6dbr',)
+2013-10-02 13:24:22,970 [DEBUG] django.db.backends: (0.000) DELETE FROM "django_session" WHERE "session_key" IN ('eeygk80oh73tx59t3nit08ntekzt6dbr'); args=(u'eeygk80oh73tx59t3nit08ntekzt6dbr',)
+2013-10-02 13:24:22,978 [DEBUG] django.db.backends: (0.001) UPDATE "auth_user" SET "last_login" = '2013-10-02 11:24:22.975892+00:00' WHERE "auth_user"."id" = 2 ; args=(u'2013-10-02 11:24:22.975892+00:00', 2)
+2013-10-02 13:24:22,989 [DEBUG] django.db.backends: (0.000) SAVEPOINT s140163473794816_x1; args=()
+2013-10-02 13:24:22,991 [DEBUG] django.db.backends: (0.001) SELECT (1) AS "a" FROM "django_session" WHERE "django_session"."session_key" = 'nqxiigjop3k0utlou8w10sn73xu2qo8a'  LIMIT 1; args=(u'nqxiigjop3k0utlou8w10sn73xu2qo8a',)
+2013-10-02 13:24:22,993 [DEBUG] django.db.backends: (0.001) UPDATE "django_session" SET "session_data" = 'ZDVlYjM3MWFjMDI0YzlmZjMzNDZmZWY2MDU3ZTUzY2JlNjdkZWQ4OTqAAn1xAShVEl9hdXRoX3VzZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHEDVQ1fYXV0aF91c2VyX2lkcQRLAnUu', "expire_date" = '2013-10-16 11:24:22.988483+00:00' WHERE "django_session"."session_key" = 'nqxiigjop3k0utlou8w10sn73xu2qo8a' ; args=(u'ZDVlYjM3MWFjMDI0YzlmZjMzNDZmZWY2MDU3ZTUzY2JlNjdkZWQ4OTqAAn1xAShVEl9hdXRoX3VzZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHEDVQ1fYXV0aF91c2VyX2lkcQRLAnUu', u'2013-10-16 11:24:22.988483+00:00', u'nqxiigjop3k0utlou8w10sn73xu2qo8a')
+2013-10-02 13:24:23,035 [DEBUG] django.db.backends: (0.003) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'nqxiigjop3k0utlou8w10sn73xu2qo8a'  AND "django_session"."expire_date" > '2013-10-02 11:24:23.010897+00:00' ); args=('nqxiigjop3k0utlou8w10sn73xu2qo8a', u'2013-10-02 11:24:23.010897+00:00')
+2013-10-02 13:24:23,039 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2 ; args=(2,)
+2013-10-02 13:24:23,087 [DEBUG] django.db.backends: (0.003) SELECT "django_admin_log"."id", "django_admin_log"."action_time", "django_admin_log"."user_id", "django_admin_log"."content_type_id", "django_admin_log"."object_id", "django_admin_log"."object_repr", "django_admin_log"."action_flag", "django_admin_log"."change_message", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined", "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_admin_log" INNER JOIN "auth_user" ON ("django_admin_log"."user_id" = "auth_user"."id") LEFT OUTER JOIN "django_content_type" ON ("django_admin_log"."content_type_id" = "django_content_type"."id") WHERE "django_admin_log"."user_id" = 2  ORDER BY "django_admin_log"."action_time" DESC LIMIT 10; args=(2,)
+2013-10-02 13:24:27,300 [DEBUG] django.db.backends: (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'nqxiigjop3k0utlou8w10sn73xu2qo8a'  AND "django_session"."expire_date" > '2013-10-02 11:24:27.279869+00:00' ); args=('nqxiigjop3k0utlou8w10sn73xu2qo8a', u'2013-10-02 11:24:27.279869+00:00')
+2013-10-02 13:24:27,304 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2 ; args=(2,)
+2013-10-02 13:24:27,307 [DEBUG] django.db.backends: (0.001) SELECT "auth_group"."id", "auth_group"."name" FROM "auth_group"; args=()
+2013-10-02 13:24:27,311 [DEBUG] django.db.backends: (0.002) SELECT COUNT(DISTINCT "auth_user"."id") FROM "auth_user"; args=()
+2013-10-02 13:24:27,315 [DEBUG] django.db.backends: (0.002) SELECT DISTINCT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" ORDER BY "auth_user"."username" ASC, "auth_user"."id" DESC; args=()
+2013-10-02 13:24:27,566 [DEBUG] django.db.backends: (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'nqxiigjop3k0utlou8w10sn73xu2qo8a'  AND "django_session"."expire_date" > '2013-10-02 11:24:27.539086+00:00' ); args=('nqxiigjop3k0utlou8w10sn73xu2qo8a', u'2013-10-02 11:24:27.539086+00:00')
+2013-10-02 13:24:27,570 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2 ; args=(2,)
+2013-10-02 13:24:37,102 [DEBUG] django.db.backends: (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'nqxiigjop3k0utlou8w10sn73xu2qo8a'  AND "django_session"."expire_date" > '2013-10-02 11:24:37.082760+00:00' ); args=('nqxiigjop3k0utlou8w10sn73xu2qo8a', u'2013-10-02 11:24:37.082760+00:00')
+2013-10-02 13:24:37,106 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2 ; args=(2,)
+2013-10-02 13:24:37,109 [DEBUG] django.db.backends: (0.001) SELECT "auth_group"."id", "auth_group"."name" FROM "auth_group"; args=()
+2013-10-02 13:24:37,112 [DEBUG] django.db.backends: (0.001) SELECT COUNT(DISTINCT "auth_user"."id") FROM "auth_user"; args=()
+2013-10-02 13:24:37,114 [DEBUG] django.db.backends: (0.000) SELECT "auth_group"."id", "auth_group"."name" FROM "auth_group"; args=()
+2013-10-02 13:24:37,120 [DEBUG] django.db.backends: (0.002) SELECT DISTINCT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" IN (1) ORDER BY "auth_user"."username" ASC, "auth_user"."id" DESC; args=(1,)
+2013-10-02 13:24:37,124 [DEBUG] django.db.backends: (0.001) SELECT "auth_user_groups"."id", "auth_user_groups"."user_id", "auth_user_groups"."group_id", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user_groups" INNER JOIN "auth_user" ON ("auth_user_groups"."user_id" = "auth_user"."id") WHERE "auth_user_groups"."user_id" IN (1); args=(1,)
+2013-10-02 13:24:37,129 [DEBUG] django.db.backends: (0.001) SELECT "auth_user_user_permissions"."id", "auth_user_user_permissions"."user_id", "auth_user_user_permissions"."permission_id", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user_user_permissions" INNER JOIN "auth_user" ON ("auth_user_user_permissions"."user_id" = "auth_user"."id") WHERE "auth_user_user_permissions"."user_id" IN (1); args=(1,)
+2013-10-02 13:24:37,132 [DEBUG] django.db.backends: (0.001) SELECT "django_admin_log"."id", "django_admin_log"."action_time", "django_admin_log"."user_id", "django_admin_log"."content_type_id", "django_admin_log"."object_id", "django_admin_log"."object_repr", "django_admin_log"."action_flag", "django_admin_log"."change_message", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "django_admin_log" INNER JOIN "auth_user" ON ("django_admin_log"."user_id" = "auth_user"."id") WHERE "django_admin_log"."user_id" IN (1) ORDER BY "django_admin_log"."action_time" DESC; args=(1,)
+2013-10-02 13:24:37,137 [DEBUG] django.db.backends: (0.001) SELECT "members_team_devs"."id", "members_team_devs"."team_id", "members_team_devs"."user_id", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "members_team_devs" INNER JOIN "auth_user" ON ("members_team_devs"."user_id" = "auth_user"."id") WHERE "members_team_devs"."user_id" IN (1); args=(1,)
+2013-10-02 13:24:37,141 [DEBUG] django.db.backends: (0.001) SELECT "members_userprofile"."id", "members_userprofile"."user_id", "members_userprofile"."about", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "members_userprofile" INNER JOIN "auth_user" ON ("members_userprofile"."user_id" = "auth_user"."id") WHERE "members_userprofile"."user_id" IN (1); args=(1,)
+2013-10-02 13:24:37,145 [DEBUG] django.db.backends: (0.001) SELECT "gallery_img"."id", "gallery_img"."title", "gallery_img"."image", "gallery_img"."added_date", "gallery_img"."owner_id", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "gallery_img" INNER JOIN "auth_user" ON ("gallery_img"."owner_id" = "auth_user"."id") WHERE "gallery_img"."owner_id" IN (1); args=(1,)
+2013-10-02 13:24:37,149 [DEBUG] django.db.backends: (0.001) SELECT "gallery_profilepic"."id", "gallery_profilepic"."title", "gallery_profilepic"."image", "gallery_profilepic"."added_date", "gallery_profilepic"."owner_id", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "gallery_profilepic" INNER JOIN "auth_user" ON ("gallery_profilepic"."owner_id" = "auth_user"."id") WHERE "gallery_profilepic"."owner_id" IN (1); args=(1,)
+2013-10-02 13:24:37,153 [DEBUG] django.db.backends: (0.001) SELECT "gallery_gamepic"."id", "gallery_gamepic"."title", "gallery_gamepic"."image", "gallery_gamepic"."added_date", "gallery_gamepic"."owner_id", "gallery_gamepic"."game_id", "gallery_gamepic"."game_icon", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "gallery_gamepic" INNER JOIN "auth_user" ON ("gallery_gamepic"."owner_id" = "auth_user"."id") WHERE "gallery_gamepic"."owner_id" IN (1); args=(1,)
+2013-10-02 13:24:37,157 [DEBUG] django.db.backends: (0.001) SELECT "runs_game"."id", "runs_game"."name", "runs_game"."added_date", "runs_game"."description", "runs_game"."short_desc", "runs_game"."team", "runs_game"."leader_id", "runs_game"."run_id", "runs_game"."likes", "runs_game"."concept_only", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "runs_game" INNER JOIN "auth_user" ON ("runs_game"."leader_id" = "auth_user"."id") WHERE "runs_game"."leader_id" IN (1); args=(1,)
+2013-10-02 13:24:37,161 [DEBUG] django.db.backends: (0.001) SELECT "runs_developer"."id", "runs_developer"."user_id", "runs_developer"."role", "runs_developer"."game_id", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "runs_developer" INNER JOIN "auth_user" ON ("runs_developer"."user_id" = "auth_user"."id") WHERE "runs_developer"."user_id" IN (1); args=(1,)
+2013-10-02 13:24:38,384 [DEBUG] django.db.backends: (0.003) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'nqxiigjop3k0utlou8w10sn73xu2qo8a'  AND "django_session"."expire_date" > '2013-10-02 11:24:38.360135+00:00' ); args=('nqxiigjop3k0utlou8w10sn73xu2qo8a', u'2013-10-02 11:24:38.360135+00:00')
+2013-10-02 13:24:38,387 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2 ; args=(2,)
+2013-10-02 13:24:38,389 [DEBUG] django.db.backends: (0.001) SELECT "auth_group"."id", "auth_group"."name" FROM "auth_group"; args=()
+2013-10-02 13:24:38,392 [DEBUG] django.db.backends: (0.001) SELECT COUNT(DISTINCT "auth_user"."id") FROM "auth_user"; args=()
+2013-10-02 13:24:38,394 [DEBUG] django.db.backends: (0.000) SELECT "auth_group"."id", "auth_group"."name" FROM "auth_group"; args=()
+2013-10-02 13:24:38,399 [DEBUG] django.db.backends: (0.002) SELECT DISTINCT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" IN (1) ORDER BY "auth_user"."username" ASC, "auth_user"."id" DESC; args=(1,)
+2013-10-02 13:24:38,403 [DEBUG] django.db.backends: (0.001) SELECT "auth_user_groups"."id", "auth_user_groups"."user_id", "auth_user_groups"."group_id", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user_groups" INNER JOIN "auth_user" ON ("auth_user_groups"."user_id" = "auth_user"."id") WHERE "auth_user_groups"."user_id" IN (1); args=(1,)
+2013-10-02 13:24:38,407 [DEBUG] django.db.backends: (0.001) SELECT "auth_user_user_permissions"."id", "auth_user_user_permissions"."user_id", "auth_user_user_permissions"."permission_id", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user_user_permissions" INNER JOIN "auth_user" ON ("auth_user_user_permissions"."user_id" = "auth_user"."id") WHERE "auth_user_user_permissions"."user_id" IN (1); args=(1,)
+2013-10-02 13:24:38,411 [DEBUG] django.db.backends: (0.001) SELECT "django_admin_log"."id", "django_admin_log"."action_time", "django_admin_log"."user_id", "django_admin_log"."content_type_id", "django_admin_log"."object_id", "django_admin_log"."object_repr", "django_admin_log"."action_flag", "django_admin_log"."change_message", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "django_admin_log" INNER JOIN "auth_user" ON ("django_admin_log"."user_id" = "auth_user"."id") WHERE "django_admin_log"."user_id" IN (1) ORDER BY "django_admin_log"."action_time" DESC; args=(1,)
+2013-10-02 13:24:38,415 [DEBUG] django.db.backends: (0.002) SELECT "members_team_devs"."id", "members_team_devs"."team_id", "members_team_devs"."user_id", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "members_team_devs" INNER JOIN "auth_user" ON ("members_team_devs"."user_id" = "auth_user"."id") WHERE "members_team_devs"."user_id" IN (1); args=(1,)
+2013-10-02 13:24:38,418 [DEBUG] django.db.backends: (0.001) SELECT "members_userprofile"."id", "members_userprofile"."user_id", "members_userprofile"."about", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "members_userprofile" INNER JOIN "auth_user" ON ("members_userprofile"."user_id" = "auth_user"."id") WHERE "members_userprofile"."user_id" IN (1); args=(1,)
+2013-10-02 13:24:38,421 [DEBUG] django.db.backends: (0.001) SELECT "gallery_img"."id", "gallery_img"."title", "gallery_img"."image", "gallery_img"."added_date", "gallery_img"."owner_id", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "gallery_img" INNER JOIN "auth_user" ON ("gallery_img"."owner_id" = "auth_user"."id") WHERE "gallery_img"."owner_id" IN (1); args=(1,)
+2013-10-02 13:24:38,423 [DEBUG] django.db.backends: (0.001) SELECT "gallery_profilepic"."id", "gallery_profilepic"."title", "gallery_profilepic"."image", "gallery_profilepic"."added_date", "gallery_profilepic"."owner_id", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "gallery_profilepic" INNER JOIN "auth_user" ON ("gallery_profilepic"."owner_id" = "auth_user"."id") WHERE "gallery_profilepic"."owner_id" IN (1); args=(1,)
+2013-10-02 13:24:38,427 [DEBUG] django.db.backends: (0.001) SELECT "gallery_gamepic"."id", "gallery_gamepic"."title", "gallery_gamepic"."image", "gallery_gamepic"."added_date", "gallery_gamepic"."owner_id", "gallery_gamepic"."game_id", "gallery_gamepic"."game_icon", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "gallery_gamepic" INNER JOIN "auth_user" ON ("gallery_gamepic"."owner_id" = "auth_user"."id") WHERE "gallery_gamepic"."owner_id" IN (1); args=(1,)
+2013-10-02 13:24:38,431 [DEBUG] django.db.backends: (0.001) SELECT "runs_game"."id", "runs_game"."name", "runs_game"."added_date", "runs_game"."description", "runs_game"."short_desc", "runs_game"."team", "runs_game"."leader_id", "runs_game"."run_id", "runs_game"."likes", "runs_game"."concept_only", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "runs_game" INNER JOIN "auth_user" ON ("runs_game"."leader_id" = "auth_user"."id") WHERE "runs_game"."leader_id" IN (1); args=(1,)
+2013-10-02 13:24:38,434 [DEBUG] django.db.backends: (0.001) SELECT "runs_developer"."id", "runs_developer"."user_id", "runs_developer"."role", "runs_developer"."game_id", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "runs_developer" INNER JOIN "auth_user" ON ("runs_developer"."user_id" = "auth_user"."id") WHERE "runs_developer"."user_id" IN (1); args=(1,)
+2013-10-02 13:24:38,437 [DEBUG] django.db.backends: (0.001) SELECT "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_content_type" WHERE ("django_content_type"."model" = 'user'  AND "django_content_type"."app_label" = 'auth' ); args=('user', u'auth')
+2013-10-02 13:24:38,440 [DEBUG] django.db.backends: (0.001) INSERT INTO "django_admin_log" ("action_time", "user_id", "content_type_id", "object_id", "object_repr", "action_flag", "change_message") VALUES ('2013-10-02 11:24:38.438633+00:00', 2, 3, '1', 'admin', 3, '') RETURNING "django_admin_log"."id"; args=(u'2013-10-02 11:24:38.438633+00:00', 2, 3, u'1', u'admin', 3, u'')
+2013-10-02 13:24:38,451 [DEBUG] django.db.backends: (0.001) SELECT DISTINCT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" IN (1); args=(1,)
+2013-10-02 13:24:38,460 [DEBUG] django.db.backends: (0.001) SELECT "runs_game"."id", "runs_game"."name", "runs_game"."added_date", "runs_game"."description", "runs_game"."short_desc", "runs_game"."team", "runs_game"."leader_id", "runs_game"."run_id", "runs_game"."likes", "runs_game"."concept_only" FROM "runs_game" WHERE "runs_game"."leader_id" IN (1); args=(1,)
+2013-10-02 13:24:38,463 [DEBUG] django.db.backends: (0.000) DELETE FROM "auth_user_groups" WHERE "auth_user_groups"."user_id" IN (1); args=(1,)
+2013-10-02 13:24:38,464 [DEBUG] django.db.backends: (0.000) DELETE FROM "auth_user_user_permissions" WHERE "auth_user_user_permissions"."user_id" IN (1); args=(1,)
+2013-10-02 13:24:38,465 [DEBUG] django.db.backends: (0.001) DELETE FROM "django_admin_log" WHERE "django_admin_log"."user_id" IN (1); args=(1,)
+2013-10-02 13:24:38,466 [DEBUG] django.db.backends: (0.000) DELETE FROM "members_team_devs" WHERE "members_team_devs"."user_id" IN (1); args=(1,)
+2013-10-02 13:24:38,467 [DEBUG] django.db.backends: (0.000) DELETE FROM "members_userprofile" WHERE "members_userprofile"."user_id" IN (1); args=(1,)
+2013-10-02 13:24:38,468 [DEBUG] django.db.backends: (0.000) DELETE FROM "gallery_img" WHERE "gallery_img"."owner_id" IN (1); args=(1,)
+2013-10-02 13:24:38,469 [DEBUG] django.db.backends: (0.000) DELETE FROM "gallery_profilepic" WHERE "gallery_profilepic"."owner_id" IN (1); args=(1,)
+2013-10-02 13:24:38,470 [DEBUG] django.db.backends: (0.000) DELETE FROM "gallery_gamepic" WHERE "gallery_gamepic"."owner_id" IN (1); args=(1,)
+2013-10-02 13:24:38,471 [DEBUG] django.db.backends: (0.000) DELETE FROM "runs_developer" WHERE "runs_developer"."user_id" IN (1); args=(1,)
+2013-10-02 13:24:38,473 [DEBUG] django.db.backends: (0.000) DELETE FROM "auth_user" WHERE "id" IN (1); args=(1,)
+2013-10-02 13:24:38,519 [DEBUG] django.db.backends: (0.003) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'nqxiigjop3k0utlou8w10sn73xu2qo8a'  AND "django_session"."expire_date" > '2013-10-02 11:24:38.494931+00:00' ); args=('nqxiigjop3k0utlou8w10sn73xu2qo8a', u'2013-10-02 11:24:38.494931+00:00')
+2013-10-02 13:24:38,524 [DEBUG] django.db.backends: (0.002) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2 ; args=(2,)
+2013-10-02 13:24:38,526 [DEBUG] django.db.backends: (0.001) SELECT "auth_group"."id", "auth_group"."name" FROM "auth_group"; args=()
+2013-10-02 13:24:38,529 [DEBUG] django.db.backends: (0.001) SELECT COUNT(DISTINCT "auth_user"."id") FROM "auth_user"; args=()
+2013-10-02 13:24:38,533 [DEBUG] django.db.backends: (0.001) SELECT DISTINCT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" ORDER BY "auth_user"."username" ASC, "auth_user"."id" DESC; args=()
+2013-10-02 13:24:38,706 [DEBUG] django.db.backends: (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'nqxiigjop3k0utlou8w10sn73xu2qo8a'  AND "django_session"."expire_date" > '2013-10-02 11:24:38.681338+00:00' ); args=('nqxiigjop3k0utlou8w10sn73xu2qo8a', u'2013-10-02 11:24:38.681338+00:00')
+2013-10-02 13:24:38,709 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2 ; args=(2,)
+2013-10-02 13:24:55,419 [DEBUG] django.db.backends: (0.003) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'jorgen' ; args=(u'jorgen',)
+2013-10-02 13:24:57,195 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."username" = 'admin' ; args=('admin',)
+2013-10-02 13:25:00,522 [DEBUG] django.db.backends: (0.001) INSERT INTO "auth_user" ("password", "last_login", "is_superuser", "username", "first_name", "last_name", "email", "is_staff", "is_active", "date_joined") VALUES ('pbkdf2_sha256$10000$G4hBxxpe50bI$3QyXSE+P8R7Ao0eakICIfl1C+JJAySwRgmObj0yFtCo=', '2013-10-02 11:25:00.401368+00:00', false, 'admin', '', '', '', false, true, '2013-10-02 11:25:00.401368+00:00') RETURNING "auth_user"."id"; args=(u'pbkdf2_sha256$10000$G4hBxxpe50bI$3QyXSE+P8R7Ao0eakICIfl1C+JJAySwRgmObj0yFtCo=', u'2013-10-02 11:25:00.401368+00:00', False, 'admin', u'', u'', u'', False, True, u'2013-10-02 11:25:00.401368+00:00')
+2013-10-02 13:25:00,533 [DEBUG] django.db.backends: (0.001) INSERT INTO "members_userprofile" ("user_id", "about") VALUES (3, NULL) RETURNING "members_userprofile"."id"; args=(3, None)
+2013-10-02 13:25:00,543 [DEBUG] django.db.backends: (0.001) SELECT (1) AS "a" FROM "auth_user" WHERE "auth_user"."id" = 3  LIMIT 1; args=(3,)
+2013-10-02 13:25:00,546 [DEBUG] django.db.backends: (0.001) UPDATE "auth_user" SET "password" = 'pbkdf2_sha256$10000$G4hBxxpe50bI$3QyXSE+P8R7Ao0eakICIfl1C+JJAySwRgmObj0yFtCo=', "last_login" = '2013-10-02 11:25:00.401368+00:00', "is_superuser" = true, "username" = 'admin', "first_name" = '', "last_name" = '', "email" = '', "is_staff" = true, "is_active" = true, "date_joined" = '2013-10-02 11:25:00.401368+00:00' WHERE "auth_user"."id" = 3 ; args=(u'pbkdf2_sha256$10000$G4hBxxpe50bI$3QyXSE+P8R7Ao0eakICIfl1C+JJAySwRgmObj0yFtCo=', u'2013-10-02 11:25:00.401368+00:00', True, 'admin', u'', u'', u'', True, True, u'2013-10-02 11:25:00.401368+00:00', 3)
+2013-10-02 13:25:15,943 [DEBUG] django.db.backends: (0.003) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'nqxiigjop3k0utlou8w10sn73xu2qo8a'  AND "django_session"."expire_date" > '2013-10-02 11:25:15.917285+00:00' ); args=('nqxiigjop3k0utlou8w10sn73xu2qo8a', u'2013-10-02 11:25:15.917285+00:00')
+2013-10-02 13:25:15,946 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2 ; args=(2,)
+2013-10-02 13:25:17,744 [DEBUG] django.db.backends: (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'nqxiigjop3k0utlou8w10sn73xu2qo8a'  AND "django_session"."expire_date" > '2013-10-02 11:25:17.723955+00:00' ); args=('nqxiigjop3k0utlou8w10sn73xu2qo8a', u'2013-10-02 11:25:17.723955+00:00')
+2013-10-02 13:25:17,748 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2 ; args=(2,)
+2013-10-02 13:25:17,789 [DEBUG] django.db.backends: (0.003) SELECT "django_admin_log"."id", "django_admin_log"."action_time", "django_admin_log"."user_id", "django_admin_log"."content_type_id", "django_admin_log"."object_id", "django_admin_log"."object_repr", "django_admin_log"."action_flag", "django_admin_log"."change_message", "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined", "django_content_type"."id", "django_content_type"."name", "django_content_type"."app_label", "django_content_type"."model" FROM "django_admin_log" INNER JOIN "auth_user" ON ("django_admin_log"."user_id" = "auth_user"."id") LEFT OUTER JOIN "django_content_type" ON ("django_admin_log"."content_type_id" = "django_content_type"."id") WHERE "django_admin_log"."user_id" = 2  ORDER BY "django_admin_log"."action_time" DESC LIMIT 10; args=(2,)
+2013-10-02 13:25:19,742 [DEBUG] django.db.backends: (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'nqxiigjop3k0utlou8w10sn73xu2qo8a'  AND "django_session"."expire_date" > '2013-10-02 11:25:19.716046+00:00' ); args=('nqxiigjop3k0utlou8w10sn73xu2qo8a', u'2013-10-02 11:25:19.716046+00:00')
+2013-10-02 13:25:19,746 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2 ; args=(2,)
+2013-10-02 13:25:19,749 [DEBUG] django.db.backends: (0.001) SELECT COUNT(*) FROM "runs_run"; args=()
+2013-10-02 13:25:19,752 [DEBUG] django.db.backends: (0.001) SELECT "runs_run"."id", "runs_run"."year", "runs_run"."start_date", "runs_run"."current_run", "runs_run"."submission_open" FROM "runs_run" ORDER BY "runs_run"."id" DESC; args=()
+2013-10-02 13:25:19,888 [DEBUG] django.db.backends: (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'nqxiigjop3k0utlou8w10sn73xu2qo8a'  AND "django_session"."expire_date" > '2013-10-02 11:25:19.867539+00:00' ); args=('nqxiigjop3k0utlou8w10sn73xu2qo8a', u'2013-10-02 11:25:19.867539+00:00')
+2013-10-02 13:25:19,892 [DEBUG] django.db.backends: (0.002) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2 ; args=(2,)
+2013-10-02 14:05:59,836 [DEBUG] django.db.backends: (0.002) SELECT "runs_run"."id", "runs_run"."year", "runs_run"."start_date", "runs_run"."current_run", "runs_run"."submission_open" FROM "runs_run" WHERE "runs_run"."year" = '2014' ; args=(u'2014',)
+2013-10-02 14:05:59,837 [DEBUG] django.db.backends: (0.000) SAVEPOINT s140705496286976_x1; args=()
+2013-10-02 14:05:59,838 [DEBUG] django.db.backends: (0.001) INSERT INTO "runs_run" ("year", "start_date", "current_run", "submission_open") VALUES ('2014', '2013-10-02 12:05:59.837368+00:00', true, false) RETURNING "runs_run"."id"; args=(u'2014', u'2013-10-02 12:05:59.837368+00:00', True, False)
+2013-10-02 14:06:14,931 [DEBUG] django.db.backends: (0.003) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'nqxiigjop3k0utlou8w10sn73xu2qo8a'  AND "django_session"."expire_date" > '2013-10-02 12:06:14.904969+00:00' ); args=('nqxiigjop3k0utlou8w10sn73xu2qo8a', u'2013-10-02 12:06:14.904969+00:00')
+2013-10-02 14:06:14,934 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2 ; args=(2,)
+2013-10-02 14:06:14,935 [DEBUG] django.db.backends: (0.001) SELECT "content_slide"."id", "content_slide"."title", "content_slide"."text", "content_slide"."belongs_to" FROM "content_slide" WHERE "content_slide"."belongs_to" = 1  ORDER BY "content_slide"."title" ASC; args=(1,)
+2013-10-02 14:06:14,937 [DEBUG] django.db.backends: (0.000) SELECT "content_slide"."id", "content_slide"."title", "content_slide"."text", "content_slide"."belongs_to" FROM "content_slide" WHERE "content_slide"."belongs_to" = 2  ORDER BY "content_slide"."title" ASC; args=(2,)
+2013-10-02 14:06:14,938 [DEBUG] django.db.backends: (0.000) SELECT "content_slide"."id", "content_slide"."title", "content_slide"."text", "content_slide"."belongs_to" FROM "content_slide" WHERE "content_slide"."belongs_to" = 3  ORDER BY "content_slide"."title" ASC; args=(3,)
+2013-10-02 14:06:14,940 [DEBUG] django.db.backends: (0.001) SELECT "runs_game"."id", "runs_game"."name", "runs_game"."added_date", "runs_game"."description", "runs_game"."short_desc", "runs_game"."team", "runs_game"."leader_id", "runs_game"."run_id", "runs_game"."likes", "runs_game"."concept_only" FROM "runs_game" ORDER BY "runs_game"."added_date" DESC LIMIT 3; args=()
+2013-10-02 14:06:17,760 [DEBUG] django.db.backends: (0.002) SELECT "runs_run"."id", "runs_run"."year", "runs_run"."start_date", "runs_run"."current_run", "runs_run"."submission_open" FROM "runs_run" WHERE "runs_run"."current_run" = true ; args=(True,)
+2013-10-02 14:06:17,779 [DEBUG] django.db.backends: (0.002) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."session_key" = 'nqxiigjop3k0utlou8w10sn73xu2qo8a'  AND "django_session"."expire_date" > '2013-10-02 12:06:17.776171+00:00' ); args=('nqxiigjop3k0utlou8w10sn73xu2qo8a', u'2013-10-02 12:06:17.776171+00:00')
+2013-10-02 14:06:17,783 [DEBUG] django.db.backends: (0.001) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 2 ; args=(2,)
+2013-10-02 14:06:17,786 [DEBUG] django.db.backends: (0.002) SELECT "runs_game"."id", "runs_game"."name", "runs_game"."added_date", "runs_game"."description", "runs_game"."short_desc", "runs_game"."team", "runs_game"."leader_id", "runs_game"."run_id", "runs_game"."likes", "runs_game"."concept_only" FROM "runs_game" WHERE "runs_game"."run_id" = 1  ORDER BY "runs_game"."added_date" DESC; args=(1,)
