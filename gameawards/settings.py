@@ -95,7 +95,7 @@ if True:
     USE_TZ = True 
     
     
-    ACCEPTED_UPLOAD_FILETYPES = ["pdf", "zip", "rar"]
+    ACCEPTED_UPLOAD_FILETYPES = ["pdf", "zip", "rar", "octet-stream"]
     
     """
     2.5MB - 2621440
@@ -107,7 +107,7 @@ if True:
     250MB - 214958080
     500MB - 429916160
     """
-    MAX_UPLOAD_SIZE = 104857600
+    MAX_UPLOAD_SIZE = 214958080
     
     FILE_UPLOAD_MAX_MEMORY_SIZE = 114857600
 
@@ -162,6 +162,7 @@ if True:
         'south',
         'gallery',
         
+        'cleanup',
         
     )
     

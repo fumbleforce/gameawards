@@ -36,6 +36,10 @@ class GameDevForm(ModelForm):
 
 class UploadForm(ModelForm):
 
+    def __init__(self, user, *args, **kwargs):
+        super(UploadForm, self).__init__(*args, **kwargs)
+        self.fields['game'].queryset = Game.objects.filter(leader=user)
+
     class Meta:
         model = Upload
         
