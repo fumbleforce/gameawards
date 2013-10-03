@@ -70,7 +70,6 @@
 {% block static_elements %}{% endblock %}
 
 {% block content_table %}
-<table style="width: 100%;">
 
     {% block first_container %}
 	<tr id="first-container">
@@ -85,48 +84,39 @@
 	{% endblock %}
 	
     {% block second_container %}
-	<tr id="second-container">
-		<td style="width: 50%">&nbsp;</td>
-		<td style="width: 800px">
-		    {% block second %}{% endblock %}	
-		</td>
-		<td style="width: 50%">&nbsp;</td>
-	</tr>
+	<div id="second-container" class="centerWrapper">
+	    <div class="contentCenter">
+	        {% block second %}{% endblock %}
+	    </div>
+	</div>
 	{% endblock %}
 	
     {% block third_container %}
-	<tr id="third-container">
-		<td style="width: 50%">&nbsp;</td>
-		<td style="width: 800px; height: auto">
-		    {% block third %}{% endblock %}		
-		</td>
-		<td style="width: 50%">&nbsp;</td>
-	</tr>
+	<div id="third-container" class="centerWrapper">
+	    <div class="contentCenter">
+	        {% block third %}{% endblock %}
+	    </div>
+	</div>
     {% endblock %}
     
     {% block fourth_container %}
-	<tr id="fourth-container">
-		<td style="width: 50%">&nbsp;</td>
-		<td style="width: 800px;height:auto;">
-		    {% block fourth %}{% endblock %}					
-		</td>
-		<td style="width: 50%">&nbsp;</td>
-	</tr>
+	<div id="fourth-container" class="centerWrapper">
+	    <div class="contentCenter">
+	        {% block fourth %}{% endblock %}
+	    </div>
+	</div>
     {% endblock %}
     
     {% block fifth_container %} 
-	<tr id="fifth-container">
-		<td style="width: 50%">&nbsp;</td>
-		<td style="width: 800px; height: auto">
-		    {% block fifth %}{% endblock %}
-		</td>
-		<td style="width: 50%">&nbsp;</td>
-	</tr>
+	<div id="fifth-container" class="centerWrapper">
+	    <div class="contentCenter">
+	        {% block fifth %}{% endblock %}
+	    </div>
+	</div>
 	{% endblock %}
 
 {% block template_content_table %}{% endblock %}
 
-</table>
 {% endblock %}
 
 {% block after_content_table %}{% endblock %}
