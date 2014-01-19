@@ -1,5 +1,24 @@
 //FOR THE HOME SLIDER
-jQuery(document).ready(function($) {
+$(function($) {
+
+    
+    var set_logo = function() {
+        var $logo = $('.nga-logo');
+        $logo.css('left', $(window).width()/2 - $logo.width() - 430);
+        
+    }
+    set_logo();
+    $(window).resize(set_logo);
+
+    $('.carousel').carousel({
+      interval: 6000
+    });
+    $('.carousel-inner').each(function() {
+        $(this).find('.item').first().addClass("active");
+    });
+    
+});
+/*
   $('#home-slider').royalSlider({
     arrowsNav: true,
     loop: true,
@@ -17,7 +36,7 @@ jQuery(document).ready(function($) {
     navigateByClick: false,
     startSlideId: 0,
     transitionType:'move',
-    globalCaption: true
+    globalCaption: true,
     autoPlay: {
     		// autoplay options go gere
     		enabled: true,
@@ -125,6 +144,6 @@ $('.show-hide-button').showHide({
         easing: '',  // the animation effect you want. Remove this line if you dont want an effect and if you haven't included jQuery UI
         changeText: 0, // if you dont want the button text to change, set this to 0 
     });
-
+*/
  
-});
+

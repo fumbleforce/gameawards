@@ -7,7 +7,7 @@
 
 }
 body {
-	background: black;	
+	background: #444;	
 }
 
 input{
@@ -47,10 +47,10 @@ h2{
 }
 
 footer{
-    background: #222;
+    background: #f8f8f8;
 	width: 100%; 
 	height: 100%;
-	color:white;
+	color:black;
 	text-align:center;
 	padding-top:5px;
 	padding-bottom:5px;
@@ -87,20 +87,20 @@ footer{
 .nga-logo
 {
 	z-index: 1340;
-	left: 10%;
-	top: 8%;
-	max-height:300px;
-	max-width:300px;
-	position: relative;
-	width:100%;
+	left: 33%;
+	top: 0%;
+	max-height:40px;
+	margin:5px 5px;
+	position: fixed;
 	background-repeat: no-repeat; 
 }
 
 .nga-logo-container
 {
-	vertical-align: top;
-	background: #222;
-	width: 50%;
+	width: 33%;
+	text-align:right;
+	display:inline-block;
+	position:absolute;
 }
 
 .bg-behind-logo
@@ -130,16 +130,17 @@ footer{
 }
 
 .partner-logo-container {
-    height:660px;
-    width:20%;
-    float:left;
+    height:200px;
+    width:100%;
     background-color:#222;
 }
 .partner-container{
-    position:absolute;
-    bottom:0%;
-    height:40%;
-    width:20%;
+    width:560px;
+    height:100px;
+    display:block;
+    padding-top: 80px;
+    margin:0 auto 0 auto;
+    text-align:center;
 }
 
 .nt-logo{
@@ -372,8 +373,8 @@ box-shadow:0px 0px 0px 15px #222;
 
 #first-container
 {
-	background-image:url('../images/bg-rep-light.png');
-	background-color:#333;
+	background-image:url('../images/bg-rep-dark.png');
+	background-color:#f8f8f8;
 }
 #second-container
 {
@@ -389,8 +390,8 @@ box-shadow:0px 0px 0px 15px #222;
 #third-container
 {	
 	vertical-align: top;
-	background-image:url('../images/bg-rep-light.png');
-	background-color: #333;
+	background-image:url('../images/bg-rep-dark.png');
+	background-color:#f8f8f8;
 }
 #fourth-container
 {
@@ -409,8 +410,8 @@ box-shadow:0px 0px 0px 15px #222;
 {
 	height: 600px;
 	vertical-align: top;
-	background-image:url('../images/bg-rep-light.png');
-	background-color:#333;
+	background-image:url('../images/bg-rep-dark.png');
+	background-color:#f8f8f8;
 }
 #guides-container
 {
@@ -434,22 +435,27 @@ box-shadow:0px 0px 0px 15px #222;
 /*TOP TEXT*/
 .picture-center
 {
+    position:absolute;
 	margin-left:auto;
 	margin-right:auto;
 	display: block;
 	margin-bottom: 20px;
-	background-repeat: no-repeat; 
+	background-repeat: no-repeat;
+	left: 50%;	
+    
 }
 #events-text
 {
-	margin-top: 80px;
-	width: 361px; 
+    margin-left: -180px;
+	margin-top: 50px;
+	width: 361px;
 	height: 80px; 
 	background-image: url(../images/events-text.png); 
 }
 #get-started-text
 {
-	margin-top: 80px;
+    margin-left: -322px;
+	margin-top: 50px;
 	margin-bottom: 40px;
 	width: 644px; 
 	height: 80px; 
@@ -457,7 +463,8 @@ box-shadow:0px 0px 0px 15px #222;
 }
 #participants-text
 {
-	margin-top: 80px;
+    margin-left: -159px;
+	margin-top: 50px;
 	margin-bottom: 40px;
 	width: 318px; 
 	height: 80px; 
@@ -465,7 +472,8 @@ box-shadow:0px 0px 0px 15px #222;
 }
 #contact-us-text
 {
-	margin-top: 80px;
+    margin-left: -296px;
+	margin-top: 50px;
 	margin-bottom: 40px;
 	width: 592px; 
 	height: 80px;
@@ -473,6 +481,7 @@ box-shadow:0px 0px 0px 15px #222;
 }
 #submit-game-text
 {
+    margin-left: -183px;
 	margin-top: 20px;
 	width: 367px; 
 	height: 45px; 
@@ -481,6 +490,7 @@ box-shadow:0px 0px 0px 15px #222;
 #rules-text
 {
 	margin-top: 80px;
+	margin-left: -183px;
 	width: 367px; 
 	height: 80px; 
 	background-image: url(../images/rules-text.png);  
@@ -488,6 +498,7 @@ box-shadow:0px 0px 0px 15px #222;
 #categories-text
 {
 	margin-top: 80px;
+	margin-left: -300px;
 	width: 600px; 
 	height: 80px; 
 	background-image: url(../images/categories-text.png);  
@@ -495,6 +506,7 @@ box-shadow:0px 0px 0px 15px #222;
 #faq-text
 {
 	margin-top: 80px;
+	margin-left: -100px;
 	width: 200px; 
 	height: 80px; 
 	background-image: url(../images/faq-text.png);  
@@ -503,26 +515,25 @@ box-shadow:0px 0px 0px 15px #222;
 {
 	margin-top: 80px;
 	margin-bottom: 80px;
-	width: 800px; 
+	margin-left: -417px;
+	width: 634px; 
 	height: 80px;
-	margin-right:auto;
-	margin-left:auto;
 	background-image: url(../images/organizers-text.png); 
 }
 #guides-text
 {
 	margin-top: 80px;
 	margin-bottom: 80px;
+	margin-left: -405px;
 	width: 800px; 
 	height: 80px;
-	margin-right:auto;
-	margin-left:auto;
 	background-image: url(../images/guides-text.png); 
 }
 #games-text
 {
 	margin-top: 80px;
 	margin-bottom: 40px;
+	margin-left: -159px;
 	width: 318px; 
 	height: 79px;
 	margin-right:auto;
@@ -587,11 +598,44 @@ box-shadow:0px 0px 0px 15px #222;
 .centerWrapper {
     height:auto;
     overflow:hidden;
+    min-height:400px;
+    -webkit-box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 1);
+    -moz-box-shadow:    inset 0px 0px 10px 0px rgba(0, 0, 0, 1);
+    box-shadow:         inset 0px 0px 10px 0px rgba(0, 0, 0, 1);
 }
 .contentCenter {
-    width:800px;
     margin:0 auto;
     height:100%;
+    overflow:hidden;
+    
 }
+
+
+.contact-button {
+    margin:73px;
+}
+
+
+.dark-container {
+}
+.index-content {
+    width:800px;
+    margin:180px auto 0 auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

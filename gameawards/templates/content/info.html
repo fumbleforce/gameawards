@@ -2,7 +2,6 @@
 
 {% block template_head %}
     <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/info.css" />
-    <script src="{{ STATIC_URL }}js/nav.control.js"></script>
 {% endblock %}
 
 {% block template_nav %}
@@ -55,18 +54,14 @@
 
 {% block template_content_table %}
 
-<tr id="guides-container">
-        <td style="width: 50%">&nbsp;</td>
-		<td style="width: 800px; height: 300px">
-		    <!--INSERT TEXT-->
-		    <div class="picture-center" id="guides-text"></div>
-		        <div style="text-align:left">
-		            {{ guides.text|safe }}
-		        </div>
-		    <!--END INSERT TEXT-->
-		</td>
-		<td style="width: 50%">&nbsp;</td>
-	</tr>
+<div id="guides-container" class="centerWrapper">
+    <div class="contentCenter">
+        <div class="picture-center" id="guides-text"></div>
+        <div style="text-align:left">
+            {{ guides.text|safe }}
+        </div>
+    </div>
+</div>
 
 {% endblock %}
 

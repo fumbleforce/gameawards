@@ -329,3 +329,228 @@ Traceback (most recent call last):
     raise TemplateSyntaxError("'%s' tag with name '%s' appears more than once" % (bits[0], block_name))
 TemplateSyntaxError: 'block' tag with name 'second' appears more than once
 2013-10-02 16:10:08,458 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 15:46:39,966 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 114, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jorgen/progging/gameawards/gameawards/apps/news/views.py", line 24, in index
+    context_instance=RequestContext(request))
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 29, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 169, in render_to_string
+    return t.render(context_instance)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 840, in render
+    bit = self.render_node(node, context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/debug.py", line 78, in render_node
+    return node.render(context)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 156, in render
+    len_values = len(values)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/models/query.py", line 77, in __len__
+    self._fetch_all()
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/models/query.py", line 854, in _fetch_all
+    self._result_cache = list(self.iterator())
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/models/query.py", line 220, in iterator
+    for row in compiler.results_iter():
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 710, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 781, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/backends/util.py", line 69, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/backends/util.py", line 53, in execute
+    return self.cursor.execute(sql, params)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/utils.py", line 99, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/backends/util.py", line 53, in execute
+    return self.cursor.execute(sql, params)
+ProgrammingError: relation "content_slide" does not exist
+LINE 1: ..._slide"."text", "content_slide"."belongs_to" FROM "content_s...
+                                                             ^
+
+2014-01-19 15:46:40,741 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 16:51:48,981 [ERROR] django.request: Internal Server Error: /games
+Traceback (most recent call last):
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 90, in get_response
+    response = middleware_method(request)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/middleware/common.py", line 72, in process_request
+    urlresolvers.is_valid_path("%s/" % request.path_info, urlconf)):
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 573, in is_valid_path
+    resolve(path, urlconf)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 453, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 320, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 222, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 229, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/utils/functional.py", line 32, in wrapper
+    result = func(*args)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 96, in get_callable
+    mod = import_module(mod_name)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/utils/importlib.py", line 40, in import_module
+    __import__(name)
+  File "/home/jorgen/progging/gameawards/gameawards/apps/runs/views.py", line 9, in <module>
+    from gameawards.utils import sanitizeHtml
+  File "/home/jorgen/progging/gameawards/gameawards/utils.py", line 3, in <module>
+    from BeautifulSoup import BeautifulSoup, Comment
+ImportError: No module named BeautifulSoup
+2014-01-19 16:51:49,307 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 16:52:40,035 [ERROR] django.request: Internal Server Error: /games/
+Traceback (most recent call last):
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 114, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jorgen/progging/gameawards/gameawards/apps/runs/views.py", line 51, in game_list_request
+    curr_run = Run.objects.get(current_run = True)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/models/manager.py", line 151, in get
+    return self.get_queryset().get(*args, **kwargs)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/models/query.py", line 307, in get
+    self.model._meta.object_name)
+DoesNotExist: Run matching query does not exist.
+2014-01-19 16:52:40,291 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 17:08:08,223 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 17:22:52,488 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 17:22:54,131 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 17:22:56,589 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 17:22:58,279 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 17:24:31,215 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 17:32:13,855 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 17:32:17,624 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 17:32:19,299 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 17:32:28,130 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 18:29:42,040 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 18:29:44,067 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 18:29:45,644 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 18:30:11,938 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:47:13,033 [ERROR] django.request: Internal Server Error: /games/
+Traceback (most recent call last):
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 114, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jorgen/progging/gameawards/gameawards/apps/runs/views.py", line 51, in game_list_request
+    curr_run = Run.objects.get(current_run = True)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/models/manager.py", line 151, in get
+    return self.get_queryset().get(*args, **kwargs)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/models/query.py", line 307, in get
+    self.model._meta.object_name)
+DoesNotExist: Run matching query does not exist.
+2014-01-19 21:47:13,321 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:47:16,610 [ERROR] django.request: Internal Server Error: /info/
+Traceback (most recent call last):
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 114, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jorgen/progging/gameawards/gameawards/apps/content/views.py", line 7, in info_request
+    rules = General.objects.get(title='rules')
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/models/manager.py", line 151, in get
+    return self.get_queryset().get(*args, **kwargs)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/models/query.py", line 307, in get
+    self.model._meta.object_name)
+DoesNotExist: General matching query does not exist.
+2014-01-19 21:47:16,783 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:47:41,006 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:47:42,786 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:47:44,433 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:47:51,571 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:47:53,554 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:47:59,998 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:48:01,781 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:48:09,517 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:48:12,396 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:48:16,003 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:48:26,209 [ERROR] django.request: Internal Server Error: /info/
+Traceback (most recent call last):
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 114, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jorgen/progging/gameawards/gameawards/apps/content/views.py", line 8, in info_request
+    categories = General.objects.get(title='categories')
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/models/manager.py", line 151, in get
+    return self.get_queryset().get(*args, **kwargs)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/models/query.py", line 307, in get
+    self.model._meta.object_name)
+DoesNotExist: General matching query does not exist.
+2014-01-19 21:48:26,396 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:48:35,760 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:48:38,185 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:48:40,685 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:48:43,942 [ERROR] django.request: Internal Server Error: /info/
+Traceback (most recent call last):
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 114, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jorgen/progging/gameawards/gameawards/apps/content/views.py", line 9, in info_request
+    organizers = General.objects.get(title='organizers')
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/models/manager.py", line 151, in get
+    return self.get_queryset().get(*args, **kwargs)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/models/query.py", line 307, in get
+    self.model._meta.object_name)
+DoesNotExist: General matching query does not exist.
+2014-01-19 21:48:44,120 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:49:04,673 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:49:09,618 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 21:54:44,093 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 22:06:39,721 [ERROR] django.request: Internal Server Error: /profile/
+Traceback (most recent call last):
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 114, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jorgen/progging/gameawards/gameawards/apps/members/views.py", line 65, in profile_request
+    profile = user.get_profile()
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/contrib/auth/models.py", line 441, in get_profile
+    self._state.db).get(user__id__exact=self.id)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/models/query.py", line 307, in get
+    self.model._meta.object_name)
+DoesNotExist: UserProfile matching query does not exist.
+2014-01-19 22:06:40,026 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-19 23:25:46,833 [ERROR] django.request: Internal Server Error: /games/
+Traceback (most recent call last):
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 114, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/jorgen/progging/gameawards/gameawards/apps/runs/views.py", line 51, in game_list_request
+    curr_run = Run.objects.get(current_run = True)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/models/manager.py", line 151, in get
+    return self.get_queryset().get(*args, **kwargs)
+  File "/home/jorgen/Envs/nga/local/lib/python2.7/site-packages/django/db/models/query.py", line 307, in get
+    self.model._meta.object_name)
+DoesNotExist: Run matching query does not exist.
+2014-01-19 23:25:47,111 [WARNING] django.request: Not Found: /favicon.ico

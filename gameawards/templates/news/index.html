@@ -1,11 +1,5 @@
 {% extends "template.html" %}
 
-{% block template_head %}
-
-<link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/index.css" />
-
-{% endblock %}
-
 
 {% block template_nav %}
 <li class="current_page_item">  <a id="btnHome" href="#first-container">HOME</a></li>
@@ -15,38 +9,61 @@
 <li><a id="btnContactUs" href="#fifth-container">CONTACT US</a></li>
 {% endblock %}
 	
-	
-{% block static_elements %}
 
-
-{% endblock %}
 	
 {% block first_container %}
-<div id="first-container">
-    <div class="partner-logo-container">
-        <img class="nga-logo" src="{{ STATIC_URL }}images/nga-logo.png"></img>
-        <div class="bg-behind-logo"></div>
-        <div class="partner-container">
-            <a href="https://www.norsk-tipping.no/" target="_blank" class="partners nt-logo"></a>
-            <a href="http://www.arm.com/" target="_blank" class="partners arm-logo"></a>
-            <a href="http://startntnu.no/" target="_blank" class="partners start-logo"></a>
-            <a href="http://skatteetaten.no/" target="_blank" class="partners etat-logo"></a>
-        </div>
+
+
+
+ <!--
+<div class="partner-logo-container">
+    <div class="nga-logo-container">
+       
     </div>
-    <!--HOME SLIDER-->
-	<div id="home-slider" class="royalSlider rsMinW ">
-        {% for slide in home_slide_list %}
-            {{ slide.text|safe }}
-        {% endfor %}
+   
+    <div class="partner-container">
+        <a href="https://www.norsk-tipping.no/" target="_blank" class="partners nt-logo"></a>
+        <a href="http://www.arm.com/" target="_blank" class="partners arm-logo"></a>
+        <a href="http://startntnu.no/" target="_blank" class="partners start-logo"></a>
+        <a href="http://skatteetaten.no/" target="_blank" class="partners etat-logo"></a>
+    </div>
+    
+</div>
+-->
+
+<div style="height:50px; width:100%"></div>
+    
+<div id="first-container" class="dark-container centerWrapper">
+    <div class="contentCenter">
+    
+        <!--HOME SLIDER-->
+	    <div id="carousel-home" class="carousel slide" data-ride="carousel">
+	        <ol class="carousel-indicators">
+                {% for slide in home_slide_list %}
+                <li data-target="#carousel-home" data-slide-to="{{ slide.index }}"></li>
+                {% endfor %}
+            </ol>
+	        <div class="carousel-inner">
+            {% for slide in home_slide_list %}
+                <div class="item">
+                    {{ slide.text|safe }}
+                    <div class="carousel-caption">
+                        {{ slide.caption |safe }}
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+            <a class="left carousel-control" href="#carousel-home" data-slide="prev">
+                <span class="arrow-button prev-black chevron-left"></span>
+            <a class="right carousel-control" href="#carousel-home" data-slide="next">
+                <span class="arrow-button next-black chevron-right"></span>
+            </a>
+	    </div>
         
-	</div>
-	<a class="arrow-button prev-green" style="left: 45%; bottom: 5px" onclick="homeSliderPrev()"></a>
-    <a class="arrow-button next-green" style="left: 50%; bottom: 5px" onclick="homeSliderNext()"></a>
-    <!--END HOME SLIDER-->
+        
+        <!--END HOME SLIDER-->
+    </div>
     
-    
-    
-    <div class="side-home-right slide-side"></div>
 </div>
 {% endblock %}
 	
@@ -54,21 +71,35 @@
 	
 	
 {% block second %}
-<div class="side-events-left slide-side"></div>
 <div class="picture-center" id="events-text"></div>
 
 <!--EVENT SLIDER-->
-<div id="events-slider" class="royalSlider rsMinW"> 
+<div id="carousel-event" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        {% for slide in event_slide_list %}
+        <li data-target="#carousel-event" data-slide-to="{{ slide.index }}"></li>
+        {% endfor %}
+    </ol>
+    <div class="carousel-inner">
     {% for slide in event_slide_list %}
-        {{ slide.text|safe }}
+        <div class="item">
+            {{ slide.text|safe }}
+            <div class="carousel-caption">
+                {{ slide.caption |safe }}
+            </div>
+        </div>
     {% endfor %}
+    </div>
+    <a class="left carousel-control" href="#carousel-event" data-slide="prev">
+        <span class="arrow-button prev-black chevron-left"></span>
+    <a class="right carousel-control" href="#carousel-event" data-slide="next">
+        <span class="arrow-button next-black chevron-right"></span>
+    </a>
 </div>
 <!--END EVENT SLIDER-->
 
-<a class="arrow-button prev-black" style="left: 45%; bottom: 5px" onclick="homeSliderPrev()"></a>
-<a class="arrow-button next-black" style="left: 50%; bottom: 5px" onclick="homeSliderNext()"></a>
+
     
-<div class="side-events-right slide-side"></div>
 {% endblock %}
 	
 	
@@ -76,24 +107,38 @@
 	
 	
 {% block third %}
-<div class="side-get-started-left slide-side"></div>
-<div id="get-started-text" class="picture-center"></div>
+<div id="get-started-text" class="picture-center dark-container"></div>
 
 <!--GET STARTED SLIDER-->
-<div id="get-started-slider" class="royalSlider rsMinW ">
+<div id="carousel-getstarted" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        {% for slide in getstarted_slide_list %}
+        <li data-target="#carousel-getstarted" data-slide-to="{{ slide.index }}"></li>
+        {% endfor %}
+    </ol>
+    <div class="carousel-inner">
     {% for slide in getstarted_slide_list %}
-        {{ slide.text|safe }}
+        <div class="item">
+            {{ slide.text|safe }}
+            <div class="carousel-caption">
+                 {{ slide.caption |safe }}
+            </div>
+        </div>
     {% endfor %}
+    </div>
+    <a class="left carousel-control" href="#carousel-getstarted" data-slide="prev">
+        <span class="arrow-button prev-black chevron-left"></span>
+    <a class="right carousel-control" href="#carousel-getstarted" data-slide="next">
+        <span class="arrow-button next-black chevron-right"></span>
+    </a>
 </div>
 <!--END GET STARTED SLIDER-->
-<div class="side-get-started-right slide-side"></div>
 {% endblock %}
 
 
 
 
 {% block fourth %}
-<div class="side-participants-left slide-side"></div>
 <div id="game-whole-container">
     <div id="participants-text" class="picture-center"></div>
 
@@ -126,26 +171,47 @@
     </div>                    
 </div>
 <!--END GAMES SLIDER-->
-<div class="side-participants-right slide-side"></div>
 {% endblock %}
 
 
 
 
 {% block fifth %}
-<div class="side-contact-us-left slide-side"></div>
-<div id="contact-us-text" class="picture-center"></div>
+<div id="contact-us-text" class="picture-center dark-container"></div>
     <!--CONTACT US SLIDER-->
-    <a class="contact-button contact-left facebook-button" href="http://www.facebook.com/norwegiangameawards" target="_blank"></a>
-    <a class="contact-button contact-center twitter-button" href="https://twitter.com/Gameawards" target="_blank"></a>
-    <a class="contact-button contact-right mail-button" href="mailto:contact@gameawards.no" target="_blank"></a>
+    <div class="index-content">
+        <a class="contact-button facebook-button" href="http://www.facebook.com/norwegiangameawards" target="_blank"></a>
+        <a class="contact-button twitter-button" href="https://twitter.com/Gameawards" target="_blank"></a>
+        <a class="contact-button mail-button" href="mailto:contact@gameawards.no" target="_blank"></a>
+        <table>
+	            <tr>
+	                
+		            <td style="width: 50%">&nbsp;</td>
+		                <td style="width:800px;"> 
+		                    <div id="footer-div">
+                                <div id="footer-text-container">
+                                    <div class="footer-text" >
+                                        Developed and maintained by Jørgen Foss Eri and Tobias Linkjendal. Contact us at: <a href="mailto:web@gameawards.no" style="font-size:12px">web@gameawards.no</a>
+                                    </div>
+                                </div>		            
+		                    </div>
+                        </td>
+                  
+		            <td style="width: 50%">&nbsp;</td>
+	            </tr>
+            </table>
+    </div>
 </div>
-<div class="side-contact-us-right slide-side"></div>
+
 {% endblock %}
 
     
 {% block after_content_table %}
+<div class="centerWrapper">
+<div class="contentCenter">
 <div id="map_canvas" style="height: 400px; width: 100%"></div>
+</div>
+</div>
 {% endblock %}
 
 
@@ -154,8 +220,7 @@
 {% block base_scripts %}
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhjFDtSrKYC74aDhRS9YgHPibTkpShps8&sensor=true"></script>
 <script src="{{ STATIC_URL }}js/map.style.js"></script>
-<script src="{{ STATIC_URL }}js/index.settings.js"></script>
-<script src="{{ STATIC_URL }}js/nav.control.js"></script>
+
 {% endblock %}
 
 

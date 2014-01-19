@@ -260,131 +260,88 @@
 .mail-button{background-position: -240px 0px}
 .mail-button:hover{background-position: -240px -120px}
 
-.contact-left{margin-left: 73px;margin-right:73px;}
-.contact-center{margin-left: 73px;margin-right:73px;}
-.contact-right{margin-left: 73px;margin-right:73px;}
+.contact-left{margin-left: 70px;margin-right:70px;}
+.contact-center{margin-left: 70px;margin-right:70px;}
+.contact-right{margin-left: 70px;margin-right:70px;}
 
 /*ARROWS FOR IMAGE SLIDERS COMES HERE*/
-a.arrow-button
+span.arrow-button
 {
 	z-index: 101;
+	top:50%;
 	width: 60px;
 	height: 60px;
-	display: block;
+	display: inline-block;
 	background: url(../images/slider/arrow-sprite.png) no-repeat;
 	overflow: hidden;
 	position: absolute; 
-	float: left;
 }
+
 
 /*GREEN*/
-a.prev-green{background-position: 0px 0px}
-a.prev-green:hover{background-position: 0px -60px}
-a.prev-green:active{background-position: 0px -120px}
+span.prev-green{background-position: 0px 0px}
+span.prev-green:hover{background-position: 0px -60px}
+span.prev-green:active{background-position: 0px -120px}
 
-a.next-green{background-position: -60px 0px}
-a.next-green:hover{background-position: -60px -60px}
-a.next-green:active{background-position: -60px -120px}
+span.next-green{background-position: -60px 0px}
+spana.next-green:hover{background-position: -60px -60px}
+span.next-green:active{background-position: -60px -120px}
 
 /*BLACK*/
-a.prev-black{background-position: -120px 0px}
-a.prev-black:hover{background-position: -120px -60px}
-a.prev-black:active{background-position: -120px -120px}
+span.prev-black{background-position: -120px 0px}
+span.prev-black:hover{background-position: -120px -60px}
+span.prev-black:active{background-position: -120px -120px}
 
-a.next-black{background-position: -180px 0px}
-a.next-black:hover{background-position: -180px -60px}
-a.next-black:active{background-position: -180px -120px}
+span.next-black{background-position: -180px 0px}
+span.next-black:hover{background-position: -180px -60px}
+span.next-black:active{background-position: -180px -120px}
 
 /*WHITE*/
-a.prev-white{background-position: -240px 0px}
-a.prev-white:hover{background-position: -240px -60px}
-a.prev-white:active{background-position: -240px -120px}
+span.prev-white{background-position: -240px 0px}
+span.prev-white:hover{background-position: -240px -60px}
+span.prev-white:active{background-position: -240px -120px}
 
-a.next-white{background-position: -300px 0px}
-a.next-white:hover{background-position: -300px -60px}
-a.next-white:active{background-position: -300px -120px}
+span.next-white{background-position: -300px 0px}
+span.next-white:hover{background-position: -300px -60px}
+span.next-white:active{background-position: -300px -120px}
 
 
-/*SLIDE SIDES*/
-.slide-side
-{
-	width: 20px;
-	height:100%;
-	z-index: 1335;
-	display: block;
-	background: url(../images/slider/slide-side-sprite.png) no-repeat;
-	overflow: hidden;
+
+
+/* Carousel base class */
+.carousel {
+  height: 800px;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  z-index: 10;
 }
 
-
-.side-home-right
-{
-	background-position: -61px 0px;
-	float:right;
+/* Declare heights because of positioning of img element */
+.carousel .item {
+  height: 100%;
+  overflow:hidden;
+  text-align:center;
 }
-
-.side-events-left
-{
-	background-position: -21px 0px;
-	float:left;
+.item {
+    -webkit-transition-timing-function: linear;
+    -moz-transition-timing-function: linear;
+    -o-transition-timing-function: linear;
+    transition-timing-function: linear;
+    padding:20px;
 }
-.side-events-right
-{
-	background-position: -1px 0px;
-	float:right;
+.carousel-inner {
+    height:100%;
+    width:100%;
+    margin:0 auto;
+    display:block;
 }
-
-.side-get-started-left
-{
-	background-position: -81px 0px;
-	float:left;
+.carousel-inner > .item > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
 }
-.side-get-started-right
-{
-	background-position: -61px 0px;
-	float:right;
-}
-
-.side-participants-left
-{
-	background-position: -21px 0px;
-	float:left;
-}
-.side-participants-right
-{
-	background-position: -1px 0px;
-	float:right;
-}
-
-.side-contact-us-left
-{
-	background-position: -81px 0px;
-	float:left;
-}
-.side-contact-us-right
-{
-    float:right;
-	background-position: -61px 0px;
-}
-
-
-
-
-
-
-.slide-test
-{
-	z-index: 1334;
-	left: 800px;
-	top: 900px;
-	position: absolute;
-	width: 20px; 
-	height: 550px; 
-	background-image: url('../images/slider/side-test.png');
-	background-repeat: no-repeat; 
-
-}
-
 
 /*
 @media screen and (min-width:0px) and (max-width:1340px) {
