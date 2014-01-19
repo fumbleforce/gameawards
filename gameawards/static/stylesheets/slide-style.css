@@ -1,6 +1,7 @@
 ﻿#home-slider {
   width: 800px;
-  height: 700px;
+  height: 660px;
+  margin:0 auto;
 }
 #events-slider {
   width: 800px;
@@ -272,7 +273,7 @@ a.arrow-button
 	display: block;
 	background: url(../images/slider/arrow-sprite.png) no-repeat;
 	overflow: hidden;
-	position: relative; 
+	position: absolute; 
 	float: left;
 }
 
@@ -308,8 +309,7 @@ a.next-white:active{background-position: -300px -120px}
 .slide-side
 {
 	width: 20px;
-	height: 500px;
-	position: absolute;
+	height:100%;
 	z-index: 1335;
 	display: block;
 	background: url(../images/slider/slide-side-sprite.png) no-repeat;
@@ -320,60 +320,51 @@ a.next-white:active{background-position: -300px -120px}
 .side-home-right
 {
 	background-position: -61px 0px;
-	height: 720px;
-	top: 0px;
+	float:right;
 }
 
 .side-events-left
 {
 	background-position: -21px 0px;
-	height: 790px;
-	top: 720px;
+	float:left;
 }
 .side-events-right
 {
 	background-position: -1px 0px;
-	height: 790px;
-	top: 720px;
+	float:right;
 }
 
 .side-get-started-left
 {
 	background-position: -81px 0px;
-	height: 800px;
-	top: 1510px;
+	float:left;
 }
 .side-get-started-right
 {
 	background-position: -61px 0px;
-	height: 800px;
-	top: 1510px;
+	float:right;
 }
 
 .side-participants-left
 {
 	background-position: -21px 0px;
-	height: 800px;
-	top: 2310px;
+	float:left;
 }
 .side-participants-right
 {
 	background-position: -1px 0px;
-	height: 800px;
-	top: 2310px;
+	float:right;
 }
 
 .side-contact-us-left
 {
 	background-position: -81px 0px;
-	height: 600px;
-	top: 3110px;
+	float:left;
 }
 .side-contact-us-right
 {
+    float:right;
 	background-position: -61px 0px;
-	height: 600px;
-	top: 3110px;
 }
 
 

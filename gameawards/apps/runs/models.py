@@ -6,7 +6,7 @@ from gallery.models import GamePic
 class Run(models.Model):
     year = models.CharField(max_length = 4)
     start_date = models.DateTimeField(auto_now_add=True)
-    current_run = models.BooleanField(default=True)
+    current_run = models.BooleanField(default=False)
     submission_open = models.BooleanField(default=False)
     
     def __unicode__(self):
@@ -71,4 +71,10 @@ class Upload(models.Model):
     version = models.CharField(max_length = 10,null=True, blank=True, verbose_name=u"Version")
     game = models.ForeignKey(Game, verbose_name=u"Name")
     uploaded_file = models.FileField(upload_to='submissions', verbose_name=u"Uploaded file")
+    
+    
+    
+    
+    
+    
     

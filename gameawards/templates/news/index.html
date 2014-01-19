@@ -17,131 +17,130 @@
 	
 	
 {% block static_elements %}
-<div class="nga-logo"></div>
-<div class="bg-behind-logo"></div>
-<a href="https://www.norsk-tipping.no/" target="_blank" class="partners nt-logo"></a>
-<a href="http://www.arm.com/" target="_blank" class="partners arm-logo"></a>
-<a href="http://startntnu.no/" target="_blank" class="partners start-logo"></a>
-<a href="http://skatteetaten.no/" target="_blank" class="partners etat-logo"></a>
 
-<div class="side-home-right slide-side"></div>
-<div class="side-events-left slide-side"></div>
-<div class="side-events-right slide-side"></div>
-<div class="side-get-started-left slide-side"></div>
-<div class="side-get-started-right slide-side"></div>
-<div class="side-participants-left slide-side"></div>
-<div class="side-participants-right slide-side"></div>
-<div class="side-contact-us-left slide-side"></div>
-<div class="side-contact-us-right slide-side"></div>
+
 {% endblock %}
 	
 {% block first_container %}
-	    <tr id="first-container">
-		    <td class="nga-logo-container"></td>
-		    <td style="width: 800px">
-		    
-		    <!--HOME SLIDER-->
-			<div id="home-slider" class="royalSlider rsMinW ">
-                {% for slide in home_slide_list %}
-                    {{ slide.text|safe }}
-                {% endfor %}
-			</div>
-		    <!--END HOME SLIDER-->
-		    
-            <a class="arrow-button prev-green" style="left: 10px; bottom: 10px" onclick="homeSliderPrev()"></a>
-            <a class="arrow-button next-green" style="left: 10px; bottom: 10px" onclick="homeSliderNext()"></a>
-		    </td>
-		    <td style="width: 50%">&nbsp;</td>
-	    </tr>
+<div id="first-container">
+    <div class="partner-logo-container">
+        <img class="nga-logo" src="{{ STATIC_URL }}images/nga-logo.png"></img>
+        <div class="bg-behind-logo"></div>
+        <div class="partner-container">
+            <a href="https://www.norsk-tipping.no/" target="_blank" class="partners nt-logo"></a>
+            <a href="http://www.arm.com/" target="_blank" class="partners arm-logo"></a>
+            <a href="http://startntnu.no/" target="_blank" class="partners start-logo"></a>
+            <a href="http://skatteetaten.no/" target="_blank" class="partners etat-logo"></a>
+        </div>
+    </div>
+    <!--HOME SLIDER-->
+	<div id="home-slider" class="royalSlider rsMinW ">
+        {% for slide in home_slide_list %}
+            {{ slide.text|safe }}
+        {% endfor %}
+        
+	</div>
+	<a class="arrow-button prev-green" style="left: 45%; bottom: 5px" onclick="homeSliderPrev()"></a>
+    <a class="arrow-button next-green" style="left: 50%; bottom: 5px" onclick="homeSliderNext()"></a>
+    <!--END HOME SLIDER-->
+    
+    
+    
+    <div class="side-home-right slide-side"></div>
+</div>
 {% endblock %}
 	
 	
 	
 	
-       {% block second %}
-		        <div class="picture-center" id="events-text"></div>
-		
-		        <!--EVENT SLIDER-->
-			    <div id="events-slider" class="royalSlider rsMinW"> 
-                    {% for slide in event_slide_list %}
-                        {{ slide.text|safe }}
-                    {% endfor %}
+{% block second %}
+<div class="side-events-left slide-side"></div>
+<div class="picture-center" id="events-text"></div>
+
+<!--EVENT SLIDER-->
+<div id="events-slider" class="royalSlider rsMinW"> 
+    {% for slide in event_slide_list %}
+        {{ slide.text|safe }}
+    {% endfor %}
+</div>
+<!--END EVENT SLIDER-->
+
+<a class="arrow-button prev-black" style="left: 45%; bottom: 5px" onclick="homeSliderPrev()"></a>
+<a class="arrow-button next-black" style="left: 50%; bottom: 5px" onclick="homeSliderNext()"></a>
+    
+<div class="side-events-right slide-side"></div>
+{% endblock %}
+	
+	
+	
+	
+	
+{% block third %}
+<div class="side-get-started-left slide-side"></div>
+<div id="get-started-text" class="picture-center"></div>
+
+<!--GET STARTED SLIDER-->
+<div id="get-started-slider" class="royalSlider rsMinW ">
+    {% for slide in getstarted_slide_list %}
+        {{ slide.text|safe }}
+    {% endfor %}
+</div>
+<!--END GET STARTED SLIDER-->
+<div class="side-get-started-right slide-side"></div>
+{% endblock %}
+
+
+
+
+{% block fourth %}
+<div class="side-participants-left slide-side"></div>
+<div id="game-whole-container">
+    <div id="participants-text" class="picture-center"></div>
+
+    <!--GAMES SLIDER-->
+    <div id="game-sample-container">
+        <div id="game-sample-list">
+            {% for g in game_list %}
+            
+                <div class="sample-game-container">
+                    <a href="/games/#game_{{ g.id }}">
+                    <div class="sample-game-icon">
+                       <img src="{{ g.get_icon.image.url }}" />
+                    </div></a>
+                    <div class="sample-game-title green-text-background">
+                        {{ g.name }}
+                    </div>
+                    <div class="sample-game-desc green-text-background">
+                        {{ g.short_desc }}
+                    </div>
+                
                 </div>
-		        <!--END EVENT SLIDER-->
-		
-                <a class="arrow-button prev-black" style="left: 10px; bottom: 10px" onclick="eventSliderPrev()"></a>
-                <a class="arrow-button next-black" style="left: 10px; bottom: 10px" onclick="eventSliderNext()"></a>
-		
-		   {% endblock %}
-	
-	
-	
-	
-	
-  {% block third %}
-
-		        <div id="get-started-text" class="picture-center"></div>
-		        
-		        <!--GET STARTED SLIDER-->
-			    <div id="get-started-slider" class="royalSlider rsMinW ">
-				    {% for slide in getstarted_slide_list %}
-                        {{ slide.text|safe }}
-                    {% endfor %}
-			    </div>
-		        <!--END GET STARTED SLIDER-->
-{% endblock %}
-
-
-
-
- {% block fourth %}
-                <div id="game-whole-container">
-		        <div id="participants-text" class="picture-center"></div>
-		        
-		        <!--GAMES SLIDER-->
-			    <div id="game-sample-container">
-                    <div id="game-sample-list">
-                        {% for g in game_list %}
-                        
-                            <div class="sample-game-container">
-                                <a href="/games/#game_{{ g.id }}">
-                                <div class="sample-game-icon">
-                                   <img src="{{ g.get_icon.image.url }}" />
-                                </div></a>
-                                <div class="sample-game-title green-text-background">
-                                    {{ g.name }}
-                                </div>
-                                <div class="sample-game-desc green-text-background">
-                                    {{ g.short_desc }}
-                                </div>
-                            
-                            </div>
-                        
-                        {% endfor %}
-                    </div>
-                    <div id="game-sample-links">
-                        <a href="/games/">See all games!</a></br>
-                        <a href="/info/#guides-container">Submission guide</a></br>
-                        <a href="/info/#third-container">Participation Rules</a>
-                    </div>
-			    </div>                    
-			    </div>
-		        <!--END GAMES SLIDER-->
-		
+            
+            {% endfor %}
+        </div>
+        <div id="game-sample-links">
+            <a href="/games/">See all games!</a></br>
+            <a href="/info/#guides-container">Submission guide</a></br>
+            <a href="/info/#third-container">Participation Rules</a>
+        </div>
+    </div>                    
+</div>
+<!--END GAMES SLIDER-->
+<div class="side-participants-right slide-side"></div>
 {% endblock %}
 
 
 
 
 {% block fifth %}
-		        <div id="contact-us-text" class="picture-center"></div>
-		
-		        <!--CONTACT US SLIDER-->
-			    <a class="contact-button contact-left facebook-button" href="http://www.facebook.com/norwegiangameawards" target="_blank"></a>
-                <a class="contact-button contact-center twitter-button" href="https://twitter.com/Gameawards" target="_blank"></a>
-                <a class="contact-button contact-right mail-button" href="mailto:contact@gameawards.no" target="_blank"></a>
-
+<div class="side-contact-us-left slide-side"></div>
+<div id="contact-us-text" class="picture-center"></div>
+    <!--CONTACT US SLIDER-->
+    <a class="contact-button contact-left facebook-button" href="http://www.facebook.com/norwegiangameawards" target="_blank"></a>
+    <a class="contact-button contact-center twitter-button" href="https://twitter.com/Gameawards" target="_blank"></a>
+    <a class="contact-button contact-right mail-button" href="mailto:contact@gameawards.no" target="_blank"></a>
 </div>
+<div class="side-contact-us-right slide-side"></div>
 {% endblock %}
 
     
