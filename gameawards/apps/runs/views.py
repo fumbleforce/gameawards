@@ -8,6 +8,9 @@ from runs.models import Game, Run, Developer, Upload
 import ayah
 from gameawards.utils import sanitizeHtml
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+import os
+from datetime import datetime
 
 
 def game_registration_request(request):
@@ -115,6 +118,16 @@ def add_game_dev_request(request, game_id):
         context_instance=RequestContext(request))
 
 
+
+def handle_uploaded_file(file_name,f):
+    destination = open(file_name, 'wb+')
+    for chunk in f.chunks():
+        destination.write(chunk)
+    destination.close()
+    return
+
+
+
 @login_required(login_url='/login/')
 def submit_game_request(request):
     """
@@ -124,16 +137,31 @@ def submit_game_request(request):
     reg_games = Game.objects.filter(leader=request.user)
     uploads = Upload.objects.filter(game__leader=request.user)
     if request.method == 'POST':
-        form = UploadForm(request.POST, request.FILES)
+        form = UploadForm(request.user, request.POST, request.FILES)
         if form.is_valid():
             d = form.save(commit=False)
-            # Do stuff with object
+            fi=request.FILES['uploaded_file']
+            directory = "%ssubmissions/%s" % (settings.MEDIA_ROOT, d.game.name)
+            name = "%s_%s" % (datetime.now().strftime('%Y.%m.%d.%H.%M'), fi.name)
+            
+            while len("%s/%s" % (directory,name)) >= 100:
+                name = name[1:]
+            file_name = "%s/%s" % (directory,name)
+            try:
+                os.mkdir(directory)
+            except OSError:
+                pass
+            try:
+                handle_uploaded_file( file_name , fi )
+            except Exception as e:
+                print e
+            d.uploaded_file = file_name
             d.save()
             return HttpResponseRedirect('/runs/upload/')
         else:
             context = {'form':form, 'uploads':uploads}
     else:
-        form = UploadForm()
+        form = UploadForm(request.user)
         context = {'form':form, 'uploads':uploads}
     
     return render_to_response(
