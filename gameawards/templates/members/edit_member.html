@@ -1,52 +1,56 @@
-{% extends "single_page.html" %}
-
-
-{% block text_head %}<div id="edit-member-text"></div>{% endblock %}
-
-{% block page %}
-
-<div id="register-member-container" class="single-page-container">
     
-    {% for e in form.errors %}
-        <p>{{ e }}</p>
-    {% endfor %}
-    </br>
-    <form action="" method="post">
-        {% csrf_token %}
+{% for e in form.errors %}
+    <p>{{ e }}</p>
+{% endfor %}
+</br>
+<form action="/members/edit_member/" method="post" id="editMemberForm">
+    {% csrf_token %}
 
-        <div class="register_div">
-                {% if form.email.errors %}<p class="error">{{ form.email.errors }}</p>{% endif %}
-                <p><label for="email"{% if form.email.errors %} class="error"{% endif %}>Email:</label></p>
-                <p>{{ form.email }}</p>
-        </div></br>
-        <div class="register_div">
-                {% if form.password.errors %}<p class="error">{{ form.password.errors }}</p>{% endif %}
-                <p><label for="password"{% if form.password.errors %} class="error"{% endif %}>Password:</label></p>
-                <p>{{ form.password }}</p>
-        </div></br>
-        <div class="register_div">
-                {% if form.password1.errors %}<p class="error">{{ form.password1.errors }}</p>{% endif %}
-                <p><label for="password1"{% if form.password1.errors %} class="error"{% endif %}>Verify Password:</label></p>
-                <p>{{ form.password1 }}</p>
-        </div></br>
-        <div class="register_div">
-                {% if form.first_name.errors %}<p class="error">{{ form.first_name.errors }}</p>{% endif %}
-                <p><label for="first_name"{% if form.first_name.errors %} class="error"{% endif %}>First Name:</label></p>
-                <p>{{ form.first_name }}</p>
-        </div></br>
-        <div class="register_div">
-                {% if form.last_name.errors %}<p class="error">{{ form.last_name.errors }}</p>{% endif %}
-                <p><label for="last_name"{% if form.last_name.errors %} class="error"{% endif %}>Last Name:</label></p>
-                <p>{{ form.last_name }}</p>
-        </div></br>
-        <div class="register_div">
-                {% if form.about.errors %}<p class="error">{{ form.about.errors }}</p>{% endif %}
-                <p><label for="about"{% if form.about.errors %} class="error"{% endif %}>About Yourself:</label></p>
-                <p>{{ form.about }}</p>
-        </div></br>
+    <div class="register_div container">
+            {% if form.email.errors %}<p class="error">{{ form.email.errors }}</p>{% endif %}
+            <div class="col-md-6">
+            <label for="email"{% if form.email.errors %} class="error"{% endif %}>Email:</label>
+        </div>
+            <div class="col-md-6">
+            {{ form.email }}
+        </div>
+    </div></br>
+    <div class="register_div container">
+            {% if form.password.errors %}<p class="error">{{ form.password.errors }}</p>{% endif %}
+            <div class="col-md-6">
+            <label for="password"{% if form.password.errors %} class="error"{% endif %}>Password:</label>
+            </div><div class="col-md-6">
+            {{ form.password }}</div>
+    </div></br>
+    <div class="register_div container">
+            {% if form.password1.errors %}<p class="error">{{ form.password1.errors }}</p>{% endif %}
+            <div class="col-md-6">
+            <label for="password1"{% if form.password1.errors %} class="error"{% endif %}>Verify Password:</label>
+            </div><div class="col-md-6">
+            {{ form.password1 }}</div>
+    </div></br>
+    <div class="register_div container">
+            {% if form.first_name.errors %}<p class="error">{{ form.first_name.errors }}</p>{% endif %}
+            <div class="col-md-6">
+            <label for="first_name"{% if form.first_name.errors %} class="error"{% endif %}>First Name:</label>
+            </div><div class="col-md-6">
+            {{ form.first_name }}</div>
+    </div></br>
+    <div class="register_div container">
+            {% if form.last_name.errors %}<p class="error">{{ form.last_name.errors }}</p>{% endif %}
+            <div class="col-md-6">
+            <label for="last_name"{% if form.last_name.errors %} class="error"{% endif %}>Last Name:</label>
+            </div><div class="col-md-6">
+            {{ form.last_name }}</div>
+    </div></br>
+    <div class="register_div container">
+            {% if form.about.errors %}<p class="error">{{ form.about.errors }}</p>{% endif %}
+            <div class="col-md-12">
+            <label for="about"{% if form.about.errors %} class="error"{% endif %}>About Yourself:</label>
+            </div><div class="col-md-12">
+            {{ form.about }}
+        </div>
+    </div></br>
+    <input type="submit" class="btn btn-default" value="Submit"></input>
+</form>
 
-        <p><input type="submit" alt="register" /></p>
-    </form>
-
-</div>
-{% endblock %}

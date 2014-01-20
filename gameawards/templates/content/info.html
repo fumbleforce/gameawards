@@ -16,11 +16,11 @@
 
 
 
-{% block first_container %}{% endblock %}
+{% block first_container %}<div style="height:50px;width:100%"></div>{% endblock %}
 
 
 {% block second %}
-<div class="picture-center" id="faq-text"></div>
+<div class="headline">FAQ</div>
 <div style="color: black;">
     {{ faq.text|safe }}
 </div>
@@ -29,7 +29,7 @@
 
 
 {% block third %}
-<div class="picture-center" id="rules-text"></div>
+<div class="headline">RULES</div>
 <div style="color: white;">
     {{ rules.text|safe }}
 </div>
@@ -38,13 +38,13 @@
 
 
 {% block fourth %}
-<div class="picture-center" id="categories-text"></div>
+<div class="headline">CATEGORIES</div>
     {{ categories.text|safe }}
 {% endblock %}
 
 
 {% block fifth %}
-<div class="picture-center" id="organizers-text"></div>
+<div class="headline">ORGANIZERS</div>
 <div id="organizer-content" style="color:black; height:auto; padding-bottom:30px;">
     {{ organizers.text|safe }}
 </div>
@@ -56,7 +56,7 @@
 
 <div id="guides-container" class="centerWrapper">
     <div class="contentCenter">
-        <div class="picture-center" id="guides-text"></div>
+        <div class="headline">GUIDES</div>
         <div style="text-align:left">
             {{ guides.text|safe }}
         </div>

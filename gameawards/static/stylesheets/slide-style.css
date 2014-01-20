@@ -10,6 +10,7 @@
 #get-started-slider {
   width: 800px;
   height: 600px;
+  margin:0 auto;
 }
 #participants-slider {
   width: 800px;
@@ -310,7 +311,12 @@ span.next-white:active{background-position: -300px -120px}
 
 /* Carousel base class */
 .carousel {
-  height: 800px;
+  height: 500px;
+  -webkit-transition-timing-function: linear;
+-moz-transition-timing-function: linear;
+-o-transition-timing-function: linear;
+transition-timing-function: linear;
+
 }
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
@@ -337,10 +343,8 @@ span.next-white:active{background-position: -300px -120px}
     display:block;
 }
 .carousel-inner > .item > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
+  margin:0 auto;
+  max-height:460px;
 }
 
 /*

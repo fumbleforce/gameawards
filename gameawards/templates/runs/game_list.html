@@ -1,80 +1,64 @@
-{% extends "single_page.html" %}
+{% extends "template.html" %}
 
-{% block content_table %}
-<div id=hidden-div></div>
-<div style="width:100%;padding-top:40px">
-	<div class="green-container">
-	    <div id="games-text"></div>
-	    <div id="game_list_container">
-            {% if games %}
-                {% for game in games %}
-                <div id="game_{{ game.id }}" class="black-container round-and-shadow game-in-list-container">
-                    <div class="game-short-container">
-                        <div class="game-icon">
-                           {% if game.get_icon %}
-                                <img src="{{ game.get_icon.image.url }}" width="200" height="200" />
-                            {% else %}
-                                
-                            {% endif %}
-                        </div>
-                        <div class="game-short-text-container">
-                            <div class="game-title text-background">
-                                {{ game.name }}
-                            </div>
-                            
-                            <div class="game-short-desc text-background">
-                                {% if game.concept_only %}[Concept only]<br>{% endif %}
-                                {{ game.short_desc }}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="game-long-container">
-                        <div class="dev-long-container">
-                            <div class="game-devs-container text-background" style="padding-left:0;padding-right:0;">
-                                <div class="dev-container">
-                                    <div class="dev-info dev-name">{{ game.leader.first_name}}&nbsp;{{ game.leader.last_name }}</div>
-                                    <div class="dev-info dev-role">Leader</div>
-                                    <div class="dev-info dev-about">{{ game.leader.get_profile.about }}</div>
-                                </div>
-                                {% for dev in game.get_devs %}
-                                    <div class="dev-container">
-                                        <div class="dev-info dev-name">{{ dev.user.first_name}}&nbsp;{{ dev.user.last_name }}</div>
-                                        <div class="dev-info dev-role">{{ dev.role }}</div>
-                                        <div class="dev-info dev-about">{{ dev.user.get_profile.about }}</div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                            
-                            <div class="game-long-desc text-background">
-                                {{ game.description|safe }}
-                            </div>
-                        </div>
-                        {% if game.get_screens %}
-                        <div class="screen-gallery text-background" style="height:{{ game.get_screen_height }}px;">
-                            {% for s in game.get_screens %}
-                            <div class="screen-img">
-                                <img class="screen-in-list" src="{{ s.image.url }}" />
-                            </div>
-	                        {% endfor %}
-                        </div>
-                        {% endif %}
-                        {% if game.get_vids %}
-                        <div class="video-list text-background">
-                            {% for v in game.get_vids %}
-                                <div class="screen-img" style="background-image:url(>
-                                <a class="screen-img" href="{{ v.video.url }}">{{ v.title }}</a>
-	                        {% endfor %}
-                        </div>
-                        {% endif %}
-                    </div>
+
+{% block template_nav %}
+
+<li class="current_page_item"><a id="btnFirst" href="#second-container">GAMES</a></li>
+<li><a id="btnSecond"   href="#third-container">IMAGES</a></li>
+<li><a id="btnThird"    href="#fourth-container">VIDEOS</a></li>
+<li><a id="btnFourth"   href="#fifth-container">DEVELOPERS</a></li>
+
+{% endblock %}  
+
+{% block first_container %}<div style="height:50px;width:100%"></div>{% endblock %}
+
+{% block second %}
+<div class="headline">GAMES</div>
+
+<div class="container" id="big-game"></div>
+<div class="container" id="small-games">
+    {% if games %}
+        {% for game in games %}
+        <div id="game_{{ game.id }}" game="{{game.id}}" class="pull-left game">
+            <div class="container">
+                <div class="col-lg-12">
+                   {% if game.get_icon %}
+                        <img src="{{ game.get_icon.image.url }}" width="200" height="200" />
+                    {% else %}
+                         <img src="http://placehold.it/200x200" width="200" height="200" />
+                    {% endif %}
                 </div>
-                {% endfor %}
-            {% else %}
-                <p>
-                    There are no games here :(
-                </p>
-            {% endif %}
+                <div class="col-lg-12 title">
+                    {{ game.name }}
+                </div>
+            </div>
         </div>
-    </div>
-</div>   
+        {% endfor %}
+    {% else %}
+        <p>
+            There are no games here :(
+        </p>
+    {% endif %}
+</div>
+<div style="height:50px;width:100%"></div>
+
+<script>
+$(function() {
+    $(".game").click(function() {
+        var $game = $(this),
+            id = $game.attr("game");
+        $("#big-game")
+            .load("/runs/game/"+id+"/")
+            .show(100);
+    })
+});
+</script>
+{% endblock %}
+
+{% block third %}
+<div class="headline">IMAGES</div>
+{% endblock %}
+
+{% block fourth %}
+<div class="headline">VIDEOS</div>
 {% endblock %}

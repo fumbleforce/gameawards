@@ -71,7 +71,7 @@
 	
 	
 {% block second %}
-<div class="picture-center" id="events-text"></div>
+<div class="headline carousel-headline">EVENTS</div>
 
 <!--EVENT SLIDER-->
 <div id="carousel-event" class="carousel slide" data-ride="carousel">
@@ -83,6 +83,7 @@
     <div class="carousel-inner">
     {% for slide in event_slide_list %}
         <div class="item">
+            <div style="height:80px; width:100%"></div>
             {{ slide.text|safe }}
             <div class="carousel-caption">
                 {{ slide.caption |safe }}
@@ -106,10 +107,17 @@
 	
 	
 	
-{% block third %}
-<div id="get-started-text" class="picture-center dark-container"></div>
+{% block third_container %}
+<div id="third-container" class="centerWrapper get-started">
+    <div class="contentCenter">
+        {% include "news/getstarted.html" %}
+    </div>
+</div>
 
-<!--GET STARTED SLIDER-->
+<!-- GET STARTED
+
+<div class="headline carousel-headline">GET STARTED</div>
+
 <div id="carousel-getstarted" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         {% for slide in getstarted_slide_list %}
@@ -132,15 +140,16 @@
         <span class="arrow-button next-black chevron-right"></span>
     </a>
 </div>
-<!--END GET STARTED SLIDER-->
+-->
 {% endblock %}
 
 
 
 
 {% block fourth %}
+<div class="headline">GAMES</div>
 <div id="game-whole-container">
-    <div id="participants-text" class="picture-center"></div>
+    
 
     <!--GAMES SLIDER-->
     <div id="game-sample-container">
@@ -177,7 +186,7 @@
 
 
 {% block fifth %}
-<div id="contact-us-text" class="picture-center dark-container"></div>
+<div class="headline carousel-headline">CONTACT US</div>
     <!--CONTACT US SLIDER-->
     <div class="index-content">
         <a class="contact-button facebook-button" href="http://www.facebook.com/norwegiangameawards" target="_blank"></a>

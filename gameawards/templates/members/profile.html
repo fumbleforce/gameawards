@@ -1,91 +1,171 @@
-{% extends "single_page.html" %} 
+{% extends "template.html" %} 
+
+{% block template_nav %}
+
+<li class="current_page_item"><a id="btnFirst" href="#second-container">PROFILE</a></li>
+<li><a id="btnSecond"   href="#third-container">GAMES</a></li>
+<li><a id="btnThird"    href="#fourth-container">UPLOADS</a></li>
+
+{% endblock %} 
+
+{% block first_container %}<div style="height:50px;width:100%"></div>{% endblock %}
 
 
-{% block text_head %}<div id="profile-text"></div>{% endblock %}
+{% block second %}
 
-{% block page %}
+<div class="headline">Profile Information</div>
 
-
-<div id="profile-container" class="single-page-container">
-
-    <div id="profile-top-bar">
-        <div id="profile-top-text" class="head-background">
-            <h2>Profile information</h2> 
-        </div>      
-        <div id="profile-logout">
-            <a href="/members/logout"><button>Log out</button></a>  
-        </div>
+<div class="container" id="profileInfo">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-2">
+        <img src="http://placehold.it/100x150"></img>
     </div>
-    
-    <div id="profile-info-container">
-        <table class="profile-info-table text-background">
-            <tr>
-                <td>First&nbsp;Name:</td>
-                <td>&nbsp;{{ user.first_name }}</td>
-            </tr>
-            <tr>
-                <td>Last&nbsp;Name:</td>
-                <td>&nbsp;{{ user.last_name }}</td>
-            </tr>
-            <tr>
-                <td>Username:</td>
-                <td>&nbsp;{{ user.username }}</td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td>&nbsp;{{ user.email }}</td>
-            </tr>
-            <tr>
-                <td>About:</td>
-                <td>&nbsp;{{ profile.about }}</td>
-            </tr>
-        </table>
-
+    <div class="col-lg-2">
+        First&nbsp;Name: &nbsp;{{ user.first_name }} <br>
+        Last&nbsp;Name: &nbsp;{{ user.last_name }} <br>
+        Username: &nbsp;{{ user.username }} <br>
+        Email: &nbsp;{{ user.email }} <br>
+        About: &nbsp;{{ profile.about }}
     </div>
+    <div class="col-lg-4"></div>
+</div>
+<div id="editProfileContainer" class="container" style="display:none">
 
-    
-    <div id="edit-profile-button">
-        <a href="/members/edit_member/"><button>Edit profile</button></a>
-    </div>
-
-    <div id="your-games-container">
-        <div id="your-games-title" class="head-background">
-            <h2 style="float:left">Your games</h2>
-            {% if registration %}<a href="/runs/register/" style="float:right"><button>Register Game</button></a>{% endif %}
-        </div>
-        <div id="your-game-list-container">
-        {% for g in games %}
-            <div class="game-link text-background">
-            
-                <div class="your-game-list-element" style="float:left;width:780px;">{{ g.name }}</div>
-
-                <div class="your-game-list-element" style="float:left;padding-right:10px;"><a href="/gallery/add_game_pic/{{ g.id }}"><button>Add images</button></a></div> 
-                               
-                <div class="your-game-list-element" style="float:left;padding-right:10px;"><a href="/runs/edit/{{ g.id }}"><button>Edit</button></a></div>
-                
-                <div class="your-game-list-element" style="float:left;padding-right:10px;"><a href="/runs/add_game_dev/{{ g.id }}"><button>Add Collaborator/Developer</button></a></div>
-            </div>
-            
-        {% endfor %}
-        </div>
-        
-        <div id="your-uploads-title" class="head-background">
-            <h2 style="float:left">Your Uploads</h2>
-            <a href="/runs/upload/" style="float:right"><button>Upload Game/Concept</button></a>
-        </div>
-        <div id="your-upload-list-container">
-        {% for u in uploads %}
-            <div class="upload-link text-background">
-                <div class="existing-left">&nbsp;{{ u.title }}</div>
-                <div class="existing-mid">&nbsp;{{ u.version }}</div>
-                <div class="existing-right">&nbsp;{{ u.game.name }}</div>
-            </div>
-            
-        {% endfor %}
-        </div>
-        <br><br><br>
-       
-    </div>
 </div>
 
+<div style="height:20px;width:100%"></div>
+<div class="text-center margin-bot-20">
+    <button class="btn btn-default btn-lg" onclick="$('#editProfileContainer').toggle(1000);$('#profileInfo').toggle(1000);">Edit profile</button>
+</div>
+
+<script>
+function submitEditProfile() {
+    var $modal = $("#editProfileContainer");
+        $form = $("#editMemberForm");
+    $.post(
+        "/members/edit_member/",
+        $form.serialize(),
+        function(response) {
+            $modal.html(response);
+        },
+        'json'
+    );
+}
+
+$(function(){
+    var $container = $("#editProfileContainer");
+    $.get("/members/edit_member", function(page) {
+        $container.html(page);
+    });
+});
+</script>
+{% endblock %}
+
+
+{% block third %}
+<div class="headline">Your games</div>
+
+<div id="your-game-list-container">
+{% for g in games %}
+    <div class="game-link text-background">
+    
+        <div class="your-game-list-element" style="float:left;width:780px;">{{ g.name }}</div>
+
+        <div class="your-game-list-element" style="float:left;padding-right:10px;"><a href="/gallery/add_game_pic/{{ g.id }}"><button>Add images</button></a></div> 
+                       
+        <div class="your-game-list-element" style="float:left;padding-right:10px;"><a href="/runs/edit/{{ g.id }}"><button>Edit</button></a></div>
+        
+        <div class="your-game-list-element" style="float:left;padding-right:10px;"><a href="/runs/add_game_dev/{{ g.id }}"><button>Add Collaborator/Developer</button></a></div>
+    </div>
+    
+{% endfor %}
+</div>
+
+<div id="gameFormContainer" class="container" style="display:none;"></div>
+
+<div class="text-center margin-bot-20">
+    <button class="btn btn-default btn-lg" onclick="$('#gameFormContainer').toggle(1000);$('#your-game-list-container').toggle(1000);">Register Game or Concept</button>
+</div>
+<script>
+
+$(function(){
+    var $container = $("#gameFormContainer");
+    $.get("/runs/register/", function(page) {
+        $container.html(page);
+        var $form = $("#gameForm");
+        AYAH.addGameCompleteHandler(function(e){
+            console.log(e);
+        })
+        /*
+        $form.submit(function(e){
+            e.preventDefault();
+            $.post(
+                "/runs/register/",
+                $form.serialize(),
+                function(response) {
+                    $container.html(response);
+                    return false;
+                },
+                'json'
+            );
+            return false;
+        });
+*/
+    });
+});
+</script>
+
+{% endblock %}
+
+
+
+
+{% block fourth %}
+<div class="headline">Your Uploads</div>
+    
+<div id="your-upload-list-container">
+{% for u in uploads %}
+    <div class="upload-link text-background">
+        <div class="existing-left">&nbsp;{{ u.title }}</div>
+        <div class="existing-mid">&nbsp;{{ u.version }}</div>
+        <div class="existing-right">&nbsp;{{ u.game.name }}</div>
+    </div>
+{% endfor %}
+</div>
+
+<div id="uploadContainer" class="container" style="display:none">
+
+</div>
+
+<div style="height:20px;width:100%"></div>
+
+{% if upload %}
+<div class="text-center margin-bot-20">
+    <button class="btn btn-default btn-lg" onclick="$('#uploadContainer').toggle(1000);$('#your-upload-list-container').toggle(1000);">Upload Game or Concept</button>
+</div>
+{% endif %}
+<script>
+function submitUpload() {
+    
+}
+
+$(function(){
+    var $container = $("#uploadContainer");
+    $.get("/runs/upload/", function(page) {
+        $container.html(page);
+        var $form = $("#uploadForm");
+        $form.submit(function(e){
+            e.preventDefault();
+            $.post(
+                "/runs/upload/",
+                $form.serialize(),
+                function(response) {
+                    $modal.html(response);
+                },
+                'json'
+            );
+        });
+    });
+});
+</script>
 {% endblock %}

@@ -3,7 +3,7 @@
 	padding: 0;
 	border: 0px;
 	border-spacing: 0px;
-	font-family: sans-serif; 
+	font-family: 'Exo', sans-serif; 
 
 }
 body {
@@ -73,6 +73,19 @@ footer{
 	line-height: 0;
 	height: 0;
 }
+.margin-bot-20 {
+	margin-bottom:20px;
+}
+
+.modal-dialog{
+	padding-top: 80px;
+}
+.modal-content {
+	background-color:#89C559;
+	background-image: url('../images/bg-rep-dark.png');
+}
+
+
 .logo-back
 {
 	left: 10%;
@@ -203,13 +216,23 @@ footer{
 
 }
 
+.headline {
+	font-family: 'Exo', sans-serif;
+	font-size: 88px;
+	text-align:center;
+	width:100%;
+	margin: 20px 0;
+}
+.carousel-headline  {
+	position:absolute;
+}
+
 .text-background
 {
 	position: relative;
     overflow:hidden;
 	color: #9ECE69;
-	background: black; /*fallback*/
-	background: rgba(0,0,0,0.2);
+	background: #333;
 	padding:5px 10px 5px 10px;
 }
 
@@ -431,6 +454,12 @@ box-shadow:0px 0px 0px 15px #222;
 
 }
 
+.get-started {
+	background-image:url('../images/bg-rep-light.png') !important;
+    background-color:#333 !important;
+
+}
+
 
 /*TOP TEXT*/
 .picture-center
@@ -560,12 +589,26 @@ box-shadow:0px 0px 0px 15px #222;
 
 .register_div label
 {
-    font-size:26px;
+    font-size:16px;
 }
 .register_div p
 {
     font-size:26px;
 }
+.register_div input, textarea
+{
+    width:100%;
+    border: 2px solid #333;
+}
+.register_div input[type="checkbox"]
+{
+   -ms-transform: scale(5); /* IE */
+  -moz-transform: scale(5); /* FF */
+  -webkit-transform: scale(5); /* Safari and Chrome */
+  -o-transform: scale(5); /* Opera */
+  padding: 30px;
+}
+
 .error-field
 {
     width:100%;
@@ -625,7 +668,11 @@ box-shadow:0px 0px 0px 15px #222;
 
 
 
-
+.title {
+	font-size:20px;
+	text-align: center;
+	width:100%;
+}
 
 
 

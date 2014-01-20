@@ -1,106 +1,98 @@
-{% extends "single_page.html" %}
 
-{% block text_head %}<div id="register-game-text"></div>{% endblock %}
 
-{% block page %}
+<div class="text-background" style="font-size:17px;">
+    Make sure you have read the <a href="/info/#third-container" style="font-size:15px;">Rules</a> before you register a game on this site.</br>
+    Thank you!
+</div>
+<br>
+<form id="gameForm" action="" method="post">
+{% csrf_token %}
 
-<div id="register-game-container" class="single-page-container">
 
-    <div class="text-background" style="font-size:17px;">
-        Make sure you have read the <a href="/info/#third-container" style="font-size:15px;">Rules</a> before you register a game on this site.</br>
-        Thank you!
+    <div class="register_div">
+            <p><label for="name"{% if form.name.errors %} class="error"{% endif %}>Title: *</label></p>
+            <p>
+                {{ form.name }}
+                <script>
+	                var nameValidation = new LiveValidation('id_name', { validMessage: 'Accepted', wait: 500});
+	                nameValidation.add(Validate.Presence, {failureMessage: "Required"});
+	                nameValidation.add( Validate.Length, { minimum: 1, maximum: 100 } );
+	            </script>  
+            </p>
     </div>
     <br>
-    <form action="" method="post">
-    {% csrf_token %}
+    <div class="register_div">
+            <p><label for="concept_only"{% if form.concept_only.errors %} class="error"{% endif %}>Concept Only? </label></p>
+            <div class="text-background" style="font-size:17px;">
+                If you intend to ONLY deliver a concept document and not a working game, to compete for the concept award, click this box!
+            </div><br><br>
+            <p>
+                {{ form.concept_only }}
+            </p>
+    </div>
+    <br>
+    <div class="register_div">
+            <p><label for="team"{% if form.team.errors %} class="error"{% endif %}>Team:</label></p>
+            <p>
+                {{ form.team }}
+                <script>
+	                var nameValidation = new LiveValidation('id_team', { validMessage: 'Accepted', wait: 500});
+	                nameValidation.add( Validate.Length, { minimum: 1, maximum: 100 } );
+	            </script>  
+           </p>
 
+    </div>
+    <br>
+    <div class="register_div">
+            <p><label for="short_desc"{% if form.short_desc.errors %} class="error"{% endif %}>Short Description: *</label></p>
+            <p>
+                {{ form.short_desc }}
+                
+            </p>
+            <p>
+                <script>
+	                var nameValidation = new LiveValidation('id_short_desc', { validMessage: 'Accepted', wait: 500});
+	                nameValidation.add(Validate.Presence, {failureMessage: "Required"});
+	                nameValidation.add( Validate.Length, { minimum: 10, maximum: 170 } );
+	            </script>  
+            </p>
+    </div>
+    <br>
 
-        <div class="register_div">
-                <p><label for="name"{% if form.name.errors %} class="error"{% endif %}>Title: *</label></p>
-                <p>
-                    {{ form.name }}
-                    <script>
-		                var nameValidation = new LiveValidation('id_name', { validMessage: 'Accepted', wait: 500});
-		                nameValidation.add(Validate.Presence, {failureMessage: "Required"});
-		                nameValidation.add( Validate.Length, { minimum: 1, maximum: 100 } );
-		            </script>  
-                </p>
-        </div>
-        <br>
-        <div class="register_div">
-                <p><label for="concept_only"{% if form.concept_only.errors %} class="error"{% endif %}>Concept Only? </label></p>
-                <div class="text-background" style="font-size:17px;">
-                    If you intend to ONLY deliver a concept document and not a working game, to compete for the concept award, click this box!
-                </div>
-                <p>
-                    {{ form.concept_only }}
-                </p>
-        </div>
-        <br>
-        <div class="register_div">
-                <p><label for="team"{% if form.team.errors %} class="error"{% endif %}>Team:</label></p>
-                <p>
-                    {{ form.team }}
-                    <script>
-		                var nameValidation = new LiveValidation('id_team', { validMessage: 'Accepted', wait: 500});
-		                nameValidation.add( Validate.Length, { minimum: 1, maximum: 100 } );
-		            </script>  
-               </p>
-
-        </div>
-        <br>
-        <div class="register_div">
-                <p><label for="short_desc"{% if form.short_desc.errors %} class="error"{% endif %}>Short Description: *</label></p>
-                <p>
-                    {{ form.short_desc }}
-                    
-                </p>
-                <p>
-                    <script>
-		                var nameValidation = new LiveValidation('id_short_desc', { validMessage: 'Accepted', wait: 500});
-		                nameValidation.add(Validate.Presence, {failureMessage: "Required"});
-		                nameValidation.add( Validate.Length, { minimum: 10, maximum: 170 } );
-		            </script>  
-                </p>
-        </div>
-        <br>
-
-        <div class="register_div">
-                <p><label for="description"{% if form.description.errors %} class="error"{% endif %}>Long Description: *</label></p>
-                <div class="text-background" style="font-size:17px;">
-                    Allowed tags for formatting: &lt;p&gt; &lt;i&gt; &lt;strong&gt; &lt;b&gt; &lt;u&gt; &lt;a&gt; &lt;h1&gt; &lt;h2&gt; &lt;h3&gt; &lt;blockquote&gt; &lt;br&gt; &lt;ul&gt; &lt;ol&gt; &lt;li&gt;</br>
-                    We recommend you spend some time on this point, making sure it creates some excitement for your game, to aid your chances in winning the Gamers' Choice award.</br>
-                    Suggestions for content here:</br>
-                        <li>Genre</li>
-                        <li>Platform</li>
-                        <li>Story</li>
-                        <li>Features</li>
-                        <li>Goal/Objective</li>
-                </div>
-                <br>
-                <p>
-                    {{ form.description }}
-                    
-                </p>
-                <p>
-                    <script>
-		                var nameValidation = new LiveValidation('id_description', { validMessage: 'Accepted', wait: 500});
-		                nameValidation.add(Validate.Presence, {failureMessage: "Required"});
-		                nameValidation.add( Validate.Length, { minimum: 100, maximum: 2000 } );
-		            </script>  
-                </p>
-        </div>
-        </br>
-        
-        <div class="text-background" style="font-size:17px;">
-            We highly recommend you add a game icon and screenshots after your game is registered! <br>
-            This will improve your chances of winning the Gamers' Choice award.<br>
-            You can do this in your profile page, below your game's name.<br>
-            You can add your co-developers by pressing the button on your profile page once the game is registered.
-        </div>
-        </br>
-        <p><input type="submit" alt="register" /></p>
-        {{ ayah_html|safe }}
-    </form>
-</div>
-{% endblock %}
+    <div class="register_div">
+            <p><label for="description"{% if form.description.errors %} class="error"{% endif %}>Long Description: *</label></p>
+            <div class="text-background" style="font-size:17px;">
+                Allowed tags for formatting: &lt;p&gt; &lt;i&gt; &lt;strong&gt; &lt;b&gt; &lt;u&gt; &lt;a&gt; &lt;h1&gt; &lt;h2&gt; &lt;h3&gt; &lt;blockquote&gt; &lt;br&gt; &lt;ul&gt; &lt;ol&gt; &lt;li&gt;</br>
+                We recommend you spend some time on this point, making sure it creates some excitement for your game, to aid your chances in winning the Gamers' Choice award.</br>
+                Suggestions for content here:</br>
+                    <li>Genre</li>
+                    <li>Platform</li>
+                    <li>Story</li>
+                    <li>Features</li>
+                    <li>Goal/Objective</li>
+            </div>
+            <br>
+            <p>
+                {{ form.description }}
+                
+            </p>
+            <p>
+                <script>
+	                var nameValidation = new LiveValidation('id_description', { validMessage: 'Accepted', wait: 500});
+	                nameValidation.add(Validate.Presence, {failureMessage: "Required"});
+	                nameValidation.add( Validate.Length, { minimum: 100, maximum: 2000 } );
+	            </script>  
+            </p>
+    </div>
+    </br>
+    
+    <div class="text-background" style="font-size:17px;">
+        We highly recommend you add a game icon and screenshots after your game is registered! <br>
+        This will improve your chances of winning the Gamers' Choice award.<br>
+        You can do this in your profile page, below your game's name.<br>
+        You can add your co-developers by pressing the button on your profile page once the game is registered.
+    </div>
+    </br>
+    <p><input type="submit" alt="register" /></p>
+    {{ ayah_html|safe }}
+</form>

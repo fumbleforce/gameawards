@@ -4,9 +4,11 @@ $(function($) {
     
     var set_logo = function() {
         var $logo = $('.nga-logo');
-        $logo.css('left', $(window).width()/2 - $logo.width() - 430);
+        var left = $('.navbar-right').offset().left - $logo.width() - 10;
+        if (left < 0) left = $('.navbar-right li').last().offset().right + 12;
+        $logo.css('left', left);
         
-    }
+    };
     set_logo();
     $(window).resize(set_logo);
 
@@ -16,8 +18,31 @@ $(function($) {
     $('.carousel-inner').each(function() {
         $(this).find('.item').first().addClass("active");
     });
+
     
 });
+
+//GET STARTED CONTROL
+function getStartedSliderPrev()
+{
+        var getStartedSlider = $("#get-started-slider").data('royalSlider');
+        getStartedSlider.prev();
+
+}
+
+function getStartedSliderNext()
+{
+        var getStartedSlider = $("#get-started-slider").data('royalSlider');
+        getStartedSlider.next();
+
+}
+
+function getStartedSliderTo(id)
+{
+        var getStartedSlider = $("#get-started-slider").data('royalSlider');
+        getStartedSlider.goTo(id);
+
+}
 /*
   $('#home-slider').royalSlider({
     arrowsNav: true,
@@ -66,10 +91,9 @@ $('#events-slider').royalSlider({
     transitionType:'move',
     globalCaption: true
   });
-  
+  */
 //FOR THE GET STARTED SLIDER
 $('#get-started-slider').royalSlider({
-    arrowsNav: true,
     loop: false,
     keyboardNavEnabled: false,
     controlsInside: true,
@@ -77,8 +101,8 @@ $('#get-started-slider').royalSlider({
     arrowsNav: true,
     arrowsNavAutoHide: false,
     autoScaleSlider: true,
-    autoScaleSliderWidth: 800,     
-    autoScaleSliderHeight: 600, 
+    autoScaleSliderWidth: 800,
+    autoScaleSliderHeight: 600,
     numImagesToPreload: 4,
     controlNavigation: 'bullets',
     thumbsFitInViewport: false,
@@ -89,7 +113,7 @@ $('#get-started-slider').royalSlider({
     transitionType:'move',
     globalCaption: true
   });
-
+/*
 //FOR THE PARTICIPANTS SLIDER
 $('#participants-slider').royalSlider({
     arrowsNav: true,

@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.contrib.auth.models import User
 from django.template import RequestContext
@@ -45,7 +45,15 @@ def game_registration_request(request):
         context_instance=RequestContext(request))
 
 
-
+def game(request, game_id):
+    try:
+        game = Game.objects.get(pk=game_id)
+    except:
+        return HttpResponse(str(game_id)+' is not a game')
+    return render_to_response(
+        'runs/game.html', 
+        {"game": game}, 
+        context_instance=RequestContext(request))
 
 def game_list_request(request):
     curr_run = Run.objects.get(current_run = True)

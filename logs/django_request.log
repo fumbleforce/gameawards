@@ -554,3 +554,56 @@ Traceback (most recent call last):
     self.model._meta.object_name)
 DoesNotExist: Run matching query does not exist.
 2014-01-19 23:25:47,111 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-20 09:29:22,619 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-20 09:30:55,263 [WARNING] django.request: Not Found: /media/images/admin/nga-2013-winners.png
+2014-01-20 09:41:07,873 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/jorgen/progging/gameawardsDjango/gameawards/apps/news/views.py", line 24, in index
+    context_instance=RequestContext(request))
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 29, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 170, in render_to_string
+    t = get_template(template_name)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 149, in get_template
+    template = get_template_from_string(template, origin, template_name)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 157, in get_template_from_string
+    return Template(source, origin, name)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 125, in __init__
+    self.nodelist = compile_string(template_string, origin)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 153, in compile_string
+    return parser.parse()
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 274, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 215, in do_extends
+    nodelist = parser.parse()
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 274, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 190, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 274, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 263, in do_include
+    isolated_context=isolated_context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 146, in __init__
+    t = get_template(template_path)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 146, in get_template
+    template, origin = find_template(template_name)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 139, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: templates/news/getstarted.html
+2014-01-20 10:32:53,620 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 10:34:14,430 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 10:36:38,144 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 10:59:56,898 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 11:03:57,660 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 12:07:43,344 [WARNING] django.request: Forbidden (CSRF token missing or incorrect.): /profile/
+2014-01-20 12:08:28,994 [WARNING] django.request: Forbidden (CSRF token missing or incorrect.): /profile/
+2014-01-20 12:09:28,338 [WARNING] django.request: Forbidden (CSRF token missing or incorrect.): /profile/
+2014-01-20 12:10:14,324 [WARNING] django.request: Forbidden (CSRF token missing or incorrect.): /members/edit_member/
+2014-01-20 12:10:34,523 [WARNING] django.request: Forbidden (CSRF token missing or incorrect.): /members/edit_member/
+2014-01-20 12:34:41,474 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 13:23:29,891 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 13:26:26,005 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 13:54:27,742 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
