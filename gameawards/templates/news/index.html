@@ -84,8 +84,10 @@
     <div class="carousel-inner">
     {% for slide in event_slide_list %}
         <div class="item">
-            <div style="height:80px; width:100%"></div>
-            {{ slide.text|safe }}
+            <div style="height:100px; width:100%"></div>
+            <div class="container" style="position:relative;">
+                {{ slide.text|safe }}
+            </div>
             <div class="carousel-caption">
                 {{ slide.caption |safe }}
             </div>
@@ -107,14 +109,10 @@
 
 {% block third %}
 <div class="headline">NEWS</div>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+<div style="width:800px; margin:0 auto;">
+    <div class="container fb-like-box" data-href="http://www.facebook.com/norwegiangameawards" data-width="800" data-colorscheme="light" data-show-faces="false" data-header="false" data-stream="true" data-show-border="false"></div>
+</div>
+<div style="height:80px; width:100%"></div>
 {% endblock %}
 <!--
 

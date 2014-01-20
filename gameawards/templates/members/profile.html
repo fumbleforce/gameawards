@@ -29,36 +29,12 @@
     </div>
     <div class="col-lg-4"></div>
 </div>
-<div id="editProfileContainer" class="container" style="display:none">
-
-</div>
 
 <div style="height:20px;width:100%"></div>
 <div class="text-center margin-bot-20">
-    <button class="btn btn-default btn-lg" onclick="$('#editProfileContainer').toggle(1000);$('#profileInfo').toggle(1000);">Edit profile</button>
+    <a href="/members/edit_member/"><button class="btn btn-default btn-lg">Edit profile</button></a>
 </div>
 
-<script>
-function submitEditProfile() {
-    var $modal = $("#editProfileContainer");
-        $form = $("#editMemberForm");
-    $.post(
-        "/members/edit_member/",
-        $form.serialize(),
-        function(response) {
-            $modal.html(response);
-        },
-        'json'
-    );
-}
-
-$(function(){
-    var $container = $("#editProfileContainer");
-    $.get("/members/edit_member", function(page) {
-        $container.html(page);
-    });
-});
-</script>
 {% endblock %}
 
 
@@ -81,39 +57,10 @@ $(function(){
 {% endfor %}
 </div>
 
-<div id="gameFormContainer" class="container" style="display:none;"></div>
 
 <div class="text-center margin-bot-20">
-    <button class="btn btn-default btn-lg" onclick="$('#gameFormContainer').toggle(1000);$('#your-game-list-container').toggle(1000);">Register Game or Concept</button>
+    <a href="/runs/register/"><button class="btn btn-default btn-lg">Register Game or Concept</button></a>
 </div>
-<script>
-
-$(function(){
-    var $container = $("#gameFormContainer");
-    $.get("/runs/register/", function(page) {
-        $container.html(page);
-        var $form = $("#gameForm");
-        AYAH.addGameCompleteHandler(function(e){
-            console.log(e);
-        })
-        /*
-        $form.submit(function(e){
-            e.preventDefault();
-            $.post(
-                "/runs/register/",
-                $form.serialize(),
-                function(response) {
-                    $container.html(response);
-                    return false;
-                },
-                'json'
-            );
-            return false;
-        });
-*/
-    });
-});
-</script>
 
 {% endblock %}
 
@@ -133,39 +80,12 @@ $(function(){
 {% endfor %}
 </div>
 
-<div id="uploadContainer" class="container" style="display:none">
-
-</div>
 
 <div style="height:20px;width:100%"></div>
 
 {% if upload %}
 <div class="text-center margin-bot-20">
-    <button class="btn btn-default btn-lg" onclick="$('#uploadContainer').toggle(1000);$('#your-upload-list-container').toggle(1000);">Upload Game or Concept</button>
+    <a href="/members/upload/"><button class="btn btn-default btn-lg">Upload Game or Concept</button></a>
 </div>
 {% endif %}
-<script>
-function submitUpload() {
-    
-}
-
-$(function(){
-    var $container = $("#uploadContainer");
-    $.get("/runs/upload/", function(page) {
-        $container.html(page);
-        var $form = $("#uploadForm");
-        $form.submit(function(e){
-            e.preventDefault();
-            $.post(
-                "/runs/upload/",
-                $form.serialize(),
-                function(response) {
-                    $modal.html(response);
-                },
-                'json'
-            );
-        });
-    });
-});
-</script>
 {% endblock %}

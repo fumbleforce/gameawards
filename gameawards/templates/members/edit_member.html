@@ -1,4 +1,9 @@
-    
+{% extends "single_page.html" %}
+
+{% block page %}
+
+<div class="headline">Edit Profile</div>
+
 {% for e in form.errors %}
     <p>{{ e }}</p>
 {% endfor %}
@@ -51,6 +56,9 @@
             {{ form.about }}
         </div>
     </div></br>
-    <input type="submit" class="btn btn-default" value="Submit"></input>
+    <div class="text-center">
+        <input type="submit" class="btn btn-primary btn-lg" value="Submit"></input>
+    </div>
 </form>
 
+{% endblock %}

@@ -311,7 +311,7 @@ span.next-white:active{background-position: -300px -120px}
 
 /* Carousel base class */
 .carousel {
-  height: 500px;
+  height: 600px;
   -webkit-transition-timing-function: linear;
 -moz-transition-timing-function: linear;
 -o-transition-timing-function: linear;

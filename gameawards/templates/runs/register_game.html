@@ -1,13 +1,17 @@
+{% extends "single_page.html" %}
+
+{% block page %}
+
+<div class="headline">Register Game</div>
 
 
-<div class="text-background" style="font-size:17px;">
-    Make sure you have read the <a href="/info/#third-container" style="font-size:15px;">Rules</a> before you register a game on this site.</br>
-    Thank you!
-</div>
 <br>
-<form id="gameForm" action="" method="post">
+<form id="gameForm" action="" method="post" class="container">
 {% csrf_token %}
-
+    <div class="text-background" style="font-size:17px;">
+        Make sure you have read the <a href="/info/#third-container" style="font-size:15px;">Rules</a> before you register a game on this site.</br>
+        Thank you!
+    </div>
 
     <div class="register_div">
             <p><label for="name"{% if form.name.errors %} class="error"{% endif %}>Title: *</label></p>
@@ -93,6 +97,9 @@
         You can add your co-developers by pressing the button on your profile page once the game is registered.
     </div>
     </br>
-    <p><input type="submit" alt="register" /></p>
+    <p class="text-center"><input type="submit" alt="register" /></p>
     {{ ayah_html|safe }}
 </form>
+
+
+{% endblock %}

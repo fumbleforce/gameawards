@@ -854,3 +854,16 @@ FieldError: Cannot resolve keyword 'added_date' into field. Choices are: content
 2014-01-20 17:32:49,078 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
 2014-01-20 17:32:55,787 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
 2014-01-20 17:37:14,357 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 20:42:17,626 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 20:55:03,365 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 21:03:53,051 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 21:06:09,891 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 21:06:59,480 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 21:07:34,808 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 21:11:18,100 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 21:18:17,613 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 21:19:48,919 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 21:20:25,509 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 21:25:22,706 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 21:34:19,552 [WARNING] django.request: Not Found: /favicon.ico
+2014-01-20 21:52:47,665 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png

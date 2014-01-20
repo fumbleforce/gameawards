@@ -1,32 +1,21 @@
 {% extends "template.html" %}
 
-{% block template_head %}
-    <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/members.css" />
-    <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/games.css" />
-    <link rel="stylesheet" href="{{ STATIC_URL }}stylesheets/gallery.css" />
-
-    
-    {% block single_page_head %}{% endblock %}
-{% endblock %}
-
-{% block local_nav %}{% endblock %}
 
 
-{% block content_table %}
+{% block first_container %}<div style="height:50px;width:100%"></div>{% endblock %}
+{% block second_container %}{% endblock %}
+{% block fourth_container %}{% endblock %}
+{% block fifth_container %}{% endblock %}
 
-
-<div style="width:100%;padding-top:40px">
-	
-	<div class="green-container">
-	{% block text_head %}<div style="margin-top: 80px;width: 367px; height: 80px; "></div>{% endblock %}
-		{% block green_page %}
-		    <div class="black-container round-and-shadow">
-		        {% block page %}{% endblock %}
-		    </div>
-        {% endblock %}
-    </div>
+{% block third %}
+<div class="container">
+	<div style="height:50px;width:100%"></div>
+{% block page %}{% endblock %}
 </div>
+<div style="height:50px;width:100%"></div>
 {% endblock %}
+
+
 
 <script>
 $(document).ready(function() {
