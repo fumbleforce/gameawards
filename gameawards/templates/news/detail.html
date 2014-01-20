@@ -1,20 +1,19 @@
-{% extends "single_page.html" %}
+{% extends "template.html" %}
+{% block first_container %}<div style="height:50px;width:100%"></div>{% endblock %}
+{% block second_container %}{% endblock %}
+{% block fourth_container %}{% endblock %}
+{% block fifth_container %}{% endblock %}
 
+{% block third %}
+<div class="headline">
+    {{post.title}}
+</div>
 
-{% block text_head %}<div style="height: 80px; "></div>{% endblock %}
-
-{% block green_page %}
-<div class="black-container" style="width:400px;height:auto;margin-left:auto;margin-right:auto;">
-    
-    <h1 class="head-background">
-        {{post.title}}
-    </h1>
-    <div>
-        {{post.pub_date}}
-    </div><br>
-    <div class="text-background">
-        {{post.content|safe}}
-    </div>
-    
+<div class="container">
+	<div>
+	    {{post.pub_date}}
+	</div><br>
+    {{post.content|safe}}
 </div>
 {% endblock %}
+

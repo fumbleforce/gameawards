@@ -31,7 +31,8 @@
 </div>
 -->
 
-<div style="height:50px; width:100%"></div>
+
+
     
 <div id="first-container" class="dark-container centerWrapper">
     <div class="contentCenter">
@@ -103,18 +104,37 @@
     
 {% endblock %}
 	
-	
-	
-	
-	
-{% block third_container %}
+
+{% block third %}
+<div class="headline">NEWS</div>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+{% endblock %}
+<!--
+
+<div class="container">
+{% for article in news %}
+<div class="article col-lg-3">
+    <div class="title">{{ article.title }}</div>
+    <div class="container">{{ article.content |truncatewords_html:20 }}</div>
+    <a href="/news/{{ article.id }}"><button class="btn btn-default btn-sm">Read</button></a>
+</div>
+{% endfor %}
+</div>
+
+<!-- GET STARTED
 <div id="third-container" class="centerWrapper get-started">
     <div class="contentCenter">
         {% include "news/getstarted.html" %}
     </div>
 </div>
 
-<!-- GET STARTED
 
 <div class="headline carousel-headline">GET STARTED</div>
 
@@ -141,45 +161,38 @@
     </a>
 </div>
 -->
-{% endblock %}
+
 
 
 
 
 {% block fourth %}
 <div class="headline">GAMES</div>
-<div id="game-whole-container">
-    
-
-    <!--GAMES SLIDER-->
-    <div id="game-sample-container">
-        <div id="game-sample-list">
-            {% for g in game_list %}
-            
-                <div class="sample-game-container">
-                    <a href="/games/#game_{{ g.id }}">
-                    <div class="sample-game-icon">
-                       <img src="{{ g.get_icon.image.url }}" />
-                    </div></a>
-                    <div class="sample-game-title green-text-background">
-                        {{ g.name }}
-                    </div>
-                    <div class="sample-game-desc green-text-background">
-                        {{ g.short_desc }}
-                    </div>
-                
-                </div>
-            
-            {% endfor %}
-        </div>
-        <div id="game-sample-links">
-            <a href="/games/">See all games!</a></br>
-            <a href="/info/#guides-container">Submission guide</a></br>
-            <a href="/info/#third-container">Participation Rules</a>
-        </div>
-    </div>                    
+<div class="container text-center">
+    <a href="/games/"><button class="btn btn-default btn-lg">See all games!</button></a>
+    <a href="/info/#guides-container"><button class="btn btn-default btn-lg">Submission guide</button></a>
+    <a href="/info/#third-container"><button class="btn btn-default btn-lg">Participation Rules</button></a>
 </div>
-<!--END GAMES SLIDER-->
+<div style="height:50px; width:100%"></div>
+<div class="container">
+    {% for g in game_list %}
+        <div class="sample-game-container">
+            <a href="/games/#game_{{ g.id }}">
+            <div class="sample-game-icon">
+               <img src="{{ g.get_icon.image.url }}" />
+            </div></a>
+            <div class="sample-game-title green-text-background">
+                {{ g.name }}
+            </div>
+            <div class="sample-game-desc green-text-background">
+                {{ g.short_desc }}
+            </div>
+        
+        </div>
+    
+    {% endfor %}
+</div>
+<div style="height:50px; width:100%"></div>
 {% endblock %}
 
 

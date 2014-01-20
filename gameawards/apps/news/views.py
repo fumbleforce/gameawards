@@ -11,9 +11,11 @@ def index(request):
     games_slide_list = Slide.objects.filter(belongs_to = 4).order_by('title')
     contact_slide_list = Slide.objects.filter(belongs_to = 5).order_by('title')
     game_list = Game.objects.order_by('-added_date')[:3]
+    news = Newspost.objects.all().order_by('-pub_date')[:3]
     return render_to_response(
         'news/index.html', 
         {
+        'news':news,
         'home_slide_list': home_slide_list,
         'event_slide_list': event_slide_list,
         'getstarted_slide_list': getstarted_slide_list,

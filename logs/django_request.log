@@ -607,3 +607,250 @@ TemplateDoesNotExist: templates/news/getstarted.html
 2014-01-20 13:23:29,891 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
 2014-01-20 13:26:26,005 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
 2014-01-20 13:54:27,742 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 16:41:48,189 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 16:41:59,443 [ERROR] django.request: Internal Server Error: /games
+Traceback (most recent call last):
+  File "/home/jorgen/.virtualenvs/bedsim/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 92, in get_response
+    response = middleware_method(request)
+  File "/home/jorgen/.virtualenvs/bedsim/local/lib/python2.7/site-packages/django/middleware/common.py", line 70, in process_request
+    urlresolvers.is_valid_path("%s/" % request.path_info, urlconf)):
+  File "/home/jorgen/.virtualenvs/bedsim/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 551, in is_valid_path
+    resolve(path, urlconf)
+  File "/home/jorgen/.virtualenvs/bedsim/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 440, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/home/jorgen/.virtualenvs/bedsim/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 321, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/home/jorgen/.virtualenvs/bedsim/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 223, in resolve
+    return ResolverMatch(self.callback, args, kwargs, self.name)
+  File "/home/jorgen/.virtualenvs/bedsim/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 230, in callback
+    self._callback = get_callable(self._callback_str)
+  File "/home/jorgen/.virtualenvs/bedsim/local/lib/python2.7/site-packages/django/utils/functional.py", line 29, in wrapper
+    result = func(*args)
+  File "/home/jorgen/.virtualenvs/bedsim/local/lib/python2.7/site-packages/django/core/urlresolvers.py", line 97, in get_callable
+    mod = import_module(mod_name)
+  File "/home/jorgen/.virtualenvs/bedsim/local/lib/python2.7/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/home/jorgen/progging/gameawardsDjango/gameawards/apps/runs/views.py", line 9, in <module>
+    from gameawards.utils import sanitizeHtml
+  File "/home/jorgen/progging/gameawardsDjango/gameawards/utils.py", line 3, in <module>
+    from BeautifulSoup import BeautifulSoup, Comment
+ImportError: No module named BeautifulSoup
+2014-01-20 16:42:28,479 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 16:42:31,213 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 16:47:44,463 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 16:48:17,179 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 16:48:33,313 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 16:49:09,064 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 16:49:31,467 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 16:52:23,550 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 16:52:25,772 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 16:56:21,482 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 16:58:36,348 [WARNING] django.request: Not Found: /news/media/images/admin/NGDC-icon.png
+2014-01-20 17:00:10,124 [WARNING] django.request: Not Found: /news/media/images/admin/NGDC-icon.png
+2014-01-20 17:03:52,177 [ERROR] django.request: Internal Server Error: /news/
+Traceback (most recent call last):
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/jorgen/progging/gameawardsDjango/gameawards/apps/news/views.py", line 24, in index
+    context_instance=RequestContext(request))
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 29, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 170, in render_to_string
+    t = get_template(template_name)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 146, in get_template
+    template, origin = find_template(template_name)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 135, in find_template
+    source, display_name = loader(name, dirs)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 43, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 49, in load_template
+    template = get_template_from_string(source, origin, template_name)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 157, in get_template_from_string
+    return Template(source, origin, name)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 125, in __init__
+    self.nodelist = compile_string(template_string, origin)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 153, in compile_string
+    return parser.parse()
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 274, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 215, in do_extends
+    nodelist = parser.parse()
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 272, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 328, in invalid_block_tag
+    raise self.error(token, "Invalid block tag: '%s'" % command)
+TemplateSyntaxError: Invalid block tag: 'third'
+2014-01-20 17:04:02,347 [WARNING] django.request: Not Found: /news/media/images/admin/NGDC-icon.png
+2014-01-20 17:08:30,775 [ERROR] django.request: Internal Server Error: /news/
+Traceback (most recent call last):
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/jorgen/progging/gameawardsDjango/gameawards/apps/news/views.py", line 24, in index
+    context_instance=RequestContext(request))
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 29, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 170, in render_to_string
+    t = get_template(template_name)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 146, in get_template
+    template, origin = find_template(template_name)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 135, in find_template
+    source, display_name = loader(name, dirs)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 43, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 49, in load_template
+    template = get_template_from_string(source, origin, template_name)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 157, in get_template_from_string
+    return Template(source, origin, name)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 125, in __init__
+    self.nodelist = compile_string(template_string, origin)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 153, in compile_string
+    return parser.parse()
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 274, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 215, in do_extends
+    nodelist = parser.parse()
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 274, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 190, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 281, in parse
+    self.unclosed_block_tag(parse_until)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/debug.py", line 65, in unclosed_block_tag
+    raise self.source_error(source, msg)
+TemplateSyntaxError: Unclosed tag 'block'. Looking for one of: endblock 
+2014-01-20 17:08:49,018 [ERROR] django.request: Internal Server Error: /news/
+Traceback (most recent call last):
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/jorgen/progging/gameawardsDjango/gameawards/apps/news/views.py", line 24, in index
+    context_instance=RequestContext(request))
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 29, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 170, in render_to_string
+    t = get_template(template_name)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 146, in get_template
+    template, origin = find_template(template_name)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 135, in find_template
+    source, display_name = loader(name, dirs)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 43, in __call__
+    return self.load_template(template_name, template_dirs)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 49, in load_template
+    template = get_template_from_string(source, origin, template_name)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 157, in get_template_from_string
+    return Template(source, origin, name)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 125, in __init__
+    self.nodelist = compile_string(template_string, origin)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 153, in compile_string
+    return parser.parse()
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 274, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 215, in do_extends
+    nodelist = parser.parse()
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 274, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 190, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 281, in parse
+    self.unclosed_block_tag(parse_until)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/debug.py", line 65, in unclosed_block_tag
+    raise self.source_error(source, msg)
+TemplateSyntaxError: Unclosed tag 'block'. Looking for one of: endblock 
+2014-01-20 17:09:00,380 [WARNING] django.request: Not Found: /news/media/images/admin/NGDC-icon.png
+2014-01-20 17:10:26,019 [WARNING] django.request: Not Found: /news/media/images/admin/NGDC-icon.png
+2014-01-20 17:13:48,768 [ERROR] django.request: Internal Server Error: /news/
+Traceback (most recent call last):
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/core/handlers/base.py", line 115, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/home/jorgen/progging/gameawardsDjango/gameawards/apps/news/views.py", line 26, in index
+    context_instance=RequestContext(request))
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/shortcuts/__init__.py", line 29, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader.py", line 177, in render_to_string
+    return t.render(context_instance)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 830, in render
+    bit = self.render_node(node, context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 124, in render
+    return compiled_parent._render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 830, in render
+    bit = self.render_node(node, context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 124, in render
+    return compiled_parent._render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 830, in render
+    bit = self.render_node(node, context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 830, in render
+    bit = self.render_node(node, context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 830, in render
+    bit = self.render_node(node, context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 830, in render
+    bit = self.render_node(node, context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 830, in render
+    bit = self.render_node(node, context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/loader_tags.py", line 63, in render
+    result = block.nodelist.render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/base.py", line 830, in render
+    bit = self.render_node(node, context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/debug.py", line 74, in render_node
+    return node.render(context)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/template/defaulttags.py", line 149, in render
+    len_values = len(values)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/db/models/query.py", line 106, in __len__
+    self._result_cache = list(self.iterator())
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/db/models/query.py", line 317, in iterator
+    for row in compiler.results_iter():
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 775, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 830, in execute_sql
+    sql, params = self.as_sql()
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 75, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 394, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 420, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/db/models/sql/compiler.py", line 453, in _setup_joins
+    opts, alias, False)
+  File "/home/jorgen/.virtualenvs/nga/local/lib/python2.7/site-packages/django/db/models/sql/query.py", line 1337, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'added_date' into field. Choices are: content, id, pub_date, title
+2014-01-20 17:14:11,772 [WARNING] django.request: Not Found: /news/media/images/admin/NGDC-icon.png
+2014-01-20 17:16:48,356 [WARNING] django.request: Not Found: /news/media/images/admin/NGDC-icon.png
+2014-01-20 17:17:45,707 [WARNING] django.request: Not Found: /news/media/images/admin/NGDC-icon.png
+2014-01-20 17:19:22,221 [WARNING] django.request: Not Found: /news/media/images/admin/NGDC-icon.png
+2014-01-20 17:20:01,571 [WARNING] django.request: Not Found: /news/media/images/admin/NGDC-icon.png
+2014-01-20 17:21:18,582 [WARNING] django.request: Not Found: /news/media/images/admin/NGDC-icon.png
+2014-01-20 17:23:35,699 [WARNING] django.request: Not Found: /news/media/images/admin/NGDC-icon.png
+2014-01-20 17:29:24,719 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 17:32:39,807 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 17:32:49,078 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 17:32:55,787 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-01-20 17:37:14,357 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
