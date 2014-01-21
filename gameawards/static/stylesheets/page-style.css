@@ -26,7 +26,9 @@ a{
 	text-decoration:underline;
 	
 }
-
+img {
+	border:0;
+}
 p{
 
 }
@@ -181,39 +183,15 @@ footer{
     background:gray
 }
 
-
-
-.round-and-shadow
-{
-	/* rounded corners 
-
-    -moz-border-radius: 10px;
-
-    -webkit-border-radius: 10px;
-
-    border-radius: 10px;*/
-
-    /* add box shadows */
-
-    -moz-box-shadow: 15px 15px 20px rgba(0,0,0,0.5);
-
-    -webkit-box-shadow: 15px 15px 20px rgba(0,0,0,0.5);
-
-    box-shadow: 15px 15px 20px rgba(0,0,0,0.5);
+.outer-shadow {
+	box-shadow: 0px 0px 5px 1px #333;
+	border-radius:5px;
 }
+
 .inner-shadow
 {
-   -moz-border-radius: 10px;
-   -webkit-border-radius: 10px;
-   border-radius: 10px;
-   
-   -moz-box-shadow:    inset 4px -4px 5px 3px #000000;
-   -webkit-box-shadow: inset 4px -4px 5px 3px #000000;
-   box-shadow:         inset 4px -4px 5px 3px #000000;
-   
-   padding:10px 20px 10px 20px;
-
-
+   box-shadow:inset 0px 0px 5px 1px #333;
+border-radius:5px;
 }
 
 .headline {

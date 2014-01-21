@@ -41,22 +41,34 @@
 {% block third %}
 <div class="headline">Your games</div>
 
-<div id="your-game-list-container">
-{% for g in games %}
-    <div class="game-link text-background">
-    
-        <div class="your-game-list-element" style="float:left;width:780px;">{{ g.name }}</div>
-
-        <div class="your-game-list-element" style="float:left;padding-right:10px;"><a href="/gallery/add_game_pic/{{ g.id }}"><button>Add images</button></a></div> 
-                       
-        <div class="your-game-list-element" style="float:left;padding-right:10px;"><a href="/runs/edit/{{ g.id }}"><button>Edit</button></a></div>
-        
-        <div class="your-game-list-element" style="float:left;padding-right:10px;"><a href="/runs/add_game_dev/{{ g.id }}"><button>Add Collaborator/Developer</button></a></div>
-    </div>
-    
-{% endfor %}
-</div>
-
+<div class="container">
+    {% for g in games %}
+        <div class="container" style="width:600px">
+            <div class="game pull-left">
+                <div class="pull-left">
+                    <a href="/games/#game_{{ g.id }}">
+                        <div class="game-icon default-game-icon" class=" inner-shadow">
+                           <img width="100" height="100" src="{{ g.get_icon.image.url }}" />
+                        </div>
+                    </a>
+                </div>
+                <div class="pull-left">
+                    <div class="game-title">
+                        <a href ="/runs/game/{{ g.id }}">{{g.name}}</a>
+                    </div>
+                    <div class="game-desc">
+                        {{ g.short_desc }}
+                    </div>
+                </div>
+            </div>
+            <div class="container pull-left" style="width:100px;">
+                <a href="/gallery/add_game_pic/{{ g.id }}"><button class="btn btn-success btn-sm">Add images</button></a>
+                <a href="/runs/edit/{{ g.id }}"><button class="btn btn-success btn-sm">Edit</button></a>
+                <a href="/runs/add_game_dev/{{ g.id }}"><button class="btn btn-success btn-sm">Add Dev</button></a>
+            </div>
+        </div>
+    {% endfor %}
+</div>    
 
 <div class="text-center margin-bot-20">
     <a href="/runs/register/"><button class="btn btn-default btn-lg">Register Game or Concept</button></a>
