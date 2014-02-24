@@ -654,12 +654,17 @@ box-shadow:0px 0px 0px 15px #222;
 
 
 
+.game-image {
+	margin:10px;
+	float:left;
+}
 
 
 
 
-
-
+.well {
+	min-height: 0;
+}
 
 
 

@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 import os
 from datetime import datetime
-
+from gallery.models import GamePic
 
 def game_registration_request(request):
 
@@ -58,7 +58,13 @@ def game(request, game_id):
 def game_list_request(request):
     curr_run = Run.objects.get(current_run = True)
     game_list = Game.objects.filter(run=curr_run).order_by('-added_date')
-    context = {'games':game_list}
+    images = GamePic.objects.filter(game__run=curr_run)
+
+    context = {
+        'games':game_list,
+        'images': images,
+    }
+    
     return render_to_response(
         'runs/game_list.html', 
         context, 

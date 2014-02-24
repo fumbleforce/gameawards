@@ -15,7 +15,7 @@
 {% block second %}
 <div class="headline">GAMES</div>
 
-<div class="container well" id="big-game"></div>
+<div class="container well" id="big-game" style="display:none"></div>
 <div class="container" id="small-games">
     {% if games %}
     {% for g in games %}
@@ -50,6 +50,7 @@ $(function() {
     $(".game").click(function() {
         var $game = $(this),
             id = $game.attr("game");
+
         $("#big-game")
             .load("/runs/game/"+id+"/")
             .show(100);
@@ -60,8 +61,36 @@ $(function() {
 
 {% block third %}
 <div class="headline">IMAGES</div>
+
+<div id="hidden-div"></div>
+
+<div class="container screen-gallery" id="images">
+    {% if images %}
+    {% for i in images %}
+        <div class="screen-img">
+            <img class="screen-in-list" src="{{ i.image.url }}" />
+        </div>
+    {% endfor %}
+    {% else %}
+        <p>
+            No images yet.
+        </p>
+    {% endif %}
+</div>
+
+
+<script src="{{ STATIC_URL }}/js/gallery.js"></script>
 {% endblock %}
 
 {% block fourth %}
 <div class="headline">VIDEOS</div>
+
+
+
+
+
+
+
+
+
 {% endblock %}

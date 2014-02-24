@@ -1,17 +1,22 @@
 $(document).ready(function() {
     $('.screen-gallery .screen-img').click(function() {
-        var $that = $(this);
-        var $hidden = $('#hidden-div');
-        var $img = $that.children('img');
-        if ($that.hasClass("screen-img-focus")){
-            $hidden.hide()
+        console.log('click');
+        var $that = $(this),
+            $hidden = $('#hidden-div'),
+            $sibs,
+            $img = $that.children('img');
+
+        if ($that.hasClass("screen-img-focus")) {
+
+            $hidden.hide();
             $img.addClass("screen-in-list");
             $that.removeClass("screen-img-focus");
         }
-        else{
-            $hidden.show()        
+        else {
+
+            $hidden.show();
                 
-            var $sibs = $that.siblings();
+            $sibs = $that.siblings();
             $sibs.removeClass("screen-img-focus");
             $sibs.children('img').addClass("screen-in-list");
 
