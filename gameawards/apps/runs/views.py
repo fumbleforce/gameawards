@@ -55,6 +55,12 @@ def game(request, game_id):
         {"game": game}, 
         context_instance=RequestContext(request))
 
+
+
+
+
+
+
 def game_list_request(request):
     curr_run = Run.objects.get(current_run = True)
     game_list = Game.objects.filter(run=curr_run).order_by('-added_date')
@@ -69,6 +75,10 @@ def game_list_request(request):
         'runs/game_list.html', 
         context, 
         context_instance=RequestContext(request))
+
+
+
+
 
 
 def game_edit_request(request, game_id):
@@ -105,6 +115,8 @@ def game_edit_request(request, game_id):
         'runs/edit_game.html', 
         context, 
         context_instance=RequestContext(request))
+
+
 
 
 def add_game_dev_request(request, game_id):

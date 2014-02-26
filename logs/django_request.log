@@ -909,3 +909,6 @@ FieldError: Cannot resolve keyword 'added_date' into field. Choices are: content
 2014-02-24 16:52:08,052 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
 2014-02-24 16:52:59,471 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
 2014-02-24 17:21:51,844 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-02-26 12:07:47,119 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-02-26 12:28:34,276 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png
+2014-02-26 12:29:30,382 [WARNING] django.request: Not Found: /media/images/admin/NGDC-icon.png

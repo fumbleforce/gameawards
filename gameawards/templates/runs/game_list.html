@@ -15,10 +15,14 @@
 {% block second %}
 <div class="headline">GAMES</div>
 
+
+
 <div class="container well" id="big-game" style="display:none"></div>
 <div class="container" id="small-games">
+
     {% if games %}
     {% for g in games %}
+
         <div class="game container pull-left" game="{{g.id}}">
             <div class="pull-left">
                 <a href="#">
@@ -29,13 +33,14 @@
             </div>
             <div class="pull-left">
                 <div class="game-title">
-                    <a href ="#">{{g.name}}</a>
+                    <a href ="#">{{ g.name }}</a>
                 </div>
                 <div class="game-desc">
                     {{ g.short_desc }}
                 </div>
             </div>
         </div>
+
     {% endfor %}
     {% else %}
         <p>
