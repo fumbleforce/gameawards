@@ -409,7 +409,7 @@ box-shadow:0px 0px 0px 15px #222;
 }
 #fifth-container
 {
-	height: 600px;
+	padding-bottom: 30px;
 	vertical-align: top;
 	background-image:url('../images/bg-rep-dark.png');
 	background-color:#f8f8f8;
@@ -628,7 +628,6 @@ box-shadow:0px 0px 0px 15px #222;
     margin:0 auto;
     height:100%;
     overflow:hidden;
-	width:800px;
 }
 
 
