@@ -118,7 +118,7 @@
 {% for article in news %}
 <div class="article col-lg-3">
     <div class="title">{{ article.title }}</div>
-    <div class="container">{{ article.content |truncatewords_html:20 }}</div>
+    <div class="container">{{ article.content|truncatewords_html:20 }}</div>
     <a href="/news/{{ article.id }}"><button class="btn btn-default btn-sm">Read</button></a>
 </div>
 {% endfor %}
