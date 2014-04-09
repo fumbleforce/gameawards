@@ -22,10 +22,10 @@
     </div>
    
     <div class="partner-container">
-        <a href="https://www.norsk-tipping.no/" target="_blank" class="partners nt-logo"></a>
+        <!--<a href="https://www.norsk-tipping.no/" target="_blank" class="partners nt-logo"></a>
         <a href="http://www.arm.com/" target="_blank" class="partners arm-logo"></a>
+        <a href="http://skatteetaten.no/" target="_blank" class="partners etat-logo"></a>-->
         <a href="http://startntnu.no/" target="_blank" class="partners start-logo"></a>
-        <a href="http://skatteetaten.no/" target="_blank" class="partners etat-logo"></a>
     </div>
     
 </div>
@@ -47,9 +47,8 @@
 	        <div class="carousel-inner">
             {% for slide in home_slide_list %}
                 <div class="item">
-                    {{ slide.text|safe }}
+                    {{ slide.text | safe }}
                     <div class="carousel-caption">
-                        {{ slide.caption |safe }}
                     </div>
                 </div>
             {% endfor %}
@@ -89,7 +88,6 @@
                 {{ slide.text|safe }}
             </div>
             <div class="carousel-caption">
-                {{ slide.caption |safe }}
             </div>
         </div>
     {% endfor %}
@@ -147,7 +145,6 @@
         <div class="item">
             {{ slide.text|safe }}
             <div class="carousel-caption">
-                 {{ slide.caption |safe }}
             </div>
         </div>
     {% endfor %}
@@ -208,7 +205,6 @@
         <a class="contact-button mail-button" href="mailto:contact@gameawards.no" target="_blank"></a>
         <table>
 	            <tr>
-	                
 		            <td style="width: 50%">&nbsp;</td>
 		                <td style="width:800px;"> 
 		                    <div id="footer-div">
