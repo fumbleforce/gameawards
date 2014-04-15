@@ -115,16 +115,17 @@ def sent_email_request(request):
     userform = ResetPasswordForm()
     emailform = ForgotUsernameForm(request.POST)
     
-    user = User.objects.get(email=request.POST['email'])
-    if user:
-        newpass = pass_gen()
-        user.set_password(newpass)
-        user.save()
-        status = "Mail containing username and new password sent."
-        send_mail('Password Reset', 'Here is your new login information. You can change your password on your profile page once logged in. Username: '+ user.username + " Password: "+ str(newpass), 'no-reply@gameawards.no',
-    [user.email], fail_silently=False)
+    try:
+        user = User.objects.get(email=request.POST['email'])
+        if user:
+            newpass = pass_gen()
+            user.set_password(newpass)
+            user.save()
+            status = "Mail containing username and new password sent."
+            send_mail('Password Reset', 'Here is your new login information. You can change your password on your profile page once logged in. Username: '+ user.username + " Password: "+ str(newpass), 'no-reply@gameawards.no',
+        [user.email], fail_silently=False)
         
-    else:
+    except User.DoesNotExist:
         status = "Could not find a user with that email address."
         
     return render_to_response(
