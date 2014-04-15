@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from members.models import UserProfile
 from members.forms import LoginForm, UserRegistrationForm, UserEditForm, ForgotUsernameForm, ResetPasswordForm
@@ -141,16 +141,17 @@ def sent_user_request(request):
     userform = ResetPasswordForm(request.POST)
     emailform = ForgotUsernameForm()
     
-    user = User.objects.get(username=request.POST['username'])
-    if user:
-        newpass = pass_gen()
-        user.set_password(newpass)
-        user.save()
-        status = "Mail containing username and new password sent."
-        send_mail('Password Reset', 'Here is your new login information. You can change your password on your profile page once logged in. Username: '+ user.username + " Password: "+ str(newpass), 'no-reply@gameawards.no',
-    [user.email], fail_silently=False)
-        
-    else:
+    try:
+        user = User.objects.get(username=request.POST['username'])
+
+        if user:
+            newpass = pass_gen()
+            user.set_password(newpass)
+            user.save()
+            status = "Mail containing username and new password sent."
+            send_mail('Password Reset', 'Here is your new login information. You can change your password on your profile page once logged in. Username: '+ user.username + " Password: "+ str(newpass), 'no-reply@gameawards.no',[user.email], fail_silently=False)
+    
+    except User.DoesNotExist:
         status = "Could not find a user with that username."
         
     return render_to_response(
