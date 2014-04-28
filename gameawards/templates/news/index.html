@@ -177,6 +177,7 @@
 <div style="height:50px; width:100%"></div>
 <div class="container" style="width:930px">
     {% for g in game_list %}
+    <a href="/games/">
         <div class="game container col-lg-4">
             <div class="pull-left">
                 <a href="/games/#game_{{ g.id }}">
@@ -187,13 +188,14 @@
             </div>
             <div class="pull-left">
                 <div class="game-title">
-                    <a href ="/runs/game/{{ g.id }}">{{g.name}}</a>
+                    {{g.name}}
                 </div>
                 <div class="game-desc">
                     {{ g.short_desc }}
                 </div>
             </div>
         </div>
+    </a>
     {% endfor %}
 </div>
 <div style="height:50px; width:100%"></div>

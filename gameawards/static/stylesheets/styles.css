@@ -21,7 +21,7 @@ button
 
 a{
 	cursor: pointer;
-	color:#9ECE69;
+	/*color:#9ECE69;*/
 
 	text-decoration:underline;
 	
@@ -218,11 +218,11 @@ border-radius:5px;
 {
 	position: relative;
     overflow:hidden;
-	color: #9ECE69;
-
+	/*color: #9ECE69;*/
+    color:white;
 	font-weight:700;
-	background: black; /*fallback*/
-	background: rgba(0,0,0,0.6);
+	/*background: black; 
+	background: rgba(0,0,0,0.6);*/
 	padding:5px 10px 5px 10px;
 }
 .green-text-background p
@@ -623,6 +623,11 @@ box-shadow:0px 0px 0px 15px #222;
     -webkit-box-shadow: inset 0px 0px 10px 0px rgba(0, 0, 0, 1);
     -moz-box-shadow:    inset 0px 0px 10px 0px rgba(0, 0, 0, 1);
     box-shadow:         inset 0px 0px 10px 0px rgba(0, 0, 0, 1);
+
+    -webkit-transition: 500ms ease 1s;
+    -moz-transition: 500ms ease 1s;
+    -o-transition: 500ms ease 1s;
+    transition: 500ms ease 1s;
 }
 .contentCenter {
     margin:0 auto;
@@ -643,23 +648,16 @@ box-shadow:0px 0px 0px 15px #222;
     margin:180px auto 0 auto;
 }
 
-
-
 .title {
 	font-size:20px;
 	text-align: center;
 	width:100%;
 }
 
-
-
 .game-image {
 	margin:10px;
 	float:left;
 }
-
-
-
 
 .well {
 	min-height: 0;
@@ -1307,6 +1305,9 @@ textarea.LV_invalid_field:active {
 
 /*********************** GAME ***********************************/
 
+.headline a {
+    text-decoration: none;
+}
 
 .game-column
 {
@@ -1323,12 +1324,12 @@ textarea.LV_invalid_field:active {
 
 .game
 {
+    max-height: 240px;
     margin-bottom:30px;
-    width:300px;
-    height:auto;
     overflow:hidden;
     border: none;
-    padding:0;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 .game-short-container:hover
 {
@@ -1355,13 +1356,11 @@ textarea.LV_invalid_field:active {
 .game-title
 {
     font-size:20px;
-    width:180px;
     text-align:left;
     margin:5px;
 }
 .game-desc
 {
-    width:180px;
     margin:5px;
 }
 .game-short-container

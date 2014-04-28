@@ -58,10 +58,7 @@ def game(request, game_id):
 
 
 
-
-
-
-def game_list_request(request):
+def games(request):
     curr_run = Run.objects.get(current_run = True)
     game_list = Game.objects.filter(run=curr_run).order_by('-added_date')
     images = GamePic.objects.filter(game__run=curr_run)
@@ -69,6 +66,21 @@ def game_list_request(request):
     context = {
         'games':game_list,
         'images': images,
+    }
+    
+    return render_to_response(
+        'runs/games.html', 
+        context, 
+        context_instance=RequestContext(request))
+
+
+def game_list(request, year):
+    r = get_object_or_404(Run, year=year)
+
+    game_list = Game.objects.filter(run=r).order_by('-added_date')
+
+    context = {
+        'games':game_list,
     }
     
     return render_to_response(
